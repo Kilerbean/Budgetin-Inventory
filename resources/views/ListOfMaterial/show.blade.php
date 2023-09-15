@@ -76,10 +76,8 @@
                                 <a class="btn btn-primary btn-sm" href="{{ route('income.edit', $income->id) }}"
                                     title="Edit Material"> <i class="fa fa-pen"></i></a>
 
-
+                                    @if (auth()->user()->leveluser >4)
                                 <form action="{{ route('income.destroy', $income->id) }}" method="POST">
-
-                                    
                                     @csrf
                                     @method('DELETE')
 
@@ -87,6 +85,7 @@
                                         onclick="return confirm('Are you sure want to delete this ?');" title="Delete"><i
                                             class="fa fa-trash"></i></button>
                                 </form>
+                                @endif
                             </td>
                             
                             <td>{{ ++$i }}</td>
@@ -148,12 +147,9 @@
                             <td>
 
 
-
+                                @if (auth()->user()->leveluser >4)
                                 <form action="{{ route('usage.destroy', $usages->id) }}" method="POST">
-
                                     {{-- <a class="btn btn-info btn-sm" href="{{ route('usages.show',$usages->id) }}">Show</a> --}}
-
-
                                     @csrf
                                     @method('DELETE')
 
@@ -161,6 +157,7 @@
                                         onclick="return confirm('Are you sure want to delete this ?');" title="Delete"><i
                                             class="fa fa-trash"></i></button>
                                 </form>
+                                @endif
                             </td>
                             <td>{{ ++$l }}</td>
                             <td>{{ \Carbon\Carbon::parse($usages->created_at)->setTimezone('Asia/Jakarta')->format('d-M-Y ') }}

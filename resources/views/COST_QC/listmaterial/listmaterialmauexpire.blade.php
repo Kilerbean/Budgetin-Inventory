@@ -32,6 +32,7 @@
                                     onclick="return confirm('Are you sure want to delete this ?');"
                                     title="Delete Barang"><i class="fa fa-trash"></i></button>
                             </form> --}}
+                            
                             <form action="{{ route('Income.dikosongkan', $baranglow->id) }}" class=""
                               method="post">
 

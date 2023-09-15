@@ -49,16 +49,15 @@ class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-cente
           @foreach ($usage as $usages)
           <tr>
             <td>
+              @if (auth()->user()->leveluser >4)
                   <form action="{{ route('usage.destroy',$usages->id) }}" method="POST">
-  
                       <a class="btn btn-primary btn-sm" href="{{ route('usage.edit',$usages->id) }}"title="Edit Barang" > <i class="fa fa-pen"></i></a>
-  
-  
                   @csrf
                   @method('DELETE')
     
                   <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure want to delete this ?');"title="Delete Barang"><i class="fa fa-trash"></i></button>
               </form>
+              @endif
           </td>
   
           <td>{{ ++$i }}</td>
