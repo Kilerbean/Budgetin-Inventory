@@ -1,24 +1,45 @@
 <nav id="sidebar" class="sidebar js-sidebar {{-- collapsed --}}">
     <div class="sidebar-content js-simplebar">
         <a class="sidebar-brand" href="/">
-            <img class="img-fluid" src="{{ asset('icon/app-icon.png') }}" alt="{{ config('app.name') }}"
+            <img class="img-fluid" src="https://img.icons8.com/color/96/company.png" alt="{{ config('app.name') }}"
                 style="height: 35px">
-            <span class="align-middle"> {{ config('app.name') }}</span>
+            <span class="align-middle"> QC LAB</span>
         </a>
-        {{-- <ul class="sidebar-nav">           
-            
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="/logout" onclick="return confirm('Sign Out, Lanjut ?');">
-                    <i class="align-middle" data-feather="log-out"></i> <span class="align-middle">Sign Out</span>
+
+        <ul class="sidebar-nav">
+            <li class="sidebar-header mt-0">
+                COST
+            </li>
+
+            <li class="sidebar-item {{ str_contains($pages, 'Dashboards') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('Dashboards') }}">
+                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
                 </a>
             </li>
-        </ul> --}}
-        <ul class="sidebar-nav">
-            
-            @includeIf('layouts.sparta.partials.sidebar')
-            @includeIf('layouts.woms.partials.sidebar')
-            @includeIf('layouts.sam.partials.sidebar')
-
+            <li class="sidebar-item {{ str_contains($pages, 'Barang') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('Barang.index') }}">
+                    <i class="fa-solid fa-boxes-stacked align-middle"></i>
+                    <span class="align-middle">List Of Material</span>
+                </a>
+            </li>
+            <li class="sidebar-item {{ str_contains($pages, 'Purchasing') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('income.create') }}">
+                    <i class="align-middle" data-feather="shopping-cart"></i>
+                    <span class="align-middle">Purchasing Materials</span>
+                </a>
+            </li>
+            <li class="sidebar-item {{ str_contains($pages, 'Usage') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('usage.create') }}">
+                    <i class="fa-solid fa-bag-shopping align-middle"></i>
+                    <span class="align-middle">Material Usage</span>
+                </a>
+            </li>
+            <li class="sidebar-item {{ str_contains($pages, 'Karyawan') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('karyawan') }}">
+                    <i class="align-middle" data-feather="users"></i>
+                    <span class="align-middle">List employees</span>
+                </a>
+            </li>
 
             <li class="sidebar-header">
                 Others Apps
@@ -57,7 +78,7 @@
                     <i class="align-middle" data-feather="log-out"></i> <span class="align-middle">Sign Out</span>
                 </a>
             </li>
-            
+
         </ul>
         {{-- <div class="sidebar-cta">
             <div class="sidebar-cta-content">
