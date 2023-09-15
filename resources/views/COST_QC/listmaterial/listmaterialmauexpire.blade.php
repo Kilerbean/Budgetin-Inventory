@@ -1,10 +1,10 @@
 <div class="card">
-    <div class="card-header">
-        <h3 class="card-title">List of Materials Close or  Past their Expiration Date</h3>
-    </div>
+    <div class="mt-2">
+        <h4 class="mb-2">List of Materials Close or  Past their Expiration Date</h4>
+      </div>
 
     <div class="table-responsive ">
-        <table class="table card-table table-bordered table-vcenter text-nowrap datatable" id="listlowss">
+        <table class="table table-sm table-bordered table-vcenter text-nowrap datatable" id="listlowss">
             <thead>
                 <tr>
                     <?php $no = 1; ?>
@@ -22,7 +22,7 @@
             <tbody>
                 @foreach ($barangexpire as $baranglow)
                     <tr>
-                        <td class="text-end">
+                        <td class="text-center">
 
                             {{-- <form action="{{ route('income.destroy', $baranglow->id) }}" method="POST">
                                 @csrf

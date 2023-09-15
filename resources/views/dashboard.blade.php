@@ -7,7 +7,10 @@
 @endphp 
 @section('title', $pages)
 @section('content')
-
+<div class="container-fluid p-0">
+    <h1><img {{-- class="slide-fwd-top" --}} src="https://img.icons8.com/color/96/company.png" alt="Unsplash" style="width: 50px">
+    <span {{-- class="slide-left" --}} style="display: inline-block">   Welcome to <strong>QC LAB</strong></span></h1>        
+</div>    
 
 <div class="row">
     <div class="col-md-4">
