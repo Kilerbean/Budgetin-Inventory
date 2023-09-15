@@ -37,12 +37,12 @@
 
                               @csrf
                               @method('PUT')
-                              <button type="submit" class="btn btn-info btn-sm"
-                                  onclick="return confirm('Are you sure want to empty this material ?');"title="Empty Material"><i
-                                      class="fa fa-fire" style="color: #ff0000;"></i></button>
+                              <button type="submit" class="btn btn-danger btn-sm"
+                                  onclick="return confirm('Are you sure want to empty this material ?');"title="Empty Material"><i class="fa-regular fa-trash-can"></i></button>
+                                  <a href="{{ route('income.edit', $baranglow->id) }}" class="btn btn-primary btn-sm"
+                                    title="Edit Material"><i class="fa fa-pen"></i></a>
                           </form>
-                            <a href="{{ route('income.edit', $baranglow->id) }}" class="btn btn-primary btn-sm"
-                                title="Edit Material"><i class="fa fa-pen"></i></a>
+                            
 
                      
                             

@@ -11,32 +11,32 @@
                 COST
             </li>
 
-            <li class="sidebar-item {{ str_contains($pages, 'Dashboards') ? 'active' : '' }}">
+            <li class="sidebar-item {{ str_contains($pages, 'Dashboard') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('Dashboards') }}">
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                    <i class="align-middle" data-feather="sliders" style="width: 18px;"></i> <span class="align-middle">Dashboard</span>
                 </a>
             </li>
             <li class="sidebar-item {{ str_contains($pages, 'Barang') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('Barang.index') }}">
-                    <i class="fa-solid fa-boxes-stacked align-middle"></i>
+                    <i class="fa-solid fa-boxes-stacked" style="width: 18px;"></i>
                     <span class="align-middle">List Of Material</span>
                 </a>
             </li>
             <li class="sidebar-item {{ str_contains($pages, 'Purchasing') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('income.create') }}">
-                    <i class="align-middle" data-feather="shopping-cart"></i>
+                    <i class="fa-solid fa-cart-shopping" style="width: 18px;"></i>
                     <span class="align-middle">Purchasing Materials</span>
                 </a>
             </li>
             <li class="sidebar-item {{ str_contains($pages, 'Usage') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('usage.create') }}">
-                    <i class="fa-solid fa-bag-shopping align-middle"></i>
+                    <i class="fa-solid fa-bag-shopping" style="width: 18px;"></i>
                     <span class="align-middle">Material Usage</span>
                 </a>
             </li>
             <li class="sidebar-item {{ str_contains($pages, 'Karyawan') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('karyawan') }}">
-                    <i class="align-middle" data-feather="users"></i>
+                    <i class="fa-solid fa-users" style="width: 18px;"></i>
                     <span class="align-middle">List employees</span>
                 </a>
             </li>
