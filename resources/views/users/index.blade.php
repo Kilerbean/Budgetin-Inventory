@@ -22,7 +22,7 @@ $pretitle = 'karyawan';
             <tr>
         <th class="w-1 ml-1">Action</th>
         <th>No</th>
-        <th>Nama Karyawan</th>
+        <th>Employe Name </th>
         <th>Email</th>
         <th>Level User</th>
         <th>Status</th>

@@ -19,6 +19,6 @@ class userlevel
         if (is_int($userLevel) && in_array($userLevel, $leveluser)) {
             return $next($request);
         }
-        return back()->with('info','anda tidak memiliki akses untuk melanjutkan,konfirmasi ke admin');
+        return back()->with('info','you dont have access to continue,need a higher user level');
     }
 }

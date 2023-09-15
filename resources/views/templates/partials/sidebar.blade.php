@@ -140,13 +140,19 @@
       </div> --}}
       <div class="collapse navbar-collapse" id="sidebar-menu">
         <ul class="navbar-nav pt-lg-3">
-
+          <div class="col-12 mt-4">
+            <label class="form-label">Access Level  :
+                {{auth()->user()->leveluser== 1 ? 'User' : (auth()->user()->leveluser== 2 ? 'Staff' : (auth()->user()->leveluser== 3 ? 'SuperVisor' : (auth()->user()->leveluser== 4 ? 'Manager' :(auth()->user()->leveluser== 5 ? 'Admin' : '') ))) }}
+            </label><br>
+            </div>
+            
           <div class="container">
           <span class="nav-link-title" >
             QC_LABS
           </span>
           </div>
           
+      
           <li class="nav-item">
             <a class="nav-link" href="{{ route('Dashboards') }}" >
               <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
@@ -163,7 +169,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /><path d="M16 5.25l-8 4.5" /></svg>
               </span>
               <span class="nav-link-title">
-                List Of material
+                List Of Material
               </span>
             </a>
             
@@ -171,17 +177,17 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('income.create') }}" >
               <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 11l3 3l8 -8" /><path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
+                <i class="fa fa-cart-shopping" style="color: #abdad6;"></i>
               </span>
               <span class="nav-link-title">
-                Incoming Material
+                Purchasing Materials
               </span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('usage.create') }}" >
               <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 11l3 3l8 -8" /><path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
+                <i class="fa fa-clipboard-check"></i>
               </span>
               <span class="nav-link-title">
                 Material Usage
@@ -189,15 +195,15 @@
             </a>
           </li>
           
-          {{-- <li class="nav-item ">
-            <a class="nav-link " href="{{ route('financial.index') }}"  >
+          <li class="nav-item ">
+            <a class="nav-link " href="{{ route('karyawan') }}"  >
               <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+                <i class="fa fa-users"></i>
               </span>
               <span class="nav-link-title">
-                Activity
+                List employees
               </span>
-            </a> --}}
+            </a>
             
 
 {{--           
@@ -246,7 +252,7 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('get-logout') }}" >
             <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/ghost -->
-              <img class="card-img-top" src="icon/logout.png" alt="Lumens Icon" style="width: 45px">            </span>
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABfklEQVR4nO2ZS0oDQRiEZ5VjJOJjn4BeIBm9kIoL14oniHoCb+BZTJDExzZifICbwCcNPdpExGGo/mNDFwzZVf1fT3czVIoiKysr618LWAMugUdggUYL73cBdGIOvwe8ElcvQBlr5WMPH0K01QBu21SaAH2gJfJuAQNgGmScK7zDELdHK/Wl5t8ZgyDjXm0eHljJyv/yJj58xrva/EtS4585J8Cb+00SIJoyQE0BG8ABsJnqGRj5mCeglyLATRClgzAE6PnBtRCWhxjoArMg8hnYSeoaRQ2ximsUJcRfAP762weOxM9VmN34TNQAuMVO49QBRjEA1oFj4Ez8XC8N785EVw5geIi3m5qZAqAc3hoA9fAr/pSYNdrzKwQYy4c3BpjIhzcG2AIOXQ+lNja/RqXKADUFnMaqVZIvth4MqsUyyLhTm7vuvtLUhynL3d2lcneo8A5DOr72ttBcXq97iNIAYu5aavnwAUTbvV5Xf4v/YnJ+wygrn5WVlVVY6RNDXSnVfHQVFAAAAABJRU5ErkJggg==">         </span>
             <span class="nav-link-title">
               Sign Out
             </span>

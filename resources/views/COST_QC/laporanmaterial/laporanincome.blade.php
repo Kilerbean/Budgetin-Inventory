@@ -1,6 +1,6 @@
 @extends('templates.dasar')
 @php
-  $title = 'Laporan Incoming of Material';
+  $title = 'Incoming of Material Report';
   $pretitle = 'COST-QC LAB';
 
 @endphp 
@@ -11,6 +11,10 @@
 
 
 @section('coba')
+<div class="text-center">
+  <a class="btn btn-info" href="{{ route('laporanincomepdf') }}"><i class="fa fa-file-pdf"></i> Download PDF</a>
+</div>
+
 {{-- <div class="row mt-5">
     <div class="col-lg-12 margin-tb">
         <div class="float-start">
@@ -50,7 +54,7 @@
         <th>Unit</th>
         <th>Propose</th>
         <th>No PO</th>
-      
+        <th>No Batch</th>
         <th>Expire Date</th>
         <th>Status</th>
     </tr>
@@ -69,7 +73,7 @@
         <td>{{ $income->Unit }}</td>
         <td>{{ $income->Propose }}</td>
         <td>{{ $income->No_PO }}</td>
-        
+        <td>{{ $income->no_batch }}</td>
         <td>{{ $income->Expire_Date }}</td>
         <td>{{ $income->Status == 1 ? 'DiTerima' : 'BelumDiTerima' }}</td>
         

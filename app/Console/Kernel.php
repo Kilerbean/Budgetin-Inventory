@@ -13,6 +13,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         $schedule->command('app:financial')->yearly();
+        $schedule->command('make:stockopname')->lastDayOfMonth('23:00');
     }
 
     /**

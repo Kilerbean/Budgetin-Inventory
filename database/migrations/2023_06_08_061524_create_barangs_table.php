@@ -18,15 +18,16 @@ return new class extends Migration
             $table->string('Type_of_Budget');
             $table->string('Name_of_Material');
             $table->string('Catalog_Number');
-            $table->string('Vendor');
-            $table->string('Supplier');
-            $table->bigInteger('Quantity');
-            $table->string('Unit');
-            $table->bigInteger('Safety_Stok');
-            $table->bigInteger('Maximum_Stok');
+            $table->string('Manfaktur');
+            $table->double('Quantity');
+            $table->string('Quantity_unit');
+            $table->string('packingsize');
+            $table->string('packingsize_unit');
+            $table->double('Safety_Stock');
+            $table->double('Maximum_Stock');
             $table->double('Harga');
-            $table->boolean('Status')->default('true');
-            $table->integer('tipe_transaksi')->nullable();
+            $table->boolean('Status')->default(1);
+
             $table->date('Expire_Date')->nullable();
             $table->timestamps();
         });

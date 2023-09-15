@@ -14,5 +14,10 @@ class Usage extends Model
     {
         return $this ->belongsTo(barang::class,'Catalog_Number','Catalog_Number')->withdefault();
     }
+
+    public function Income()
+    {
+        return $this ->belongsTo(Income::class,'no_batch','no_batch')->withdefault();
+    }
 }
 

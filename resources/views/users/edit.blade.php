@@ -1,7 +1,7 @@
 @extends('templates.dasar')
 
 @php
-$title = 'List Karyawan';
+$title = 'List Employee';
 $pretitle = 'Karyawan';
 @endphp
 
@@ -10,7 +10,7 @@ $pretitle = 'Karyawan';
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div>
-            <h2>Edit Karyawan</h2>
+            <h2>Edit Employee</h2>
         </div>
         <div>
             <a class="btn btn-primary" href="{{ route('karyawan') }}"> Back</a>
@@ -36,7 +36,7 @@ $pretitle = 'Karyawan';
      <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="form-group">
-              <strong>Nama Karyawan</strong>
+              <strong>Employe Name</strong>
               <input class="form-control" name="name" placeholder="Nama" value="{{ $user->name}}" @readonly(true)>
           </div>
       </div>
@@ -62,22 +62,22 @@ class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-cente
                     {{ $user->leveluser== 1 ? 'User' : ($user->leveluser== 2 ? 'Staff' : ($user->leveluser== 3 ? 'SuperVisor' : ($user->leveluser== 4 ? 'Manager' :($user->leveluser== 5 ? 'Admin' : '') ))) }}
                 </label><br>
                @if ($user->leveluser <2)
-               <a href="{{ route('karyawan.edit.staff', $user->id) }}" class="btn btn-primary">Make Staff</a>
-               <a href="{{ route('karyawan.edit.spv', $user->id) }}" class="btn btn-primary">Make SuperVisor</a>
-                <a href="{{ route('karyawan.edit.manager', $user->id) }}" class="btn btn-primary">Make Manager</a>
+               <a href="{{ route('karyawan.edit.staff', $user->id) }}" class="btn btn-primary">turn into Staff</a>
+               <a href="{{ route('karyawan.edit.spv', $user->id) }}" class="btn btn-primary">turn into SuperVisor</a>
+                <a href="{{ route('karyawan.edit.manager', $user->id) }}" class="btn btn-primary">turn into Manager</a>
                 @elseif ($user->leveluser <3)
-                <a href="{{ route('karyawan.edit.spv', $user->id) }}" class="btn btn-primary">Make SuperVisor</a>
-                <a href="{{ route('karyawan.edit.manager', $user->id) }}" class="btn btn-primary">Make Manager</a>
+                <a href="{{ route('karyawan.edit.spv', $user->id) }}" class="btn btn-primary">turn into SuperVisor</a>
+                <a href="{{ route('karyawan.edit.manager', $user->id) }}" class="btn btn-primary">turn into Manager</a>
                 @elseif ($user->leveluser <4)
-                <a href="{{ route('karyawan.edit.staff', $user->id) }}" class="btn btn-primary">Make Staff</a>
-                <a href="{{ route('karyawan.edit.manager', $user->id) }}" class="btn btn-primary">Make Manager</a>
+                <a href="{{ route('karyawan.edit.staff', $user->id) }}" class="btn btn-primary">turn into Staff</a>
+                <a href="{{ route('karyawan.edit.manager', $user->id) }}" class="btn btn-primary">turn into Manager</a>
                 @elseif ($user->leveluser <5)
-                <a href="{{ route('karyawan.edit.spv', $user->id) }}" class="btn btn-primary">Make SuperVisor</a>
-                {{-- <a href="{{ route('karyawan.edit.admin', $user->id) }}" class="btn btn-primary">Make Admin</a> --}}
+                <a href="{{ route('karyawan.edit.spv', $user->id) }}" class="btn btn-primary">turn into SuperVisor</a>
+                {{-- <a href="{{ route('karyawan.edit.admin', $user->id) }}" class="btn btn-primary">turn into Admin</a> --}}
                 @elseif ($user->leveluser <6)
-                <a href="{{ route('karyawan.edit.staff', $user->id) }}" class="btn btn-primary">Make Staff</a>
-                <a href="{{ route('karyawan.edit.spv', $user->id) }}" class="btn btn-primary">Make SuperVisor</a>
-                <a href="{{ route('karyawan.edit.manager', $user->id) }}" class="btn btn-primary">Make Manager</a>
+                <a href="{{ route('karyawan.edit.staff', $user->id) }}" class="btn btn-primary">turn into Staff</a>
+                <a href="{{ route('karyawan.edit.spv', $user->id) }}" class="btn btn-primary">turn into SuperVisor</a>
+                <a href="{{ route('karyawan.edit.manager', $user->id) }}" class="btn btn-primary">turn into Manager</a>
                @endif
 
                 {{-- @if (Auth::user()->level_sparta > 1)

@@ -16,11 +16,15 @@ return new class extends Migration
             $table->string('Catalog_Number');
             $table->string('Type_of_Material');
             $table->string('Name_of_Material');
-            $table->bigInteger('Quantity');
+            $table->double('Quantity');
             $table->string('Unit');
             $table->string('Open_By');
             $table->date('Expire_Date');
-            $table->boolean('Status')->default('false');
+            $table->integer('tipe_transaksi')->default(1);
+            $table->boolean('Status')->default(0);
+            $table->string('no_batch');
+            $table->string('input_by');
+            $table->string('reason')->nullable();
             $table->timestamps();
         });
     }

@@ -10,7 +10,8 @@
                         <div class="text-center mt-4">
                             <img class="img-fluid" src="{{ asset('icon/login-icon.png') }}" alt="{{ config('app.name') }}"
                                 style="height: 100px">
-                            <h1 class="h2">Stock Budgetin and Management System</h1>
+                            <h1 class="h2"> Stock Management </h1>
+                  
                             <p class="lead">
                                 Sign in to your account to continue
                             </p>
@@ -32,7 +33,7 @@
                                             <input class="form-control form-control-lg" type="password" name="password"
                                                 placeholder="Enter your password" />
                                             <small>
-                                                <a href="/forgot-password">Forgot password?</a>
+                                                {{-- <a href="/forgot-password">Forgot password?</a> --}}
                                             </small>
                                         </div>
                                         <div>

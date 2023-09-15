@@ -4,7 +4,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Konfirmasi Barang Digunakan</h1>
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Use Material confirmation</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         
@@ -14,8 +14,8 @@
         <div class="modal-body">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Nama Barang</strong>
-                    <input class="form-control" name="Catalog_Number" placeholder="Masukan Catalog Number" value="|{{ $usages->Name_of_Material }}|{{ $usages->Type_of_Material }} | {{ $usages->Catalog_Number }}">
+                    <strong>Material Name</strong>
+                    <input class="form-control" name="Catalog_Number" placeholder="Input Catalog Number" value="|{{ $usages->Name_of_Material }}|{{ $usages->Type_of_Material }} | {{ $usages->Catalog_Number }}">
                 </div>
             </div>
 
@@ -29,14 +29,14 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Quantity</strong>
-                    <input class="form-control" input type="number" name="Quantity" placeholder="Masukan " value="{{ $usages->Quantity }}">
+                    <input class="form-control" input type="number" name="Quantity" placeholder="Input " value="{{ $usages->Quantity }}">
                 </div>
             </div>
 
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
           <button type="submit" class="btn btn-primary">Confirm</button>
         </div>
         </form>

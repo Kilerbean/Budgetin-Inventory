@@ -1,14 +1,11 @@
-@extends('templates.dasar')
+@extends('COST_QC.financialdetail.masterfinancial')
 @php
   $title = 'Financial Supporting Material';
   $pretitle = 'COST-QC LAB';
 
 @endphp 
-@section('coba')
+@section('financial')
 
-@push('page-action')
-  <a class="btn btn-success" href="{{ route('Dashboards') }}"> Back</a>
-  @endpush
 
 <div class="col-12">
     <div class="card">
@@ -38,11 +35,17 @@
               <tr>
                   <th>Actual</th>
                   @foreach ($financial as $financials)
-                      <td class="text-center {{$financials->actual > $financials->budget ? 'bg-danger' : 'bg-success'}}">{{number_format($financials->actual, 2, '.', ',')  }}</td>
+                      <td class="text-center ">{{number_format($financials->actual, 2, '.', ',')  }}</td>
                   @endforeach
               </tr>
               <tr>
-                  <th>Keterangan</th>
+                <th>Review</th>
+                @foreach ($financial as $financials)
+                    <td class="text-center {{$financials->actual > $financials->budget ? 'bg-danger' : 'bg-success'}}">{{number_format($financials->budget - $financials->actual, 2, '.', ',') }}</td>
+                @endforeach
+            </tr>
+              <tr>
+                  <th>Information</th>
                   @foreach ($financial as $financials)
                       <td class="text-center"> {{ $financials->Keterangan }}</td>
                   @endforeach
@@ -59,5 +62,6 @@
 </table>
 </div>
 
-
+    </div>
+</div>
 @endsection

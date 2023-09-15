@@ -54,11 +54,15 @@ class FinancialController extends Controller
      */
     public function update(Request $request, financial $financial)
     {
+        $old= \getoldvalues('mysql','financials',$financial);
+        $old_stok=$old["old"]["budget"];
+
         $request->validate([
             'budget' => 'required',
-            'Keterangan' => 'required'
+            'Keterangan' => 'required',
 
-        ]);
+        ] ,
+        ['Keterangan.required' => 'Information field is required']);
         
 
         // $financial->update($request->all());
@@ -68,7 +72,7 @@ class FinancialController extends Controller
 
         $financial->save();
 
-       
+        \auditmms(auth()->user()->name,'Adjust budget',$financial->Type_of_Budget,'financial',$financial->bulan_tahun,round($old_stok,0),$request->budget);
         return back()->with('success','Financial Budget updated successfully');
     }
 

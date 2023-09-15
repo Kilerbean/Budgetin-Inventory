@@ -23,7 +23,7 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Nama </strong>
+            <strong>Name </strong>
             <input class="form-control" name="name" placeholder="Nama" value="{{auth()->user()->name}}" @readonly(true)>
         </div>
     </div>

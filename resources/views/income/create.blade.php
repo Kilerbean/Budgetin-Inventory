@@ -1,15 +1,19 @@
 @extends('templates.dasar')
 
 @php
-$title = 'Tambah Material';
+$title = 'Create new Request Incoming Material';
 $pretitle = 'Create New';
 @endphp
+
+@push('page-action')
+  <a class="btn btn-info btn-sm" href="{{ route('income.index') }}"><i class="fa fa-clipboard-list"></i><i class="fa fa-turn-up"></i> List of Incoming Material</a>
+@endpush
 
 @section('coba')
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div>
-            <h4>Add New Incoming Material</h4>
+            <h4>Add New Purchasing Material</h4>
         </div>
         <div>
             <a class="btn btn-primary" href="{{ route('income.index') }}"> Back</a>
@@ -21,64 +25,75 @@ $pretitle = 'Create New';
 <div class="alert alert-danger">
     <strong>Whoops!</strong> There were some problems with your input.<br><br>
     <ul>
-        {{-- @foreach ($errors->all() as $error)
+        @foreach ($errors->all() as $error)
         <li>{{ $error }}</li>
-        @endforeach --}}
+        @endforeach
     </ul>
 </div>
 @endif
 
-<div class="card"style="background-color: lightgray;">
+<div class="card"  style="background-color: rgb(230, 225, 225);">
     <div class="card-body" >
         <form action="{{ route('income.store') }}" method="POST">
             @csrf
+
             <div class="row">
-                <div class="col-md-3">
+                <div class="mb-3" >
                     <div class="form-group">
-                        <strong>No PR:</strong>
-                        <input type="text" name="No_PR" class="form-control" placeholder="No PR" value="{{ old('No_PR') }}">
-                    </div>
-                </div>
-                <div class="col-md-9" >
-                    <div class="form-group">
-                        <strong>Nama Barang</strong>
-                        <select class="form-select" name="Catalog_Number" id="Catalog_Number" >
+                        <strong>|Catalog Number||Material Name||Type of Material ||Packing Size|Unit </strong>
+                        <select class="form-control" name="Catalog_Number" id="Catalog_Number">
+                            <option value="">Click to search for materials</option>
                             @foreach ($barang as $row)
-                            <option value="{{ $row->Catalog_Number }}"> {{ $row->Name_of_Material }} | {{ $row->Type_of_Budget }}| {{ $row->Type_of_Material }} | {{ $row->Unit}}</option>
+                                <option value="{{ $row->Catalog_Number }}" @if(old('Catalog_Number') == $row->Catalog_Number) selected @endif>
+                                    |{{ $row->Catalog_Number }} ||{{ $row->Name_of_Material }} || {{ $row->Type_of_Material }}|| {{ $row->packingsize }}|{{ $row->packingsize_unit}}
+                                </option>
                             @endforeach
                         </select>
+                        
                     </div>
                 </div>
+
+               
+                <div class="col-md-6">
+                    <div class="form-label">Propose</div>
+                    <select class="form-select" name="Propose">
+                      <option value="">Select</option>
+                      <option value="routine" {{ old('Propose') === 'routine' ? 'selected' : '' }}>routine</option>
+                      <option value="consumable part" {{ old('Propose') === 'consumable part' ? 'selected' : '' }}>consumable part</option>
+                      <option value="services" {{ old('Propose') === 'services' ? 'selected' : '' }}>services</option>
+                      <option value="calibration" {{ old('Propose') === 'calibration' ? 'selected' : '' }}>calibration</option>
+                      <option value="new" {{ old('Propose') === 'new' ? 'selected' : '' }}>new</option>
+                      <option value="external testing" {{ old('Propose') === 'external testing' ? 'selected' : '' }}>external testing</option>
+                      <option value="assets" {{ old('Propose') === 'assets' ? 'selected' : '' }}>assets</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <strong>Request By</strong>
+                        <input type="text" name="request_by" class="form-control" placeholder="Input name here" value="{{ old('request_by') }}">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <strong>No PR:</strong>
+                        <input type="text" name="No_PR" class="form-control" placeholder="Input No PR Here" value="{{ old('No_PR') }}">
+                    </div>
+                </div>
+             
                 <div class="col-md-4">
                     <div class="form-group" >
-                        <strong>Jumlah</strong>
-                        <input class="form-control" type="number" name="Quantity" placeholder=" masukan Quantity" value="{{ old('Quantity') }}">
+                        <strong>Quantity</strong>
+                        <input class="form-control" type="number" name="Quantity" placeholder="input Quantity" value="{{ old('Quantity') }}">
                     </div>
                 </div>
-                <div class="col-md-8">
+
+                {{-- <div class="col-md-2">
                     <div class="form-group">
-                        <strong>No PO</strong>
-                        <input class="form-control" name="No_PO" placeholder=" masukan No PO" value="{{ old('No_PO') }}">
+                        <strong>PR Date</strong>
+                        <input class="form-control" type="date" name="PO_Date" placeholder=" input PO Date" value="{{ old('PO_Date') }}">
                     </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Propose</strong>
-                        <input class="form-control" name="Propose" placeholder=" masukan  Propose" value="{{ old('Propose') }}">
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <strong>PO Date</strong>
-                        <input class="form-control" type="date" name="PO_Date" placeholder=" masukan PO Date" value="{{ old('PO_Date') }}">
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <strong>Expire Date</strong>
-                        <input class="form-control" type="date" name="Expire_Date" placeholder=" masukan Expire Date" value="{{ old('Expire_Date') }}">
-                    </div>
-                </div>
+                </div> --}}
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
                     <button type="submit" class="btn btn-success">Submit</button>
                 </div>
@@ -86,4 +101,37 @@ $pretitle = 'Create New';
         </form>
     </div>
 </div>
+
+<br>
+<div
+class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-1 border-bottom border-danger">
+</div>
+<br>
+@include('COST_QC.listmaterial.listmaterialbelumditerima')
+
+<script>
+    $(document).ready(function() {
+        $('#Catalog_Number').select2({
+            theme: "bootstrap-5",
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' :
+                'style',
+            placeholder: $(this).data('placeholder'),
+            closeOnSelect: true,
+            tags: true,
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+        });
+        $(document).on("select2:open", () => {
+            document.querySelector(".select2-container--open .select2-search__field").focus()
+        });
+    });
+    </script>
+
+<script type="text/javascript">
+    $(function() {
+        var table = $('#listlow,#listlowss,#listlowq').DataTable({
+            
+        });
+    });
+  </script>
 @endsection

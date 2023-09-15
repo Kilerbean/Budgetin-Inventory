@@ -1,6 +1,6 @@
 @extends('templates.dasar')
 @php
-  $title = 'Material Usage';
+  $title = ' Edit Material Usage';
   $pretitle = 'Create New Data';
 
 @endphp 
@@ -32,32 +32,33 @@
   @csrf
   @method('PUT')
 
-   <div class="row">
+  <div class="row"  style="background-color: rgb(230, 225, 225);">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Catalog Number</strong>
-            <input class="form-control" name="Catalog_Number" placeholder="Masukan Catalog Number" value="{{ $usage->Catalog_Number }}" @readonly(true)>
+            <input class="form-control" name="Catalog_Number" placeholder="Input Catalog Number" value="{{ old('Catalog_Number', $usage->Catalog_Number) }}" @readonly(true)>
         </div>
     </div>
       
       <div class="col-md-4">
           <div class="form-group">
-              <strong>Jumlah</strong>
-              <input class="form-control" name="Quantity"  placeholder=" masukan jumlah barang" value="{{ $usage->Quantity }}" {{ $usage->Status ? 'readonly' : '' }}>
+              <strong>Quantity</strong>
+              <input class="form-control" name="Quantity" placeholder="Input jumlah barang" value="{{ old('Quantity', $usage->Quantity) }}" {{ $usage->Status ? 'readonly' : '' }}>
           </div>
       </div>
       <div class="col-md-8">
           <div class="form-group">
               <strong>Open_By</strong>
-              <input class="form-control" name="Open_By" placeholder=" masukan nama" value="{{ $usage->Open_By }}">
+              <input class="form-control" name="Open_By" placeholder="Input nama" value="{{ old('Open_By', $usage->Open_By) }}">
           </div>
       </div>
       <div class="col-md-2">
           <div class="form-group">
               <strong>Expire Date</strong>
-              <input class="form-control" type="date" name="Expire_Date" placeholder=" masukan Expire Date" value="{{ $usage->Expire_Date }}">
+              <input class="form-control" type="date" name="Expire_Date" placeholder="Input Expire Date" value="{{ old('Expire_Date', $usage->Expire_Date) }}">
           </div>
       </div>
+      
       <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
           <button type="submit" class="btn btn-success">Submit</button>
       </div>
@@ -65,9 +66,10 @@
  
 </form>
 
-<!-- Button trigger modal -->
+
+{{-- <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{ $usage->id }}" {{ $usage->Status ? 'disabled' : '' }}>
-    Terima
+    Confirm
   </button>
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop{{ $usage->id }}"  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -85,7 +87,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Nama Barang</strong>
-                    <input class="form-control" name="Catalog_Number" placeholder="Masukan Catalog Number" value="|{{ $usage->Name_of_Material }}|{{ $usage->Type_of_Material }} | {{ $usage->Catalog_Number }}">
+                    <input class="form-control" name="Catalog_Number" placeholder="Input Catalog Number" value="|{{ $usage->Name_of_Material }}|{{ $usage->Type_of_Material }} | {{ $usage->Catalog_Number }}">
                 </div>
             </div>
 
@@ -99,20 +101,20 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Quantity</strong>
-                    <input class="form-control" inputtype="number" name="Quantity" placeholder="Masukan " value="{{ $usage->Quantity }}">
+                    <input class="form-control" inputtype="number" name="Quantity" placeholder="Input " value="{{ $usage->Quantity }}">
                 </div>
             </div>
 
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
           <button type="submit" class="btn btn-primary">Confirm</button>
         </div>
         </form>
       </div>
     </div>
-  </div>
+  </div> --}}
 
 
 @endsection

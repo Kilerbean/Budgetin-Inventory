@@ -1,14 +1,18 @@
 @extends('templates.dasar')
 @php
-  $title = 'Laporan  Material Usage';
+  $title = 'Material Usage Report';
   $pretitle = 'COST-QC LAB';
 
 @endphp 
 
 @push('page-action')
   <a class="btn btn-success" href="{{ route('Dashboards') }}"> Back</a>
+ 
   @endpush
 @section('coba')
+<div class="text-center">
+<a class="btn btn-info" href="{{ route('laporanusagepdf') }}"><i class="fa fa-file-pdf"></i> Download PDF</a>
+</div>
 <div class="col-12">
     <div class="card">
       <div class="card-header">
