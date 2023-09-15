@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usage;
-use Illuminate\Http\Request;
 use App\Models\barang;
+use App\Models\Income;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUsageRequest;
+use Illuminate\Support\Facades\DB;
+
 class UsageController extends Controller
 {
     /**
@@ -12,51 +17,88 @@ class UsageController extends Controller
      */
     public function index()
     {
-        $usage=Usage::latest()->paginate(8);
-        return view('usage.index',compact('usage'))
-        ->with('i', (request()->input('page', 1) - 1) * 8);
+        $usage=Usage::latest()->where('Status', '1')->where('tipe_transaksi','1')->get();
+        $materialusage=Usage::latest()->where('Status', '0')->where('tipe_transaksi','1')->get();
+        $audit=DB::table('audits')->latest()->where('sourcetable','Material Usage')->get();
+        return view('usage.index',compact('usage','materialusage','audit'))
+        ->with('i');
     }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        $barang= barang::all();
-        return view('usage.create', ['barang'=> $barang]);
-    }
+{
+    $uniqueIncomes = DB::table('incomes')
+    ->select('Catalog_Number', 'Name_of_Material') // Tambahkan kolom no_batch
+    ->whereNotNull('no_batch')
+    ->where('tipe_transaksi', '1')
+    ->where('Quantity', '>', 0)
+    ->groupBy('Catalog_Number', 'Name_of_Material') // Sesuaikan dengan kolom yang Anda pilih
+    ->get();
 
+
+
+    $materialusage = Usage::latest()
+        ->where('Status', '0')
+        ->where('tipe_transaksi', '1')
+        ->get();
+
+    return view('usage.create', compact('uniqueIncomes', 'materialusage'))->with('i');
+}
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
+        
+        //dd($barang->Quantity);
         $request->validate([
-            'Catalog_Number' => 'required',
-            'Quantity' => 'required',
-            'Expire_Date' => 'required',
-            'Open_By' => 'required'
+            'Catalog_Number'=>'required',
+            'no_batch'=>'required',
+            'Quantity' => 'required|min:0',
+            'Open_By' => 'required',
             
         ]);
-        $barang = barang::where('Catalog_Number',$request ->Catalog_Number)->first();
-        $usage = new usage();
    
-        $usage ->Catalog_Number =$request ->Catalog_Number ;
-        $usage ->Type_of_Material =$barang ->Type_of_Material ;
-        $usage ->Name_of_Material =$barang ->Name_of_Material ;
+        $income = Income::where('no_batch',$request ->no_batch)
+                        ->where('Catalog_Number',$request->Catalog_Number)
+                        ->where('tipe_transaksi','1')->first();
+        //$barang = barang::where('Catalog_Number',$income ->Catalog_Number)->first();
+        $old= \getoldvalues('mysql','incomes',$income); 
+        $old_stok = $old["old"]["Quantity"];$old["old"]["Quantity"];
+
+        $barang = $income->Barang;
+       
+        if ($income->Quantity >= $request->Quantity) {
+        $new_qty = $barang->Quantity - $request->Quantity;
+        $newincome=$income->Quantity-$request->Quantity;
+
+        $usage = new Usage();
+   
+        $usage ->Catalog_Number =$income->Catalog_Number ;
+        $usage ->Type_of_Material =$income ->Type_of_Material ;
+        $usage ->Name_of_Material =$income ->Name_of_Material ;
         $usage ->Quantity =$request ->Quantity ;
-        $usage ->Unit =$barang ->Unit ;
-        $usage ->Open_By=$request ->Open_By;
-        $usage ->Expire_Date =$request ->Expire_Date ;
-    
+        $usage ->Unit =$income ->Unit ;
+        $usage ->no_batch=$request->no_batch;
+        $usage ->Open_By=$request->Open_By;
+        $usage ->input_by =auth()->user()->name;
+        $usage ->Expire_Date =$income -> Expire_Date ;
+        $usage ->Status=1;
 
         $usage -> save();
-        
-        // usage::create($request->all());
-       
 
+        $barang->update(['Quantity'=>$new_qty]);
+        $usage->update(['Quantity'=>$request->Quantity]);
+        $income->update(['Quantity'=>$newincome]);
+        \auditmms(auth()->user()->name,'Create new Material Usage',$barang->Catalog_Number,'Material Usage',$request->no_batch,$old_stok,$newincome);    
         return redirect()->route('usage.index')
-                         ->with('success','Material Data Usage created.');
+        ->with('success','Material Usage Request Created  successfully');
+        }
+        else {
+            return back()->with('danger','not enough stock from that batch number');
+        }
     }
 
     /**
@@ -81,7 +123,9 @@ class UsageController extends Controller
      */
     public function update(Request $request,Usage $usage)
     {
-  
+        $old= \getoldvalues('mysql','usages',$usage); 
+
+   
         $request->validate([
             'Catalog_Number' => 'required',
             'Quantity' => 'required',
@@ -105,14 +149,26 @@ class UsageController extends Controller
         $usage=usage::find($usage);
       
         $barang = $usage->Barang;
+        $income = $usage->Income;
  
 
         $new_qty = $barang->Quantity - $request->Quantity;
+        $new_quan=$income->Quantity - $request->Quantity;
+        if ($barang->Quantity > $request->Quantity) {
+
+            
         $barang->update(['Quantity'=>$new_qty]);
         $usage->update(['Status'=>1]);
         $usage->update(['Quantity'=>$request->Quantity]);
+        $income->update(['Quantity'=>$new_quan]);
         $usage->update(['Open_By'=>$request->Open_By]);
-        return redirect()->route('usage.index')->with('success','Material Data Di Confirm');
+        
+        \auditmms(auth()->user()->name,'Confirm Material Usage',$barang->Catalog_Number,'Material Usage',$income->no_batch,$income->Quantity,$request->Quantity);
+        return redirect()->route('usage.index')->with('success','Material Data Confirmed');
+        }else {
+            return back()->with('danger','not enough stock');
+        }
+
     }
     /**
      * Remove the specified resource from storage.
@@ -121,8 +177,23 @@ class UsageController extends Controller
     {
         $usage=Usage::find($usage);
         $usage->delete();
-       
+        \auditmms(auth()->user()->name,'Delete Material Usage ',$usage->Catalog_Number,'Material Usage',$usage ->no_batch,0,$usage->Quantity);
         return redirect()->route('usage.index')
                          ->with('success','Data deleted successfully');
     }
+
+
+
+    public function getBatches($income)
+    {
+        $batches = Income::where('Catalog_Number', $income)
+        ->where('tipe_transaksi','1')
+        ->whereNotNull('no_batch')
+        ->where('Quantity', '>', 0)
+        ->where('Status','1')->get();
+
+        return response()->json(['batches' => $batches]);
+    }
+
+
 }
