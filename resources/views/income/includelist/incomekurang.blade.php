@@ -20,7 +20,6 @@
                             <th style="background-color: lightgray;">Unit</th>
                             <th style="background-color: lightgray;">Propose</th>
                             <th style="background-color: lightgray;">PR Date</th>
-                            <th style="background-color: lightgray;">Expire Date</th>
                             <th style="background-color: lightgray;">Status</th>
                 </div>
                 </tr>
@@ -43,12 +42,9 @@
                                 title="Edit Barang"> <i class="fa fa-pen"></i></a>
 
 
-
+                                @if (auth()->user()->leveluser > 4)
                             <form action="{{ route('income.destroy', $income->id) }}" method="POST">
-
                                 {{-- <a class="btn btn-info btn-sm" href="{{ route('income.show',$income->id) }}">Show</a> --}}
-
-
                                 @csrf
                                 @method('DELETE')
 
@@ -56,6 +52,7 @@
                                     onclick="return confirm('Are you sure want to delete this ?');"
                                     title="Delete Barang"><i class="fa fa-trash"></i></button>
                             </form>
+                            @endif
                         </td>
                         <td>{{ ++$i }}</td>
                         <td>{{ $income->No_PR }}</td>
@@ -67,7 +64,6 @@
                         <td>{{ $income->Unit }}</td>
                         <td>{{ $income->Propose }}</td>
                         <td>{{ $income->PO_Date }}</td>
-                        <td>{{ $income->Expire_Date }}</td>
                         <td>{{ $income->Status == 1 ? 'Accepted' : 'Unaccepted' }}</td>
 
                     </tr>

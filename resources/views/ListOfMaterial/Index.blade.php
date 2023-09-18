@@ -61,7 +61,6 @@
                             <th style="background-color: lightgray;">Quantity</th>
                             <th style="background-color: lightgray;">Unit</th>
                             <th style="background-color: lightgray;">Type of Material</th>
-                            <th style="background-color: lightgray;">Type of budget</th>
                             <th style="background-color: lightgray;">Packing Size</th>
                             <th style="background-color: lightgray;">PackingSize Unit</th>
                             <th style="background-color: lightgray;">Manufaktur</th>
@@ -91,7 +90,7 @@
                                 <td>{{ $barang->Quantity }}</td>
                                 <td>{{ $barang->Unit }}</td>
                                 <td>{{ $barang->Type_of_Material }}</td>
-                                <td>{{ $barang->Type_of_Budget }}</td>
+                             
                                 <td>{{ $barang->packingsize }}</td>
                                 <td>{{ $barang->packingsize_unit }}</td>
                                 <td>{{ $barang->Manufaktur }}</td>

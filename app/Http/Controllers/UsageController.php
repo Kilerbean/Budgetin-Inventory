@@ -56,7 +56,7 @@ class UsageController extends Controller
         $request->validate([
             'Catalog_Number'=>'required',
             'no_batch'=>'required',
-            'Quantity' => 'required|min:0',
+            'Quantity' => 'required|numeric|min:1',
             'Open_By' => 'required',
             
         ]);
@@ -65,7 +65,6 @@ class UsageController extends Controller
                         ->where('Catalog_Number',$request->Catalog_Number)
                         ->where('tipe_transaksi',1)->first();
         //$barang = barang::where('Catalog_Number',$income ->Catalog_Number)->first();
-        dd($income);
         $old= \getoldvalues('mysql','incomes',$income); 
         $old_stok = $old["old"]["Quantity"];$old["old"]["Quantity"];
 

@@ -51,13 +51,13 @@
                             
 
                             <a href="{{ route('Barang.edit' , $barang->id) }}" class="btn btn-primary btn-sm"  title="Edit Barang"><i class="fa fa-pen"></i></a>
-                            {{-- @if (auth()->user()->leveluser >2)
+                            @if (auth()->user()->leveluser >4)
                             <form action="{{ route('Barang.destroy' , $barang->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure want to delete this ?');"title="Delete Barang"><i class="fa fa-trash"></i></button>
                             </form>
-                            @endif --}}
+                            @endif
                           </td>
                           
                           <td><span class="text-muted">{{ $no++ }}</span></td>

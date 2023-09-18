@@ -244,8 +244,11 @@ class IncomeController extends Controller
     public function destroy(string $incomes)
     {
         $incomes = Income::find($incomes);
+        $barang=$incomes->Barang;
+        $newqty=$barang->Quaitity-$incomes->Quantity;
+        $barang->update(['Quantity' => $newqty]);
         $incomes->delete();
-        \auditmms(auth()->user()->name, 'Delete material income', $incomes->Catalog_Number, 'Incoming Material', $incomes->no_batch, 0, $incomes->Quantity);
+        \auditmms(auth()->user()->name, 'Delete material income', $incomes->Catalog_Number, 'Incoming Material', $incomes->no_batch, $incomes->Quantity,0);
         return back()->with('success', 'Data deleted successfully');
     }
 
