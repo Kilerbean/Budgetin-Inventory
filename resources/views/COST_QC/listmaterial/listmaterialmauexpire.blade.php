@@ -42,8 +42,8 @@
                                   onclick="return confirm('Are you sure want to empty this material ?');"title="Empty Material"><i
                                       class="fa fa-fire" style="color: #ff0000;"></i></button>
                           </form>
-                            <a href="{{ route('income.edit', $baranglow->id) }}" class="btn btn-primary btn-sm"
-                                title="Edit Material"><i class="fa fa-pen"></i></a>
+                            {{-- <a href="{{ route('income.edit', $baranglow->id) }}" class="btn btn-primary btn-sm"
+                                title="Edit Material"><i class="fa fa-pen"></i></a> --}}
 
                      
                             
