@@ -26,7 +26,6 @@ return new class extends Migration
             $table->string('Propose');
             $table->string('No_PO')->nullable();
             $table->date('PO_Date');
-            $table->date('Expire_Date')->nullable();
             $table->integer('tipe_transaksi')->default(1);
             $table->boolean('Status')->default(0);
             $table->string('no_batch')->nullable();

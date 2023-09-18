@@ -119,7 +119,37 @@
     <script type="text/javascript">
         $(function() {
             var table = $('#listlowss,#listupcoming').DataTable({
-
+                dom: 'lBftrip',
+                buttons: [{
+                        extend: 'copyHtml5',
+                        exportOptions: {
+                            columns: [':visible']
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: [':visible']
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: [':visible']
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: [':visible']
+                        }
+                    },
+                    {
+                        extend: 'colvis',
+                        text: "Hide / Show",
+                        postfixButtons: ['colvisRestore']
+                    }
+                ],
             });
         });
     </script>

@@ -48,7 +48,7 @@ class IncomeController extends Controller
                 'Propose' => 'required',
                 'request_by' => 'required',
                 'No_PR' => 'required',
-                'Quantity' => 'required',
+                'Quantity' => 'required|numeric|min:1',
             ],
 
         );
@@ -167,9 +167,9 @@ class IncomeController extends Controller
         $income->save();
 
 
-        if ($barang->Expire_Date > $request->Expire_Date) {
-            $barang->update(['Expire_Date' => $request->Expire_Date]);
-        }
+        // if ($barang->Expire_Date > $request->Expire_Date) {
+        //     $barang->update(['Expire_Date' => $request->Expire_Date]);
+        // }
 
 
         $typebudget = $income->Barang->Type_of_Budget;
@@ -208,6 +208,9 @@ class IncomeController extends Controller
         return back()->with('success', 'Material Data Received');
     }
 
+
+
+    
     public function inputpo(Request $request, $income)
     {
         $request->validate([
@@ -245,10 +248,10 @@ class IncomeController extends Controller
     {
         $incomes = Income::find($incomes);
         $barang=$incomes->Barang;
-        $newqty=$barang->Quaitity-$incomes->Quantity;
+        $newqty=$barang->Quantity-$incomes->Quantity;
         $barang->update(['Quantity' => $newqty]);
         $incomes->delete();
-        \auditmms(auth()->user()->name, 'Delete material income', $incomes->Catalog_Number, 'Incoming Material', $incomes->no_batch, $incomes->Quantity,0);
+        \auditmms(auth()->user()->name, 'Administrator Delete material income', $incomes->Catalog_Number, 'Incoming Material', $incomes->no_batch, $incomes->Quantity,0);
         return back()->with('success', 'Data deleted successfully');
     }
 

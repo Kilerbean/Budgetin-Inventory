@@ -176,8 +176,9 @@ class UsageController extends Controller
     public function destroy(string $usage)
     {
         $usage=Usage::find($usage);
+        $income=$usage->Income;
         $usage->delete();
-        \auditmms(auth()->user()->name,'Delete Material Usage ',$usage->Catalog_Number,'Material Usage',$usage ->no_batch,0,$usage->Quantity);
+        \auditmms(auth()->user()->name,'Administrator Delete Material Usage ',$usage->Catalog_Number,'Material Usage',$usage ->no_batch,$usage->Quantity,0);
         return redirect()->route('usage.index')
                          ->with('success','Data deleted successfully');
     }
