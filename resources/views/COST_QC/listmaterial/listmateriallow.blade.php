@@ -1,6 +1,6 @@
 <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">List Of Material That Will Be Out of Stock </h3>
+    <div class="mt-2">
+      <h4 class="mb-2">List Of Material That Will Be Out of Stock </h4>
     </div>
     
     <div class="table-responsive ">

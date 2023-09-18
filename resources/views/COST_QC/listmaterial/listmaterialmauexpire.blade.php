@@ -1,10 +1,10 @@
 <div class="card">
-    <div class="card-header">
-        <h3 class="card-title">List of Materials Close or  Past their Expiration Date</h3>
-    </div>
+    <div class="mt-2">
+        <h4 class="mb-2">List of Materials Close or  Past their Expiration Date</h4>
+      </div>
 
     <div class="table-responsive ">
-        <table class="table card-table table-bordered table-vcenter text-nowrap datatable" id="listlowss">
+        <table class="table table-sm table-bordered table-vcenter text-nowrap datatable" id="listlowss">
             <thead>
                 <tr>
                     <?php $no = 1; ?>
@@ -22,7 +22,7 @@
             <tbody>
                 @foreach ($barangexpire as $baranglow)
                     <tr>
-                        <td class="text-end">
+                        <td class="text-center">
 
                             {{-- <form action="{{ route('income.destroy', $baranglow->id) }}" method="POST">
                                 @csrf
@@ -38,12 +38,12 @@
 
                               @csrf
                               @method('PUT')
-                              <button type="submit" class="btn btn-info btn-sm"
-                                  onclick="return confirm('Are you sure want to empty this material ?');"title="Empty Material"><i
-                                      class="fa fa-fire" style="color: #ff0000;"></i></button>
+                              <button type="submit" class="btn btn-danger btn-sm"
+                                  onclick="return confirm('Are you sure want to empty this material ?');"title="Empty Material"><i class="fa-regular fa-trash-can"></i></button>
+                                  <a href="{{ route('income.edit', $baranglow->id) }}" class="btn btn-primary btn-sm"
+                                    title="Edit Material"><i class="fa fa-pen"></i></a>
                           </form>
-                            {{-- <a href="{{ route('income.edit', $baranglow->id) }}" class="btn btn-primary btn-sm"
-                                title="Edit Material"><i class="fa fa-pen"></i></a> --}}
+                            
 
                      
                             

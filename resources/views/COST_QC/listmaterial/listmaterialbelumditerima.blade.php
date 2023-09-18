@@ -1,8 +1,7 @@
 <div class="card">
-    <div class="card-header">
-      <h3 class="card-title"> List of Incoming Materials and Will be Confirmed</h3>
-    </div>
-    
+    <div class="mt-2">
+        <h4 class="mb-2">List of Incoming Materials and Will be Confirmed </h4>
+      </div>
     <div class="table-responsive ">
       <table class="table card-table table-bordered table-vcenter text-nowrap datatable" id="listlowq">
         <thead style="background-color: lightgray;">
