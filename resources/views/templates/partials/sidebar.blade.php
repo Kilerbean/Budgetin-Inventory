@@ -142,7 +142,7 @@
         <ul class="navbar-nav pt-lg-3">
           <div class="col-12 mt-4">
             <label class="form-label">Access Level  :
-                {{auth()->user()->leveluser== 1 ? 'User' : (auth()->user()->leveluser== 2 ? 'Staff' : (auth()->user()->leveluser== 3 ? 'SuperVisor' : (auth()->user()->leveluser== 4 ? 'Manager' :(auth()->user()->leveluser== 5 ? 'Admin' : '') ))) }}
+                {{auth()->user()->leveluser== 1 ? 'User' : (auth()->user()->leveluser== 2 ? 'Staff' : (auth()->user()->leveluser== 3 ? 'SuperVisor' : (auth()->user()->leveluser== 4 ? 'Manager' :(auth()->user()->leveluser== 5 ? 'Administrator' : '') ))) }}
             </label><br>
             </div>
             

@@ -22,6 +22,7 @@
         <div class="col-lg-12 margin-tb">
             <div>
                 <h2>Purchasing Material</h2>
+                <h6>Material Code: {{ $baranglows->Material_Code }}</h6>
             </div>
 
         </div>
@@ -42,27 +43,47 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <strong>No PR</strong>
-                    <input type="text" name="No_PR" class="form-control" placeholder="No" value="{{ old('No_PR') }}">
+                    <input type="text" name="No_PR" class="form-control" placeholder="Input here" value="{{ old('No_PR') }}">
                 </div>
             </div>
-            <div class="col-md-6">
+        
+            {{-- <div class="col-md-6">
                 <div class="form-group">
                     <strong>Catalog Number</strong>
-                    <input class="form-control" name="Catalog_Number" placeholder="Masukan Catalog Number"
+                    <input class="form-control" name="Catalog_Number" placeholder="Input Catalog Number"
                         value="{{ $baranglows->Catalog_Number }}" @readonly(true)>
                 </div>
-            </div>
+            </div> --}}
+
+            
+                <div class="col-md-6" >
+                    <div class="form-group">
+                        <strong>Catalog Number </strong>
+                        <select class="form-select" name="Catalog_Number" id="Catalog_Number">
+                            <option value="">Click to search for Catalog Number</option>
+                            @foreach ($barangcatalog as $row)
+                                <option value="{{ $row->Catalog_Number }}" @if(old('Catalog_Number') == $row->Catalog_Number) selected @endif>
+                                    {{ $row->Catalog_Number }} || {{ $row->packingsize }}|{{ $row->packingsize_unit}}
+                                </option>
+                            @endforeach
+                        </select>
+                        
+                    </div>
+                </div>
+
+
             <div class="col-md-6">
                 <div class="form-group">
                     <strong>Quantity</strong>
-                    <input class="form-control" name="Quantity" input type="number" placeholder="Masukan "
+                    <input class="form-control" name="Quantity" input type="number" placeholder="Input here "
                         value="{{ old('Quantity') }}">
                 </div>
             </div>
+            
             <div class="col-md-6">
                 <div class="form-group">
                     <strong>Type of Material</strong>
-                    <input class="form-control" name="Type_of_Material" placeholder="Masukan Type of Material"
+                    <input class="form-control" name="Type_of_Material" placeholder=" Type of Material"
                         value="{{ $baranglows->Type_of_Material }}">
                 </div>
             </div>

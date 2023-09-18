@@ -52,7 +52,7 @@
                         <td>{{ $opnames->end_at }}</td>
                         <td>{{ number_format($opnames->accuracy, 2) }}%</td>
                         <td><button class="btn btn-primary btn-sm"
-                                onclick="showDataModal({{ json_encode($opnames->data) }})">Tampilkan Data</button></td>
+                                onclick="showDataModal({{ json_encode($opnames->data) }})">Show Data</button></td>
                 @endforeach
 
                 </tr>

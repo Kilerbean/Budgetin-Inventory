@@ -28,7 +28,6 @@ class UserController extends Controller
                 return 'Supervisor';
             case 4:
                 return 'Manager';
-
             case 5:
                 return 'Administrator';
             default:

@@ -49,14 +49,14 @@ Route::post('/Tambah', [QcDashboardController::class,'store']) ->name('tambahmat
 Route::get('/tambah/{baranglow}/material', [QcDashboardController::class,'tambah']) ->name('tambah');
 
 Route::get('/maintenance', [QcDashboardController::class,'maintenance']) ->name('Maintenance')->middleware('user.level:2,3,4,5');
-Route::get('/PRad', [QcDashboardController::class,'PRad']) ->name('Product')->middleware('user.level:2,3,4,5,6');
+Route::get('/PRad', [QcDashboardController::class,'PRad']) ->name('Product')->middleware('user.level:2,3,4,5');
 Route::get('/Supporting', [QcDashboardController::class,'Supporting']) ->name('Supporting')->middleware('user.level:2,3,4,5');
 Route::get('/Manufacturing', [QcDashboardController::class,'Manufacturing']) ->name('Manufacturing')->middleware('user.level:2,3,4,5');
 Route::get('/laporanincome',[QcDashboardController::class,'laporanincome'])->name('laporanincome')->middleware('user.level:3,4,5');
 Route::get('/laporanusage',[QcDashboardController::class,'laporanusage'])->name('laporanusage')->middleware('user.level:3,4,5');
 Route::get('/laporanincome/pdf',[QcDashboardController::class,'laporanincomepdf'])->name('laporanincomepdf')->middleware('user.level:3,4,5');
 Route::get('/laporanusage/pdf',[QcDashboardController::class,'laporanusagepdf'])->name('laporanusagepdf')->middleware('user.level:3,4,5');
-Route::get('/filter', [QcDashboardController::class,'filter'])->middleware('user.level:2,3,4,5,6');
+Route::get('/filter', [QcDashboardController::class,'filter'])->middleware('user.level:2,3,4,5');
 
 
 //route all List of Material

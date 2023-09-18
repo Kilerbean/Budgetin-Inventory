@@ -189,7 +189,8 @@ class QcDashboardController extends Controller
     public function tambah($baranglow)
     {
         $baranglows = barang::find($baranglow);
-        return view('COST_QC.listmaterial.listmateriallow_tambah', compact('baranglows'));
+        $barangcatalog=barang::where('Material_Code',$baranglows->Material_Code)->get();
+        return view('COST_QC.listmaterial.listmateriallow_tambah', compact('baranglows','barangcatalog'));
     }
 
 

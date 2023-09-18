@@ -26,7 +26,7 @@
           <tr >
             <td class="text-end">
               
-              <a href="{{ route('tambah' , $baranglow->id) }}" class="btn btn-warning btn-sm" title="Tambah Material"><i class="fa fa-cart-plus"></i></a>
+              <a href="{{ route('tambah' , $baranglow->id) }}" class="btn btn-warning btn-sm" title="Purc New Material"><i class="fa fa-cart-plus"></i></a>
               {{-- <form action="{{ route('baranglow.destroy' , $baranglow->id) }}" method="POST">
               @csrf
               @method('DELETE')

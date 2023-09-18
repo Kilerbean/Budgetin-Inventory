@@ -63,8 +63,9 @@ class UsageController extends Controller
    
         $income = Income::where('no_batch',$request ->no_batch)
                         ->where('Catalog_Number',$request->Catalog_Number)
-                        ->where('tipe_transaksi','1')->first();
+                        ->where('tipe_transaksi',1)->first();
         //$barang = barang::where('Catalog_Number',$income ->Catalog_Number)->first();
+        dd($income);
         $old= \getoldvalues('mysql','incomes',$income); 
         $old_stok = $old["old"]["Quantity"];$old["old"]["Quantity"];
 
