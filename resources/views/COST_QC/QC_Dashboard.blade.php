@@ -47,12 +47,15 @@
                     </p>
                 </div>
                 <div class="text-center">
-                    <img class="card-img-top" src="icon/maintenance.png" alt="Lumens Icon" style="width: 60px"><br> <strong
-                        class="h6">
-                        Actual:IDR {{ number_format($totalactual1, 2, '.', ',') }}</strong><br>
-
-                    <span class="{{ $colorClass1 }}"> Budget: IDR {{ number_format($totalbudget1, 2, '.', ',') }} </span>
-                </div><a class="btn btn-info btn-sm" href="{{ route('Maintenance') }}"><i class="fa fa-calendar-days"></i>
+                    <img class="card-img-top" src="icon/maintenance.png" alt="Lumens Icon" style="width: 60px">
+                </div>
+                <div class="px-4">
+                    <strong>Actual <span class="px-1">: IDR {{ number_format($totalactual1,0, '.', ',') }}</span></strong>
+                </div>
+                <div class="px-4">
+                    <span class="{{ $colorClass1 }}"> Budget <span class="px-0">: IDR {{ number_format($totalbudget1,0, '.', ',') }}</span> </span>
+                </div>
+                <a class="btn btn-info btn-sm" href="{{ route('Maintenance') }}"><i class="fa fa-calendar-days"></i>
                     Detail Budget</a>
             </div>
 
@@ -63,15 +66,15 @@
             <div class="card">
                 <div class="card-header text-center">
                     <p class="card-text" style="font-size: 15px;">Product Research and Development</p>
-                </div>
+                </div>                
                 <div class="text-center">
-                    <img class="card-img-top" src="icon/research-and-development.png" alt="Lumens Icon"
-                        style="width: 60px"><br> <span class="h6">
-                        Actual:IDR {{ number_format($totalactual2, 2, '.', ',') }}
-
-
-                        <br><span class="{{ $colorClass2 }}"> Budget:IDR {{ number_format($totalbudget2, 2, '.', ',') }}
-                        </span>
+                    <img class="card-img-top" src="icon/research-and-development.png" alt="Lumens Icon" style="width: 60px">
+                </div>
+                <div class="px-4">
+                    <strong>Actual <span class="px-1">: IDR {{ number_format($totalactual2,0, '.', ',') }}</span></strong>
+                </div>
+                <div class="px-4">
+                    <span class="{{ $colorClass2 }}"> Budget <span class="px-0">: IDR {{ number_format($totalbudget2,0, '.', ',') }}</span> </span>
                 </div>
                 <a class="btn btn-info btn-sm" href="{{ route('Product') }}"> <i class="fa fa-calendar-days"></i> Detail
                     Budget</a>
@@ -82,14 +85,15 @@
                 <div class="card-header text-center mb-4">
                     <p class="card-text"style="font-size: 15px;">Supporting Material
                     </p>
-                </div>
+                </div>                
                 <div class="text-center">
                     <img class="card-img-top" src="icon/material-management.png" alt="Lumens Icon" style="width: 60px">
-                    <br><strong class="h6">
-                        Actual:IDR {{ number_format($totalactual3, 2, '.', ',') }}
-                    </strong>
-                    <br>
-                    <span class="{{ $colorClass3 }}"> Budget:IDR {{ number_format($totalbudget3, 2, '.', ',') }} </span>
+                </div>
+                <div class="px-4">
+                    <strong>Actual <span class="px-1">: IDR {{ number_format($totalactual3,0, '.', ',') }}</span></strong>
+                </div>
+                <div class="px-4">
+                    <span class="{{ $colorClass3 }}"> Budget <span class="px-0">: IDR {{ number_format($totalbudget3,0, '.', ',') }}</span> </span>
                 </div>
                 <a class="btn btn-info btn-sm" href="{{ route('Supporting') }}"><i class="fa fa-calendar-days"></i> Detail
                     Budget</a>
@@ -101,15 +105,15 @@
                 <div class="card-header text-center mb-4">
                     <p class="card-text" style="font-size: 15px;">Manufacturing Supply
                     </p>
-                </div>
+                </div>                
                 <div class="text-center">
-                    <img class="card-img-top" src="icon/supply-chain.png" alt="Lumens Icon" style="width: 60px"><br> <strong
-                        class="h6">
-                        Actual: IDR {{ number_format($totalactual4, 2, '.', ',') }}
-                    </strong>
-
-                    <br><span class="{{ $colorClass4 }}"> Budget:IDR {{ number_format($totalbudget4, 2, '.', ',') }}
-                    </span>
+                    <img class="card-img-top" src="icon/supply-chain.png" alt="Lumens Icon" style="width: 60px">
+                </div>
+                <div class="px-4">
+                    <strong>Actual <span class="px-1">: IDR {{ number_format($totalactual4,0, '.', ',') }}</span></strong>
+                </div>
+                <div class="px-4">
+                    <span class="{{ $colorClass4 }}"> Budget <span class="px-0">: IDR {{ number_format($totalbudget4,0, '.', ',') }}</span> </span>
                 </div>
                 <a class="btn btn-info btn-sm" href="{{ route('Manufacturing') }}"><i class="fa fa-calendar-days"></i>
                     Detail Budget</a>
