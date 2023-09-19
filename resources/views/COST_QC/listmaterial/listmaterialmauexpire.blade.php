@@ -1,7 +1,7 @@
 <div class="card">
     <div class="mt-2">
-        <h4 class="mb-2">List of Materials Close or  Past their Expiration Date</h4>
-      </div>
+        <h4 class="mb-2">List of Materials Close or Past their Expiration Date</h4>
+    </div>
 
     <div class="table-responsive ">
         <table class="table table-sm table-bordered table-vcenter text-nowrap datatable" id="listlowss">
@@ -33,19 +33,16 @@
                                     title="Delete Barang"><i class="fa fa-trash"></i></button>
                             </form> --}}
                             <form action="{{ route('Income.dikosongkan', $baranglow->id) }}" class=""
-                              method="post">
+                                method="post">
 
-                              @csrf
-                              @method('PUT')
-                              <button type="submit" class="btn btn-danger btn-sm"
-                                  onclick="return confirm('Are you sure want to empty this material ?');"title="Empty Material"><i class="fa-regular fa-trash-can"></i></button>
-                                  <a href="{{ route('income.edit', $baranglow->id) }}" class="btn btn-primary btn-sm"
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Are you sure want to empty this material ?');"title="Empty Material"><i
+                                        class="fa-regular fa-trash-can"></i></button>
+                                <a href="{{ route('income.edit', $baranglow->id) }}" class="btn btn-primary btn-sm"
                                     title="Edit Material"><i class="fa fa-pen"></i></a>
-                          </form>
-                            
-
-                     
-                            
+                            </form>
                         </td>
 
                         <td><span class="text-muted">{{ $no++ }}</span></td>
@@ -56,10 +53,8 @@
                         <td>{{ $baranglow->Expire_Date }}</td>
                         <td>{{ $baranglow->Quantity }}</td>
                         <td>{{ $baranglow->Unit }}</td>
+                    </tr>
                 @endforeach
-
-                </tr>
-
             </tbody>
         </table>
     </div>
