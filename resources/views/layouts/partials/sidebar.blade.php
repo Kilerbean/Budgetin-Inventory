@@ -16,7 +16,13 @@
                     <i class="align-middle" data-feather="sliders" style="width: 18px;"></i> <span class="align-middle">Dashboard</span>
                 </a>
             </li>
-            <li class="sidebar-item {{ str_contains($pages, 'List Of Material') ? 'active' : '' }}">
+            <li class="sidebar-item {{ str_contains($pages, 'List Of Material') || 
+                str_contains($pages, 'List of All Material') ||
+                str_contains($pages, 'Edit Material') ||
+                str_contains($pages, 'Detail of Material') ||
+                str_contains($pages, 'Create New Material') 
+                
+             ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('Barang.index') }}">
                     <i class="fa-solid fa-boxes-stacked" style="width: 18px;"></i>
                     <span class="align-middle">List Of Material</span>
