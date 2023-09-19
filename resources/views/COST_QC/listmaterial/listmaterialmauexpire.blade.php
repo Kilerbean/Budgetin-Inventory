@@ -11,9 +11,10 @@
                     <th style="background-color: lightgray;">Action</th>
                     <th style="background-color: lightgray;">No.</th>
                     <th style="background-color: lightgray;">Catalog Number</th>
-                    <th style="background-color: lightgray;">Batch Number</th>
-                    <th style="background-color: lightgray;">Type of budget</th>
                     <th style="background-color: lightgray;">Name of Material</th>
+                    <th style="background-color: lightgray;">Batch Number</th>
+                    {{-- <th style="background-color: lightgray;">Type of budget</th> --}}
+                   
                     <th style="background-color: lightgray;">Expired Date</th>
                     <th style="background-color: lightgray;">Quantity</th>
                     <th style="background-color: lightgray;">Unit</th>
@@ -51,9 +52,10 @@
 
                         <td><span class="text-muted">{{ $no++ }}</span></td>
                         <td> {{ $baranglow->Catalog_Number }}</td>
-                        <td> {{ $baranglow->no_batch }}</td>
-                        <td>{{ $baranglow->Barang->Type_of_Budget }}</td>
                         <td>{{ $baranglow->Name_of_Material }}</td>
+                        <td> {{ $baranglow->no_batch }}</td>
+                        {{-- <td>{{ $baranglow->Barang->Type_of_Budget }}</td> --}}
+                       
                         <td>{{ $baranglow->Expire_Date }}</td>
                         <td>{{ $baranglow->Quantity }}</td>
                         <td>{{ $baranglow->Unit }}</td>

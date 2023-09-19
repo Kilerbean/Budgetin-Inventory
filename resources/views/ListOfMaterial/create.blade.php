@@ -25,11 +25,13 @@
 
                     <div class="col-md-6">
                         <label class="form-label">Material Code</label>
-                        <input type="text" name="Material_Code"
-                            class="form-control     
-                @error('Material_Code')
-                is-invalid @enderror"
-                            name="example-text-input" placeholder="Leave blank if new material" value="{{ old('Material_Code') }}">
+                        <select  name="Material_Code" id="Material_Code" class="form-select @error('Material_Code')is-invalid @enderror"name="example-text-input" placeholder="Leave blank if new material" value="{{ old('Material_Code') }}">
+                            <option value="">Automatically Generate Code Material</option>
+                            @foreach ($barang as $item)
+                            <option value="{{ $item->Material_Code }}" @if(old('Material_Code') == $item->Material_Code) selected @endif>
+                                {{ $item->Material_Code }} 
+                            @endforeach
+                        </select>
                         @error('Material_Code')
                             <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
@@ -142,7 +144,6 @@
                         <div class="form-label">Unit</div>
                         <select class="form-select @error('Unit') is-invalid @enderror" name="Unit">
                             <option value="">Select</option>
-                            <option value="Lb" {{ old('Unit') === 'Lb' ? 'selected' : '' }}>Lb</option>
                             <option value="pack" {{ old('Unit') === 'pack' ? 'selected' : '' }}>pack</option>
                             <option value="stick" {{ old('Unit') === 'stick' ? 'selected' : '' }}>stick</option>
                             <option value="Vial" {{ old('Unit') === 'Vial' ? 'selected' : '' }}>Vial</option>
@@ -201,4 +202,23 @@
 
         </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#Material_Code').select2({
+                theme: "bootstrap-5",
+                width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' :
+                    'style',
+                placeholder: $(this).data('placeholder'),
+                closeOnSelect: true,
+                tags: true,
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+            });
+            $(document).on("select2:open", () => {
+                document.querySelector(".select2-container--open .select2-search__field").focus()
+            });
+        });
+        </script>
+
 @endsection

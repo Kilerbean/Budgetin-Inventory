@@ -104,7 +104,7 @@
                 <div class="mb-3">
                     <div class="form-label">Unit</div>
                     <select class="form-select" name="Unit">
-                        <option value="Lb" {{ old('Unit', $barang->Unit) === 'Lb' ? 'selected' : '' }}>Lb</option>
+                       
                         <option value="pack" {{ old('Unit', $barang->Unit) === 'pack' ? 'selected' : '' }}>pack</option>
                         <option value="stick" {{ old('Unit', $barang->Unit) === 'stick' ? 'selected' : '' }}>stick</option>
                         <option value="Vial" {{ old('Unit', $barang->Unit) === 'Vial' ? 'selected' : '' }}>Vial</option>

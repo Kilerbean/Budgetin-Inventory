@@ -37,7 +37,8 @@ class BarangController extends Controller
      */
     public function create()
     {
-        return view('ListOfMaterial.create');
+        $barang=barang::latest()->where('Status', '1')->get();
+        return view('ListOfMaterial.create',compact('barang'));
     }
 
     /**
