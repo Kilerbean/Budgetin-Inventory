@@ -1,43 +1,21 @@
-@extends('templates.dasar')
+@extends('layouts.master')
 @php
+    $titles = 'QC - List of Material';
     $title = 'Incoming of Material';
     $pretitle = 'COST-QC LAB';
-    
+    $pages = $title;
 @endphp
-
-@push('page-action')
-    <a class="btn btn-success" href="{{ route('income.create') }}"> Create new Purchasing Material</a>
-    <a class="btn btn-dark " href="{{ route('Income.deadstock') }}"> List Dead Stock</a>
-@endpush
-
-
-@section('coba')
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    {{-- <div class="row mt-5">
-    <div class="col-lg-12 margin-tb">
-        <div class="float-start">
-            <h2>Incoming Material</h2>
-        </div>
-        <div class="float-end">
-
+@section('title', $pages)
+@section('content')
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-success" href="{{ route('income.create') }}"> Create new Purchasing Material</a>
+            <a class="btn btn-dark " href="{{ route('Income.deadstock') }}"> List Dead Stock</a>
         </div>
     </div>
-</div> --}}
-
-    {{-- @if ($message = Session::get('success'))
-    <div class="alert alert-success">
-        <p>{{ $message }}</p>
+    <div class="mx-2 mt-2">
+        <h4 class="mb-2">Incoming of Material </h4>
     </div>
-@endif --}}
     <br>
     @include('income.includelist.incomekurang')
     <div
@@ -52,7 +30,7 @@
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-1 border-bottom border-danger">
     </div>
 
-<br>
+    <br>
     <br>
     <div class="col-12">
         <div class="card">
@@ -60,8 +38,8 @@
                 <h3 class="card-title">List of All Incoming Materials and Has Been Confirmed </h3>
             </div>
 
-            <div class="table-responsive">
-                <table class="table card-table  table-bordered   table-vcenter  text-nowrap datatable" id="listlow">
+            <div class="table-responsive text-nowrap">
+                <table class="table table-bordered" id="listlow">
                     <div style="background-color: lightgray;">
                         <thead>
                             <tr>
@@ -95,7 +73,8 @@
                                 <form action="{{ route('income.destroy', $income->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-
+                                    <a class="btn btn-primary btn-sm" href="{{ route('income.edit', $income->id) }}"
+                                        title="Edit Material"> <i class="fa fa-pen"></i></a>
                                     <button type="submit" class="btn btn-danger btn-sm"
                                         onclick="return confirm('Are you sure want to delete this ?');" title="Delete"><i
                                             class="fa fa-trash"></i></button>
@@ -135,43 +114,46 @@
     <br>
     @include('income.includelist.audit')
 
-    <script type="text/javascript">
 
+
+@stop
+@push('js')
+    <script type="text/javascript">
         $(function() {
             var table = $('#listlow,#listlowq,#listlowss,#lis').DataTable({
                 dom: 'lBftrip',
-                    buttons: [{
-                            extend: 'copyHtml5',
-                            exportOptions: {
-                                columns: [':visible']
-                            }
-                        },
-                        {
-                            extend: 'excelHtml5',
-                            exportOptions: {
-                                columns: [':visible']
-                            }
-                        },
-                        {
-                            extend: 'pdfHtml5',
-                            exportOptions: {
-                                columns: [':visible']
-                            }
-                        },
-                        {
-                            extend: 'print',
-                            exportOptions: {
-                                columns: [':visible']
-                            }
-                        },
-                        {
-                            extend: 'colvis',
-                            text: "Hide / Show",
-                            postfixButtons: ['colvisRestore']
+                buttons: [{
+                        extend: 'copyHtml5',
+                        exportOptions: {
+                            columns: [':visible']
                         }
-                    ],
-     
-        
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: [':visible']
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: [':visible']
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: [':visible']
+                        }
+                    },
+                    {
+                        extend: 'colvis',
+                        text: "Hide / Show",
+                        postfixButtons: ['colvisRestore']
+                    }
+                ],
+
+
             });
         });
 
@@ -180,9 +162,5 @@
 
         //     });
         // });
-
-      
-            
     </script>
-
-@endsection
+@endpush

@@ -6,27 +6,27 @@
     <div class="card-header">
         <h3 class="card-title">List Of Stock Opname </h3>
     </div>
-   
-<div class="container">
-    <form method="GET" action="" class="row">
-        <div class="col-md-3">
-            <label for="">Start Date</label>
-            <input class="form-control" type="date" name="start_date" value="{{ old('start_date') }}">
-        </div>
 
-        <div class="col-md-3">
-            <label for="">End Date</label>
-            <input class="form-control" type="date" name="end_date" value="{{ old('end_date') }}">
-        </div>
-        <div class="col-md-1 pt-4">
-            <button type="submit" class="btn btn-success ">Filter</button>
+    <div class="container">
+        <form method="GET" action="" class="row">
+            <div class="col-md-3">
+                <label for="">Start Date</label>
+                <input class="form-control" type="date" name="start_date" value="{{ old('start_date') }}">
+            </div>
 
-        </div>
-        {{-- <div class="col-md-1 pt-4">
+            <div class="col-md-3">
+                <label for="">End Date</label>
+                <input class="form-control" type="date" name="end_date" value="{{ old('end_date') }}">
+            </div>
+            <div class="col-md-1 pt-4">
+                <button type="submit" class="btn btn-success ">Filter</button>
+
+            </div>
+            {{-- <div class="col-md-1 pt-4">
         <button type="button" id="reset-button" class="btn btn-success ">Reset</button>
         </div> --}}
-    </form>
-</div>
+        </form>
+    </div>
     <div class="table-responsive ">
 
         <table class="table table-bordered text-nowrap " id="listlow" style="width: 100%">
@@ -53,10 +53,8 @@
                         <td>{{ number_format($opnames->accuracy, 2) }}%</td>
                         <td><button class="btn btn-primary btn-sm"
                                 onclick="showDataModal({{ json_encode($opnames->data) }})">Show Data</button></td>
+                    </tr>
                 @endforeach
-
-                </tr>
-
             </tbody>
         </table>
         <!-- Modal -->
@@ -126,4 +124,3 @@
             return formattedData;
         }
     </script>
-
