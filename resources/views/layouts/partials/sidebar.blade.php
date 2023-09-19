@@ -16,13 +16,13 @@
                     <i class="align-middle" data-feather="sliders" style="width: 18px;"></i> <span class="align-middle">Dashboard</span>
                 </a>
             </li>
-            <li class="sidebar-item {{ str_contains($pages, 'Barang') ? 'active' : '' }}">
+            <li class="sidebar-item {{ str_contains($pages, 'Material') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('Barang.index') }}">
                     <i class="fa-solid fa-boxes-stacked" style="width: 18px;"></i>
                     <span class="align-middle">List Of Material</span>
                 </a>
             </li>
-            <li class="sidebar-item {{ str_contains($pages, 'Purchasing') ? 'active' : '' }}">
+            <li class="sidebar-item {{ str_contains($pages, 'Purchas') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('income.create') }}">
                     <i class="fa-solid fa-cart-shopping" style="width: 18px;"></i>
                     <span class="align-middle">Purchasing Materials</span>
