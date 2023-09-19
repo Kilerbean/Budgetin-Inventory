@@ -1,68 +1,92 @@
-@extends('COST_QC.financialdetail.masterfinancial')
+@extends('layouts.master')
 @php
-  $title = 'Financial Product Research and Development';
-  $pretitle = 'COST-QC LAB';
-
-@endphp 
-@section('financial')
-
-
-<div class="col-12">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title"> Product Research and Development </h3>
-      </div>
-
-
-    <div class="table-responsive table-bordered">
-        <table class="table card-table table-vcenter table-bordered text-nowrap datatable">
-          <thead>
-            <thead>
-              <?php $no = 1; ?>
-              <tr style="background-color: rgb(204, 90, 90);">
-                  <th class="text-center">No</th>
-                  @foreach ($financial as $financials)
-                      <th class="text-center">{{ $financials->bulan_tahun }}</th>
-                  @endforeach
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <th>Budget</th>
-                  @foreach ($financial as $financials)
-                      <td class="text-center">{{number_format($financials->budget, 2, '.', ',')  }}</td>
-                  @endforeach
-              </tr>
-              <tr>
-                  <th>Actual</th>
-                  @foreach ($financial as $financials)
-                      <td class="text-center ">{{number_format($financials->actual, 2, '.', ',') }}</td>
-                  @endforeach
-              </tr>
-              <tr>
-                <th>Review</th>
-                @foreach ($financial as $financials)
-                    <td class="text-center {{$financials->actual > $financials->budget ? 'bg-danger' : 'bg-success'}}">{{number_format($financials->budget - $financials->actual, 2, '.', ',') }}</td>
-                @endforeach
-            </tr>
-              <tr>
-                  <th>Information</th>
-                  @foreach ($financial as $financials)
-                      <td class="text-center"> {{ $financials->Keterangan }}</td>
-                  @endforeach
-              </tr>
-              <tr>
-                <th>Edit</th>
-                @foreach ($financial as $financials)
-                    <td class="text-center"> <a class="btn btn-primary btn-sm" href="{{ route('financial.edit',$financials->id) }}" >Edit Budget</a></td>
-                @endforeach
-            </tr>
-          </tbody>
-          </table>
-  
-</table>
-</div>
+    $titles = 'QC - List of Material';
+    $title = 'Financial Product Research and Development';
+    $pretitle = 'COST-QC LAB';
+    $pages = $title;
+@endphp
+@section('title', $pages)
+@section('content')
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-success" href="{{ route('Dashboards') }}"> Back</a>
+        </div>
     </div>
-</div>
+    <div class="mx-2 mt-2">
+        <h4 class="mb-2">Financial - Product Research and Development</h4>
+    </div>
 
-@endsection
+    <div class="col-12">
+        <div class="card">
+
+            <div class="table-responsive table-bordered">
+                <table class="table table-md table-bordered text-nowrap">
+                    <thead>
+                        <thead>
+                            <?php $no = 1; ?>
+                            <tr>
+                                <th class="text-center">No</th>
+                                @foreach ($financial as $financials)
+                                    <th class="text-center">{{ $financials->bulan_tahun }}</th>
+                                @endforeach
+                            </tr>
+                        </thead>
+                    <tbody>
+                        <tr>
+                            <th>Budget</th>
+                            @foreach ($financial as $financials)
+                                <td class="text-center">{{ number_format($financials->budget, 2, '.', ',') }}</td>
+                            @endforeach
+                        </tr>
+                        <tr>
+                            <th>Actual</th>
+                            @foreach ($financial as $financials)
+                                <td class="text-center ">{{ number_format($financials->actual, 2, '.', ',') }}</td>
+                            @endforeach
+                        </tr>
+                        <tr>
+                            <th>Review</th>
+                            @foreach ($financial as $financials)
+                                <td
+                                    class="text-center {{ $financials->actual > $financials->budget ? 'bg-danger text-white' : 'bg-success text-white' }}">
+                                    {{ number_format($financials->budget - $financials->actual, 2, '.', ',') }}</td>
+                            @endforeach
+                        </tr>
+                        <tr>
+                            <th>Information</th>
+                            @foreach ($financial as $financials)
+                                <td class="text-center"> {{ $financials->Keterangan }}</td>
+                            @endforeach
+                        </tr>
+                        <tr>
+                            <th>Edit</th>
+                            @foreach ($financial as $financials)
+                                <td class="text-center"> <a class="btn btn-primary btn-sm"
+                                        href="{{ route('financial.edit', $financials->id) }}">Edit Budget</a></td>
+                            @endforeach
+                        </tr>
+                    </tbody>
+                </table>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-1 border-bottom border-danger">
+    </div>
+    <br>
+
+    @include('financial.audit')
+@stop
+@push('js')
+    <script type="text/javascript">
+        $(function() {
+            var table = $('#listlowss,#listupcoming').DataTable({
+
+            });
+        });
+    </script>
+@endpush

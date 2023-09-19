@@ -1,33 +1,21 @@
-@extends('templates.dasar')
+@extends('layouts.master')
 @php
-  $title = ' Edit Material Usage';
+    $titles = 'QC - List of Material';
+    $title = ' Edit Material Usage';
   $pretitle = 'Create New Data';
+    $pages = $title;
+@endphp
+@section('title', $pages)
+@section('content')
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-primary" href="{{ route('usage.index') }}"> Back</a>
+        </div>
+    </div>
+    <div class="mx-2 mt-2">
+        <h4 class="mb-2">Edit Material Usage</h4>
+    </div>
 
-@endphp 
-
-@section('coba')
-<div class="row">
-  <div class="col-lg-12 margin-tb">
-      <div>
-          <h2>Edit Material Usage</h2>
-      </div>
-      <div>
-          <a class="btn btn-primary" href="{{ route('usage.index') }}"> Back</a>
-      </div>
-  </div>
-</div>
- 
-@if ($errors->any())
-  <div class="alert alert-danger">
-      <strong>Whoops!</strong> There were some problems with your input.<br><br>
-      <ul>
-          @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-          @endforeach
-      </ul>
-  </div>
-@endif
- 
 <form action="{{ route('usage.update',$usage->id) }}" method="POST">
   @csrf
   @method('PUT')
@@ -36,14 +24,14 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Catalog Number</strong>
-            <input class="form-control" name="Catalog_Number" placeholder="Input Catalog Number" value="{{ old('Catalog_Number', $usage->Catalog_Number) }}" @readonly(true)>
+            <input class="form-control bg-secondary text-white" name="Catalog_Number" placeholder="Input Catalog Number" value="{{ old('Catalog_Number', $usage->Catalog_Number) }}" @readonly(true)>
         </div>
     </div>
       
       <div class="col-md-4">
           <div class="form-group">
               <strong>Quantity</strong>
-              <input class="form-control" name="Quantity" placeholder="Input jumlah barang" value="{{ old('Quantity', $usage->Quantity) }}" {{ $usage->Status ? 'readonly' : '' }}>
+              <input class="form-control {{ $usage->Status ? 'bg-secondary text-white' : '' }}" name="Quantity" placeholder="Input jumlah barang" value="{{ old('Quantity', $usage->Quantity) }}" {{ $usage->Status ? 'readonly' : '' }}>
           </div>
       </div>
       <div class="col-md-8">
@@ -117,4 +105,4 @@
   </div> --}}
 
 
-@endsection
+@stop

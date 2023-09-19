@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @php
     $titles = 'QC - List of Material';
-    $title = 'Financial Maintenace';
+    $title = 'Financial Maintenance';
     $pretitle = 'COST-QC LAB';
     $pages = $title;
 @endphp
@@ -13,17 +13,17 @@
         </div>
     </div>
     <div class="mx-2 mt-2">
-        <h4 class="mb-2">Maintenance</h4>
+        <h4 class="mb-2">Financial - Maintenance</h4>
     </div>
 
     <div class="col-12">
         <div class="card">
-            <div class="table-responsive table-bordered">
-                <table class="table card-table table-vcenter table-bordered text-nowrap datatable">
+            <div class="table-responsive">
+                <table class="table table-md table-bordered text-nowrap">
                     <thead>
                         <thead>
                             <?php $no = 1; ?>
-                            <tr style="background-color: rgb(204, 90, 90);">
+                            <tr>
                                 <th class="text-center">No</th>
                                 @foreach ($financial as $financials)
                                     <th class="text-center">{{ $financials->bulan_tahun }}</th>
@@ -47,7 +47,7 @@
                             <th>Review</th>
                             @foreach ($financial as $financials)
                                 <td
-                                    class="text-center {{ $financials->actual > $financials->budget ? 'bg-danger' : 'bg-success' }}">
+                                    class="text-center {{ $financials->actual > $financials->budget ? 'bg-danger text-white' : 'bg-success text-white' }}">
                                     {{ number_format($financials->budget - $financials->actual, 2, '.', ',') }}</td>
                             @endforeach
                         </tr>

@@ -44,7 +44,7 @@
                         <div class="form-group">
                             <div class="form-label"><strong>Catalog Number</strong></div>
 
-                            <input class="form-control" name="Catalog_Number" placeholder="Input Catalog Number"
+                            <input class="form-control bg-secondary text-white" name="Catalog_Number" placeholder="Input Catalog Number"
                                 value="{{ $income->Catalog_Number }}" @readonly(true)>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                         <div class="form-group">
                             <div class="form-label"><strong>Type of Material</strong></div>
 
-                            <input class="form-control" name="Type_of_Material" placeholder="Input Type of Material"
+                            <input class="form-control bg-secondary text-white" name="Type_of_Material" placeholder="Input Type of Material"
                                 value="{{ $income->Type_of_Material }}" @readonly(true)>
                         </div>
                     </div>
