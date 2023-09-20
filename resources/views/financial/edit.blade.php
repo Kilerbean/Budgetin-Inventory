@@ -45,7 +45,7 @@
 
                 <div class="  mb-3">
                     <label class="form-label">actual</label>
-                    <input type="text" name="actual" class="form-control" readonly name="example-text-input"
+                    <input type="text" name="actual" class="form-control bg-secondary text-white" readonly name="example-text-input"
                         placeholder="0" value="{{ $financial->actual }}">
                 </div>
 

@@ -24,6 +24,12 @@
             <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
+    @if ($message = Session::get('status'))
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">            
+            <div>{{ $message }}</div>
+            <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     @if ($errors->any())
         <div class="alert alert-danger alert-dismissible fade show" role="alert">            
             <div>Whoopss... Something wrong ! </div>
