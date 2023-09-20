@@ -155,36 +155,93 @@ class IncomeController extends Controller
         $barang = $income->Barang;
         $old= \getoldvalues('mysql','incomes',$income); 
         $old_stok = $old["old"]["Quantity"];$old["old"]["Quantity"];
-        dd($old_stok);
-        if ($old_stok < $request->Qantity) {
-            # code...
+        
+        if ($old_stok > $request->Quantity) {
+            $qty_new=$old_stok - $request->Quantity;
+            $Total = $request->Quantity * $barang->Harga;
+            $new_qty = $barang->Quantity + $request->Quantity;
+            $newtotal=$qty_new * $barang->Harga;
+            $barang->update(['Quantity' => $new_qty]);
+            $income->update(['Quantity' => $request->Quantity]);
+            $income->update(['No_PO' => $request->No_PO]);
+            $income->update(['Status' => 1]);
+    
+            $income->no_batch = $request->no_batch;
+            $income->Expire_Date = $request->Expire_Date;
+            $income->save();
+
+            $income->no_batch = $request->no_batch;
+            $income->Expire_Date = $request->Expire_Date;
+            $income->save();
+    
+            $typebudget = $income->Barang->Type_of_Budget;
+            $bulantahun = date('M-y', strtotime($income->PO_Date));
+            $financial = financial::where('Type_of_Budget', $typebudget)->where('bulan_tahun', $bulantahun)->first();
+            $financial->actual = (!$financial->actual ? 0 : $financial->actual) + $Total;
+            $financial->save();
+
+            $incomesh = Income::create([
+                'No_PR' => $income->No_PR,
+                'Catalog_Number' => $barang->Catalog_Number,
+                'Type_of_Material' => $barang->Type_of_Material,
+                'Name_of_Material' => $barang->Name_of_Material,
+                'Quantity' => $request->Quantity,
+                'Unit' => $barang->Unit,
+                'packingsize'=>$income->packingsize,
+                'packingsize_unit'=>$income->packingsize_unit,
+                'Prices' => $barang->Harga,
+                'Total' => $Total,
+                'Propose' => $income->Propose,
+                'No_PO' => $income->No_PO,
+                'PO_Date' => $income->PO_Date,
+                'Expire_Date' => $request->Expire_Date,
+                'Status' => 1,
+                'no_batch' => $request->no_batch,
+                'input_by' => auth()->user()->name,
+                'request_by' => $income->request_by,
+                'tipe_transaksi' => 4,
+            ]);
+            $incomesss = Income::create([
+                'No_PR' => $income->No_PR,
+                'Catalog_Number' => $barang->Catalog_Number,
+                'Type_of_Material' => $barang->Type_of_Material,
+                'Name_of_Material' => $barang->Name_of_Material,
+                'Quantity' => $qty_new,
+                'Unit' => $barang->Unit,
+                'packingsize'=>$income->packingsize,
+                'packingsize_unit'=>$income->packingsize_unit,
+                'Prices' => $barang->Harga,
+                'Total' => $newtotal,
+                'Propose' => $income->Propose,
+                'No_PO' => $income->No_PO,
+                'PO_Date' => $income->PO_Date,
+                'Status' => 0,
+                'input_by' => auth()->user()->name,
+                'request_by' => $income->request_by,
+            ]);
+
+    
+            //dikarenakan nilai awalnya  
+            \auditmms(auth()->user()->name, 'Confirm material arrival', $barang->Catalog_Number, 'Incoming Material', $request->no_batch, 0, $request->Quantity);
+            return back()->with('success', 'Material Data Received');
+
         }
+        elseif($old_stok == $request->Quantity) {
         $Total = $request->Quantity * $barang->Harga;
         $new_qty = $barang->Quantity + $request->Quantity;
         $barang->update(['Quantity' => $new_qty]);
         $income->update(['Quantity' => $request->Quantity]);
         $income->update(['No_PO' => $request->No_PO]);
         $income->update(['Status' => 1]);
-
         $income->no_batch = $request->no_batch;
         $income->Expire_Date = $request->Expire_Date;
         $income->save();
 
-
-        // if ($barang->Expire_Date > $request->Expire_Date) {
-        //     $barang->update(['Expire_Date' => $request->Expire_Date]);
-        // }
-
-
         $typebudget = $income->Barang->Type_of_Budget;
         $bulantahun = date('M-y', strtotime($income->PO_Date));
-
         $financial = financial::where('Type_of_Budget', $typebudget)->where('bulan_tahun', $bulantahun)->first();
         $financial->actual = (!$financial->actual ? 0 : $financial->actual) + $Total;
-
         $financial->save();
-
-
         $incomesh = Income::create([
             'No_PR' => $income->No_PR,
             'Catalog_Number' => $barang->Catalog_Number,
@@ -210,6 +267,10 @@ class IncomeController extends Controller
         //dikarenakan nilai awalnya  
         \auditmms(auth()->user()->name, 'Confirm material arrival', $barang->Catalog_Number, 'Incoming Material', $request->no_batch, 0, $request->Quantity);
         return back()->with('success', 'Material Data Received');
+        }
+        elseif($old_stok < $request->Quantity){
+            return back()->with('info', 'The amount of material that arrived exceeded what was ordered, please check again');
+        }
     }
 
 
