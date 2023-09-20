@@ -1,6 +1,6 @@
 <div class="card">
     <div class="mt-2">
-        <h4 class="mb-2">List of Materials Close or Past their Expiration Date</h4>
+        <h4 class="mb-2">List Material Near Expired/Expired</h4>
     </div>
 
     <div class="table-responsive ">

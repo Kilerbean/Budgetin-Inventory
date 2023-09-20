@@ -23,14 +23,29 @@ class BarangController extends Controller
 
 
 
-    public function index()
-    {
-
-        $barangs = barang::latest()->where('Status', '1')->get();
-        $audit = DB::table('audits')->latest()->where('sourcetable', 'List of Material')->get();
-        return view('ListOfMaterial.index', compact('barangs', 'audit'))
-            ->with('i');
-    }
+     public function index(Request $request)
+     {
+         // Mengambil nilai "Type_of_Material" dari sesi (jika ada)
+         $filterTypeOfMaterial = session('Type_of_Material');
+     
+         // Membuat query awal untuk data barangs
+         $barangsQuery = Barang::where('Status', '1');
+     
+         // Menerapkan filter "Type_of_Material" jika ada
+         if (!empty($filterTypeOfMaterial)) {
+             $barangsQuery->where('Type_of_Material', $filterTypeOfMaterial);
+         }
+     
+         // Mendapatkan data barangs yang telah difilter atau semua data jika tidak ada filter
+         $barangs = $barangsQuery->latest()->get();
+     
+         // Mengambil data audit seperti yang Anda lakukan sebelumnya
+         $audit = DB::table('audits')->latest()->where('sourcetable', 'List of Material')->get();
+    
+         return view('ListOfMaterial.index', compact('barangs', 'audit'))
+             ->with('i');
+     }
+     
 
     /**
      * Show the form for creating a new resource.
