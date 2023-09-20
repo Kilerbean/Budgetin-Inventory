@@ -269,7 +269,7 @@ class IncomeController extends Controller
         return back()->with('success', 'Material Data Received');
         }
         elseif($old_stok < $request->Quantity){
-            return back()->with('info', 'The amount of material that arrived exceeded what was ordered, please check again');
+            return back()->with('warning', 'The amount of material that arrived exceeded what was ordered, please check again');
         }
     }
 

@@ -42,6 +42,21 @@
             <div class="mx-2 mt-2">
                 <h4 class="mb-2">List Of All Material </h4>
             </div>
+            <div class="container">
+                <form method="GET" action="" class="row">
+                    <div class="col-md-3">
+                        <label for="">Start Date</label>
+                        <input class="form-control" type="date" name="start_date" value="{{ old('start_date') }}">
+                    </div>
+        
+                    <div class="col-md-3">
+                        <label for="">End Date</label>
+                        <input class="form-control" type="date" name="end_date" value="{{ old('end_date') }}">
+                    </div>
+                    <div class="col-md-1 pt-4">
+                        <button type="submit" class="btn btn-success ">Filter</button>
+        
+                    </div>
 
             <div class="table-responsive ">
                 <table class="table table-bordered text-nowrap table-responsive-sm" id="listlowss">
