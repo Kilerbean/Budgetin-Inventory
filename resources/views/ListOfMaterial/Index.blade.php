@@ -112,7 +112,7 @@
                             <th style="background-color: lightgray;">PackingSize Unit</th>
                             <th style="background-color: lightgray;">Manufaktur</th>
                             <th style="background-color: lightgray;">Prices (IDR)</th>
-                            <th style="background-color: lightgray;">Safe Stock</th>
+                            <th style="background-color: lightgray;">Safety Stock</th>
                             <th style="background-color: lightgray;">Maximum Stock</th>
                             <th style="background-color: lightgray;">Status</th>
                         </tr>

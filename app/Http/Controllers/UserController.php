@@ -80,7 +80,7 @@ class UserController extends Controller
 
         $user->update(['leveluser'=>2]);
 
-        return back()->with('success','Karyawan di Update ke Staff');
+        return back()->with('success','Employees are promoted to staff');
     }
 
     public function updatespv(Request $request,$user)
@@ -89,7 +89,7 @@ class UserController extends Controller
 
         $user->update(['leveluser'=>3]);
 
-        return back()->with('success','Karyawan di Update ke SuperVisor');
+        return back()->with('success','Employees are promoted to SuperVisor');
     }
 
     public function updatemanager(Request $request,$user)
@@ -98,7 +98,7 @@ class UserController extends Controller
 
         $user->update(['leveluser'=>4]);
 
-        return back()->with('success','Karyawan di Update ke Manager');
+        return back()->with('success','Employees are promoted to Manager');
     }
 
     public function updateadmin(Request $request,$user)
@@ -107,9 +107,27 @@ class UserController extends Controller
 
         $user->update(['leveluser'=>5]);
 
-        return back()->with('success','Karyawan di Update ke Admin');
+        return back()->with('success','Employees are promoted to Administator');
     }
     
+    public function updateaktif(Request $request,$user)
+    {
+        $user=User::find($user);
+
+        $user->update(['Status'=>1]);
+
+        return back()->with('success','Employees are activated');
+    }
+
+    public function updatenonaktif(Request $request,$user)
+    {
+        $user=User::find($user);
+
+        $user->update(['Status'=>0]);
+
+        return back()->with('success','Employees are Deactivated');
+    }
+
     /**
      * Remove the specified resource from storage.
      */

@@ -36,7 +36,7 @@
       </div>
       <div class="col-12 mt-4">
           <label class="form-label">Access Level :
-              {{ $user->leveluser == 1 ? 'User' : ($user->leveluser == 2 ? 'Staff' : ($user->leveluser == 3 ? 'SuperVisor' : ($user->leveluser == 4 ? 'Manager' : ($user->leveluser == 5 ? 'Admin' : '')))) }}
+              {{ $user->leveluser == 1 ? 'User' : ($user->leveluser == 2 ? 'Staff' : ($user->leveluser == 3 ? 'SuperVisor' : ($user->leveluser == 4 ? 'Manager' : ($user->leveluser == 5 ? 'Administrator' : '')))) }}
           </label><br>
           @if ($user->leveluser < 2)
               <a href="{{ route('karyawan.edit.staff', $user->id) }}" class="btn btn-primary">turn into Staff</a>

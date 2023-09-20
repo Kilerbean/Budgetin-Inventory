@@ -19,7 +19,7 @@
             <th style="background-color: lightgray;">Packing Size Unit</th>
             <th style="background-color: lightgray;">Quantity</th>
             <th style="background-color: lightgray;">Unit</th>
-            <th style="background-color: lightgray;">Safe Stock</th>
+            <th style="background-color: lightgray;">Safety Stock</th>
             <th style="background-color: lightgray;">Maximum Stock</th>
           </tr>
         </thead>
