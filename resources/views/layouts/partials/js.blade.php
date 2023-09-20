@@ -22,6 +22,14 @@
 @stack('js')
 <script>
     $(document).ready(function() {
-        $(".preloader").fadeOut()
+        $(".preloader").fadeOut();
+        setTimeout(function() {
+            var alert = document.querySelector('.alert');
+            if (alert) {                    
+                    setTimeout(function() {
+                        alert.style.display = 'none';
+                    }, 1000);
+                }
+            }, 4000); 
     });
 </script>
