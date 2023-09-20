@@ -1,25 +1,42 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-    </div>
+@extends('auth.master')
+@section('title', 'Forgot Password')
+@section('content')    
+    <main class="d-flex w-100">
+        <div class="container d-flex flex-column">
+            <div class="row vh-100">
+                <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+                    <div class="d-table-cell align-middle">
+                        <div class="text-center mt-4">
+                            <img class="img-fluid" src="https://img.icons8.com/color/96/company.png"
+                                style="height: 100px">
+                            <h1 class="h2">QC Lab System</h1>
+                            <p class="lead">
+                                Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
+                            </p>
+                        </div>                        
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="m-sm-4">
+                                    <form method="POST" action="{{ route('password.email') }}">
+                                        @csrf
+                                        <div class="mb-3">
+                                            <label class="form-label">Email</label>
+                                            <input class="form-control form-control-lg" type="email" name="email"
+                                                placeholder="Enter your email" autocomplete="true" autofocus
+                                                value="{{ old('email', 'user@sohoglobalhealth.com') }}" />
+                                        </div>                                        
+                                        <div class="text-center mt-3">
+                                            <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form method="POST" action="{{ route('password.email') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    </div>
+                </div>
+            </div>
         </div>
+    </main>
+@stop
 
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>

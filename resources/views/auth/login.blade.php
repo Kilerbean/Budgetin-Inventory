@@ -33,7 +33,7 @@
                                             <input class="form-control form-control-lg" type="password" name="password"
                                                 placeholder="Enter your password" />
                                             <small>
-                                                {{-- <a href="/forgot-password">Forgot password?</a> --}}
+                                                <a href="/forgot-password">Forgot password?</a>
                                             </small>
                                         </div>
                                         <div>
