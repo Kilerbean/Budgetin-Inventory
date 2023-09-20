@@ -30,33 +30,69 @@
         }
     </style>
 @endpush
-@section('content')    
+@section('content')
     <div class="col-12">
         <div class="card">
             <div class="row">
                 <div class="col">
                     <a href="{{ route('Barang.Create') }}" class="btn btn-primary btn-sm">Create New Material</a>
                     <a href="{{ route('barangtidakaktif') }}" class="btn btn-danger btn-sm">List Material Inactive</a>
-                </div>            
+                </div>
             </div>
             <div class="mx-2 mt-2">
                 <h4 class="mb-2">List Of All Material </h4>
             </div>
             <div class="container">
-                <form method="GET" action="" class="row">
+
+                <form method="GET" action="{{ Route('Barang.index') }}" class="row">
                     <div class="col-md-3">
-                        <label for="">Start Date</label>
-                        <input class="form-control" type="date" name="start_date" value="{{ old('start_date') }}">
-                    </div>
-        
-                    <div class="col-md-3">
-                        <label for="">End Date</label>
-                        <input class="form-control" type="date" name="end_date" value="{{ old('end_date') }}">
+                        <label for="Type_of_Material">Type of Material</label>
+                        <select class="form-select" name="Type_of_Material">
+                            <option value="">Select</option>
+                            <option value="Column" {{ old('Type_of_Material') === 'Column' ? 'selected' : '' }}>Column
+                            </option>
+                            <option
+                                value="Sparepart Instrument"{{ old('Type_of_Material') === 'Spare Part Instrument' ? 'selected' : '' }}>
+                                Spare PartInstrument</option>
+                            <option
+                                value="Service Charge"{{ old('Type_of_Material') === 'Service Charge' ? 'selected' : '' }}>
+                                Service Charge</option>
+                            <option
+                                value="Reference Standard"{{ old('Type_of_Material') === 'Reference Standard' ? 'selected' : '' }}>
+                                Reference Standard</option>
+                            <option
+                                value="Working Standard"{{ old('Type_of_Material') === 'Working Standard' ? 'selected' : '' }}>
+                                Working Standard</option>
+                            <option
+                                value="Bacteria/Yeast and Mold Standard"{{ old('Type_of_Material') === 'Bacteria/Yeast and Mold Standard' ? 'selected' : '' }}>
+                                Bacteria / Yeast and Mold Standard</option>
+                            <option
+                                value="External Laboratory"{{ old('Type_of_Material') === 'External Laboratory' ? 'selected' : '' }}>
+                                External Laboratory</option>
+                            <option
+                                value="Liquid Reagent"{{ old('Type_of_Material') === 'Liquid Reagent' ? 'selected' : '' }}>
+                                Liquid Reagent</option>
+                            <option
+                                value="Solid Reagent"{{ old('Type_of_Material') === 'Solid Reagent' ? 'selected' : '' }}>
+                                Solid Reagent</option>
+                            <option
+                                value="Microbiology Reagent"{{ old('Type_of_Material') === 'Microbiology Reagent' ? 'selected' : '' }}>
+                                Microbiology Reagent</option>
+                            <option
+                                value="Microbiology Media"{{ old('Type_of_Material') === 'Microbiology Media' ? 'selected' : '' }}>
+                                Microbiology Media</option>
+                            <option value="Glassware" {{ old('Type_of_Material') === 'Glassware' ? 'selected' : '' }}>
+                                Glassware</option>
+                            <option
+                                value="General Usage"{{ old('Type_of_Material') === 'General Usage' ? 'selected' : '' }}>
+                                General Usage</option>
+                        </select>
+
                     </div>
                     <div class="col-md-1 pt-4">
                         <button type="submit" class="btn btn-success ">Filter</button>
-        
-                    </div>
+                </form>
+            </div>
 
             <div class="table-responsive ">
                 <table class="table table-bordered text-nowrap table-responsive-sm" id="listlowss">
@@ -102,7 +138,7 @@
                                 <td>{{ $barang->Quantity }}</td>
                                 <td>{{ $barang->Unit }}</td>
                                 <td>{{ $barang->Type_of_Material }}</td>
-                             
+
                                 <td>{{ $barang->packingsize }}</td>
                                 <td>{{ $barang->packingsize_unit }}</td>
                                 <td>{{ $barang->Manufaktur }}</td>
