@@ -1,10 +1,17 @@
-@extends('templates.dasar')
+@extends('layouts.master')
 @php
+    $titles = 'QC - List of Material';
     $title = 'Create New Material';
     $pretitle = 'LIMS';
-    
+    $pages = $title;
 @endphp
-@section('coba')
+@section('title', $pages)
+@section('content')
+    <div class="mx-2 mt-2">
+        <h4 class="mb-2">Create New Material </h4>
+    </div>
+
+
     <div class="card ">
         <div class="card-body " style="background-color: rgb(230, 225, 225);">
             <form action="{{ route('Barang.store') }}" class="" method="post">
@@ -25,11 +32,14 @@
 
                     <div class="col-md-6">
                         <label class="form-label">Material Code</label>
-                        <select  name="Material_Code" id="Material_Code" class="form-select @error('Material_Code')is-invalid @enderror"name="example-text-input" placeholder="Leave blank if new material" value="{{ old('Material_Code') }}">
+                        <select name="Material_Code" id="Material_Code"
+                            class="form-select @error('Material_Code')is-invalid @enderror"name="example-text-input"
+                            placeholder="Leave blank if new material" value="{{ old('Material_Code') }}">
                             <option value="">Automatically Generate Code Material</option>
                             @foreach ($barang as $item)
-                            <option value="{{ $item->Material_Code }}" @if(old('Material_Code') == $item->Material_Code) selected @endif>
-                                {{ $item->Material_Code }} 
+                                <option value="{{ $item->Material_Code }}"
+                                    @if (old('Material_Code') == $item->Material_Code) selected @endif>
+                                    {{ $item->Material_Code }}
                             @endforeach
                         </select>
                         @error('Material_Code')
@@ -64,19 +74,44 @@
                         <div class="form-label">Type of Material</div>
                         <select class="form-select @error('Type_of_Material') is-invalid @enderror" name="Type_of_Material">
                             <option value="">Select</option>
-                            <option value="Column" {{ old('Type_of_Material') === 'Column' ? 'selected' : '' }}>Column</option>
-                            <option value="Sparepart Instrument"{{ old('Type_of_Material') === 'Spare Part Instrument' ? 'selected' : '' }}>Spare PartInstrument</option>
-                            <option value="Service Charge"{{ old('Type_of_Material') === 'Service Charge' ? 'selected' : '' }}>Service Charge</option>
-                            <option value="Reference Standard"{{ old('Type_of_Material') === 'Reference Standard' ? 'selected' : '' }}>Reference Standard</option>
-                            <option value="Working Standard"{{ old('Type_of_Material') === 'Working Standard' ? 'selected' : '' }}>Working Standard</option>
-                            <option value="Bacteria/Yeast and Mold Standard"{{ old('Type_of_Material') === 'Bacteria/Yeast and Mold Standard' ? 'selected' : '' }}>Bacteria / Yeast and Mold Standard</option>
-                            <option value="External Laboratory"{{ old('Type_of_Material') === 'External Laboratory' ? 'selected' : '' }}>External Laboratory</option>
-                            <option value="Liquid Reagent"{{ old('Type_of_Material') === 'Liquid Reagent' ? 'selected' : '' }}>Liquid Reagent</option>
-                            <option value="Solid Reagent"{{ old('Type_of_Material') === 'Solid Reagent' ? 'selected' : '' }}>Solid Reagent</option>
-                            <option value="Microbiology Reagent"{{ old('Type_of_Material') === 'Microbiology Reagent' ? 'selected' : '' }}>Microbiology Reagent</option>
-                            <option value="Microbiology Media"{{ old('Type_of_Material') === 'Microbiology Media' ? 'selected' : '' }}>Microbiology Media</option>
-                            <option value="Glassware" {{ old('Type_of_Material') === 'Glassware' ? 'selected' : '' }}>Glassware</option>
-                            <option value="General Usage"{{ old('Type_of_Material') === 'General Usage' ? 'selected' : '' }}>General Usage</option></select>
+                            <option value="Column" {{ old('Type_of_Material') === 'Column' ? 'selected' : '' }}>Column
+                            </option>
+                            <option
+                                value="Sparepart Instrument"{{ old('Type_of_Material') === 'Spare Part Instrument' ? 'selected' : '' }}>
+                                Spare PartInstrument</option>
+                            <option
+                                value="Service Charge"{{ old('Type_of_Material') === 'Service Charge' ? 'selected' : '' }}>
+                                Service Charge</option>
+                            <option
+                                value="Reference Standard"{{ old('Type_of_Material') === 'Reference Standard' ? 'selected' : '' }}>
+                                Reference Standard</option>
+                            <option
+                                value="Working Standard"{{ old('Type_of_Material') === 'Working Standard' ? 'selected' : '' }}>
+                                Working Standard</option>
+                            <option
+                                value="Bacteria/Yeast and Mold Standard"{{ old('Type_of_Material') === 'Bacteria/Yeast and Mold Standard' ? 'selected' : '' }}>
+                                Bacteria / Yeast and Mold Standard</option>
+                            <option
+                                value="External Laboratory"{{ old('Type_of_Material') === 'External Laboratory' ? 'selected' : '' }}>
+                                External Laboratory</option>
+                            <option
+                                value="Liquid Reagent"{{ old('Type_of_Material') === 'Liquid Reagent' ? 'selected' : '' }}>
+                                Liquid Reagent</option>
+                            <option
+                                value="Solid Reagent"{{ old('Type_of_Material') === 'Solid Reagent' ? 'selected' : '' }}>
+                                Solid Reagent</option>
+                            <option
+                                value="Microbiology Reagent"{{ old('Type_of_Material') === 'Microbiology Reagent' ? 'selected' : '' }}>
+                                Microbiology Reagent</option>
+                            <option
+                                value="Microbiology Media"{{ old('Type_of_Material') === 'Microbiology Media' ? 'selected' : '' }}>
+                                Microbiology Media</option>
+                            <option value="Glassware" {{ old('Type_of_Material') === 'Glassware' ? 'selected' : '' }}>
+                                Glassware</option>
+                            <option
+                                value="General Usage"{{ old('Type_of_Material') === 'General Usage' ? 'selected' : '' }}>
+                                General Usage</option>
+                        </select>
                         @error('Type_of_Material')
                             <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
@@ -102,10 +137,12 @@
                             <option value="">Select</option>
                             <option value="mL" {{ old('packingsize_unit') === 'mL' ? 'selected' : '' }}>mL</option>
                             <option value="gram" {{ old('packingsize_unit') === 'gram' ? 'selected' : '' }}>gram</option>
-                            <option value="liter" {{ old('packingsize_unit') === 'liter' ? 'selected' : '' }}>liter</option>
-                            <option value="stick" {{ old('packingsize_unit') === 'stick' ? 'selected' : '' }}>stick</option>
+                            <option value="liter" {{ old('packingsize_unit') === 'liter' ? 'selected' : '' }}>liter
+                            </option>
+                            <option value="stick" {{ old('packingsize_unit') === 'stick' ? 'selected' : '' }}>stick
+                            </option>
                             <option value="pcs" {{ old('packingsize_unit') === 'pcs' ? 'selected' : '' }}>pcs</option>
-                          {{-- <option value="Lembar" {{ old('packingsize_unit') === 'Lembar' ? 'selected' : '' }}>Lembar</option>
+                            {{-- <option value="Lembar" {{ old('packingsize_unit') === 'Lembar' ? 'selected' : '' }}>Lembar</option>
                           <option value="box" {{ old('packingsize_unit') === 'box' ? 'selected' : '' }}>box</option>
                        
                           <option value="Botol" {{ old('packingsize_unit') === 'Botol' ? 'selected' : '' }}>Botol</option>
@@ -203,6 +240,10 @@
         </div>
     </div>
 
+
+
+@stop
+@push('js')
     <script>
         $(document).ready(function() {
             $('#Material_Code').select2({
@@ -219,6 +260,5 @@
                 document.querySelector(".select2-container--open .select2-search__field").focus()
             });
         });
-        </script>
-
-@endsection
+    </script>
+@endpush
