@@ -74,7 +74,7 @@ Route::get('/barang/{id}/statusnonaktif',[Barangcontroller::class,'statusnonakti
 Route::get('/barang/{id}/statusaktif',[Barangcontroller::class,'statusaktif'])-> name('aktif')->middleware('user.level:4,5');
 Route::get('/barang/tidakaktif',[BarangController::class,'tidakaktif'])-> name('barangtidakaktif')->middleware('user.level:4,5');
 Route::post('/barangs/import',[BarangController::class,'import'])->name('import');
-
+Route::get('/barang/listcode',[BarangController::class,'listcode'])->name('Barang.listcode');
 
 
 //Route Incoming Material

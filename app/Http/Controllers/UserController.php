@@ -74,11 +74,23 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
+    public function update(Request $request,$user)
+    {
+        $user=User::find($user);
+        $old= \getoldvalues('mysql','users',$user); 
+        $old_level = $old["old"]["leveluser"];
+  
+    }
+
     public function updatestaff(Request $request,$user)
     {
         $user=User::find($user);
-
+        $old= \getoldvalues('mysql','users',$user); 
+        $old_level = $old["old"]["leveluser"];
+  
         $user->update(['leveluser'=>2]);
+        
+
 
         return back()->with('success','Employees are promoted to staff');
     }
@@ -86,6 +98,8 @@ class UserController extends Controller
     public function updatespv(Request $request,$user)
     {
         $user=User::find($user);
+        $old= \getoldvalues('mysql','users',$user); 
+        $old_level = $old["old"]["leveluser"];
 
         $user->update(['leveluser'=>3]);
 
@@ -95,6 +109,8 @@ class UserController extends Controller
     public function updatemanager(Request $request,$user)
     {
         $user=User::find($user);
+        $old= \getoldvalues('mysql','users',$user); 
+        $old_level = $old["old"]["leveluser"];
 
         $user->update(['leveluser'=>4]);
 
@@ -104,7 +120,8 @@ class UserController extends Controller
     public function updateadmin(Request $request,$user)
     {
         $user=User::find($user);
-
+        $old=\getoldvalues('mysql','users',$user);
+        $old_level=$old["old"]["leveluser"];
         $user->update(['leveluser'=>5]);
 
         return back()->with('success','Employees are promoted to Administator');
@@ -113,7 +130,6 @@ class UserController extends Controller
     public function updateaktif(Request $request,$user)
     {
         $user=User::find($user);
-
         $user->update(['Status'=>1]);
 
         return back()->with('success','Employees are activated');

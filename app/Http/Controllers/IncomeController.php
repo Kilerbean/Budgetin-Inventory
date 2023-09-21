@@ -154,7 +154,7 @@ class IncomeController extends Controller
         $income = Income::find($income);
         $barang = $income->Barang;
         $old= \getoldvalues('mysql','incomes',$income); 
-        $old_stok = $old["old"]["Quantity"];$old["old"]["Quantity"];
+        $old_stok = $old["old"]["Quantity"];
         
         if ($old_stok > $request->Quantity) {
             $qty_new=$old_stok - $request->Quantity;

@@ -37,6 +37,7 @@
                 <div class="col">
                     <a href="{{ route('Barang.Create') }}" class="btn btn-primary btn-sm">Create New Material</a>
                     <a href="{{ route('barangtidakaktif') }}" class="btn btn-danger btn-sm">List Material Inactive</a>
+                    <a href="{{ route('Barang.listcode') }}" class="btn btn-info btn-sm">List Material based Material Code</a>
                 </div>
             </div>
             <div class="mx-2 mt-2">
@@ -109,7 +110,7 @@
                             <th style="background-color: lightgray;">Unit</th>
                             <th style="background-color: lightgray;">Type of Material</th>
                             <th style="background-color: lightgray;">Packing Size</th>
-                            <th style="background-color: lightgray;">PackingSize Unit</th>
+                            <th style="background-color: lightgray;">Packing Size Unit</th>
                             <th style="background-color: lightgray;">Manufaktur</th>
                             <th style="background-color: lightgray;">Prices (IDR)</th>
                             <th style="background-color: lightgray;">Safety Stock</th>

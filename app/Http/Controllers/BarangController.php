@@ -23,34 +23,34 @@ class BarangController extends Controller
 
 
 
-     public function index(Request $request)
-     {
-         // Mengambil nilai "Type_of_Material" dari sesi (jika ada)
-         $filterTypeOfMaterial = $request->input('Type_of_Material');
+    public function index(Request $request)
+    {
+        // Mengambil nilai "Type_of_Material" dari sesi (jika ada)
+        $filterTypeOfMaterial = $request->input('Type_of_Material');
 
-    $barangsQuery = Barang::where('Status', '1');
+        $barangsQuery = Barang::where('Status', '1');
 
-    if (!empty($filterTypeOfMaterial)) {
-        $barangsQuery->where('Type_of_Material', $filterTypeOfMaterial);
+        if (!empty($filterTypeOfMaterial)) {
+            $barangsQuery->where('Type_of_Material', $filterTypeOfMaterial);
+        }
+
+        $barangs = $barangsQuery->latest()->get();
+
+        // Mengambil data audit seperti yang Anda lakukan sebelumnya
+        $audit = DB::table('audits')->latest()->where('sourcetable', 'List of Material')->get();
+
+        return view('ListOfMaterial.index', compact('barangs', 'audit'))
+            ->with('i');
     }
 
-    $barangs = $barangsQuery->latest()->get();
-    
-         // Mengambil data audit seperti yang Anda lakukan sebelumnya
-         $audit = DB::table('audits')->latest()->where('sourcetable', 'List of Material')->get();
-    
-         return view('ListOfMaterial.index', compact('barangs', 'audit'))
-             ->with('i');
-     }
-     
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        $barang=barang::latest()->where('Status', '1')->get();
-        return view('ListOfMaterial.create',compact('barang'));
+        $barang = barang::latest()->where('Status', '1')->get();
+        return view('ListOfMaterial.create', compact('barang'));
     }
 
     /**
@@ -73,11 +73,11 @@ class BarangController extends Controller
             'Maximum_Stock' => ['required'],
         ], ['packingsize_unit.required' => ['packing size unit field is required']]);
 
-        $materialcode=Materialcode::where('Type_of_Material',$request->Type_of_Material)->first();
-        $lastid = barang::where('Material_Code', 'like', $materialcode->Material_Code.'%')->max('Material_Code');        
+        $materialcode = Materialcode::where('Type_of_Material', $request->Type_of_Material)->first();
+        $lastid = barang::where('Material_Code', 'like', $materialcode->Material_Code . '%')->max('Material_Code');
         $lastno = intval(substr($lastid, -3));
-        $newcode = $materialcode->Material_Code.sprintf('%03s', ($lastno == 0 or $lastno == null) ? 1 : abs($lastno + 1));
-        
+        $newcode = $materialcode->Material_Code . sprintf('%03s', ($lastno == 0 or $lastno == null) ? 1 : abs($lastno + 1));
+
         $barang = new barang();
 
         $barang->Material_Code = $request->Material_Code ? $request->Material_Code : $newcode;
@@ -123,7 +123,7 @@ class BarangController extends Controller
             })
             ->where('recordid', $barang->Catalog_Number)
             ->get();
-       
+
         $incomess = Income::latest()->where('Quantity', '0')
             ->where('Catalog_Number', $barang->Catalog_Number)
             ->where('Status', '1')
@@ -270,14 +270,14 @@ class BarangController extends Controller
     public function import(Request $request)
     {
         $pathToCsv = storage_path('/app/public/test2.xlsx');
-        
+
         $rows = SimpleExcelReader::create($pathToCsv)
-    ->useHeaders(['test_data', 'test_data2'])
-    ->getRows()
-    ->each(function(array $rowProperties) {
-       // in the first pass $rowProperties will contain
-       // ['email_address' => 'john@example', 'given_name' => 'john']
-});
+            ->useHeaders(['test_data', 'test_data2'])
+            ->getRows()
+            ->each(function (array $rowProperties) {
+                // in the first pass $rowProperties will contain
+                // ['email_address' => 'john@example', 'given_name' => 'john']
+            });
         dd($rows);
 
         $rows->each(function (array $rowProperties) {
@@ -286,4 +286,16 @@ class BarangController extends Controller
 
         dd($request->file('file'));
     }
+
+public function listcode()
+{
+    $barangs = Barang::where('Status', 1)
+    ->orderBy('Material_Code')
+    ->distinct('Material_Code')
+    ->get();
+        return view('ListOfMaterial.listmaterialcode', compact('barangs'));
+}
+
+
+
 }
