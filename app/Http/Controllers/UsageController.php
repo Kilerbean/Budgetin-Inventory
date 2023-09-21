@@ -97,7 +97,7 @@ class UsageController extends Controller
         ->with('success','Material Usage Request Created  successfully');
         }
         else {
-            return back()->with('danger','not enough stock from that batch number');
+            return back()->with('error','not enough stock from that batch number');
         }
     }
 
