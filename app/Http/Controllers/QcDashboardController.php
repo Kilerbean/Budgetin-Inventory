@@ -41,9 +41,8 @@ class QcDashboardController extends Controller
         $query->select(DB::raw('MIN(id)'))
             ->from('barangs')
             ->groupBy('Material_Code')
-            ->havingRaw('SUM(Quantity) <= SUM(Safety_Stock)');
-    })
-    ->get();
+            ->havingRaw('SUM(Quantity) <= Safety_Stock');
+    })->get();
 
 
 

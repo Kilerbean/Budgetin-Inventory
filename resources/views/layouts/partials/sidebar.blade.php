@@ -51,24 +51,30 @@
                 Others Apps
             </li>
 
+            {{-- other apps sensitive link --}}
             <li class="sidebar-item">
-                <a class="sidebar-link" href="http://190.191.1.151/smd/login.php">
-                    <i class="align-middle" data-feather="grid"></i> <span class="align-middle">SMD</span>
-                </a>
+                <a class="sidebar-link" href="https://lims.sohoglobalhealth.com"><i data-feather="grid"></i>
+                    <span class="align-middle">LIMS</span></a>
             </li>
+           
             <li class="sidebar-item">
                 <a class="sidebar-link" href="https://iccs.sohoglobalhealth.com">
                     <i class="align-middle" data-feather="grid"></i> <span class="align-middle">ICCS</span>
                 </a>
             </li>
+
             <li class="sidebar-item">
-                <a class="sidebar-link" href="https://lims.sohoglobalhealth.com"><i data-feather="grid"></i>
-                    <span class="align-middle">LIMS</span></a>
+                <a class="sidebar-link" href="http://190.191.1.151/smd/login.php">
+                    <i class="align-middle" data-feather="grid"></i> <span class="align-middle">SMD</span>
+                </a>
             </li>
+
+            
+           
             <li class="sidebar-item">
-                <a class="sidebar-link" href="https://apps6.sohoglobalhealth.com/HRIS/Login.aspx"><i
+                <a class="sidebar-link" href="http://172.19.19.39:82/login"><i
                         data-feather="grid"></i>
-                    <span class="align-middle">Pro-Int</span></a>
+                    <span class="align-middle">Lumens</span></a>
             </li>
 
             <li class="sidebar-header">
