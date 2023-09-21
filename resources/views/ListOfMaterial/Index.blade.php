@@ -44,7 +44,7 @@
             </div>
             <div class="container">
 
-                <form method="GET" action="{{ Route('Barang.index') }}" class="row">
+                <form method="GET" action="" class="row">
                     <div class="col-md-3">
                         <label for="Type_of_Material">Type of Material</label>
                         <select class="form-select" name="Type_of_Material">

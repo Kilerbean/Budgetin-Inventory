@@ -26,19 +26,16 @@ class BarangController extends Controller
      public function index(Request $request)
      {
          // Mengambil nilai "Type_of_Material" dari sesi (jika ada)
-         $filterTypeOfMaterial = session('Type_of_Material');
-     
-         // Membuat query awal untuk data barangs
-         $barangsQuery = Barang::where('Status', '1');
-     
-         // Menerapkan filter "Type_of_Material" jika ada
-         if (!empty($filterTypeOfMaterial)) {
-             $barangsQuery->where('Type_of_Material', $filterTypeOfMaterial);
-         }
-     
-         // Mendapatkan data barangs yang telah difilter atau semua data jika tidak ada filter
-         $barangs = $barangsQuery->latest()->get();
-     
+         $filterTypeOfMaterial = $request->input('Type_of_Material');
+
+    $barangsQuery = Barang::where('Status', '1');
+
+    if (!empty($filterTypeOfMaterial)) {
+        $barangsQuery->where('Type_of_Material', $filterTypeOfMaterial);
+    }
+
+    $barangs = $barangsQuery->latest()->get();
+    
          // Mengambil data audit seperti yang Anda lakukan sebelumnya
          $audit = DB::table('audits')->latest()->where('sourcetable', 'List of Material')->get();
     
