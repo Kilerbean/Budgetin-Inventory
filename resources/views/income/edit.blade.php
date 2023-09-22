@@ -63,7 +63,6 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <div class="form-label"><strong>No PR</strong></div>
-
                             <input type="text" name="No_PR" value="{{ old('No_PR', $income->No_PR)}}" class="form-control"
                                 placeholder="No">
                         </div>

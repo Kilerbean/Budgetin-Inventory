@@ -39,7 +39,7 @@
                                 <td>{{ $users->name }}</td>
                                 <td>{{ $users->email }}</td>
                                 <td>{{ \App\Http\Controllers\UserController::getLevelUserText($users->leveluser) }}</td>
-                                <td>{{ $users->Status == 1 ? 'Aktif' : 'InAktif' }}</td>
+                                <td>{{ $users->Status == 1 ? 'Active' : 'Inactive' }}</td>
 
                             </tr>
                         @endforeach
