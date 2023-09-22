@@ -16,7 +16,7 @@
           <h4 class="mb-2">Edit Employee</h4>
       </div>
 
-      <form action="{{ route('karyawan.edit', $user->id) }}" method="POST">
+      <form action="{{ route('karyawan.update', $user->id) }}" method="POST">
           @csrf
           @method('PUT')
 
@@ -24,8 +24,8 @@
               <div class="col-xs-12 col-sm-12 col-md-12">
                   <div class="form-group">
                       <strong>Employe Name</strong>
-                      <input class="form-control bg-secondary text-white" name="name" placeholder="Nama"
-                          value="{{ $user->name }}" @readonly(true)>
+                      <input class="form-control" name="name" placeholder="Nama"
+                          value="{{ $user->name }}">
                   </div>
               </div>
           </div>

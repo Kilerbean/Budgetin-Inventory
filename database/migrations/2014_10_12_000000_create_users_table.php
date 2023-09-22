@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->integer('leveluser')->default(1);
             $table->smallInteger('Status')->default(1);
+            $table->string('title')->default('none');
             $table->rememberToken();
             $table->timestamps();
         });

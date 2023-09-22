@@ -101,6 +101,7 @@ Route::resource('financial',FinancialController::class)->middleware('user.level:
 
 //Route karyawan
 Route::get('/karyawan', [UserController::class,'index']) ->name('karyawan')->middleware('user.level:2,3,4,5');
+Route::get('/karyawan/store',[UserController::class,'update'])->name('karyawan.update')->middleware('user.level:4,5');
 Route::get('/karyawan/{user}/edit', [UserController::class,'edit']) ->name('karyawan.edit')->middleware('user.level:4,5');
 Route::get('/karyawan/{user}/updatestaff', [UserController::class,'updatestaff']) ->name('karyawan.edit.staff')->middleware('user.level:4,5');
 Route::get('/karyawan/{user}/updatespv', [UserController::class,'updatespv']) ->name('karyawan.edit.spv')->middleware('user.level:4,5');

@@ -63,8 +63,41 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+
         return view('users.edit',compact('user'));
     }
+    public function update(Request $request ,User $user)
+    {
+        $request->validate(
+            [
+                'name' => 'required',
+                'email' => 'required',
+                'Status' => 'required',
+                // 'title' => 'required',
+            ],
+        );
+
+
+        $user=User::find($user);
+        $old= \getoldvalues('mysql','users',$user); 
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->Status=$request->Status;
+        // $user->title=$request->title;
+        $user->save();
+
+
+        
+        // $old_level = $old["old"]["leveluser"];
+
+
+        return redirect()->route('users.edit')
+        ->with('success','User updated successfully');
+    }
+
+
+
+
 
     public function profil(User $user)
     {
@@ -74,13 +107,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,$user)
-    {
-        $user=User::find($user);
-        $old= \getoldvalues('mysql','users',$user); 
-        $old_level = $old["old"]["leveluser"];
-  
-    }
+   
 
     public function updatestaff(Request $request,$user)
     {

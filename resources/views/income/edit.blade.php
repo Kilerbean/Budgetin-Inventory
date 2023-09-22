@@ -35,23 +35,20 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <div class="form-label"><strong>PR Date</strong></div>
-
                             <input class="form-control" type="date" name="PO_Date" placeholder="Input "
-                                value="{{ $income->PO_Date }}">
+                                value="{{ old('PO_Date', $income->PO_Date) }}">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <div class="form-label"><strong>Catalog Number</strong></div>
-
                             <input class="form-control bg-secondary text-white" name="Catalog_Number" placeholder="Input Catalog Number"
-                                value="{{ $income->Catalog_Number }}" @readonly(true)>
+                                value="{{old('Catalog_Number', $income->Catalog_Number) }}" @readonly(true)>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <div class="form-label"><strong>Type of Material</strong></div>
-
                             <input class="form-control bg-secondary text-white" name="Type_of_Material" placeholder="Input Type of Material"
                                 value="{{ $income->Type_of_Material }}" @readonly(true)>
                         </div>
@@ -59,7 +56,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <div class="form-label"><strong>No PO</strong></div>
-                            <input class="form-control" name="No_PO" placeholder="Input " value="{{ $income->No_PO }}">
+                            <input class="form-control" name="No_PO" placeholder="Input " value="{{ old('No_PO', $income->No_PO) }}">
                         </div>
                     </div>
 
@@ -67,7 +64,7 @@
                         <div class="form-group">
                             <div class="form-label"><strong>No PR</strong></div>
 
-                            <input type="text" name="No_PR" value="{{ $income->No_PR }}" class="form-control"
+                            <input type="text" name="No_PR" value="{{ old('No_PR', $income->No_PR)}}" class="form-control"
                                 placeholder="No">
                         </div>
                     </div>
@@ -105,7 +102,7 @@
                             <div class="form-label"><strong>Expire Date</strong></div>
 
                             <input class="form-control" type="date" name="Expire_Date" placeholder="Input "
-                                value="{{ $income->Expire_Date }}">
+                                value="{{ old('Expire_Date', $income->Expire_Date) }}">
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -113,7 +110,7 @@
                             <div class="form-label"><strong>Request By</strong></div>
 
                             <input type="text" name="request_by" class="form-control" placeholder="Input name here"
-                                value="{{ $income->request_by }}">
+                                value="{{ old('request_by', $income->request_by) }}">
                         </div>
                     </div>
                     <div class="col-md-4" {{ $income->Status ? 'hidden' : '' }}>
