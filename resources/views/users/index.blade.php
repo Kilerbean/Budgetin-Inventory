@@ -30,6 +30,7 @@
                             <th>Level User</th>
                             <th>Status</th>
                         </tr>
+                    <tbody>
                         @foreach ($user as $users)
                             <tr>
                                 <td>
@@ -45,6 +46,7 @@
 
                             </tr>
                         @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>
