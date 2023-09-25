@@ -61,23 +61,22 @@
                   </select>
               </div>
 
-              {{-- <div class="col-md-6">
-                  <strong>Status</strong>
-                  <select class="form-select" name="Status">
-                      <option value="1" {{ old('Status', $user->Status) === '1' ? 'selected' : '' }}>
-                          Active</option>
-                      <option value="0" {{ old('Status', $user->Status) === '0' ? 'selected' : '' }}>
-                          Inactive</option>
-                  </select>
-              </div> --}}
-
               <div class="col-md-6">
+                <strong>Status</strong>
+                <select class="form-select" name="Status">
+                    <option value="1" {{ old('Status', $user->Status) === '1' ? 'selected' : '' }}>
+                        Active</option>
+                    <option value="0" {{ old('Status', $user->Status) === '0' ? 'selected' : '' }}>
+                        Inactive</option>
+                </select>
+            </div>
+              {{-- <div class="col-md-6">
                 <div class="form-label">Status</div>
                 <select class="form-select" name="Status">
                     <option value="1" {{ old('Status', $user->Status) === '1' ? 'selected' : '' }}>1</option>
                     <option value="0" {{ old('Status', $user->Status) === '0' ? 'selected' : '' }}>0</option>
                 </select>
-            </div>
+            </div> --}}
 
 
 

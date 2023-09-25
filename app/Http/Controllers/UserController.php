@@ -61,9 +61,9 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit($user)
     {
-
+        $user=User::find($user);
         return view('users.edit',compact('user'));
     }
     public function update(Request $request ,$user)
@@ -78,21 +78,20 @@ class UserController extends Controller
         );
         $user=User::find($user);
       
-        // $old= \getoldvalues('mysql','users',$user); 
+        $old= \getoldvalues('mysql','users',$user); 
      
         $user->name=$request->name;
         $user->email=$request->email;
         $user->Status=$request->Status;
        
         // $user->title=$request->title;
-  
         $user->save();
 
 
         
-        // $old_level = $old["old"]["leveluser"];
+        $old_level = $old["old"]["leveluser"];
 
-
+//   \auditmms(auth()->user()->name, 'Edit Data User', $user->email, 'Users','Edit User Data',"Name :".$user->name."| Email :".$user->email."| Status:".$user->Status."", $request->Quantity);
         return back()
         ->with('success','User updated successfully');
     }
