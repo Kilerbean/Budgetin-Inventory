@@ -38,25 +38,25 @@
               <div class="col-md-6">
                   <strong>Title</strong>
                   <select class="form-select" name="title">
-                      <option value="none" {{ old('title', $user->title) === 'none' ? 'selected' : '' }}>
+                      <option value="" {{ old('title', $user->title) == '' ? 'selected' : '' }}>
                           none</option>
-                      <option value="QC Support" {{ old('title', $user->title) === 'QC Support' ? 'selected' : '' }}>
+                      <option value="QC Support" {{ old('title', $user->title) == 'QC Support' ? 'selected' : '' }}>
                           QC Support</option>
                       <option
-                          value="Finished Goods QC Analyst"{{ old('title', $user->title) === 'Finished Goods QC Analyst' ? 'selected' : '' }}>
+                          value="Finished Goods QC Analyst"{{ old('title', $user->title) == 'Finished Goods QC Analyst' ? 'selected' : '' }}>
                           Finished Goods QC Analyst</option>
                       <option
-                          value="Material QC Analyst"{{ old('title', $user->title) === 'Material QC Analyst' ? 'selected' : '' }}>
+                          value="Material QC Analyst"{{ old('title', $user->title) == 'Material QC Analyst' ? 'selected' : '' }}>
                           Material QC Analyst</option>
-                      <option value="QC Supervisor" {{ old('title', $user->title) === 'QC Supervisor' ? 'selected' : '' }}>
+                      <option value="QC Supervisor" {{ old('title', $user->title) == 'QC Supervisor' ? 'selected' : '' }}>
                           QC Supervisor</option>
                       <option value="QC Jr. Manager"
-                          {{ old('title', $user->title) === 'QC Jr. Manager' ? 'selected' : '' }}>
+                          {{ old('title', $user->title) == 'QC Jr. Manager' ? 'selected' : '' }}>
                           QC Jr. Manager</option>
-                      <option value="QC Manager" {{ old('title', $user->title) === 'QC Manager' ? 'selected' : '' }}>
+                      <option value="QC Manager" {{ old('title', $user->title) == 'QC Manager' ? 'selected' : '' }}>
                           QC Manager</option>
                       <option value="Quality Operation Director"
-                          {{ old('title', $user->title) === 'Quality Operation Director' ? 'selected' : '' }}>
+                          {{ old('title', $user->title) == 'Quality Operation Director' ? 'selected' : '' }}>
                           Quality Operation Director</option>
                   </select>
               </div>
@@ -64,19 +64,13 @@
               <div class="col-md-6">
                 <strong>Status</strong>
                 <select class="form-select" name="Status">
-                    <option value="1" {{ old('Status', $user->Status) === '1' ? 'selected' : '' }}>
+                    <option value=1 {{ old('Status', $user->Status) === 1 ? 'selected' : '' }}>
                         Active</option>
-                    <option value="0" {{ old('Status', $user->Status) === '0' ? 'selected' : '' }}>
+                    <option value=0 {{ old('Status', $user->Status) === 0 ? 'selected' : '' }}>
                         Inactive</option>
                 </select>
             </div>
-              {{-- <div class="col-md-6">
-                <div class="form-label">Status</div>
-                <select class="form-select" name="Status">
-                    <option value="1" {{ old('Status', $user->Status) === '1' ? 'selected' : '' }}>1</option>
-                    <option value="0" {{ old('Status', $user->Status) === '0' ? 'selected' : '' }}>0</option>
-                </select>
-            </div> --}}
+             
 
 
 

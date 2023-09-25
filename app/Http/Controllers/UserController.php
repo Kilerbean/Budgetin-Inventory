@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Income;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -13,8 +15,10 @@ class UserController extends Controller
     public function index()
     {
         $user=User::latest()->get();
+        $incomess = Income::latest()->whereNotNull('No_PO')->where('Status', '1')->where('tipe_transaksi', '1')->where('Quantity','>','0')->get();
 
-        return view('users.index',compact('user'))-> with('i');
+
+        return view('users.index',compact('user','incomess'))-> with('i');
     }
 
     public static function getLevelUserText($level)
@@ -73,7 +77,7 @@ class UserController extends Controller
                 'name' => 'required',
                 'email' => 'required',
                 'Status' => 'required',
-                // 'title' => 'required',
+                'title' => 'required',
             ],
         );
         $user=User::find($user);
@@ -83,8 +87,7 @@ class UserController extends Controller
         $user->name=$request->name;
         $user->email=$request->email;
         $user->Status=$request->Status;
-       
-        // $user->title=$request->title;
+        $user->title=$request->title;
         $user->save();
 
 

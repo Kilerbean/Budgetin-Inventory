@@ -65,10 +65,7 @@
                         <tr>
                             <td>
 
-                                {{-- tombol Edit --}}
-                                <a class="btn btn-primary btn-sm"
-                                    href="{{ route('income.edit', $income->id) }}"
-                                    title="Edit Material"> <i class="fa fa-pen"></i></a>
+                              
                                     @if (auth()->user()->leveluser >4)
                                 <form action="{{ route('income.destroy', $income->id) }}" method="POST">
                                     @csrf
@@ -79,6 +76,7 @@
                                         onclick="return confirm('Are you sure want to delete this ?');" title="Delete"><i
                                             class="fa fa-trash"></i></button>
                                 </form>
+                                
                                 @endif
                             </td>
                             <td>{{ ++$i }}</td>

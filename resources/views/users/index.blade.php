@@ -26,6 +26,7 @@
                             <th>No</th>
                             <th>Employe Name </th>
                             <th>Email</th>
+                            <th>Title</th>
                             <th>Level User</th>
                             <th>Status</th>
                         </tr>
@@ -38,6 +39,7 @@
                                 <td>{{ ++$i }}</td>
                                 <td>{{ $users->name }}</td>
                                 <td>{{ $users->email }}</td>
+                                <td>{{ $users->title }}</td>
                                 <td>{{ \App\Http\Controllers\UserController::getLevelUserText($users->leveluser) }}</td>
                                 <td>{{ $users->Status == 1 ? 'Active' : 'Inactive' }}</td>
 
