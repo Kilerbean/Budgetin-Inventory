@@ -110,4 +110,52 @@
               <a href="{{ route('karyawan.edit.manager', $user->id) }}" class="btn btn-primary">turn into Manager</a>
           @endif
       </div>
-  @stop
+
+
+      <br>
+      <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-1 border-bottom border-danger">
+      </div>
+
+      @include('users.audit')
+
+@stop
+@push('js')
+    <script type="text/javascript">
+        $(function() {
+            var table = $('#listlowss').DataTable({
+                dom: 'lBftrip',
+                buttons: [{
+                        extend: 'copyHtml5',
+                        exportOptions: {
+                            columns: [':visible']
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: [':visible']
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: [':visible']
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: [':visible']
+                        }
+                    },
+                    {
+                        extend: 'colvis',
+                        text: "Hide / Show",
+                        postfixButtons: ['colvisRestore']
+                    }
+                ],
+            });
+        });
+    </script>
+@endpush

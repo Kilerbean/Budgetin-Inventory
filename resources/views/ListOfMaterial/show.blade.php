@@ -148,12 +148,15 @@
                                 <td>
 
 
-                                    @if (auth()->user()->leveluser > 4)
+                                 
                                         <form action="{{ route('usage.destroy', $usages->id) }}" method="POST">
                                             {{-- <a class="btn btn-info btn-sm" href="{{ route('usages.show',$usages->id) }}">Show</a> --}}
+                                            <a class="btn btn-primary btn-sm"
+                                            href="{{ route('usage.edit', $usages->id) }}"title="Edit Barang"> <i
+                                                class="fa fa-pen"></i></a>
                                             @csrf
                                             @method('DELETE')
-
+                                            @if (auth()->user()->leveluser > 4)
                                             <button type="submit" class="btn btn-danger btn-sm"
                                                 onclick="return confirm('Are you sure want to delete this ?');"
                                                 title="Delete"><i class="fa fa-trash"></i></button>

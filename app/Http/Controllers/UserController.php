@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Income;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
@@ -68,7 +69,8 @@ class UserController extends Controller
     public function edit($user)
     {
         $user=User::find($user);
-        return view('users.edit',compact('user'));
+        $audit = DB::table('audits')->latest()->where('sourcetable', 'Users')->get();
+        return view('users.edit',compact('user','audit'));
     }
     public function update(Request $request ,$user)
     {
@@ -93,8 +95,11 @@ class UserController extends Controller
 
         
         $old_level = $old["old"]["leveluser"];
+        $old_name=$old["old"]["name"];
+        $old_email=$old["old"]["email"];
+        $old_title=$old["old"]["title"];
 
-//   \auditmms(auth()->user()->name, 'Edit Data User', $user->email, 'Users','Edit User Data',"Name :".$user->name."| Email :".$user->email."| Status:".$user->Status."", $request->Quantity);
+  \auditmms(auth()->user()->name, 'Edit Data User',$user->email,'Users','Edit User Data',"Name :".$user->name."| Email :".$user->email,"Name :".$request->name."| Email :".$request->email);
         return back()
         ->with('success','User updated successfully');
     }

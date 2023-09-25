@@ -51,10 +51,11 @@
 
                                         @csrf
                                         @method('DELETE')
-
+                                        @if (auth()->user()->leveluser >4)
                                         <button type="submit" class="btn btn-danger btn-sm"
                                             onclick="return confirm('Are you sure want to delete this ?');"title="Delete Barang"><i
                                                 class="fa fa-trash"></i></button>
+                                        @endif
                                     </form>
                                 </td>
 

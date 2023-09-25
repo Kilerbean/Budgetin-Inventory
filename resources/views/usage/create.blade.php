@@ -25,7 +25,6 @@
                     <div class="row">
                         <div class="col-12 mb-3">
                             <div class="form-label"><strong>Catalog Number - Material Name</strong></div>
-
                             <select class="form-select" name="Catalog_Number" id="Catalog_Number">
                                 <option value="">Click to search for materials</option>
                                 @foreach ($uniqueIncomes as $row)
@@ -53,14 +52,31 @@
                                     value="{{ old('Quantity') }}">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                             <div class="form-group">
                                 <div class="form-label"><strong>Open By</strong></div>
-
                                 <input class="form-control" name="Open_By" placeholder="Input name here"
                                     value="{{ old('Open_By') }}">
                             </div>
+                        </div> --}}
+
+                        <div class="col-md-4">
+                            <div class="form-label"><strong>Open By </strong></div>
+                            <select class="form-select" name="Open_By" id="Open_By">
+                                <option value="">Click to search for Name Analyst</option>
+                                @foreach ($openby as $row)
+                                    <option value="{{ $row->name }}"
+                                        @if (old('Open_By') == $row->name) selected @endif>
+                                        {{ $row->name }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
+
+
+
+
+                        
                     </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">

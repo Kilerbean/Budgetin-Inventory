@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Usage;
 use App\Models\barang;
 use App\Models\Income;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUsageRequest;
@@ -37,14 +38,16 @@ class UsageController extends Controller
     ->groupBy('Catalog_Number', 'Name_of_Material') // Sesuaikan dengan kolom yang Anda pilih
     ->get();
 
-
+    $openby=User::where('title','Material QC Analyst')
+                ->where('Status',1)
+                ->get();
 
     $materialusage = Usage::latest()
         ->where('Status', '0')
         ->where('tipe_transaksi', '1')
         ->get();
 
-    return view('usage.create', compact('uniqueIncomes', 'materialusage'))->with('i');
+    return view('usage.create', compact('uniqueIncomes', 'materialusage','openby'))->with('i');
 }
     /**
      * Store a newly created resource in storage.
