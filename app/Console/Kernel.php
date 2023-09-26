@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('app:financial')->yearly();
         $schedule->command('make:stockopname')->lastDayOfMonth('23:00');
+        $schedule->command('clear:session')->everyTenMinutes();
     }
 
     /**

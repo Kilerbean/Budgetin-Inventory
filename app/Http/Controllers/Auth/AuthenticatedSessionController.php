@@ -31,12 +31,13 @@ class AuthenticatedSessionController extends Controller
     {
         $user= User::where('email',strtolower($request->email))->first();
         $sessions = QCSession::where('user_id', $user->id)->get();
+        foreach($sessions as $session){
+            $session->delete();
+        }
         //dd($sessions->count());
         if($sessions->count()>0){
             return back()->with('error','Failed...You have log in on another device (IP : '.$sessions->first()->ip_address .')');
-            foreach($sessions as $session){
-                $session->delete();
-            }
+            
         }        
         
         $request->authenticate();
