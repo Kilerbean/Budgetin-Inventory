@@ -15,8 +15,8 @@
              <th style="background-color: lightgray;">Material Code</th>
             <th style="background-color: lightgray;">Type of Material</th>
    
-            <th style="background-color: lightgray;">Packing Size</th>
-            <th style="background-color: lightgray;">Packing Size Unit</th>
+            {{-- <th style="background-color: lightgray;">Packing Size</th>
+            <th style="background-color: lightgray;">Packing Size Unit</th> --}}
             <th style="background-color: lightgray;">Quantity</th>
             <th style="background-color: lightgray;">Unit</th>
             <th style="background-color: lightgray;">Safety Stock</th>
@@ -44,8 +44,8 @@
             <td>{{ $baranglow ->Material_Code}}</td>
             <td>{{ $baranglow ->Type_of_Material }}</td>
 
-            <td>{{ $baranglow ->packingsize }}</td>
-            <td>{{ $baranglow ->packingsize_unit }}</td>
+            {{-- <td>{{ $baranglow ->packingsize }}</td>
+            <td>{{ $baranglow ->packingsize_unit }}</td> --}}
             <td>{{ $totalQuantity[$baranglow->Material_Code]}}</td>
             <td>{{ $baranglow ->Unit }}</td>
             <td>{{ $baranglow ->Safety_Stock }}</td>
