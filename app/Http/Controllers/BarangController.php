@@ -289,11 +289,20 @@ class BarangController extends Controller
 
 public function listcode()
 {
-    $barangs = Barang::where('Status', 1)
-    ->orderBy('Material_Code')
-    ->distinct('Material_Code')
-    ->get();
-        return view('ListOfMaterial.listmaterialcode', compact('barangs'));
+    $barangs = DB::table('barangs')
+    ->select('Material_Code','Quantity','Safety_Stock','id','Type_of_Material','Type_of_Budget','Name_of_Material','Catalog_Number','packingsize','packingsize_unit','Unit','Maximum_Stock','Manufaktur','Harga','Status','Expire_Date','created_at','updated_at')
+    ->whereIn('id', function ($query) {
+        $query->select(DB::raw('MIN(id)'))
+            ->from('barangs')
+            ->groupBy('Material_Code')
+            ->havingRaw('SUM(Quantity)');
+    })->get();
+
+    
+    $totalQuantity=Barang::getTotalQuantity();
+    $totalAmounts = Barang::getTotalAmounts();
+
+        return view('ListOfMaterial.listmaterialcode', compact('barangs','totalAmounts','totalQuantity'));
 }
 
 

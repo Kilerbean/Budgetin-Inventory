@@ -36,14 +36,14 @@
                                                 <a href="/forgot-password">Forgot password?</a>
                                             </small>
                                         </div>
-                                        <div>
+                                        {{-- <div>
                                             <label class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="remember" checked>
                                                 <span class="form-check-label">
                                                     Remember me next time
                                                 </span>
                                             </label>
-                                        </div>
+                                        </div> --}}
                                         <div class="text-center mt-3">
                                             <button type="submit" class="btn btn-lg btn-primary">Sign in</button>
                                         </div>

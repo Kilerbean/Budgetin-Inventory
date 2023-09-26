@@ -42,41 +42,41 @@
                           none</option>
                       <option value="QC Support" {{ old('title', $user->title) == 'QC Support' ? 'selected' : '' }}>
                           QC Support</option>
-                      <option
-                          value="Finished Goods QC Analyst"{{ old('title', $user->title) == 'Finished Goods QC Analyst' ? 'selected' : '' }}>
+                      <option value="Finished Goods QC Analyst"{{ old('title', $user->title) == 'Finished Goods QC Analyst' ? 'selected' : '' }}>
                           Finished Goods QC Analyst</option>
-                      <option
-                          value="Material QC Analyst"{{ old('title', $user->title) == 'Material QC Analyst' ? 'selected' : '' }}>
+                      <option value="Material QC Analyst"{{ old('title', $user->title) == 'Material QC Analyst' ? 'selected' : '' }}>
                           Material QC Analyst</option>
-                      <option value="QC Supervisor" {{ old('title', $user->title) == 'QC Supervisor' ? 'selected' : '' }}>
+                      <option value="Microbiology QC Analyst"{{ old('title', $user->title) == 'Microbiology QC Analyst' ? 'selected' : '' }}>
+                          Microbiology QC Analyst</option>
+                      <option value="Stability QC Analyst"{{ old('title', $user->title) == 'Stability QC Analyst' ? 'selected' : '' }}>
+                          Stability QC Analyst</option>
+                      <option value="QC Supervisor"{{ old('title', $user->title) == 'QC Supervisor' ? 'selected' : '' }}>
                           QC Supervisor</option>
-                      <option value="QC Jr. Manager"
-                          {{ old('title', $user->title) == 'QC Jr. Manager' ? 'selected' : '' }}>
+                      <option value="QC Jr. Manager"{{ old('title', $user->title) == 'QC Jr. Manager' ? 'selected' : '' }}>
                           QC Jr. Manager</option>
                       <option value="QC Manager" {{ old('title', $user->title) == 'QC Manager' ? 'selected' : '' }}>
                           QC Manager</option>
-                      <option value="Quality Operation Director"
-                          {{ old('title', $user->title) == 'Quality Operation Director' ? 'selected' : '' }}>
+                      <option value="Quality Operation Director"{{ old('title', $user->title) == 'Quality Operation Director' ? 'selected' : '' }}>
                           Quality Operation Director</option>
                   </select>
               </div>
 
               <div class="col-md-6">
-                <strong>Status</strong>
-                <select class="form-select" name="Status">
-                    <option value=1 {{ old('Status', $user->Status) === 1 ? 'selected' : '' }}>
-                        Active</option>
-                    <option value=0 {{ old('Status', $user->Status) === 0 ? 'selected' : '' }}>
-                        Inactive</option>
-                </select>
-            </div>
-             
+                  <strong>Status</strong>
+                  <select class="form-select" name="Status">
+                      <option value=1 {{ old('Status', $user->Status) === 1 ? 'selected' : '' }}>
+                          Active</option>
+                      <option value=0 {{ old('Status', $user->Status) === 0 ? 'selected' : '' }}>
+                          Inactive</option>
+                  </select>
+              </div>
+
 
 
 
               <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
-                <button type="submit" class="btn btn-success">Save</button>
-            </div>
+                  <button type="submit" class="btn btn-success">Save</button>
+              </div>
           </div>
       </form>
       <br>
@@ -119,43 +119,43 @@
 
       @include('users.audit')
 
-@stop
-@push('js')
-    <script type="text/javascript">
-        $(function() {
-            var table = $('#listlowss').DataTable({
-                dom: 'lBftrip',
-                buttons: [{
-                        extend: 'copyHtml5',
-                        exportOptions: {
-                            columns: [':visible']
-                        }
-                    },
-                    {
-                        extend: 'excelHtml5',
-                        exportOptions: {
-                            columns: [':visible']
-                        }
-                    },
-                    {
-                        extend: 'pdfHtml5',
-                        exportOptions: {
-                            columns: [':visible']
-                        }
-                    },
-                    {
-                        extend: 'print',
-                        exportOptions: {
-                            columns: [':visible']
-                        }
-                    },
-                    {
-                        extend: 'colvis',
-                        text: "Hide / Show",
-                        postfixButtons: ['colvisRestore']
-                    }
-                ],
-            });
-        });
-    </script>
-@endpush
+  @stop
+  @push('js')
+      <script type="text/javascript">
+          $(function() {
+              var table = $('#listlowss').DataTable({
+                  dom: 'lBftrip',
+                  buttons: [{
+                          extend: 'copyHtml5',
+                          exportOptions: {
+                              columns: [':visible']
+                          }
+                      },
+                      {
+                          extend: 'excelHtml5',
+                          exportOptions: {
+                              columns: [':visible']
+                          }
+                      },
+                      {
+                          extend: 'pdfHtml5',
+                          exportOptions: {
+                              columns: [':visible']
+                          }
+                      },
+                      {
+                          extend: 'print',
+                          exportOptions: {
+                              columns: [':visible']
+                          }
+                      },
+                      {
+                          extend: 'colvis',
+                          text: "Hide / Show",
+                          postfixButtons: ['colvisRestore']
+                      }
+                  ],
+              });
+          });
+      </script>
+  @endpush

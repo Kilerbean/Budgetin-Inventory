@@ -44,7 +44,7 @@ class QcDashboardController extends Controller
             ->havingRaw('SUM(Quantity) <= AVG(Safety_Stock)');
     })->get();
 
-
+    $totalQuantity=Barang::getTotalQuantity();
 
         $totalactual1 = DB::table('financials')
             ->where('Type_of_Budget', 'maintenance')
@@ -144,7 +144,8 @@ class QcDashboardController extends Controller
             'baranglows',
             'barangexpire',
             'user',
-            'opname'
+            'opname',
+            'totalQuantity',
         ));
     }
 

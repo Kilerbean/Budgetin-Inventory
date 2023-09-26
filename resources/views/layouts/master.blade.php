@@ -35,7 +35,7 @@
             display: grid;
             border: 4.5px solid #0000;
             border-radius: 50%;
-            border-color: #dbdcef #0000;
+            border-color: #82e9a9 #0000;
             animation: spinner-e04l1k 1s infinite linear;
         }
 
@@ -49,7 +49,7 @@
         }
 
         .spinner::before {
-            border-color: #e6021d #0000;
+            border-color: #2afd00 #0000;
             animation: inherit;
             animation-duration: 0.5s;
             animation-direction: reverse;

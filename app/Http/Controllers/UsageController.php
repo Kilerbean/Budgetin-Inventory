@@ -38,9 +38,16 @@ class UsageController extends Controller
     ->groupBy('Catalog_Number', 'Name_of_Material') // Sesuaikan dengan kolom yang Anda pilih
     ->get();
 
-    $openby=User::where('title','Material QC Analyst')
-                ->where('Status',1)
-                ->get();
+    $openby = User::where(function ($query) {
+        $query->whereIn('title', [
+            'Material QC Analyst',
+            'Finished Goods QC Analyst',
+            'Microbiology QC Analyst',
+            'Stability QC Analyst'
+        ]);
+    })
+    ->where('Status', 1)
+    ->get();
 
     $materialusage = Usage::latest()
         ->where('Status', '0')
@@ -97,7 +104,7 @@ class UsageController extends Controller
         $income->update(['Quantity'=>$newincome]);
         \auditmms(auth()->user()->name,'Create new Material Usage',$barang->Catalog_Number,'Material Usage',$request->no_batch,$old_stok,$newincome);    
         return redirect()->route('usage.index')
-        ->with('success','Material Usage Request Created  successfully');
+        ->with('success','Material Usage Created  successfully');
         }
         else {
             return back()->with('error','not enough stock from that batch number');

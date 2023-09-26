@@ -56,14 +56,15 @@
                     <th class="w-1 ml-1" style="background-color: lightgray;">Action
                     </th>
                     <th style="background-color: lightgray;">No.</th>
-                    {{-- <th style="background-color: lightgray;">Catalog Number</th> --}}
                     <th style="background-color: lightgray;">Name of Material</th>
                     <th style="background-color: lightgray;">Material Code</th>
                     <th style="background-color: lightgray;">Quantity</th>
                     <th style="background-color: lightgray;">Unit</th>
                     <th style="background-color: lightgray;">Type of Material</th>
-                    <th style="background-color: lightgray;">Packing Size</th>
-                    <th style="background-color: lightgray;">Packing Size Unit</th>
+                    {{-- <th style="background-color: lightgray;">Packing Size</th> --}}
+                    <th style="background-color: lightgray;">Total Amount</th>
+                    <th style="background-color: lightgray;">Total Amount Unit</th>
+
                     <th style="background-color: lightgray;">Manufaktur</th>
                     <th style="background-color: lightgray;">Prices (IDR)</th>
                     <th style="background-color: lightgray;">Safety Stock</th>
@@ -72,6 +73,11 @@
                 </tr>
             </thead>
             <tbody>
+                @php
+              $prevMaterialCode = null; // Inisialisasi kode material sebelumnya
+                 $totalAmount = 0; // Inisialisasi total amount
+        
+        @endphp
                 @foreach ($barangs as $barang)
                     <tr>
                         <td class="text-end">
@@ -79,20 +85,19 @@
                             <a href="{{ route('Barang.show', $barang->id) }}"title="Info Detail Material"
                                 class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
 
-                            {{-- <a href="{{ route('Barang.edit', $barang->id) }}" class="btn btn-primary btn-sm"
-                                title="Edit Barang"><i class="fa fa-pen"></i></a> --}}
 
                         </td>
-
+                        
                         <td><span class="text-muted">{{ $no++ }}</span></td>
-                        {{-- <td>{{ $barang->Catalog_Number }}</td> --}}
                         <td>{{ $barang->Name_of_Material }}</td>
                         <td> {{ $barang->Material_Code }}</td>
-                        <td>{{ $barang->Quantity }}</td>
+                        <td>{{ $totalQuantity[$barang->Material_Code] }}</td>
                         <td>{{ $barang->Unit }}</td>
                         <td>{{ $barang->Type_of_Material }}</td>
-                        <td>{{ $barang->packingsize }}</td>
+                        {{-- <td>{{ $barang->packingsize }}</td> --}}
+                        <td>{{ $totalAmounts[$barang->Material_Code] }}</td>
                         <td>{{ $barang->packingsize_unit }}</td>
+
                         <td>{{ $barang->Manufaktur }}</td>
                         <td>{{ number_format($barang->Harga, 2, '.', ',') }}</td>
                         <td>{{ $barang->Safety_Stock }}</td>

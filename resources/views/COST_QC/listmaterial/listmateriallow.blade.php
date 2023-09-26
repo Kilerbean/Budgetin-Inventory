@@ -46,7 +46,7 @@
 
             <td>{{ $baranglow ->packingsize }}</td>
             <td>{{ $baranglow ->packingsize_unit }}</td>
-            <td>{{ $baranglow ->Quantity }}</td>
+            <td>{{ $totalQuantity[$baranglow->Material_Code]}}</td>
             <td>{{ $baranglow ->Unit }}</td>
             <td>{{ $baranglow ->Safety_Stock }}</td>
             <td>{{ $baranglow ->Maximum_Stock }}</td>
