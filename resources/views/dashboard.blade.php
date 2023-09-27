@@ -21,10 +21,10 @@
     </div>
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4" style="background-color: rgb(230, 229, 229);">
             <div class="card">
                 <div class="card-header text-center">
-                    <img class="card-img-top" src="icon/sparta-icon.png" alt="Unsplash" style="width: 10%">
+                    <img class="card-img-top" src="icon/quality-control.png" alt="Unsplash" style="width: 15%">
                 </div>
                 <div class="text-center mb-2">
                     <h5 class="card-title mb-0">COST</h5>
@@ -41,7 +41,119 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4" style="background-color: rgb(230, 229, 229);">
+            <div class="card" >
+                <div class="card-header text-center">
+                    <img class="card-img-top" src="icon/clipboard.png" alt="Unsplash" style="width: 15%">
+                </div>
+                <div class="text-center mb-2">
+                    <h5 class="card-title mb-0">Callibration</h5>
+                    <p class="card-text">QC-LAB</p>
+                    <a href="{{ route('Dashboards') }}" class="btn btn-primary" title="Dashboard COST QC"><i
+                            class="fa fa-house"></i></a>
+                    <a href="{{ route('Barang.index') }}" class="btn btn-info" title="List of All Material"><i
+                            class="fa-solid fa-boxes-stacked"></i></a>
+                    <a href="{{ route('income.create') }}" class="btn btn-warning" title="Purchasing Material"><i
+                            class="fa-solid fa-cart-shopping"></i></a>
+                    <a href="{{ route('usage.create') }}" class="btn btn-success" title="Material Usage"><i
+                            class="fa-solid fa-bag-shopping"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4" style="background-color: rgb(230, 229, 229);">
+            <div class="card" >
+                <div class="card-header text-center">
+                    <img class="card-img-top" src="icon/sparta-icon.png" alt="Unsplash" style="width: 15%">
+                </div>
+                <div class="text-center mb-2">
+                    <h5 class="card-title mb-0">LIMS</h5>
+                    <p class="card-text">EMPOWERING LAB</p>
+                    <a href="{{ route('Dashboards') }}" class="btn btn-primary" title="Dashboard COST QC"><i
+                            class="fa fa-house"></i></a>
+                    {{-- <a href="{{ route('Barang.index') }}" class="btn btn-info" title="List of All Material"><i
+                            class="fa-solid fa-boxes-stacked"></i></a>
+                    <a href="{{ route('income.create') }}" class="btn btn-warning" title="Purchasing Material"><i
+                            class="fa-solid fa-cart-shopping"></i></a>
+                    <a href="{{ route('usage.create') }}" class="btn btn-success" title="Material Usage"><i
+                            class="fa-solid fa-bag-shopping"></i> --}}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4" style="background-color: rgb(230, 229, 229);">
+            <div class="card" >
+                <div class="card-header text-center">
+                    <img class="card-img-top" src="icon/sparta-icon.png" alt="Unsplash" style="width: 10%">
+                </div>
+                <div class="text-center mb-2">
+                    <h5 class="card-title mb-0">ICCS</h5>
+                    <p class="card-text"></p>
+                    <a href="{{ route('Dashboards') }}" class="btn btn-primary" title="Dashboard COST QC"><i
+                            class="fa fa-house"></i></a>
+                    {{-- <a href="{{ route('Barang.index') }}" class="btn btn-info" title="List of All Material"><i
+                            class="fa-solid fa-boxes-stacked"></i></a>
+                    <a href="{{ route('income.create') }}" class="btn btn-warning" title="Purchasing Material"><i
+                            class="fa-solid fa-cart-shopping"></i></a>
+                    <a href="{{ route('usage.create') }}" class="btn btn-success" title="Material Usage"><i
+                            class="fa-solid fa-bag-shopping"></i> --}}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4" style="background-color: rgb(230, 229, 229);">
+            <div class="card" >
+                <div class="card-header text-center">
+                    <img class="card-img-top" src="icon/sparta-icon.png" alt="Unsplash" style="width: 10%">
+                </div>
+                <div class="text-center mb-2">
+                    <h5 class="card-title mb-0">SMD</h5>
+                    <p class="card-text"></p>
+                    <a href="{{ route('Dashboards') }}" class="btn btn-primary" title="Dashboard COST QC"><i
+                            class="fa fa-house"></i></a>
+                    {{-- <a href="{{ route('Barang.index') }}" class="btn btn-info" title="List of All Material"><i
+                            class="fa-solid fa-boxes-stacked"></i></a>
+                    <a href="{{ route('income.create') }}" class="btn btn-warning" title="Purchasing Material"><i
+                            class="fa-solid fa-cart-shopping"></i></a>
+                    <a href="{{ route('usage.create') }}" class="btn btn-success" title="Material Usage"><i
+                            class="fa-solid fa-bag-shopping"></i> --}}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4" style="background-color: rgb(230, 229, 229);">
+            <div class="card" >
+                <div class="card-header text-center">
+                    <img class="card-img-top" src="icon/sparta-icon.png" alt="Unsplash" style="width: 10%">
+                </div>
+                <div class="text-center mb-2">
+                    <h5 class="card-title mb-0">Lumens</h5>
+                    <p class="card-text"></p>
+                    <a href="{{ route('Dashboards') }}" class="btn btn-primary" title="Dashboard COST QC"><i
+                            class="fa fa-house"></i></a>
+                    {{-- <a href="{{ route('Barang.index') }}" class="btn btn-info" title="List of All Material"><i
+                            class="fa-solid fa-boxes-stacked"></i></a>
+                    <a href="{{ route('income.create') }}" class="btn btn-warning" title="Purchasing Material"><i
+                            class="fa-solid fa-cart-shopping"></i></a>
+                    <a href="{{ route('usage.create') }}" class="btn btn-success" title="Material Usage"><i
+                            class="fa-solid fa-bag-shopping"></i> --}}
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
+
+
+
+    
 @stop
 @push('js')
     <script>

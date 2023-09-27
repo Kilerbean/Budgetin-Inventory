@@ -53,8 +53,7 @@
             <thead>
                 <tr>
                     <?php $no = 1; ?>
-                    <th class="w-1 ml-1" style="background-color: lightgray;">Action
-                    </th>
+                    {{-- <th class="w-1 ml-1" style="background-color: lightgray;">Action</th> --}}
                     <th style="background-color: lightgray;">No.</th>
                     <th style="background-color: lightgray;">Name of Material</th>
                     <th style="background-color: lightgray;">Material Code</th>
@@ -80,13 +79,13 @@
         @endphp
                 @foreach ($barangs as $barang)
                     <tr>
-                        <td class="text-end">
+                        {{-- <td class="text-end">
 
                             <a href="{{ route('Barang.show', $barang->id) }}"title="Info Detail Material"
                                 class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
 
 
-                        </td>
+                        </td> --}}
                         
                         <td><span class="text-muted">{{ $no++ }}</span></td>
                         <td>{{ $barang->Name_of_Material }}</td>
