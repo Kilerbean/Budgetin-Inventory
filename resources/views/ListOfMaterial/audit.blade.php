@@ -16,7 +16,7 @@
               <th style="background-color: lightgray;">Activity</th>
               <th style="background-color: lightgray;">Catalog Number</th>
               <th style="background-color: lightgray;">Table</th>
-              <th style="background-color: lightgray;">Field</th>
+              <th style="background-color: lightgray;">Field/Batch Number</th>
               <th style="background-color: lightgray;">Quantity Before </th>
               <th style="background-color: lightgray;">Qantity After</th>
             </tr>
