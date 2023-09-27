@@ -66,7 +66,7 @@
         <div class="col-md-4" style="background-color: rgb(230, 229, 229);">
             <div class="card" >
                 <div class="card-header text-center">
-                    <img class="card-img-top" src="icon/sparta-icon.png" alt="Unsplash" style="width: 15%">
+                    <img class="card-img-top" src="https://lims.sohoglobalhealth.com/assets/images/brand/logo-3.png" alt="Unsplash" style="width: 50%">
                 </div>
                 <div class="text-center mb-2">
                     <h5 class="card-title mb-0">LIMS</h5>
@@ -87,7 +87,7 @@
         <div class="col-md-4" style="background-color: rgb(230, 229, 229);">
             <div class="card" >
                 <div class="card-header text-center">
-                    <img class="card-img-top" src="icon/sparta-icon.png" alt="Unsplash" style="width: 10%">
+                    <img class="card-img-top" src="https://iccs.sohoglobalhealth.com/assets/images/logo/logoiccs-light.png" alt="Unsplash" style="width: 10%">
                 </div>
                 <div class="text-center mb-2">
                     <h5 class="card-title mb-0">ICCS</h5>
@@ -108,7 +108,7 @@
         <div class="col-md-4" style="background-color: rgb(230, 229, 229);">
             <div class="card" >
                 <div class="card-header text-center">
-                    <img class="card-img-top" src="icon/sparta-icon.png" alt="Unsplash" style="width: 10%">
+                    <img class="card-img-top" src="http://190.191.1.151/smd/img/logo.png" alt="Unsplash" style="width: 50%">
                 </div>
                 <div class="text-center mb-2">
                     <h5 class="card-title mb-0">SMD</h5>
@@ -129,7 +129,7 @@
         <div class="col-md-4" style="background-color: rgb(230, 229, 229);">
             <div class="card" >
                 <div class="card-header text-center">
-                    <img class="card-img-top" src="icon/sparta-icon.png" alt="Unsplash" style="width: 10%">
+                    <img class="card-img-top" src="http://172.19.19.39:82/icon/app-icon.png" alt="Unsplash" style="width: 10%">
                 </div>
                 <div class="text-center mb-2">
                     <h5 class="card-title mb-0">Lumens</h5>
