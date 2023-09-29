@@ -34,11 +34,14 @@ class AuthenticatedSessionController extends Controller
         foreach($sessions as $session){
             $session->delete();
         }
-        //dd($sessions->count());
+        
         if($sessions->count()>0){
             return back()->with('error','Failed...You have log in on another device (IP : '.$sessions->first()->ip_address .')');
-            
         }        
+
+        if($user->Status!=1){
+            return back()->with('error','Your account has been locked, please contact your manager or administrator');
+        }
         
         $request->authenticate();
 
