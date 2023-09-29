@@ -71,7 +71,7 @@
                 <div class="text-center mb-2">
                     <h5 class="card-title mb-0">LIMS</h5>
                     <p class="card-text">EMPOWERING LAB</p>
-                    <a href="{{ route('Dashboards') }}" class="btn btn-primary" title="Dashboard COST QC"><i
+                    <a href="https://lims.sohoglobalhealth.com" class="btn btn-primary" title="Dashboard COST QC"><i
                             class="fa fa-house"></i></a>
                     {{-- <a href="{{ route('Barang.index') }}" class="btn btn-info" title="List of All Material"><i
                             class="fa-solid fa-boxes-stacked"></i></a>
@@ -92,7 +92,7 @@
                 <div class="text-center mb-2">
                     <h5 class="card-title mb-0">ICCS</h5>
                     <p class="card-text"></p>
-                    <a href="{{ route('Dashboards') }}" class="btn btn-primary" title="Dashboard COST QC"><i
+                    <a href="https://iccs.sohoglobalhealth.com" class="btn btn-primary" title="Dashboard COST QC"><i
                             class="fa fa-house"></i></a>
                     {{-- <a href="{{ route('Barang.index') }}" class="btn btn-info" title="List of All Material"><i
                             class="fa-solid fa-boxes-stacked"></i></a>
@@ -113,7 +113,7 @@
                 <div class="text-center mb-2">
                     <h5 class="card-title mb-0">SMD</h5>
                     <p class="card-text"></p>
-                    <a href="{{ route('Dashboards') }}" class="btn btn-primary" title="Dashboard COST QC"><i
+                    <a href="http://190.191.1.151/smd/login.php" class="btn btn-primary" title="Dashboard COST QC"><i
                             class="fa fa-house"></i></a>
                     {{-- <a href="{{ route('Barang.index') }}" class="btn btn-info" title="List of All Material"><i
                             class="fa-solid fa-boxes-stacked"></i></a>
@@ -134,7 +134,7 @@
                 <div class="text-center mb-2">
                     <h5 class="card-title mb-0">Lumens</h5>
                     <p class="card-text"></p>
-                    <a href="{{ route('Dashboards') }}" class="btn btn-primary" title="Dashboard COST QC"><i
+                    <a href="http://172.19.19.39:82/login" class="btn btn-primary" title="Dashboard COST QC"><i
                             class="fa fa-house"></i></a>
                     {{-- <a href="{{ route('Barang.index') }}" class="btn btn-info" title="List of All Material"><i
                             class="fa-solid fa-boxes-stacked"></i></a>
