@@ -15,6 +15,10 @@ class userlevel
      */
     public function handle(Request $request, Closure $next,...$leveluser): Response
     {
+        if(auth()->user()->Status!=1){
+            return back()->with('error','Your account has been locked, please contact your manager or administrator');
+        }
+
         $userLevel = $request->user()->leveluser;
         if (is_int($userLevel) && in_array($userLevel, $leveluser)) {
             return $next($request);
