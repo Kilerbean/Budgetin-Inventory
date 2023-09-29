@@ -25,7 +25,7 @@ use App\Models\User;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified','user.level'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -42,11 +42,11 @@ Route::get('/dasar',function () {
 
 //Route Dashboard QC COST
 Route::middleware('auth')->group(function() {
-    Route::get('/dashboards', [QcDashboardController::class,'dashboard']) ->name('Dashboards');
+    Route::get('/dashboards', [QcDashboardController::class,'dashboard']) ->name('Dashboards')->middleware('user.level:1,2,3,4,5');
 
 
-Route::post('/Tambah', [QcDashboardController::class,'store']) ->name('tambahmaterial');
-Route::get('/tambah/{baranglow}/material', [QcDashboardController::class,'tambah']) ->name('tambah');
+Route::post('/Tambah', [QcDashboardController::class,'store']) ->name('tambahmaterial')->middleware('user.level:1,2,3,4,5');
+Route::get('/tambah/{baranglow}/material', [QcDashboardController::class,'tambah']) ->name('tambah')->middleware('user.level:1,2,3,4,5');
 
 Route::get('/maintenance', [QcDashboardController::class,'maintenance']) ->name('Maintenance')->middleware('user.level:2,3,4,5');
 Route::get('/PRad', [QcDashboardController::class,'PRad']) ->name('Product')->middleware('user.level:2,3,4,5');
@@ -74,7 +74,7 @@ Route::get('/barang/{id}/statusnonaktif',[Barangcontroller::class,'statusnonakti
 Route::get('/barang/{id}/statusaktif',[Barangcontroller::class,'statusaktif'])-> name('aktif')->middleware('user.level:4,5');
 Route::get('/barang/tidakaktif',[BarangController::class,'tidakaktif'])-> name('barangtidakaktif')->middleware('user.level:4,5');
 Route::post('/barangs/import',[BarangController::class,'import'])->name('import');
-Route::get('/barang/listcode',[BarangController::class,'listcode'])->name('Barang.listcode');
+Route::get('/barang/listcode',[BarangController::class,'listcode'])->name('Barang.listcode')->middleware('user.level:1,2,3,4,5');
 
 
 //Route Incoming Material

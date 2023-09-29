@@ -16,9 +16,15 @@ class userlevel
     public function handle(Request $request, Closure $next,...$leveluser): Response
     {
         $userLevel = $request->user()->leveluser;
-        if (is_int($userLevel) && in_array($userLevel, $leveluser)) {
+        $userStatus=$request->user()->Status;
+        $infoMassage='you dont have access to continue,need a higher user level';
+        if (is_int($userLevel) && in_array($userLevel, $leveluser)&& $userStatus==1) {
             return $next($request);
         }
-        return back()->with('info','you dont have access to continue,need a higher user level');
+        if ($userStatus == 0) {
+            $infoMassage = 'User Not Active';
+        }
+
+        return back()->with('info',$infoMassage);
     }
 }
