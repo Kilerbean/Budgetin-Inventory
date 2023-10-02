@@ -30,7 +30,8 @@
                 <label class="form-label"> Unit : {{ $barang->Unit }} </label><br>
                 <label class="form-label"> Packing Size : {{ $barang->packingsize }} </label><br>
                 <label class="form-label"> Packing Size Unit : {{ $barang->packingsize_unit }} </label><br>
-                <label class="form-label"> Price : {{ $barang->Harga }} </label><br>
+                <label class="form-label"> Price :IDR {{ number_format($barang->Harga, 2, '.', ',') }} </label><br>
+                <label class="form-label"> Movement Category : {{ $barang->category }} </label><br>
                 <label class="form-label"> Safety Stock : {{ $barang->Safety_Stock }} </label><br>
                 <label class="form-label"> Maximum Stock : {{ $barang->Maximum_Stock }} </label>
             </div>

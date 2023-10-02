@@ -113,8 +113,10 @@
                             <th style="background-color: lightgray;">Packing Size Unit</th>
                             <th style="background-color: lightgray;">Manufaktur</th>
                             <th style="background-color: lightgray;">Prices (IDR)</th>
+                            <th style="background-color: lightgray;">Movement Category</th>
                             <th style="background-color: lightgray;">Safety Stock</th>
                             <th style="background-color: lightgray;">Maximum Stock</th>
+
                             <th style="background-color: lightgray;">Status</th>
                         </tr>
                     </thead>
@@ -144,8 +146,10 @@
                                 <td>{{ $barang->packingsize_unit }}</td>
                                 <td>{{ $barang->Manufaktur }}</td>
                                 <td>{{ number_format($barang->Harga, 2, '.', ',') }}</td>
+                                <td>{{ $barang->category }}</td>
                                 <td>{{ $barang->Safety_Stock }}</td>
                                 <td>{{ $barang->Maximum_Stock }}</td>
+                            
                                 <td>{{ $barang->Status == 1 ? 'Active' : 'Inactive' }}</td>
                         @endforeach
 

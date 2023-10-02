@@ -71,7 +71,9 @@ class BarangController extends Controller
             'Safety_Stock' => ['required'],
             'Harga' => ['required'],
             'Maximum_Stock' => ['required'],
-        ], ['packingsize_unit.required' => ['packing size unit field is required']]);
+            'category'=>['required']
+        ], ['packingsize_unit.required' => ['packing size unit field is required'],
+            'category.required'=>['Movement Category field is required']]);
 
         $materialcode = Materialcode::where('Type_of_Material', $request->Type_of_Material)->first();
         $lastid = barang::where('Material_Code', 'like', $materialcode->Material_Code . '%')->max('Material_Code');
@@ -93,6 +95,7 @@ class BarangController extends Controller
         $barang->Safety_Stock = $request->Safety_Stock;
         $barang->Harga = $request->Harga;
         $barang->Maximum_Stock = $request->Maximum_Stock;
+        $barang->category=$request->category;
 
         $barang->save();
         session()->flash('success', 'Material data successfully added.');
@@ -164,7 +167,9 @@ class BarangController extends Controller
             'Safety_Stock' => ['required'],
             'Harga' => ['required'],
             'Maximum_Stock' => ['required'],
-        ], ['Packingsize Unit.required' => 'Packing size Unit field is required']);
+            'category'=>['required']
+        ], ['Packingsize Unit.required' => 'Packing size Unit field is required',
+        'category.required'=>['Movement Category field is required']]);
         $barang = barang::find($id);
 
         $barang->Material_Code = $request->Material_Code;
@@ -180,6 +185,7 @@ class BarangController extends Controller
         $barang->Unit = $request->Unit;
         $barang->Safety_Stock = $request->Safety_Stock;
         $barang->Maximum_Stock = $request->Maximum_Stock;
+        $barang->category=$request->category;
 
         $barang->save();
         session()->flash('info', 'Material data Successfully edited.');

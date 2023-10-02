@@ -230,7 +230,21 @@
                         @enderror
                     </div>
 
-                    <div class="mb-3">
+                    
+                    <div class=" col-md-6">
+                        <div class="form-label">Movement Category</div>
+                        <select class="form-select @error('category') is-invalid @enderror" name="category">
+                            <option value="">Select</option>
+                            <option value="Fast" {{ old('category') === 'Fast' ? 'selected' : '' }}>Fast</option>
+                            <option value="Slow" {{ old('category') === 'Slow' ? 'selected' : '' }}>Slow</option>
+                        </select>
+                        @error('category')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+
+                     <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
                         <input type="submit" value="Save" class="btn btn-primary">
                     </div>
                 </div>

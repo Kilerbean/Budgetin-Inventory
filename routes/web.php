@@ -82,10 +82,10 @@ Route::get('/barang/listcode',[BarangController::class,'listcode'])->name('Baran
 Route::get('/income',[IncomeController::class,'index'])-> name('income.index')->middleware('user.level:2,3,4,5');
 Route::get('/income/create',[Incomecontroller::class,'create'])-> name('income.create')->middleware('user.level:2,3,4,5');
 Route::post('/income/store',[Incomecontroller::class,'store'])-> name('income.store')->middleware('user.level:2,3,4,5');
-Route::get('/income/{income}/edit',[Incomecontroller::class,'edit'])-> name('income.edit')->middleware('user.level:4,5');
+Route::get('/income/{income}/edit',[Incomecontroller::class,'edit'])-> name('income.edit')->middleware('user.level:2,3,4,5');
 // Route::get('/income/{income}/detail',[Incomecontroller::class,'show'])-> name('income.show')->middleware('user.level:2,3,4,5');
 Route::put('/income/{income}',[Incomecontroller::class,'update'])-> name('income.update')->middleware('user.level:2,3,4,5');
-Route::delete('/income/{income}',[Incomecontroller::class,'destroy'])-> name('income.destroy')->middleware('user.level:2,3,4,5');
+Route::delete('/income/{income}',[Incomecontroller::class,'destroy'])-> name('income.destroy')->middleware('user.level:4,5');
 
 
 Route::put('/income/{income}/updateterima',[IncomeController::class,'updatediterima'])->name('Income.Diterima')->middleware('user.level:2,3,4,5');

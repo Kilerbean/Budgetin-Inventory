@@ -187,6 +187,16 @@
                 </div>
 
                 <div class="mb-3">
+                    <div class="form-label">Movement Category</div>
+                    <select class="form-select" name="category">
+
+                        <option value="Slow" {{ old('category', $barang->category) === 'Slow' ? 'selected' : '' }}>Slow</option>
+                        <option value="Fast" {{ old('category', $barang->category) === 'Fast' ? 'selected' : '' }}>Fast</option>
+                    </select>
+                </div>
+
+                <br>
+                <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
                     <input type="submit" value="Save" class="btn btn-primary">
                 </div>
             </form>
