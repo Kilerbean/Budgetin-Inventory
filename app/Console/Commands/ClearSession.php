@@ -27,9 +27,8 @@ class ClearSession extends Command
     public function handle()
     {
         $sessionConfig = config('session.lifetime');
-        $thresholdTimestamp = now()->addMinute(-$sessionConfig);       
-        
-        $sesi = QCSession::where('last_activity', '>', $thresholdTimestamp)->get();
+        $thresholdTimestamp = now()->addMinute(-$sessionConfig)->unix();      
+        $sesi = QCSession::where('last_activity', '<', $thresholdTimestamp)->get();        
         foreach($sesi as $data){
             $data->delete();
         }
