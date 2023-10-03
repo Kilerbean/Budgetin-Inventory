@@ -30,24 +30,26 @@
                             <td>
 
                                 {{-- tombol Edit --}}
-                                <a class="btn btn-primary btn-sm" href="{{ route('income.edit', $income->id) }}"
-                                    title="Edit Material"> <i class="fa fa-pen"></i></a>
+                               
 
 
 
 
 
-                                @if (auth()->user()->leveluser > 4)
+                              
                                     <form action="{{ route('income.destroy', $income->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
+                                        <a class="btn btn-primary btn-sm" href="{{ route('income.edit', $income->id) }}"
+                                            title="Edit Material"> <i class="fa fa-pen"></i></a>
 
+                                        @if (auth()->user()->leveluser > 4)
                                         <button type="submit" class="btn btn-danger btn-sm"
                                             onclick="return confirm('Are you sure want to delete this ?');"
                                             title="Delete"><i class="fa fa-trash"></i></button>
-
+                                            @endif
                                     </form>
-                                @endif
+                            
                             </td>
                             <td>{{ ++$i }}</td>
                             <td>{{ $income->No_PO }}</td>

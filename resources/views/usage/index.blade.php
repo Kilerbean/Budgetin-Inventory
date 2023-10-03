@@ -16,7 +16,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">List all materials that will be used</h3>
+                <h3 class="card-title">List all materials Usage</h3>
             </div>
 
             <div class="table-responsive text-nowrap">

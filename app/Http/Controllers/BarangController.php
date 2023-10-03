@@ -95,6 +95,12 @@ class BarangController extends Controller
         $barang->Safety_Stock = $request->Safety_Stock;
         $barang->Harga = $request->Harga;
         $barang->Maximum_Stock = $request->Maximum_Stock;
+        // if ($request->Safety_Stock >1) {
+        //     $barang->category='Fast Moving';
+        // }
+        // else {
+        //     $barang->category='Slow Moving';
+        // }
         $barang->category=$request->category;
 
         $barang->save();
@@ -132,7 +138,7 @@ class BarangController extends Controller
             ->where('Status', '1')
             ->where('tipe_transaksi', '1')->get();
 
-
+        
         return view('ListOfMaterial.show', compact('barang', 'audit', 'incomes', 'usage', 'incomess',))
             ->with('i');
     }
@@ -295,8 +301,8 @@ class BarangController extends Controller
 
 public function listcode()
 {
-    $barangs = DB::table('barangs')
-    ->select('Material_Code','Quantity','Safety_Stock','id','Type_of_Material','Type_of_Budget','Name_of_Material','Catalog_Number','packingsize','packingsize_unit','Unit','Maximum_Stock','Manufaktur','Harga','Status','Expire_Date','created_at','updated_at')
+    $barangs = barang::
+    select('Material_Code','Quantity','Safety_Stock','id','Type_of_Material','Type_of_Budget','Name_of_Material','Catalog_Number','packingsize','packingsize_unit','Unit','Maximum_Stock','Manufaktur','Harga','Status','Expire_Date','created_at','updated_at','category')
     ->whereIn('id', function ($query) {
         $query->select(DB::raw('MIN(id)'))
             ->from('barangs')

@@ -42,17 +42,19 @@
                                 title="Edit Barang"> <i class="fa fa-pen"></i></a>
 
 
-                                @if (auth()->user()->leveluser > 4)
+                              
                             <form action="{{ route('income.destroy', $income->id) }}" method="POST">
                                 {{-- <a class="btn btn-info btn-sm" href="{{ route('income.show',$income->id) }}">Show</a> --}}
                                 @csrf
                                 @method('DELETE')
-
+                                
+                                @if (auth()->user()->leveluser > 4)
                                 <button type="submit" class="btn btn-danger btn-sm"
                                     onclick="return confirm('Are you sure want to delete this ?');"
                                     title="Delete Barang"><i class="fa fa-trash"></i></button>
+                                    @endif
                             </form>
-                            @endif
+                            
                         </td>
                         <td>{{ ++$i }}</td>
                         <td>{{ $income->No_PR }}</td>
