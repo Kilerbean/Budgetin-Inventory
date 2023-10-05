@@ -6,27 +6,33 @@
     
 @endphp
 @section('title', $pages)
+
 @push('css')
     <style>
         .collapsed {
             transition: none;
         }
     </style>
+    
 @endpush
+
 @section('content')
+
+
     <div class="container-fluid p-0">
-        <h1><img {{-- class="slide-fwd-top" --}} src="https://img.icons8.com/color/96/company.png" alt="Unsplash" style="width: 50px">
+        <h1><img {{-- class="slide-fwd-top" --}} src="{{asset('icon/laboratorys.png')}}"  alt="Unsplash" style="width: 50px">
             <span {{-- class="slide-left" --}} style="display: inline-block"> Welcome to <strong>QC LAB</strong></span>
         </h1>
     </div>
 
-    <div class="row">
-        <div class="col-md-4" style="background-color: rgb(230, 229, 229);">
-            <div class="card">
-                <div class="card-header text-center">
-                    <img class="card-img-top" src="icon/quality-control.png" alt="Unsplash" style="width: 15%">
+    <div class="row" >
+  
+        <div class="col-md-4" style="background-color: rgb(168, 236, 168);">
+            <div class="card" >
+                <div class="card-header text-center" >
+                    <img class="card-img-top" src="icon/Cost_lab-removebg-preview.png" alt="Unsplash" style="width: 15%">
                 </div>
-                <div class="text-center mb-2">
+                <div class="text-center mb-2" >
                     <h5 class="card-title mb-0">COST</h5>
                     <p class="card-text">QC-LAB</p>
                     <a href="{{ route('Dashboards') }}" class="btn btn-primary" title="Dashboard COST QC"><i
@@ -42,10 +48,10 @@
             </div>
         </div>
 
-        <div class="col-md-4" style="background-color: rgb(230, 229, 229);">
+        <div class="col-md-4" style="background-color: rgb(168, 236, 168);">
             <div class="card" >
                 <div class="card-header text-center">
-                    <img class="card-img-top" src="icon/clipboard.png" alt="Unsplash" style="width: 15%">
+                    <img class="card-img-top" src="icon/laboratory.png" alt="Unsplash" style="width: 15%">
                 </div>
                 <div class="text-center mb-2">
                     <h5 class="card-title mb-0">Callibration</h5>
@@ -63,10 +69,10 @@
             </div>
         </div>
 
-        <div class="col-md-4" style="background-color: rgb(230, 229, 229);">
+        <div class="col-md-4" style="background-color: rgb(168, 236, 168);">
             <div class="card" >
                 <div class="card-header text-center">
-                    <img class="card-img-top" src="https://lims.sohoglobalhealth.com/assets/images/brand/logo-3.png" alt="Unsplash" style="width: 50%">
+                    <img class="card-img-top" src="https://lims.sohoglobalhealth.com/assets/images/brand/logo-3.png" alt="Unsplash" style="width: 40%">
                 </div>
                 <div class="text-center mb-2">
                     <h5 class="card-title mb-0">LIMS</h5>
@@ -84,7 +90,7 @@
             </div>
         </div>
 
-        <div class="col-md-4" style="background-color: rgb(230, 229, 229);">
+        <div class="col-md-4" style="background-color: rgb(161, 208, 252);">
             <div class="card" >
                 <div class="card-header text-center">
                     <img class="card-img-top" src="https://iccs.sohoglobalhealth.com/assets/images/logo/logoiccs-light.png" alt="Unsplash" style="width: 10%">
@@ -105,7 +111,7 @@
             </div>
         </div>
 
-        <div class="col-md-4" style="background-color: rgb(230, 229, 229);">
+        <div class="col-md-4" style="background-color: rgb(161, 208, 252);">
             <div class="card" >
                 <div class="card-header text-center">
                     <img class="card-img-top" src="http://190.191.1.151/smd/img/logo.png" alt="Unsplash" style="width: 50%">
@@ -126,7 +132,7 @@
             </div>
         </div>
 
-        <div class="col-md-4" style="background-color: rgb(230, 229, 229);">
+        <div class="col-md-4" style="background-color: rgb(161, 208, 252);">
             <div class="card" >
                 <div class="card-header text-center">
                     <img class="card-img-top" src="http://172.19.19.39:82/icon/app-icon.png" alt="Unsplash" style="width: 10%">
@@ -145,6 +151,8 @@
                     </a>
                 </div>
             </div>
+        </div>
+        <div class="mb-3" style="background-color: rgb(161, 208, 252); height: 100px;">
         </div>
     </div>
 

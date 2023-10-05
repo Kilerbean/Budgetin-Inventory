@@ -7,7 +7,7 @@
 @section('title', $pages)
 @section('content')
 <div class="container-fluid p-0">
-    <h1><img {{-- class="slide-fwd-top" --}} src="icon/quality-control.png" alt="Unsplash" style="width: 50px">
+    <h1><img {{-- class="slide-fwd-top" --}} src="icon/Cost_lab-removebg-preview.png" alt="Unsplash" style="width: 50px">
     <span {{-- class="slide-left" --}} style="display: inline-block">   Welcome to <strong>{{$pretitle}}</strong></span></h1>        
 </div> 
 

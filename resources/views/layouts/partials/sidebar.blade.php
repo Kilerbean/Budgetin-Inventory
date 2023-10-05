@@ -1,7 +1,7 @@
 <nav id="sidebar" class="sidebar js-sidebar {{-- collapsed --}}">
     <div class="sidebar-content js-simplebar">
         <a class="sidebar-brand" href="/">
-            <img class="img-fluid" src="https://img.icons8.com/color/96/company.png" alt="{{ config('app.name') }}"
+            <img class="img-fluid" src="{{asset('icon/laboratorys.png')}}" alt="{{ config('app.name') }}"
                 style="height: 35px">
             <span class="align-middle"> QC LAB</span>
         </a>

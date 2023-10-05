@@ -1,11 +1,13 @@
-<nav class="navbar navbar-expand-sm navbar-light navbar-bg">
+<nav class="navbar navbar-expand-sm navbar-light navbar-bg" style="background-color: rgb(141, 235, 157);">
     <a class="sidebar-toggle js-sidebar-toggle">
+
         <i class="hamburger align-self-center"></i>
     </a>
-    <div class="navbar-nav navbar-align">
+
+    <div class="navbar-nav navbar-align" >
         @yield('header')
     </div>
-    <div class="navbar-collapse collapse">
+    <div class="navbar-collapse collapse" >
         <ul class="navbar-nav navbar-align">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown"
