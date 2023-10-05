@@ -27,8 +27,8 @@
 
     <div class="row" >
   
-        <div class="col-md-4" style="background-color: rgb(168, 236, 168);">
-            <div class="card" >
+        <div class="col-md-4" style="background-color: rgb(168, 236, 168); padding-top:20px;">
+            <div class="card">
                 <div class="card-header text-center" >
                     <img class="card-img-top" src="icon/Cost_lab-removebg-preview.png" alt="Unsplash" style="width: 15%">
                 </div>
@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        <div class="col-md-4" style="background-color: rgb(168, 236, 168);">
+        <div class="col-md-4" style="background-color: rgb(168, 236, 168);padding-top:20px;">
             <div class="card" >
                 <div class="card-header text-center">
                     <img class="card-img-top" src="icon/laboratory.png" alt="Unsplash" style="width: 15%">
@@ -69,7 +69,7 @@
             </div>
         </div>
 
-        <div class="col-md-4" style="background-color: rgb(168, 236, 168);">
+        <div class="col-md-4" style="background-color: rgb(168, 236, 168);padding-top:20px;">
             <div class="card" >
                 <div class="card-header text-center">
                     <img class="card-img-top" src="https://lims.sohoglobalhealth.com/assets/images/brand/logo-3.png" alt="Unsplash" style="width: 40%">
@@ -90,7 +90,7 @@
             </div>
         </div>
 
-        <div class="col-md-4" style="background-color: rgb(161, 208, 252);">
+        <div class="col-md-4" style="background-color: rgb(161, 208, 252);padding-top:20px;">
             <div class="card" >
                 <div class="card-header text-center">
                     <img class="card-img-top" src="https://iccs.sohoglobalhealth.com/assets/images/logo/logoiccs-light.png" alt="Unsplash" style="width: 10%">
@@ -111,7 +111,7 @@
             </div>
         </div>
 
-        <div class="col-md-4" style="background-color: rgb(161, 208, 252);">
+        <div class="col-md-4" style="background-color: rgb(161, 208, 252);padding-top:20px;">
             <div class="card" >
                 <div class="card-header text-center">
                     <img class="card-img-top" src="http://190.191.1.151/smd/img/logo.png" alt="Unsplash" style="width: 50%">
@@ -132,7 +132,7 @@
             </div>
         </div>
 
-        <div class="col-md-4" style="background-color: rgb(161, 208, 252);">
+        <div class="col-md-4" style="background-color: rgb(161, 208, 252);padding-top:20px;">
             <div class="card" >
                 <div class="card-header text-center">
                     <img class="card-img-top" src="http://172.19.19.39:82/icon/app-icon.png" alt="Unsplash" style="width: 10%">
