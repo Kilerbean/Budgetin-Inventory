@@ -45,6 +45,7 @@
                             <tr>
                                 <th class="w-1 ml-1"style="background-color: lightgray;">Action</th>
                                 <th style="background-color: lightgray;">No</th>
+                                <th style="background-color: lightgray;">No PR</th>
                                 <th style="background-color: lightgray;">No PO</th>
                                 <th style="background-color: lightgray;">Catalog Number</th>
                                 <th style="background-color: lightgray;">Name of Material</th>
@@ -54,7 +55,6 @@
                                 <th style="background-color: lightgray;">Total</th>
                                 <th style="background-color: lightgray;">Unit</th>
                                 <th style="background-color: lightgray;">Propose</th>
-                                <th style="background-color: lightgray;">No PR</th>
                                 <th style="background-color: lightgray;">PR Date</th>
                                 <th style="background-color: lightgray;">Expire Date</th>
                                 <th style="background-color: lightgray;">Status</th>
@@ -82,6 +82,7 @@
                               
                             </td>
                             <td>{{ ++$i }}</td>
+                            <td>{{ $income->No_PR }}</td>
                             <td>{{ $income->No_PO }}</td>
                             <td>{{ $income->Catalog_Number }}</td>
                             <td>{{ $income->Barang->Name_of_Material }}</td>
@@ -91,7 +92,6 @@
                             <td>{{ number_format($income->Total, 2, '.', ',') }}</td>
                             <td>{{ $income->Unit }}</td>
                             <td>{{ $income->Propose }}</td>
-                            <td>{{ $income->No_PR }}</td>
                             <td>{{ $income->PO_Date }}</td>
                             <td>{{ $income->Expire_Date }}</td>
                             <td>{{ $income->Status == 1 ? 'Accepted' : 'Unaccepted' }}</td>

@@ -108,10 +108,10 @@
                             <th style="background-color: lightgray;">Material Code</th>
                             <th style="background-color: lightgray;">Quantity</th>
                             <th style="background-color: lightgray;">Unit</th>
-                            <th style="background-color: lightgray;">Type of Material</th>
+                            <th style="background-color: lightgray;">Manufacture</th>
                             <th style="background-color: lightgray;">Packing Size</th>
                             <th style="background-color: lightgray;">Packing Size Unit</th>
-                            <th style="background-color: lightgray;">Manufaktur</th>
+                            <th style="background-color: lightgray;">Type of Material</th>
                             <th style="background-color: lightgray;">Prices (IDR)</th>
                             <th style="background-color: lightgray;">Movement Category</th>
                             <th style="background-color: lightgray;">Safety Stock</th>
@@ -130,6 +130,8 @@
 
                                     <a href="{{ route('Barang.edit', $barang->id) }}" class="btn btn-primary btn-sm"
                                         title="Edit Barang"><i class="fa fa-pen"></i></a>
+                                        
+                                
 
                                 </td>
 
@@ -137,14 +139,14 @@
                                 <td>{{ $barang->Catalog_Number }}</td>
                                 <td>{{ $barang->Name_of_Material }}</td>
                                 <td> {{ $barang->Material_Code }}</td>
-
                                 <td>{{ $barang->Quantity }}</td>
                                 <td>{{ $barang->Unit }}</td>
-                                <td>{{ $barang->Type_of_Material }}</td>
+                                <td>{{ $barang->Manufaktur }}</td>
 
                                 <td>{{ $barang->packingsize }}</td>
                                 <td>{{ $barang->packingsize_unit }}</td>
-                                <td>{{ $barang->Manufaktur }}</td>
+                                <td>{{ $barang->Type_of_Material }}</td>
+
                                 <td>{{ number_format($barang->Harga, 2, '.', ',') }}</td>
                                 <td>{{ $barang->category }}</td>
                                 <td>{{ $barang->Safety_Stock }}</td>

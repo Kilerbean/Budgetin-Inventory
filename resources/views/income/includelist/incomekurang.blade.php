@@ -15,10 +15,11 @@
                             <th style="background-color: lightgray;">Catalog Number</th>
                             <th style="background-color: lightgray;">Name of Material</th>
                             <th style="background-color: lightgray;">Quantity</th>
-                            <th style="background-color: lightgray;">Price/pcs</th>
-                            <th style="background-color: lightgray;">Total</th>
                             <th style="background-color: lightgray;">Unit</th>
+                            {{-- <th style="background-color: lightgray;">Price/pcs</th> --}}
+                            <th style="background-color: lightgray;">Total</th>
                             <th style="background-color: lightgray;">Propose</th>
+                            <th style="background-color: lightgray;">Manufacture</th>
                             <th style="background-color: lightgray;">PR Date</th>
                             <th style="background-color: lightgray;">Status</th>
                 </div>
@@ -61,10 +62,12 @@
                         <td>{{ $income->Catalog_Number }}</td>
                         <td>{{ $income->Barang->Name_of_Material }}</td>
                         <td>{{ $income->Quantity }}</td>
-                        <td>{{ number_format($income->Prices, 2, '.', ',') }}</td>
-                        <td>{{ number_format($income->Total, 2, '.', ',') }}</td>
                         <td>{{ $income->Unit }}</td>
+                        {{-- <td>{{ number_format($income->Prices, 2, '.', ',') }}</td> --}}
+                        <td>{{ number_format($income->Total, 2, '.', ',') }}</td>
+
                         <td>{{ $income->Propose }}</td>
+                        <td>{{ $income->Barang->Manufaktur }}</td>
                         <td>{{ $income->PO_Date }}</td>
                         <td>{{ $income->Status == 1 ? 'Accepted' : 'Unaccepted' }}</td>
 

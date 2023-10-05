@@ -140,7 +140,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="Manufaktur" class="form-label">Manufaktur</label>
+                    <label for="Manufaktur" class="form-label">Manufacture</label>
                     <input type="text" class="form-control" name="Manufaktur"
                         value="{{ old('Manufaktur', $barang->Manufaktur) }}">
                 </div>

@@ -10,14 +10,16 @@
                     <th style="background-color: lightgray;">Action</th>
                     <th style="background-color: lightgray;">No</th>
                     <th style="background-color: lightgray;">No PR</th>
+                    <th style="background-color: lightgray;">No PO</th>
                     <th style="background-color: lightgray;">Catalog Number</th>
                     <th style="background-color: lightgray;">Name of Material</th>
                     <th style="background-color: lightgray;">Type of Budget</th>
+                    <th style="background-color: lightgray;">Manufacture</th>
                     <th style="background-color: lightgray;">Quantity</th>
                     <th style="background-color: lightgray;">Unit</th>
                     <th style="background-color: lightgray;">Total</th>
                     <th style="background-color: lightgray;">Propose</th>
-                    <th style="background-color: lightgray;">No PO</th>
+                
                     <th style="background-color: lightgray;">PR Date</th>
                 </tr>
             </thead>
@@ -53,14 +55,16 @@
                         </td>
                         <td>{{ ++$x }}</td>
                         <td>{{ $income->No_PR }}</td>
+                        <td>{{ $income->No_PO }}</td>
                         <td>{{ $income->Catalog_Number }}</td>
                         <td>{{ $income->Barang->Name_of_Material }}</td>
                         <td>{{ $income->Barang->Type_of_Budget }}</td>
+                        <td>{{ $income->Barang->Manufaktur }}</td>
                         <td>{{ $income->Quantity }}</td>
                         <td>{{ $income->Unit }}</td>
                         <td>{{ number_format($income->Total, 2, '.', ',') }}</td>
                         <td>{{ $income->Propose }}</td>
-                        <td>{{ $income->No_PO }}</td>
+                     
                         <td>{{ $income->PO_Date }}</td>
 
                     </tr>

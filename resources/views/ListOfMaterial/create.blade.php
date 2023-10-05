@@ -154,7 +154,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label class="form-label">Manufaktur</label>
+                        <label class="form-label">Manufacture</label>
                         <input type="text" name="Manufaktur"
                             class="form-control 
                         @error('Manufaktur') is-invalid @enderror"

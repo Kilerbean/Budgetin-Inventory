@@ -64,7 +64,7 @@
                     <th style="background-color: lightgray;">Total Amount</th>
                     <th style="background-color: lightgray;">Total Amount Unit</th>
 
-                    <th style="background-color: lightgray;">Manufaktur</th>
+                    <th style="background-color: lightgray;">Manufacture</th>
 
                     <th style="background-color: lightgray;">Prices (IDR)</th>
                     <th style="background-color: lightgray;">Movement Category</th>

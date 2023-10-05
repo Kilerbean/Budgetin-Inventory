@@ -25,7 +25,7 @@
                 <label class="form-label"> Type of Material : {{ $barang->Type_of_Material }} </label><br>
                 <label class="form-label"> Type of Budget : {{ $barang->Type_of_Budget }} </label><br>
                 <label class="form-label"> Packing Size : {{ $barang->packingsize }} </label><br>
-                <label class="form-label"> Manufaktur : {{ $barang->Manufaktur }} </label><br>
+                <label class="form-label"> Manufacture : {{ $barang->Manufaktur }} </label><br>
                 <label class="form-label"> Quantity : {{ $barang->Quantity }} </label><br>
                 <label class="form-label"> Unit : {{ $barang->Unit }} </label><br>
                 <label class="form-label"> Packing Size : {{ $barang->packingsize }} </label><br>
@@ -54,17 +54,20 @@
                         <tr>
                             <th class="w-1 ml-1"style="background-color: lightgray;">Action</th>
                             <th style="background-color: lightgray;">No</th>
-                            <th style="background-color: lightgray;">Create Date</th>
+                            <th style="background-color: lightgray;">PR Date</th>
+                            <th style="background-color: lightgray;">No PR </th>
                             <th style="background-color: lightgray;">No PO</th>
                             <th style="background-color: lightgray;">Request By</th>
                             <th style="background-color: lightgray;">Input By</th>
                             <th style="background-color: lightgray;">Quantity</th>
                             <th style="background-color: lightgray;">Unit</th>
-                            <th style="background-color: lightgray;">Packing Size</th>
-                            <th style="background-color: lightgray;">Packing Size Unit</th>
-                            <th style="background-color: lightgray;">Propose</th>
                             <th style="background-color: lightgray;">Batch Number</th>
                             <th style="background-color: lightgray;">Expire Date</th>
+                            <th style="background-color: lightgray;">Propose</th>
+                            <th style="background-color: lightgray;">Packing Size</th>
+                            <th style="background-color: lightgray;">Packing Size Unit</th>
+
+
                             <th style="background-color: lightgray;">Status</th>
                         </tr>
                     </thead>
@@ -74,14 +77,15 @@
                                 <td class="text-nowrap">
 
                                     {{-- tombol Edit --}}
-                                    <a class="btn btn-primary btn-sm" href="{{ route('income.edit', $income->id) }}"
-                                        title="Edit Material"> <i class="fa fa-pen"></i></a>
 
-                                    @if (auth()->user()->leveluser > 4)
+                                
                                         <form action="{{ route('income.destroy', $income->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-
+                                            <a class="btn btn-primary btn-sm" href="{{ route('income.edit', $income->id) }}"
+                                                title="Edit Material"> <i class="fa fa-pen"></i></a>
+        
+                                            @if (auth()->user()->leveluser > 4)
                                             <button type="submit" class="btn btn-danger btn-sm"
                                                 onclick="return confirm('Are you sure want to delete this ?');"
                                                 title="Delete"><i class="fa fa-trash"></i></button>
@@ -92,16 +96,19 @@
                                 <td>{{ ++$i }}</td>
                                 <td>{{ \Carbon\Carbon::parse($income->created_at)->setTimezone('Asia/Jakarta')->format('d-M-Y ') }}
                                 </td>
+                                <td>{{ $income->No_PR }}</td>
                                 <td>{{ $income->No_PO }}</td>
                                 <td>{{ $income->request_by }}</td>
                                 <td>{{ $income->input_by }}</td>
                                 <td>{{ $income->Quantity }}</td>
                                 <td>{{ $income->Unit }}</td>
-                                <td>{{ $income->packingsize }}</td>
-                                <td>{{ $income->packingsize_unit }}</td>
-                                <td>{{ $income->Propose }}</td>
                                 <td>{{ $income->no_batch }}</td>
                                 <td>{{ $income->Expire_Date }}</td>
+                                <td>{{ $income->Propose }}</td>
+                                <td>{{ $income->packingsize }}</td>
+                                <td>{{ $income->packingsize_unit }}</td>
+
+
                                 <td>{{ $income->Status == 1 ? 'Accepted' : 'Unaccepted' }}</td>
                             </tr>
                         @endforeach
@@ -131,15 +138,16 @@
                         <tr>
                             <th class="w-1 ml-1"style="background-color: lightgray;">Action</th>
                             <th style="background-color: lightgray;">No</th>
-                            <th style="background-color: lightgray;">Create Date</th>
+                            <th style="background-color: lightgray;">PR Date</th>
                             <th style="background-color: lightgray;">Input By</th>
                             <th style="background-color: lightgray;">Open By</th>
                             <th style="background-color: lightgray;">Quantity</th>
                             <th style="background-color: lightgray;">Unit</th>
-                            <th style="background-color: lightgray;">Packing Size</th>
-                            <th style="background-color: lightgray;">Packing Size Unit</th>
                             <th style="background-color: lightgray;">Batch Number</th>
                             <th style="background-color: lightgray;">Expire Date</th>
+                            <th style="background-color: lightgray;">Packing Size</th>
+                            <th style="background-color: lightgray;">Packing Size Unit</th>
+
 
                         </tr>
                     </thead>
@@ -171,10 +179,11 @@
                                 <td>{{ $usages->Open_By }}</td>
                                 <td>{{ $usages->Quantity }}</td>
                                 <td>{{ $usages->Unit }}</td>
-                                <td>{{ $usages->Income->packingsize }}</td>
-                                <td>{{ $usages->Income->packingsize_unit }}</td>
                                 <td>{{ $usages->no_batch }}</td>
                                 <td>{{ $usages->Expire_Date }}</td>
+                                <td>{{ $usages->Income->packingsize }}</td>
+                                <td>{{ $usages->Income->packingsize_unit }}</td>
+    
                             </tr>
                         @endforeach
                     </tbody>

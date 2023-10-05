@@ -38,7 +38,7 @@
                             <th style="background-color: lightgray;">Type of Material</th>
                             <th style="background-color: lightgray;">Type of budget</th>
                             <th style="background-color: lightgray;">Packing Size</th>
-                            <th style="background-color: lightgray;">Manufaktur</th>
+                            <th style="background-color: lightgray;">Manufacture</th>
                             <th style="background-color: lightgray;">Prices (IDR)</th>
 
                             <th style="background-color: lightgray;">Safety Stock</th>
