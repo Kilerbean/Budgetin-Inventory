@@ -7,16 +7,19 @@
                 <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
                     <div class="d-table-cell align-middle">
                         <div class="text-center mt-4">
-                            <img class="img-fluid" src="https://img.icons8.com/color/96/company.png"
-                                style="height: 100px">
-                            <h1 class="h2">QC Lab System</h1>
-                            <p class="lead">
-                                Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
-                            </p>
-                        </div>                        
+                            {{-- <img class="img-fluid" src="https://img.icons8.com/color/96/company.png"
+                                style="height: 100px"> --}}
+                           
+                        </div>     
+                        <br><br>                   
                         <div class="card">
                             <div class="card-body">
+                                
                                 <div class="m-sm-4">
+                                    <h1 class="h2">QC Lab System</h1>
+                                    <p class="lead">
+                                        Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
+                                    </p>
                                     <form method="POST" action="{{ route('password.email') }}">
                                         @csrf
                                         <div class="mb-3">

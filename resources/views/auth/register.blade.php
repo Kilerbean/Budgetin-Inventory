@@ -7,10 +7,11 @@
             <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
                 <div class="d-table-cell align-middle">
                     <div class="text-center mt-4">
-                        <img class="img-fluid" src="{{ asset('icon/register-icon.png') }}" alt="{{ config('app.name') }}"
-                            style="height: 100px">
+                        {{-- <img class="img-fluid" src="{{ asset('icon/register-icon.png') }}" alt="{{ config('app.name') }}"
+                            style="height: 100px"> --}}
                     <div class="text-center mt-4">
-                        <h1 class="h2">Get started</h1>
+
+                        <h1 class="h2" style="padding-top:160px;">Get started</h1>
                         <p class="lead">
                            
                         </p>

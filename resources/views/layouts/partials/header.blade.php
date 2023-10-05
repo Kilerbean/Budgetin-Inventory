@@ -4,6 +4,37 @@
         <i class="hamburger align-self-center"></i>
     </a>
 
+    <img class="img-fluid" src="{{asset('icon/kimia.png')}}" style="height: 35px">
+    <img class="img-fluid" src="{{asset('icon/reaction.png')}}" style="height: 35px">
+    <img class="img-fluid" src="{{asset('icon/chemistryys.png')}}" style="height: 35px">
+    <img class="img-fluid" src="{{asset('icon/flasks.png')}}" style="height: 35px">
+
+    <img class="img-fluid" src="{{asset('icon/kimia.png')}}" style="height: 35px ; transform: scaleX(-1);">
+    <img class="img-fluid" src="{{asset('icon/reaction.png')}}" style="height: 35px ; transform: scaleX(-1);">
+    <img class="img-fluid" src="{{asset('icon/chemistryys.png')}}" style="height: 35px ; transform: scaleX(-1);">
+    <img class="img-fluid" src="{{asset('icon/flasks.png')}}" style="height: 35px ; transform: scaleX(-1);">
+
+    <img class="img-fluid" src="{{asset('icon/kimia.png')}}" style="height: 35px">
+    <img class="img-fluid" src="{{asset('icon/reaction.png')}}" style="height: 35px">
+    <img class="img-fluid" src="{{asset('icon/chemistryys.png')}}" style="height: 35px">
+    <img class="img-fluid" src="{{asset('icon/flasks.png')}}" style="height: 35px">
+
+    <img class="img-fluid" src="{{asset('icon/kimia.png')}}" style="height: 35px ; transform: scaleX(-1);">
+    <img class="img-fluid" src="{{asset('icon/reaction.png')}}" style="height: 35px ; transform: scaleX(-1);">
+    <img class="img-fluid" src="{{asset('icon/chemistryys.png')}}" style="height: 35px ; transform: scaleX(-1);">
+    <img class="img-fluid" src="{{asset('icon/flasks.png')}}" style="height: 35px ; transform: scaleX(-1);">
+
+    <img class="img-fluid" src="{{asset('icon/kimia.png')}}" style="height: 35px">
+    <img class="img-fluid" src="{{asset('icon/reaction.png')}}" style="height: 35px">
+    <img class="img-fluid" src="{{asset('icon/chemistryys.png')}}" style="height: 35px">
+    <img class="img-fluid" src="{{asset('icon/flasks.png')}}" style="height: 35px">
+
+    <img class="img-fluid" src="{{asset('icon/kimia.png')}}" style="height: 35px ; transform: scaleX(-1);">
+    <img class="img-fluid" src="{{asset('icon/reaction.png')}}" style="height: 35px ; transform: scaleX(-1);">
+    <img class="img-fluid" src="{{asset('icon/flask.png')}}" style="height: 35px">
+    <img class="img-fluid" src="{{asset('icon/kimias.png')}}" style="height: 35px">
+   
+
     <div class="navbar-nav navbar-align" >
         @yield('header')
     </div>
