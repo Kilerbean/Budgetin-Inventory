@@ -231,7 +231,7 @@
                     </div>
 
                     
-                    <div class=" col-md-6">
+                    {{-- <div class=" col-md-6">
                         <div class="form-label">Movement Category</div>
                         <select class="form-select @error('category') is-invalid @enderror" name="category">
                             <option value="">Select</option>
@@ -241,7 +241,7 @@
                         @error('category')
                             <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
-                    </div>
+                    </div> --}}
 
 
                      <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">

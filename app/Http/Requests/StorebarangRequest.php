@@ -34,7 +34,7 @@ class StorebarangRequest extends FormRequest
             'Safety_Stock' => ['required'],
             'Harga' => ['required'],
             'Maximum_Stock' => ['required'],
-            'category' => ['required'],
+       
         ];
     }
 
@@ -49,7 +49,7 @@ class StorebarangRequest extends FormRequest
             'Harga.required' => 'The Prices field is required.',
             'packingsize.required' => 'The Packing Size field is required.',
             'packingsize_unit.required' => 'The Packing Size Unit field is required.',
-            'category.required' => 'The Movement Category field is required.',
+
         ];
     }
 }
