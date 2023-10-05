@@ -11,6 +11,15 @@
     <link rel="shortcut icon" href="{{ asset('assets_old/img/logoiccsnew.svg') }}" type="image/x-icon">
     <title>@yield('title', 'Page Title')</title>
     @includeIf('layouts.partials.css')
+    <style>
+        .transparent-card {
+            background-color: rgba(255, 255, 255, 0.9); /* Ubah angka 0.8 sesuai dengan tingkat transparansi yang Anda inginkan */
+            padding: 20px; /* Sesuaikan sesuai kebutuhan Anda */
+            border-radius: 10px; /* Atur border-radius sesuai kebutuhan Anda */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Efek bayangan untuk memberikan kedalaman */
+            z-index: 1; /* Pastikan kartu tetap berada di atas latar belakang gambar */
+        }
+    </style>
 </head>
 
 <body>

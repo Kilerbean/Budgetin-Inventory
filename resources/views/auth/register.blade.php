@@ -16,7 +16,7 @@
                            
                         </p>
                     </div>
-                    <div class="card">
+                    <div class="card transparent-card">
                         <div class="card-body">
                             <div class="m-sm-4">
                                 <form method="POST" action="{{ route('register') }}">

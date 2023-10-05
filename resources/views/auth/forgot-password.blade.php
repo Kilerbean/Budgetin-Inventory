@@ -12,7 +12,7 @@
                            
                         </div>     
                         <br><br>                   
-                        <div class="card">
+                        <div class="card transparent-card">
                             <div class="card-body">
                                 
                                 <div class="m-sm-4">
