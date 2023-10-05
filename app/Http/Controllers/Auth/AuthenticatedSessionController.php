@@ -30,6 +30,9 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $user= User::where('email',strtolower($request->email))->first();
+        if(!$user){
+            return back()->with('error','These credentials do not match our records.');
+        }
         $sessions = QCSession::where('user_id', $user->id)->get();
         foreach($sessions as $session){
             $session->delete();
