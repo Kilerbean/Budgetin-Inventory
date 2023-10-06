@@ -12,7 +12,7 @@
             <a class="btn btn-info btn-sm" href="{{ route('usage.index') }}">
                 <i class="fa fa-clipboard-list"></i><i class="fa fa-turn-down"></i> List Material Usage
             </a>
-            <a class="btn btn-grad text-white btn-sm" href="{{ route('usage.index') }}"> Back</a>
+            <a class="btn btn-primary text-white btn-sm" href="{{ route('usage.index') }}"> Back</a>
         </div>
     </div>
     <div class="mx-2 mt-2">
