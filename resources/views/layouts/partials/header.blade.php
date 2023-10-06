@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-light navbar-bg" style="background-color: rgb(141, 235, 157);">
+<nav class="navbar navbar-expand-sm navbar-light navbar-bg" style="background-color: rgb(202, 247, 210);">
     <a class="sidebar-toggle js-sidebar-toggle">
 
         <i class="hamburger align-self-center"></i>

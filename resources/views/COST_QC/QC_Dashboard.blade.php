@@ -63,9 +63,9 @@
         </div>
 
         <div class="col-md-3">
-            <div class="card">
-                <div class="card-header text-center">
-                    <p class="card-text" style="font-size: 15px;">Product Research and Development</p>
+            <div class="card" style="height: ">
+                <div class="card-header text-center mb-4">
+                    <p class="card-text" style="font-size: 15px;">Research & Development</p>
                 </div>                
                 <div class="text-center">
                     <img class="card-img-top" src="icon/research-and-development.png" alt="Lumens Icon" style="width: 60px">
