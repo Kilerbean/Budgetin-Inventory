@@ -32,7 +32,7 @@
                             style="width: 15%">
                     </div>
                     <div class="text-center mb-2">
-                        <h5 class="card-title mb-0">COST</h5>
+                        <h5 class="card-title mb-0">EXPENSE</h5>
                         <p class="card-text">QC-LAB</p>
                         <a href="{{ route('Dashboards') }}" class="btn btn-primary" title="Dashboard COST QC"><i
                                 class="fa fa-house"></i></a>
