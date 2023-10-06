@@ -3,7 +3,7 @@
 @section('coba')
 
 @push('page-action')
-  <a class="btn btn-success" href="{{ route('Dashboards') }}"> Back</a>
+  <a class="btn btn-primary" href="{{ route('Dashboards') }}"> Back</a>
 
   @endpush
 

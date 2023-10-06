@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @php
-    $title = 'Dashboard';
+    $title = 'Q-LIS |EXPENSE | Dashboard ';
     $pretitle = 'EXPENSE | Q-LIS';
     $pages = $title;
 @endphp

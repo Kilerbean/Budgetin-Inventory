@@ -11,7 +11,7 @@
         <div class="card">
             <div class="row">
                 <div class="col">
-                    <a class="btn btn-success" href="{{ route('Dashboards') }}"> Back</a>
+                    <a class="btn btn-primary" href="{{ route('Dashboards') }}"> Back</a>
                 </div>
             </div>
             <div class="mx-2 mt-2">

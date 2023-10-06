@@ -9,8 +9,8 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <a href="{{ route('Barang.Create') }}" class="btn btn-primary btn-sm">Create New Material</a>
-            <a href="{{ route('Barang.index') }}" class="btn btn-grad btn-sm">Back</a>
+            <a href="{{ route('Barang.Create') }}" class="btn btn-info btn-sm">Create New Material</a>
+            <a href="{{ route('Barang.index') }}" class="btn btn-primary btn-sm">Back</a>
         </div>
     </div>
 

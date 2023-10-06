@@ -9,7 +9,7 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <a class="btn btn-grad text-white" href="{{ route('Barang.index') }}"> Back</a>
+            <a class="btn btn-primary text-white" href="{{ route('Barang.index') }}"> Back</a>
         </div>
     </div>
     <div class="mx-2 mt-2">
