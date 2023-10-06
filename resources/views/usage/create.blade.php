@@ -87,11 +87,11 @@
             </form>
         </div>
     </div>
-    <div
+    {{-- <div
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-1 border-bottom border-danger">
     </div>
     <br>
-    @include('usage.listusage')
+    @include('usage.listusage') --}}
 
 
 @stop

@@ -10,11 +10,9 @@
             <?php $no = 1; ?>
             <th class="w-1 ml-1" style="background-color: lightgray;">Action </th>
             <th style="background-color: lightgray;">No.</th>
-
             <th style="background-color: lightgray;">Name of Material</th>
              <th style="background-color: lightgray;">Material Code</th>
             <th style="background-color: lightgray;">Type of Material</th>
-   
             {{-- <th style="background-color: lightgray;">Packing Size</th>
             <th style="background-color: lightgray;">Packing Size Unit</th> --}}
             <th style="background-color: lightgray;">Quantity</th>
