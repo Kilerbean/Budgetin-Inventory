@@ -19,6 +19,7 @@
             <th style="background-color: lightgray;">Packing Size Unit</th> --}}
             <th style="background-color: lightgray;">Quantity</th>
             <th style="background-color: lightgray;">Unit</th>
+            <th style="background-color: lightgray;">Category Movement</th>
             <th style="background-color: lightgray;">Safety Stock</th>
             <th style="background-color: lightgray;">Maximum Stock</th>
           </tr>
@@ -48,6 +49,7 @@
             <td>{{ $baranglow ->packingsize_unit }}</td> --}}
             <td>{{ $totalQuantity[$baranglow->Material_Code]}}</td>
             <td>{{ $baranglow ->Unit }}</td>
+            <td>{{ $baranglow ->category }}</td>
             <td>{{ $baranglow ->Safety_Stock }}</td>
             <td>{{ $baranglow ->Maximum_Stock }}</td>
 

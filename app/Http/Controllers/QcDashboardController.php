@@ -36,7 +36,7 @@ class QcDashboardController extends Controller
 
         // $baranglows = barang::latest()->whereColumn('Quantity', '<=', 'Safety_Stock')->get();
         $baranglows = DB::table('barangs')
-    ->select('Material_Code','Quantity','Safety_Stock','id','Type_of_Material','Type_of_Budget','Name_of_Material','Catalog_Number','packingsize','packingsize_unit','Unit','Maximum_Stock','Manufaktur','Harga','Status','Expire_Date','created_at','updated_at')
+    ->select('Material_Code','Quantity','Safety_Stock','id','Type_of_Material','Type_of_Budget','Name_of_Material','Catalog_Number','packingsize','packingsize_unit','Unit','Maximum_Stock','Manufaktur','Harga','Status','Expire_Date','created_at','updated_at','category')
     ->whereIn('id', function ($query) {
         $query->select(DB::raw('MIN(id)'))
             ->from('barangs')
