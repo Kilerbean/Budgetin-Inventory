@@ -31,9 +31,9 @@ class StorebarangRequest extends FormRequest
             'packingsize_unit' => ['required'],
             'Manufaktur' => ['required'],
             'Unit' => ['required'],
-            'Safety_Stock' => ['required'],
+            'Safety_Stock' => ['required', 'numeric', 'min:1'],
             'Harga' => ['required'],
-            'Maximum_Stock' => ['required'],
+            'Maximum_Stock' => ['required', 'numeric', 'min:1'],
        
         ];
     }
