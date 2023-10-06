@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="raka">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="https://img.icons8.com/color/96/company.png" type="image/x-icon">
+
+    <link rel="icon" href="{{ asset('icon/laboratorys.png') }}" type="image/x-icon">
     <title>@yield('title', 'Page Title')</title>
     @includeIf('layouts.partials.css')
     <style>

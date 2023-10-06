@@ -3,12 +3,12 @@
         <a class="sidebar-brand" href="/">
             <img class="img-fluid" src="{{asset('icon/laboratorys.png')}}" alt="{{ config('app.name') }}"
                 style="height: 35px">
-            <span class="align-middle"> QC LAB</span>
+            <span class="align-middle"> Q-LIS</span>
         </a>
 
         <ul class="sidebar-nav">
             <li class="sidebar-header mt-0">
-                COST
+                EXPENSE
             </li>
 
             <li class="sidebar-item {{ str_contains($pages, 'Dashboard') ? 'active' : '' }}">

@@ -1,7 +1,7 @@
 @extends('templates.dasar')
 @php
   $title = 'Financial';
-  $pretitle = 'COST-QC LAB';
+  $pretitle = 'EXPENSE-Q-LIS';
 
 @endphp 
 @section('coba')

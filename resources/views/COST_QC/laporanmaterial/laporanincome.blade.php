@@ -2,7 +2,7 @@
 @php
     $titles = 'QC - List of Material';
     $title = 'Incoming of Material Report - Purchasing';
-    $pretitle = 'COST-QC LAB';
+    $pretitle = 'EXPENSE-Q-LIS';
     $pages = $title;
 @endphp
 @section('title', $pages)

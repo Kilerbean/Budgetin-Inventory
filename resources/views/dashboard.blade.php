@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @php
-    $title = 'HOME';
+    $title = 'Q-LIS | HOME ';
     $pages = $title;
-    $pretitle = 'QC LAB';
+    $pretitle = 'Q-LIS';
     
 @endphp
 @section('title', $pages)
@@ -20,7 +20,7 @@
 
     <div class="container-fluid p-0">
         <h1><img {{-- class="slide-fwd-top" --}} src="{{ asset('icon/laboratorys.png') }}" alt="Unsplash" style="width: 50px">
-            <span {{-- class="slide-left" --}} style="display: inline-block"> Welcome to <strong>QC LAB</strong></span>
+            <span {{-- class="slide-left" --}} style="display: inline-block"> Welcome to <strong>Q-LIS</strong></span>
         </h1>
     </div>
 
@@ -33,8 +33,8 @@
                     </div>
                     <div class="text-center mb-2">
                         <h5 class="card-title mb-0">EXPENSE</h5>
-                        <p class="card-text">QC-LAB</p>
-                        <a href="{{ route('Dashboards') }}" class="btn btn-primary" title="Dashboard COST QC"><i
+                        <p class="card-text">Q-LIS</p>
+                        <a href="{{ route('Dashboards') }}" class="btn btn-primary" title="Dashboard EXPENSE QC"><i
                                 class="fa fa-house"></i></a>
                         <a href="{{ route('Barang.index') }}" class="btn btn-info" title="List of All Material"><i
                                 class="fa-solid fa-boxes-stacked"></i></a>
@@ -55,8 +55,8 @@
                 </div>
                 <div class="text-center mb-2">
                     <h5 class="card-title mb-0">Callibration</h5>
-                    <p class="card-text">QC-LAB</p>
-                    <a href="{{ route('Dashboards') }}" class="btn btn-primary" title="Dashboard COST QC"><i
+                    <p class="card-text">Q-LIS</p>
+                    <a href="{{ route('Dashboards') }}" class="btn btn-primary" title="Dashboard EXPENSE QC"><i
                             class="fa fa-house"></i></a>
                     <a href="{{ route('Barang.index') }}" class="btn btn-info" title="List of All Material"><i
                             class="fa-solid fa-boxes-stacked"></i></a>
@@ -78,7 +78,7 @@
                 <div class="text-center mb-2">
                     <h5 class="card-title mb-0">LIMS</h5>
                     <p class="card-text">EMPOWERING LAB</p>
-                    <a href="https://lims.sohoglobalhealth.com" class="btn btn-primary" title="Dashboard COST QC"><i
+                    <a href="https://lims.sohoglobalhealth.com" class="btn btn-primary" title="Dashboard EXPENSE QC"><i
                             class="fa fa-house"></i></a>
 
                     </a>

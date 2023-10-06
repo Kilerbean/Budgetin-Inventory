@@ -40,7 +40,7 @@ Route::get('/dasar',function () {
 });
 
 
-//Route Dashboard QC COST
+//Route Dashboard QC EXPENSE
 Route::middleware('auth')->group(function() {
     Route::get('/dashboards', [QcDashboardController::class,'dashboard']) ->name('Dashboards')->middleware('user.level:1,2,3,4,5');
 

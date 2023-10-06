@@ -1,7 +1,7 @@
 @extends('templates.dasar')
 @php
     $title = 'Incoming of Material';
-    $pretitle = 'COST-QC LAB';
+    $pretitle = 'EXPENSE-Q-LIS';
     
 @endphp
 
