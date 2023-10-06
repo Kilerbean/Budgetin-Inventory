@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @php
     $title = 'Dashboard';
-    $pretitle = 'COST | QC LAB';
+    $pretitle = 'EXPENSE | QC LAB';
     $pages = $title;
 @endphp
 @section('title', $pages)
