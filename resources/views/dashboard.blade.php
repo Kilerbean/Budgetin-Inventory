@@ -16,7 +16,8 @@
 @endpush
 
 @section('content')
-
+<div class="main" style="background-image: url('icon/qweasd.png');background-position: center;
+background-repeat: no-repeat; background-size: cover">
 
     <div class="container-fluid p-0">
         <h1><img {{-- class="slide-fwd-top" --}} src="{{ asset('icon/laboratorys.png') }}" alt="Unsplash" style="width: 50px">
@@ -24,8 +25,9 @@
         </h1>
     </div>
 
-    <div class="row">
-        <div class="col-md-4" style="background-color: rgb(168, 236, 168); padding-top:20px;">
+    <div class="row " >
+        <div class="card transparent-card"></div>
+        <div class="col-md-4 " style=" padding-left:20px;">
                 <div class="card" style="border-radius:20px" >
                     <div class="card-header text-center" style="border-radius:20px;height: 85px">
                         <img class="card-img-top" src="icon/Cost_lab-removebg-preview.png" alt="Unsplash"
@@ -48,7 +50,7 @@
             
         </div>
 
-        <div class="col-md-4" style="background-color: rgb(168, 236, 168);padding-top:20px;">
+        <div class="col-md-4" >
             <div class="card" style="border-radius:20px">
                 <div class="card-header text-center" style="border-radius:20px;height: 85px">
                     <img class="card-img-top" src="icon/laboratory.png" alt="Unsplash" style="width: 15%">
@@ -69,7 +71,7 @@
             </div>
         </div>
 
-        <div class="col-md-4" style="background-color: rgb(168, 236, 168);padding-top:20px;">
+        <div class="col-md-4" style="padding-right:20px;">
             <div class="card" style="border-radius:20px;">
                 <div class="card-header text-center" style="border-radius:20px;height: 85px">
                     <img class="card-img-top" src="https://lims.sohoglobalhealth.com/assets/images/brand/logo-3.png"
@@ -86,9 +88,9 @@
             </div>
         </div>
 
-        <div class="col-md-4" style="background-color: rgb(161, 208, 252);padding-top:30px;">
-            <div class="card" style="border-radius:20px">
-                <div class="card-header text-center" style="border-radius:20px;height: 75px">
+        <div class="col-md-4 transparent-card" style="padding-top:60px;padding-left:20px;">
+            <div class="card transparent-card" style="border-radius:20px">
+                <div class="card-header text-center transparent-card" style="border-radius:20px;height: 75px">
                     <img class="card-img-top" src="https://iccs.sohoglobalhealth.com/assets/images/logo/logoiccs-light.png"
                         alt="Unsplash" style="width: 10%">
                 </div>
@@ -103,7 +105,7 @@
             </div>
         </div>
 
-        <div class="col-md-4" style="background-color: rgb(161, 208, 252);padding-top:30px;">
+        <div class="col-md-4" style="padding-top:60px;">
             <div class="card" style="border-radius:20px">
                 <div class="card-header text-center" style="border-radius:20px;height: 75px">
                     <img class="card-img-top" src="http://190.191.1.151/smd/img/logo.png" alt="Unsplash" style="width: 50%">
@@ -119,7 +121,7 @@
             </div>
         </div>
 
-        <div class="col-md-4" style="background-color: rgb(161, 208, 252);padding-top:30px;">
+        <div class="col-md-4" style=";padding-top:60px;padding-right:20px">
             <div class="card" style="border-radius:20px">
                 <div class="card-header text-center" style="border-radius:20px;height: 75px">
                     <img class="card-img-top" src="http://172.19.19.39:82/icon/app-icon.png" alt="Unsplash"
@@ -135,12 +137,11 @@
                 </div>
             </div>
         </div>
-        <div class="mb-3" style="background-color: rgb(161, 208, 252); height: 100px;">
-        </div>
+       
     </div>
 
 
-
+</div>
 
 
 
