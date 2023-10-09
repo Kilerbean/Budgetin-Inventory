@@ -16,16 +16,18 @@
 @endpush
 
 @section('content')
-<div class="main" style="background-image: url('icon/qweasd.png');background-position: center;
-background-repeat: no-repeat; background-size: cover">
+
+{{-- <div class="main" style="background-image: url('icon/asdf.png');background-position: center;
+background-repeat: no-repeat; background-size: cover"> --}}
 
     <div class="container-fluid p-0">
-        <h1><img {{-- class="slide-fwd-top" --}} src="{{ asset('icon/laboratorys.png') }}" alt="Unsplash" style="width: 50px">
+        <h1>{{-- class="slide-fwd-top" --}} 
+            <img src="{{ asset('icon/laboratorys.png') }}" alt="Unsplash" style="width: 50px">
             <span {{-- class="slide-left" --}} style="display: inline-block"> Welcome to <strong>Q-LIS</strong></span>
         </h1>
     </div>
 
-    <div class="row " >
+    <div class="row " style="background-color: rgb(230, 225, 225) ">
         <div class="card transparent-card"></div>
         <div class="col-md-4 " style=" padding-left:20px;">
                 <div class="card" style="border-radius:20px" >
@@ -88,7 +90,7 @@ background-repeat: no-repeat; background-size: cover">
             </div>
         </div>
 
-        <div class="col-md-4 transparent-card" style="padding-top:60px;padding-left:20px;">
+        <div class="col-md-4 transparent-card" style="padding-top:30px;padding-left:20px;">
             <div class="card transparent-card" style="border-radius:20px">
                 <div class="card-header text-center transparent-card" style="border-radius:20px;height: 75px">
                     <img class="card-img-top" src="https://iccs.sohoglobalhealth.com/assets/images/logo/logoiccs-light.png"
@@ -105,7 +107,7 @@ background-repeat: no-repeat; background-size: cover">
             </div>
         </div>
 
-        <div class="col-md-4" style="padding-top:60px;">
+        <div class="col-md-4" style="padding-top:30px;">
             <div class="card" style="border-radius:20px">
                 <div class="card-header text-center" style="border-radius:20px;height: 75px">
                     <img class="card-img-top" src="http://190.191.1.151/smd/img/logo.png" alt="Unsplash" style="width: 50%">
@@ -121,7 +123,7 @@ background-repeat: no-repeat; background-size: cover">
             </div>
         </div>
 
-        <div class="col-md-4" style=";padding-top:60px;padding-right:20px">
+        <div class="col-md-4" style=";padding-top:30px;padding-right:20px">
             <div class="card" style="border-radius:20px">
                 <div class="card-header text-center" style="border-radius:20px;height: 75px">
                     <img class="card-img-top" src="http://172.19.19.39:82/icon/app-icon.png" alt="Unsplash"
@@ -141,7 +143,7 @@ background-repeat: no-repeat; background-size: cover">
     </div>
 
 
-</div>
+{{-- </div> --}}
 
 
 
