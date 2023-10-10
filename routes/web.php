@@ -8,6 +8,7 @@ use App\Http\Controllers\UsageController;
 use App\Http\Controllers\FinancialController;
 use App\Http\Controllers\QcDashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\KalibrasiController;
 use App\Models\User;
 
 /*
@@ -118,11 +119,14 @@ Route::get('/karyawan/{user}/updatemanager', [UserController::class,'updatemanag
 Route::get('/karyawan/{user}/updateadmin', [UserController::class,'updateadmin']) ->name('karyawan.edit.admin')->middleware('user.level:4,5');
 Route::get('/karyawan/profil', [UserController::class,'profil']) ->name('profil');
 
-
-
-
-
 //Route QC CS
+
+
+
+//Route Calibration
+
+Route::get('/kalibrasi',[KalibrasiController::class,'index'])->name('listKalibrasi');
+
 
 
 });

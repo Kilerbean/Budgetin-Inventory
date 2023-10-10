@@ -27,8 +27,10 @@ background-repeat: no-repeat; background-size: cover"> --}}
         </h1>
     </div>
 
-    <div class="row " style="background-color: rgb(230, 225, 225) ">
-        <div class="card transparent-card"></div>
+    {{-- style="background-color: rgb(230, 225, 225)" --}}
+
+    <div class="row ">
+        <div class="card transparent-card  " ></div>
         <div class="col-md-4 " style=" padding-left:20px;">
                 <div class="card" style="border-radius:20px" >
                     <div class="card-header text-center" style="border-radius:20px;height: 85px">
