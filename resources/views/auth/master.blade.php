@@ -24,7 +24,7 @@
 
 <body>
     <div class="wrapper">        
-        <div class="main" style="background-image: url('icon/background-cost.png');background-position: center;
+        <div class="main" style="background-image: url('icon/background.png');background-position: center;
         background-repeat: no-repeat; background-size: cover;">           
             <main class="content px-4 pt-2">
                 @includeif('layouts.partials.sweetalert')

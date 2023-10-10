@@ -11,12 +11,19 @@
                             style="height: 100px"> --}}
                     <div class="text-center mt-4">
 
-                        <h1 class="h2" style="padding-top:160px;">Get started</h1>
+                        <h1 class="h2" style="padding-top:160px;"></h1>
                         <p class="lead">
                            
                         </p>
                     </div>
                     <div class="card transparent-card">
+                        <div class="text-center">
+
+                            <h1 class="h2">Get started</h1>
+                            <p class="lead">
+                               
+                            </p>
+                        </div>
                         <div class="card-body">
                             <div class="m-sm-4">
                                 <form method="POST" action="{{ route('register') }}">

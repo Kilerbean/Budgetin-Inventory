@@ -13,7 +13,28 @@ return new class extends Migration
     {
         Schema::create('calibrations', function (Blueprint $table) {
             $table->id();
-            $table->
+            $table->string('instrumentid');
+            $table->string('serialnumber');
+            $table->string('instrumentname');
+            $table->string('frekuensikalibrasi');
+            $table->boolean('needcalibration');
+            $table->date('lastcalibration');
+            $table->date('nextcalibration');
+            $table->string('calibrationby');
+            $table->integer('yearofinvestment');
+            $table->string('location');
+            $table->string('serviceby');
+            $table->string('requestor');
+            $table->date('breakdowndate');
+            $table->date('startbreakdown');
+            $table->date('dateofcreate');
+            $table->string('problem');
+            $table->boolean('Status');
+            $table->date('startservicedate');
+            $table->date('finishservice');
+            $table->string('rootcause');
+            $table->string('preventiveaction');
+            $table->boolean('changepart');
             $table->timestamps();
         });
     }
