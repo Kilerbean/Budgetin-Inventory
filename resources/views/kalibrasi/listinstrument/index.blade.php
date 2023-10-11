@@ -15,7 +15,16 @@
 
     <div class="col-12">
         <div class="card">
-
+            <div class="row">
+                <div class="col">
+                    <a href="{{ route('listkalibrasi.create') }}" class="btn btn-primary btn-sm">Create New Instrument</a>
+                    {{-- <a href="{{ route('barangtidakaktif') }}" class="btn btn-danger btn-sm">List Material Inactive</a>
+                    <a href="{{ route('Barang.listcode') }}" class="btn btn-info btn-sm">List Material based Material Code</a> --}}
+                </div>
+            </div>
+            <div class="mx-2 mt-2">
+                <h4 class="mb-2">List Instrument / Asset Quality Control Departement</h4>
+            </div>
 
 
             <div class="table-responsive ">
@@ -78,3 +87,42 @@
     </div>
 
 @stop
+@push('js')
+    <script type="text/javascript">
+        $(function() {
+            var table = $('#listlowss,#listupcoming').DataTable({
+                dom: 'lBftrip',
+                buttons: [{
+                        extend: 'copyHtml5',
+                        exportOptions: {
+                            columns: [':visible']
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: [':visible']
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: [':visible']
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: [':visible']
+                        }
+                    },
+                    {
+                        extend: 'colvis',
+                        text: "Hide / Show",
+                        postfixButtons: ['colvisRestore']
+                    }
+                ],
+            });
+        });
+    </script>
+@endpush
