@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @php
-    $titles = 'QC - List of Material';
-    $title = 'New Purchasing Material';
-    $pretitle = 'Incoming Material';
+    $titles = 'Q-LIS - List of Material';
+    $title = 'Q-LIS |New Purchasing Material';
+    $pretitle = 'Q-LIS | Incoming Material';
     $pages = $title;
 @endphp
 @section('title', $pages)
@@ -53,7 +53,7 @@
                                 @foreach ($barangcatalog as $row)
                                     <option value="{{ $row->Catalog_Number }}"
                                         @if (old('Catalog_Number') == $row->Catalog_Number) selected @endif>
-                                        {{ $row->Catalog_Number }} | {{ $row->packingsize }} {{ $row->packingsize_unit }}
+                                        {{ $row->Catalog_Number }} |Manufacture :{{ $row->Manufaktur }} | {{ $row->packingsize }} {{ $row->packingsize_unit }}
                                     </option>
                                 @endforeach
                             </select>

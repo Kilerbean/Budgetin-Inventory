@@ -9,6 +9,10 @@
 @section('content')
 
 
+
+
+
+
     <div class="col-12">
         <div class="card">
 
@@ -22,8 +26,9 @@
                             <th class="w-1 ml-1" style="background-color: lightgray;">Action
                             </th>
                             <th style="background-color: lightgray;">No.</th>
-                            <th style="background-color: lightgray;">Instrument ID</th>
                             <th style="background-color: lightgray;">Instrument Name</th>
+                            <th style="background-color: lightgray;">Instrument ID</th>
+                            <th style="background-color: lightgray;">Serial number</th>
                             <th style="background-color: lightgray;">Calibration Frequency</th>
                             <th style="background-color: lightgray;">Need Calibration</th>
                             <th style="background-color: lightgray;">Last Calibration</th>
@@ -32,7 +37,6 @@
                             <th style="background-color: lightgray;">Year of Investment</th>
                             <th style="background-color: lightgray;">Location</th>
 
-                            <th style="background-color: lightgray;">Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,17 +55,17 @@
                                 </td>
 
                                 <td><span class="text-muted">{{ $no++ }}</span></td>
+                                <td>{{ $kalibrasis->instrumentname }}</td>
                                 <td>{{ $kalibrasis->instrumentid }}</td>
-                                <td>{{ $kalibrasis->Name_of_Material }}</td>
-                                <td>{{ $kalibrasis->Material_Code }}</td>
-                                <td>{{ $kalibrasis->Quantity }}</td>
-                                <td>{{ $kalibrasis->Unit }}</td>
-                                <td>{{ $kalibrasis->Manufaktur }}</td>
-                                <td>{{ $kalibrasis->packingsize }}</td>
-                                <td>{{ $kalibrasis->packingsize_unit }}</td>
-                                <td>{{ $kalibrasis->Type_of_Material }}</td>
-
-                                <td>{{ $kalibrasis->Status == 1 ? 'Active' : 'Inactive' }}</td>
+                                <td>{{ $kalibrasis->serialnumber }}</td>
+                                <td>{{ $kalibrasis->frekuensicalibration }}</td>
+                                <td>{{ $kalibrasis->needcalibration== 1 ? 'Yes' : 'No'  }}</td>
+                                <td>{{ $kalibrasis->lastcalibration}}</td>
+                                <td>{{ $kalibrasis->nextcalibration}}</td>
+                                <td>{{ $kalibrasis->calibrationby }}</td>
+                                <td>{{ $kalibrasis->yearofinvestment }}</td>
+                                <td>{{ $kalibrasis->location }}</td>
+ 
                         @endforeach
 
                         </tr>

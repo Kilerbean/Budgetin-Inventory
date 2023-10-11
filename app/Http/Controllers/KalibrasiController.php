@@ -14,7 +14,7 @@ class KalibrasiController extends Controller
     {
        
         $kalibrasi=Calibration::latest()->get();
-        return view('kalibrasi.index',compact('kalibrasi'));
+        return view('kalibrasi.listinstrument.index',compact('kalibrasi'));
      
     }
 

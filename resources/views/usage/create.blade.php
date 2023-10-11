@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @php
-    $titles = 'QC - List of Material';
-    $title = 'Material Usage';
+    $titles = 'Q-LIS - List of Material';
+    $title = 'Q-LIS |Create Material Usage';
     $pretitle = 'Create New Data';
     $pages = $title;
 @endphp
