@@ -107,7 +107,7 @@
                             <th style="background-color: lightgray;">Name of Material</th>
                             <th style="background-color: lightgray;">Material Code</th>
                             <th style="background-color: lightgray;">Quantity</th>
-                            <th style="background-color: lightgray;">Unit</th>
+                            <th style="background-color: lightgray;">Quantity Unit</th>
                             <th style="background-color: lightgray;">Manufacture</th>
                             <th style="background-color: lightgray;">Packing Size</th>
                             <th style="background-color: lightgray;">Packing Size Unit</th>

@@ -39,9 +39,10 @@
                             <th style="background-color: lightgray;">Name of Material</th>
                             <th style="background-color: lightgray;">Batch Number</th>
                             <th style="background-color: lightgray;">Quantity</th>
+                            <th style="background-color: lightgray;">Quantity Unit</th>
                             <th style="background-color: lightgray;">Price/pcs</th>
                             <th style="background-color: lightgray;">Total</th>
-                            <th style="background-color: lightgray;">Unit</th>
+
                             <th style="background-color: lightgray;">Propose</th>
                             <th style="background-color: lightgray;">No PR</th>
                             <th style="background-color: lightgray;">PR Date</th>
@@ -77,9 +78,10 @@
                         <td>{{ $income->Barang->Name_of_Material }}</td>
                         <td>{{ $income->no_batch }}</td>
                         <td>{{ $income->Quantity }}</td>
+                        <td>{{ $income->Unit }}</td>
                         <td>{{ number_format($income->Prices, 2, '.', ',') }}</td>
                         <td>{{ number_format($income->Total, 2, '.', ',') }}</td>
-                        <td>{{ $income->Unit }}</td>
+
                         <td>{{ $income->Propose }}</td>
                         <td>{{ $income->No_PR }}</td>
                         

@@ -16,7 +16,7 @@
                     <th style="background-color: lightgray;">Type of Budget</th>
                     <th style="background-color: lightgray;">Manufacture</th>
                     <th style="background-color: lightgray;">Quantity</th>
-                    <th style="background-color: lightgray;">Unit</th>
+                    <th style="background-color: lightgray;">Quantity Unit</th>
                     <th style="background-color: lightgray;">Total</th>
                     <th style="background-color: lightgray;">Propose</th>
                 

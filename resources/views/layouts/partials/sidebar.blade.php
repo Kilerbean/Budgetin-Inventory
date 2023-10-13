@@ -43,7 +43,7 @@
             <li class="sidebar-item {{ str_contains($pages, 'Karyawan') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('karyawan') }}">
                     <i class="fa-solid fa-users" style="width: 18px;"></i>
-                    <span class="align-middle">List employees</span>
+                    <span class="align-middle">List Employees</span>
                 </a>
             </li>
             <li class="sidebar-header mt-0">

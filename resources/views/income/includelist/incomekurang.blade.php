@@ -15,7 +15,7 @@
                             <th style="background-color: lightgray;">Catalog Number</th>
                             <th style="background-color: lightgray;">Name of Material</th>
                             <th style="background-color: lightgray;">Quantity</th>
-                            <th style="background-color: lightgray;">Unit</th>
+                            <th style="background-color: lightgray;">Quantity Unit</th>
                             {{-- <th style="background-color: lightgray;">Price/pcs</th> --}}
                             <th style="background-color: lightgray;">Total</th>
                             <th style="background-color: lightgray;">Propose</th>

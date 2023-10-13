@@ -16,7 +16,7 @@
             {{-- <th style="background-color: lightgray;">Packing Size</th>
             <th style="background-color: lightgray;">Packing Size Unit</th> --}}
             <th style="background-color: lightgray;">Quantity</th>
-            <th style="background-color: lightgray;">Unit</th>
+            <th style="background-color: lightgray;">Quantity Unit</th>
             <th style="background-color: lightgray;">Category Movement</th>
             <th style="background-color: lightgray;">Safety Stock</th>
             <th style="background-color: lightgray;">Maximum Stock</th>

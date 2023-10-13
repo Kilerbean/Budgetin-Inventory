@@ -16,7 +16,7 @@
                             <div class="card-body">
                                 
                                 <div class="m-sm-4">
-                                    <h1 class="h2">QC Lab System</h1>
+                                    <h1 class="h2 middle">Q-LIS </h1>
                                     <p class="lead">
                                         Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
                                     </p>

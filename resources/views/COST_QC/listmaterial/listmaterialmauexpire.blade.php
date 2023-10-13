@@ -17,7 +17,7 @@
                    
                     <th style="background-color: lightgray;">Expired Date</th>
                     <th style="background-color: lightgray;">Quantity</th>
-                    <th style="background-color: lightgray;">Unit</th>
+                    <th style="background-color: lightgray;">Quantity Unit</th>
                 </tr>
             </thead>
             <tbody>

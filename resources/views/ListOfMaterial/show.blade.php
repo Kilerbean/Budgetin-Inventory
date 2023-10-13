@@ -27,7 +27,7 @@
                 <label class="form-label"> Packing Size : {{ $barang->packingsize }} </label><br>
                 <label class="form-label"> Manufacture : {{ $barang->Manufaktur }} </label><br>
                 <label class="form-label"> Quantity : {{ $barang->Quantity }} </label><br>
-                <label class="form-label"> Unit : {{ $barang->Unit }} </label><br>
+                <label class="form-label"> Quantity Unit : {{ $barang->Unit }} </label><br>
                 <label class="form-label"> Packing Size : {{ $barang->packingsize }} </label><br>
                 <label class="form-label"> Packing Size Unit : {{ $barang->packingsize_unit }} </label><br>
                 <label class="form-label"> Price :IDR {{ number_format($barang->Harga, 2, '.', ',') }} </label><br>
@@ -60,7 +60,7 @@
                             <th style="background-color: lightgray;">Request By</th>
                             <th style="background-color: lightgray;">Input By</th>
                             <th style="background-color: lightgray;">Quantity</th>
-                            <th style="background-color: lightgray;">Unit</th>
+                            <th style="background-color: lightgray;">Quantity Unit</th>
                             <th style="background-color: lightgray;">Batch Number</th>
                             <th style="background-color: lightgray;">Expire Date</th>
                             <th style="background-color: lightgray;">Propose</th>
@@ -142,7 +142,7 @@
                             <th style="background-color: lightgray;">Input By</th>
                             <th style="background-color: lightgray;">Open By</th>
                             <th style="background-color: lightgray;">Quantity</th>
-                            <th style="background-color: lightgray;">Unit</th>
+                            <th style="background-color: lightgray;">Quantity Unit</th>
                             <th style="background-color: lightgray;">Batch Number</th>
                             <th style="background-color: lightgray;">Expire Date</th>
                             <th style="background-color: lightgray;">Packing Size</th>

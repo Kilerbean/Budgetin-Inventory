@@ -34,7 +34,7 @@
                             <th style="background-color: lightgray;">Material Code</th>
                             <th style="background-color: lightgray;">Name of Material</th>
                             <th style="background-color: lightgray;">Quantity</th>
-                            <th style="background-color: lightgray;">Unit</th>
+                            <th style="background-color: lightgray;">Quantity Unit</th>
                             <th style="background-color: lightgray;">Type of Material</th>
                             <th style="background-color: lightgray;">Type of budget</th>
                             <th style="background-color: lightgray;">Packing Size</th>
