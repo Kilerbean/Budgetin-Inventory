@@ -1,7 +1,7 @@
 <div class="col-12">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">List of All Dead Stock/list of materials whose batch number is used up </h3>
+            <h3 class="card-title">List of All Dead Stock/List of Materials Whose Batch Number is Used Up </h3>
         </div>
 
         <div class="table-responsive">
@@ -15,7 +15,6 @@
                         <th style="background-color: lightgray;">Name of Material</th>
                         <th style="background-color: lightgray;">Batch Number</th>
                         <th style="background-color: lightgray;">Quantity</th>
-
                         <th style="background-color: lightgray;">Unit</th>
                         <th style="background-color: lightgray;">Price/pcs</th>
                         <th style="background-color: lightgray;">No PR</th>

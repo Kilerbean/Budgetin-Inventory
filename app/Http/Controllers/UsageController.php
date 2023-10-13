@@ -68,6 +68,7 @@ class UsageController extends Controller
             'no_batch'=>'required',
             'Quantity' => 'required|numeric|min:1',
             'Open_By' => 'required',
+            'usage'=>'required'
             
         ]);
    
@@ -95,6 +96,7 @@ class UsageController extends Controller
         $usage ->Open_By=$request->Open_By;
         $usage ->input_by =auth()->user()->name;
         $usage ->Expire_Date =$income -> Expire_Date ;
+        $usage ->usage =$request->usage ;
         $usage ->Status=1;
 
         $usage -> save();
@@ -102,7 +104,7 @@ class UsageController extends Controller
         $barang->update(['Quantity'=>$new_qty]);
         $usage->update(['Quantity'=>$request->Quantity]);
         $income->update(['Quantity'=>$newincome]);
-        \auditmms(auth()->user()->name,'Create new Material Usage',$barang->Catalog_Number,'Material Usage',$request->no_batch,$old_stok,$newincome);    
+        \auditmms(auth()->user()->name,'Create new Material Usage',$barang->Name_of_Material." | ".$barang->Catalog_Number,'Material Usage',$request->no_batch,$old_stok,$newincome);    
         return redirect()->route('usage.index')
         ->with('success','Material Usage Created  successfully');
         }
@@ -173,7 +175,7 @@ class UsageController extends Controller
         $income->update(['Quantity'=>$new_quan]);
         $usage->update(['Open_By'=>$request->Open_By]);
         
-        \auditmms(auth()->user()->name,'Confirm Material Usage',$barang->Catalog_Number,'Material Usage',$income->no_batch,$income->Quantity,$request->Quantity);
+        \auditmms(auth()->user()->name,'Confirm Material Usage',$barang->Name_of_Material." | ".$barang->Catalog_Number,'Material Usage',$income->no_batch,$income->Quantity,$request->Quantity);
         return redirect()->route('usage.index')->with('success','Material Data Confirmed');
         }else {
             return back()->with('danger','not enough stock');
@@ -188,7 +190,7 @@ class UsageController extends Controller
         $usage=Usage::find($usage);
         $income=$usage->Income;
         $usage->delete();
-        \auditmms(auth()->user()->name,'Administrator Delete Material Usage ',$usage->Catalog_Number,'Material Usage',$usage ->no_batch,$usage->Quantity,0);
+        \auditmms(auth()->user()->name,'Administrator Delete Material Usage ',$usage->Name_of_Material." | ".$usage->Catalog_Number,'Material Usage',$usage ->no_batch,$usage->Quantity,0);
         return redirect()->route('usage.index')
                          ->with('success','Data deleted successfully');
     }

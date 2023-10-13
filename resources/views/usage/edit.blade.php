@@ -46,6 +46,20 @@
               <input class="form-control" type="date" name="Expire_Date" placeholder="Input Expire Date" value="{{ old('Expire_Date', $usage->Expire_Date) }}">
           </div>
       </div>
+
+      <div class="col-md-4">
+        <div class="form-label"><strong>Usage</strong></div>
+
+        <select class="form-select" name="usage">
+            <option value="Usage for analysis" 
+            {{ old('usage', $income->usage) === 'Usage for analysis' ? 'selected' : '' }}>
+                Usage for analysis</option>
+            <option value="Usage by other departement"
+                {{ old('usage', $income->usage) === 'Usage by other departement' ? 'selected' : '' }}>
+                Usage by other departement</option>
+           
+        </select>
+    </div>
       
       <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
           <button type="submit" class="btn btn-success">Submit</button>

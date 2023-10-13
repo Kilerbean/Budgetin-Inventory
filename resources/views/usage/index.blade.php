@@ -35,6 +35,7 @@
                             <th style="background-color: lightgray;">Quantity Unit</th>
                             <th style="background-color: lightgray;">No Batch</th>
                             <th style="background-color: lightgray;">Open By</th>
+                            <th style="background-color: lightgray;">Usage</th>
                             <th style="background-color: lightgray;">Expire Date</th>
                             <th style="background-color: lightgray;">Status</th>
                         </tr>
@@ -68,6 +69,7 @@
                                 <td>{{ $usages->Unit }}</td>
                                 <td>{{ $usages->no_batch }}</td>
                                 <td>{{ $usages->Open_By }}</td>
+                                <td>{{ $usages->usage}}</td>
                                 <td>{{ $usages->Expire_Date }}</td>
                                 <td>{{ $usages->Status == 1 ? 'Aktif' : 'InAktif' }}</td>
                             </tr>

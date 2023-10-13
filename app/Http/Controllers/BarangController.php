@@ -130,9 +130,9 @@ class BarangController extends Controller
                     ->orWhere('sourcetable', 'Incoming Material')
                     ->orWhere('sourcetable', 'Material Usage');
             })
-            ->where('recordid', $barang->Catalog_Number)
+            ->where('recordid',$barang->Name_of_Material." | ".$barang->Catalog_Number)
             ->get();
-
+          
         $incomess = Income::latest()->where('Quantity', '0')
             ->where('Catalog_Number', $barang->Catalog_Number)
             ->where('Status', '1')
@@ -177,6 +177,22 @@ class BarangController extends Controller
         ], ['Packingsize Unit.required' => 'Packing size Unit field is required',
         ]);
         $barang = barang::find($id);
+        $old= \getoldvalues('mysql','barangs',$barang);
+        $old_code=$old["old"]["Material_Code"];
+        $old_tipematerial=$old["old"]["Type_of_Material"];
+        $old_tipebudget=$old["old"]["Type_of_Budget"];
+        $old_name=$old["old"]["Name_of_Material"];
+        $old_katalog=$old["old"]["Catalog_Number"];
+        $old_packsize=$old["old"]["packingsize"];
+        $old_packsizeunit=$old["old"]["packingsize_unit"];
+        $old_manufaktur=$old["old"]["Manufaktur"];
+        $old_Quantity=$old["old"]["Quantity"];
+        $old_Harga=$old["old"]["Harga"];
+        $old_Unit=$old["old"]["Unit"];
+        $old_safestock=$old["old"]["Safety_Stock"];
+        $old_maxstock=$old["old"]["Maximum_Stock"];
+        $old_category=$old["old"]["category"];
+
 
         $barang->Material_Code = $request->Material_Code;
         $barang->Type_of_Material = $request->Type_of_Material;
@@ -200,6 +216,14 @@ class BarangController extends Controller
         // $barang->category=$request->category;
 
         $barang->save();
+        
+
+
+
+        \auditmms(auth()->user()->name,'Edit Material',$barang->Name_of_Material."|".$barang->Catalog_Number, 'List of Material', 'Edit All'
+        ,"Material Code =".$old_code."| Type of Material=".$old_tipematerial."| Tipe of Budget=".$old_tipebudget."| Name of Material=".$old_name."|Catalog Number=".$old_katalog."| Packing Size=".$old_packsize."| Packing Size Unit =".$old_packsizeunit."|Manufacture =".$old_manufaktur."|Quantity =".$old_Quantity."| Harga=".$old_Harga."|Unit=".$old_Unit."|Safety Stock=".$old_safestock."|Maximum Stock=".$old_maxstock
+
+        ,"Material Code =".$request->Material_Code."| Type of Material=".$request->Type_of_Material."| Tipe of Budget=".$request->Type_of_Budget."| Name of Material=".$request->Name_of_Material."|Catalog Number=".$request->Catalog_Number."| Packing Size=".$request->packingsize."| Packing Size Unit =". $request->packingsize_unit."|Manufacture =".$request->Manufaktur."|Quantity =".$request->Quantity."| Harga=".$request->Harga."|Unit=".$request->Unit."|Safety Stock=".$request->Safety_Stock."|Maximum Stock=".$request->Maximum_Stock);
         session()->flash('info', 'Material data Successfully edited.');
         return redirect()->route('Barang.index');
     }
@@ -235,7 +259,7 @@ class BarangController extends Controller
         $barang = barang::find($id);
         $barang->update(['Status' => 1]);
 
-        \auditmms(auth()->user()->name, 'Activate Material', $barang->Catalog_Number, 'List of Material', 'Status', 'Inactive', 'Active');
+        \auditmms(auth()->user()->name, 'Activate Material',$barang->Name_of_Material."|".$barang->Catalog_Number, 'List of Material', 'Status', 'Inactive', 'Active');
         session()->flash('info', 'Stock Material has been Active.');
         return redirect()->route('Barang.index');
     }
@@ -244,7 +268,7 @@ class BarangController extends Controller
     {
         $barang = barang::find($id);
         $barang->update(['Status' => 0]);
-        \auditmms(auth()->user()->name, 'Deactivate Material', $barang->Catalog_Number, 'List of Material', 'Status', 'Active', 'Inactive');
+        \auditmms(auth()->user()->name, 'Deactivate Material',$barang->Name_of_Material."|".$barang->Catalog_Number, 'List of Material', 'Status', 'Active', 'Inactive');
         session()->flash('info', 'Stock Material has been Inactive.');
         return redirect()->route('Barang.index');
     }
@@ -252,23 +276,28 @@ class BarangController extends Controller
 
     public function opname()
     {
-        $incomes = Income::where('tipe_transaksi', '2')->sum('Quantity')->whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::today()->endOfMonth()]);
-        $barang = barang::where('Status', '1')->sum('Quantity');
-        $usages = Usage::where('tipe_transaksi', '3')->sum('Quantity')->whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::today()->endOfMonth()]);
+        $barang=barang::where('Status' ,'1')->sum('Quantity');
+        $incomes = Income::where('tipe_transaksi', '2')
+        ->whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])
+         ->get();
+
+        $usages = Usage::where('tipe_transaksi', '3')
+         ->whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])
+         ->get();
+
         $semuaperubahan = [
             'income' => $incomes,
             'usage' => $usages
         ];
-        $jumlah = $incomes + $usages;
-        $accuracy = $barang - $jumlah / $barang * 100;
+ 
+        $jumlah=$incomes->sum('Quantity') + $usages->sum('Quantity');
+        $accuracy= ($barang - $jumlah) / $barang * 100;
         Opname::create([
-            'created_at' => Carbon::now()->startOfMonth(),
-            'end_at' => Carbon::now()->endOfMonth(),
-            'type' => 'auto',
-            'accuracy' => $accuracy,
-            'data' => $semuaperubahan
-        ]);
-
+            'created_at'=>Carbon::now()->startOfMonth(),
+            'end_at' =>Carbon::now()->endOfMonth(),
+            'type'=>'auto',
+            'accuracy'=>$accuracy,
+            'data'=>json_encode($semuaperubahan)]);
         session()->flash('info', 'opname telah dibikin');
         return redirect()->route('Barang.index');
     }

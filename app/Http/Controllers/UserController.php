@@ -100,7 +100,8 @@ class UserController extends Controller
         $old_title=$old["old"]["title"];
         $old_Status=$old["old"]["Status"];
 
-  \auditmms(auth()->user()->name, 'Edit Data User',$user->email,'Users','User Data',"Name :".$old_name."| Email :".$old_email."|Title :".$old_title."|Status :".($old_Status == 1 ? 'Active' : 'Inactive' ),"Name :".$request->name."| Email :".$request->email."|Title :".$request->title."|Status :".($request->Status == 1 ? 'Active' : 'Inactive'));
+  \auditmms(auth()->user()->name, 'Edit Data User',$user->email,'Users','User Data'
+  ,"Name :".$old_name."| Email :".$old_email."|Title :".$old_title."|Status :".($old_Status == 1 ? 'Active' : 'Inactive' ),"Name :".$request->name."| Email :".$request->email."|Title :".$request->title."|Status :".($request->Status == 1 ? 'Active' : 'Inactive'));
         return back()
         ->with('success','User updated successfully');
     }

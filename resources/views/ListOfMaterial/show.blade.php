@@ -45,7 +45,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title"> list of incoming materials </h3>
+                <h3 class="card-title"> List of All Material Batch </h3>
             </div>
 
             <div class="table-responsive">
