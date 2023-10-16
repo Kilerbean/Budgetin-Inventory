@@ -195,8 +195,6 @@ class UsageController extends Controller
                          ->with('success','Data deleted successfully');
     }
 
-
-
     public function getBatches($income)
     {
         $batches = Income::where('Catalog_Number', $income)

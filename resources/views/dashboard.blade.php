@@ -64,7 +64,7 @@ background-repeat: no-repeat; background-size: cover"> --}}
                     <p class="card-text">Q-LIS</p>
                     <a href="{{ route('Dashboards') }}" class="btn btn-primary" title="Dashboard EXPENSE QC"><i
                             class="fa fa-house"></i></a>
-                    <a href="{{ route('Barang.index') }}" class="btn btn-info" title="List of All Material"><i
+                    <a href="{{ route('listKalibrasi') }}" class="btn btn-info" title="List of All Instrument"><i
                             class="fa-solid fa-boxes-stacked"></i></a>
                     <a href="{{ route('income.create') }}" class="btn btn-warning" title="Purchasing Material"><i
                             class="fa-solid fa-cart-shopping"></i></a>

@@ -41,7 +41,7 @@
               </div>
           </div>
 
-            <div class="col-md-4">
+          <div class="col-md-4">
               <div class="form-group">
                   <strong>Expire Date</strong>
                   <input class="form-control" type="date" name="Expire_Date" placeholder=" Input Expire Date" value="{{ old('Expire_Date')}}">

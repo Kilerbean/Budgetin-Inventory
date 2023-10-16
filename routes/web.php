@@ -43,11 +43,11 @@ Route::get('/dasar',function () {
 
 //Route Dashboard QC EXPENSE
 Route::middleware('auth')->group(function() {
-    Route::get('/dashboards', [QcDashboardController::class,'dashboard']) ->name('Dashboards')->middleware('user.level:1,2,3,4,5');
+    Route::get('/dashboards', [QcDashboardController::class,'dashboard']) ->name('Dashboards')->middleware('user.level:2,3,4,5');
 
 
-Route::post('/Tambah', [QcDashboardController::class,'store']) ->name('tambahmaterial')->middleware('user.level:1,2,3,4,5');
-Route::get('/tambah/{baranglow}/material', [QcDashboardController::class,'tambah']) ->name('tambah')->middleware('user.level:1,2,3,4,5');
+Route::post('/Tambah', [QcDashboardController::class,'store']) ->name('tambahmaterial')->middleware('user.level:2,3,4,5');
+Route::get('/tambah/{baranglow}/material', [QcDashboardController::class,'tambah']) ->name('tambah')->middleware('user.level:2,3,4,5');
 
 Route::get('/maintenance', [QcDashboardController::class,'maintenance']) ->name('Maintenance')->middleware('user.level:2,3,4,5');
 Route::get('/PRad', [QcDashboardController::class,'PRad']) ->name('Product')->middleware('user.level:2,3,4,5');
