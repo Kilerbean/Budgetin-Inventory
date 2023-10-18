@@ -11,7 +11,7 @@
               <?php $no = 1; ?>
 
               <th style="background-color: lightgray;">No.</th>
-              <th style="background-color: lightgray;">date</th>
+              <th style="background-color: lightgray;">Date</th>
               <th style="background-color: lightgray;">Change by</th>
               <th style="background-color: lightgray;">Activity</th>
               <th style="background-color: lightgray;">Catalog Number</th>

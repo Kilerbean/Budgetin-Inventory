@@ -84,7 +84,7 @@
                     <div class="form-label">Location</div>
                     <select class="form-select @error('location') is-invalid @enderror" name="location">
                         <option value="">Select</option>
-                        <option value="Chemical Lab" {{ old('location') === 'Chemical Lab' ? 'selected' : '' }}>Chemical Lab</option>
+                        <option value="Chemical QC Lab" {{ old('location') === 'Chemical QC Lab' ? 'selected' : '' }}>Chemical QC Lab</option>
                         <option value="Microbiology Lab" {{ old('location') === 'Microbiology Lab' ? 'selected' : '' }}>Microbiology Lab</option>
                         <option value="Sampling Room" {{ old('location') === 'Sampling Room' ? 'selected' : '' }}>Sampling Room</option>
                     </select>

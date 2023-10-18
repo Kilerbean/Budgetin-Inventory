@@ -11,35 +11,24 @@
     <span {{-- class="slide-left" --}} style="display: inline-block">   Welcome to <strong>{{$pretitle}}</strong></span></h1>        
 </div> 
 
-    <a href="{{ route('Barang.Create') }}" class="btn btn-success btn-sm" style="padding-right: 46px"> <i
-            class="fa fa-folder-plus"></i> Add New
-        Material
-    </a>
-    <a class="btn btn-success btn-sm" href="{{ route('income.create') }}"> <i class="fa fa-cart-plus"></i> Add New
-        Purchasing
-        Material</a>
-    <a class="btn btn-success btn-sm" href="{{ route('usage.create') }}"><i class="fa fa-plus"></i> New Material Usage</a>
-    <a class="btn btn-info btn-sm" href="{{ route('income.index') }}"><i class="fa fa-clipboard-list"></i><i
-            class="fa fa-turn-up"></i> List of Incoming Material</a>
-
-    <a class="btn btn-info btn-sm" href="{{ route('usage.index') }}"> <i class="fa fa-clipboard-list"></i><i
-            class="fa fa-turn-down"></i> List Material Usage</a>
-    <a class="btn btn-info btn-sm" href="{{ route('Barang.index') }}"> <i class="fa fa-book"></i> List of All Material
-    </a>
-    @if (auth()->user()->leveluser > 2)
-        <a class="btn btn-secondary btn-sm mt-1 mb-2" href="{{ route('laporanincome') }}"><i
-                class="fa fa-file-arrow-up"></i>
-            Incoming
-            Material Report </a>
-        <a class="btn btn-secondary btn-sm mt-1 mb-2" href="{{ route('laporanusage') }}" style="padding-right: 53px"> <i
-                class="fa fa-file-arrow-down"></i>
-            Material Usage Report</a>
-    @endif
+<a href="{{ route('listkalibrasi.create') }}" class="btn btn-primary btn-sm">Create New Instrument</a>
 
 
 
+<div
+    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-0 pb-2 mb-1 border-bottom border-danger">
+</div>
 
+@include('kalibrasi.dashboardkalibrasi.nearcalibration')
+<br>
+<div
+    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-1 border-bottom border-danger">
+</div>
+<br>
 
+@include('kalibrasi.dashboardkalibrasi.overduecalibration')
+<br>
+<div  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-1 border-bottom border-danger"></div>
 
 
 

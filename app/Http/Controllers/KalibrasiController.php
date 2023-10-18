@@ -144,8 +144,16 @@ class KalibrasiController extends Controller
 
     public function dashboard()
     {
+        $kalibrasinear = Calibration::where('nextcalibration', '>=', now())
+        ->where('nextcalibration', '<', now()->addDays(30))
+        ->get();
 
-        return view('kalibrasi.dashboardkalibrasi.dashboard');
+    $kalibrasiover = Calibration::where('nextcalibration', '<', now())
+        ->get();
+
+        
+
+        return view('kalibrasi.dashboardkalibrasi.dashboard',compact('kalibrasinear','kalibrasiover'));
     }
 
 
