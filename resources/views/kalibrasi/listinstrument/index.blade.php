@@ -52,14 +52,23 @@
                         @foreach ($kalibrasi as $kalibrasis)
                             <tr>
                                 <td class="text-end">
-
+{{-- 
                                     <a href="{{ route('Barang.show', $kalibrasis->id) }}"title="Info Detail Material"
-                                        class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
+                                        class="btn btn-info btn-sm"><i class="fa fa-info"></i></a> --}}
 
-                                    <a href="{{ route('Barang.edit', $kalibrasis->id) }}" class="btn btn-primary btn-sm"
-                                        title="Edit Barang"><i class="fa fa-pen"></i></a>
+                                   
 
-
+                                        <form action="{{ route('kalibrasi.destroy', $kalibrasis->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <a href="{{ route('listKalibrasi.edit', $kalibrasis->id) }}" class="btn btn-primary btn-sm"
+                                                title="Edit Barang"><i class="fa fa-pen"></i></a>
+                                                @if (auth()->user()->leveluser >4)
+                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Are you sure want to delete this ?');" title="Delete"><i
+                                                    class="fa fa-trash"></i></button>
+                                                @endif
+                                        </form>
 
                                 </td>
 
@@ -67,7 +76,7 @@
                                 <td>{{ $kalibrasis->instrumentname }}</td>
                                 <td>{{ $kalibrasis->instrumentid }}</td>
                                 <td>{{ $kalibrasis->serialnumber }}</td>
-                                <td>{{ $kalibrasis->frekuensicalibration }}</td>
+                                <td>{{ $kalibrasis->frekuensicalibration }} Month</td>
                                 <td>{{ $kalibrasis->needcalibration== 1 ? 'Yes' : 'No'  }}</td>
                                 <td>{{ $kalibrasis->lastcalibration}}</td>
                                 <td>{{ $kalibrasis->nextcalibration}}</td>

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('instrumentid');
             $table->string('serialnumber');
             $table->string('instrumentname');
-            $table->string('frekuensicalibration');
+            $table->integer('frekuensicalibration');
             $table->boolean('needcalibration');
             $table->date('lastcalibration');
             $table->date('nextcalibration');

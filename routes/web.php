@@ -124,10 +124,14 @@ Route::get('/karyawan/profil', [UserController::class,'profil']) ->name('profil'
 
 
 //Route Calibration
+Route::get('/Dashboard/Kalibrasi',[KalibrasiController::class,'dashboard'])->name('dashboard.kalibrasi')->middleware('user.level:2,3,4,5');
 
 Route::get('/kalibrasi',[KalibrasiController::class,'index'])->name('listKalibrasi')->middleware('user.level:2,3,4,5');
 route::get('/kalibrasi/create',[KalibrasiController::class,'create'])->name('listkalibrasi.create')->middleware('user.level:2,3,4,5');
-
+route::post('/kalibrasi/store',[KalibrasiController::class,'store'])->name('listkalibrasi.store')->middleware('user.level:2,3,4,5');
+route::get('/kalibrasi/{kalibrasi}/edit',[KalibrasiController::class,'edit'])->name('listKalibrasi.edit')->middleware('user.level:2,3,4,5');
+route::put('/kalibrasi/{kalibrasi}',[KalibrasiController::class,'update'])->name('listKalibrasi.update')->middleware('user.level:2,3,4,5');
+Route::delete('/kalibrasi/{kalibrasi}',[KalibrasiController::class,'destroy'])-> name('kalibrasi.destroy')->middleware('user.level:4,5');
 
 });
 

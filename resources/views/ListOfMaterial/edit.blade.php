@@ -124,8 +124,7 @@
                 <div class="mb-3">
                     <div class="form-label">Packing Size Unit</div>
                     <select class="form-select" name="packingsize_unit">
-                        <option value="mL"
-                            {{ old('packingsize_unit', $barang->packingsize_unit) === 'mL' ? 'selected' : '' }}>mL</option>
+                        <option value="mL"{{ old('packingsize_unit', $barang->packingsize_unit) === 'mL' ? 'selected' : '' }}>mL</option>
                         <option value="gram"
                             {{ old('packingsize_unit', $barang->packingsize_unit) === 'gram' ? 'selected' : '' }}>gram
                         </option>

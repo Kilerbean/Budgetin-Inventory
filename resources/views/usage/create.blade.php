@@ -23,7 +23,7 @@
             <form action="{{ route('usage.store') }}" method="POST">
                 @csrf                
                     <div class="row">
-                        <div class="col-12 mb-3">
+                        <div class="col-12 ">
                             <div class="form-label"><strong>Catalog Number - Material Name</strong></div>
                             <select class="form-select" name="Catalog_Number" id="Catalog_Number">
                                 <option value="">Click to search for materials</option>

@@ -21,6 +21,8 @@
                 str_contains($pages, 'Edit Material') ||
                 str_contains($pages, 'Detail of Material') ||
                 str_contains($pages, 'Create New Material') 
+                // str_contains($pages, 'Callibration Dashboard') ||
+                // str_contains($pages, 'List Instrument') 
                 
              ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('Barang.index') }}">
@@ -50,7 +52,7 @@
                 Callibration
             </li>
             <li class="sidebar-item {{ str_contains($pages, 'Karyawan') ? 'active' : '' }}">
-                <a class="sidebar-link" href="">
+                <a class="sidebar-link" href="{{ route('dashboard.kalibrasi') }}">
                     <i class="fa-solid fa-users" style="width: 18px;"></i>
                     <span class="align-middle">Dashboard</span>
                 </a>
