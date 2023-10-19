@@ -88,7 +88,7 @@
                 modalContent += '<h3>Increase Adjustment Quantity:</h3>';
                 modalContent += formatData(data.income, ['id', 'No_PR', 'Total', 'Type_of_Material', 'Prices', 'Propose',
                     'Expire_Date', 'No_PO', 'Status', 'tipe_transaksi', 'updated_at', 'request_by',
-                    'PO_Date'
+                    'PO_Date','Unit','input_by','created_at','packingsize','packingsize_unit'
                 ]);
             }
 
@@ -96,7 +96,7 @@
             if (data.hasOwnProperty('usage')) {
                 modalContent += '<h3>Decrease Adjustment Quantity:</h3>';
                 modalContent += formatData(data.usage, ['id', 'Type_of_Material', 'Status', 'Expire_Date',
-                    'tipe_transaksi', 'updated_at', 'Open_By'
+                    'tipe_transaksi', 'updated_at', 'Open_By','Unit','input_by','created_at',
                 ]);
             }
 

@@ -19,7 +19,6 @@
                         <th style="background-color: lightgray;">Servive By</th>
                         <th style="background-color: lightgray;">Start Service</th>
                         <th style="background-color: lightgray;">Finish Service</th>
-
                         <th style="background-color: lightgray;">Location</th>
 
                     </tr>
@@ -34,25 +33,21 @@
 
                                
 
-                                    <form action="{{ route('kalibrasi.destroy', $kalibrasis->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <a href="{{ route('listKalibrasi.edit', $kalibrasis->id) }}" class="btn btn-primary btn-sm"
+
+                                        <a href="{{ route('kalibrasi.breakdown', $kalibrasis->id) }}" class="btn btn-primary btn-sm"
                                             title="Edit Barang"><i class="fa fa-pen"></i></a>
-                                            @if (auth()->user()->leveluser >4)
-                                        <button type="submit" class="btn btn-danger btn-sm"
-                                            onclick="return confirm('Are you sure want to delete this ?');" title="Delete"><i
-                                                class="fa fa-trash"></i></button>
-                                            @endif
-                                    </form>
+
+
 
                             </td>
 
                             <td><span class="text-muted">{{ $no++ }}</span></td>
                             <td>{{ $kalibrasis->instrumentid }}</td>
                             <td>{{ $kalibrasis->instrumentname }}</td>
-                            <td>{{ $kalibrasis->lastcalibration}}</td>         
-                            <td>{{ $kalibrasis->calibrationby }}</td>
+                            <td>{{ $kalibrasis->startbreakdown }}</td>
+                            <td>{{ $kalibrasis->serviceby }}</td>
+                            <td>{{ $kalibrasis->startservicedate }}</td>
+                            <td>{{ $kalibrasis->finishservice }}</td>
                             <td>{{ $kalibrasis->location }}</td>
 
                     @endforeach

@@ -18,8 +18,9 @@
             <div class="row">
                 <div class="col">
                     <a href="{{ route('listkalibrasi.create') }}" class="btn btn-primary btn-sm">Create New Instrument</a>
-                    {{-- <a href="{{ route('barangtidakaktif') }}" class="btn btn-danger btn-sm">List Material Inactive</a>
-                    <a href="{{ route('Barang.listcode') }}" class="btn btn-info btn-sm">List Material based Material Code</a> --}}
+                    <a href="{{ route('kalibrasi.addbreakdown') }}" class="btn btn-warning btn-sm">Instrument Breakdown</a>
+                    <a href="{{ route('barangtidakaktif') }}" class="btn btn-success btn-sm">Create Work Order List</a>
+                    
                 </div>
             </div>
             <div class="mx-2 mt-2">
@@ -62,8 +63,11 @@
                                             @csrf
                                             @method('DELETE')
                                             <a href="{{ route('listKalibrasi.edit', $kalibrasis->id) }}" class="btn btn-primary btn-sm"
-                                                title="Edit Barang"><i class="fa fa-pen"></i></a>
-                                                @if (auth()->user()->leveluser >4)
+                                                title="Edit Instrument"><i class="fa fa-pen"></i></a>
+                                                <a href="{{ route('kalibrasi.breakdown', $kalibrasis->id) }}" class="btn btn-warning btn-sm"
+                                                    title="Breakdown Instrument"><i class="fa fa-pen-to-square"></i></a>
+
+                                                @if (auth()->user()->leveluser >3)
                                             <button type="submit" class="btn btn-danger btn-sm"
                                                 onclick="return confirm('Are you sure want to delete this ?');" title="Delete"><i
                                                     class="fa fa-trash"></i></button>

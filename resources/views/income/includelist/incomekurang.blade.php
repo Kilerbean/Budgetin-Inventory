@@ -29,18 +29,7 @@
                     <tr>
                         <td>
 
-                            {{-- tombol modalnya --}}
-                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdropspo{{ $income->id }}"
-                            {{ $income->Status ? 'hidden' : '' }} title="Input no PO">
-                            <i class="fa fa-keyboard"></i></i>
-                            </button>
-                            @include('income.includelist.modalinputpo')
 
-                            {{-- tombol Edit --}}
-                            <a class="btn btn-primary btn-sm"
-                                href="{{ route('income.edit', $income->id) }}"{{ $income->Status ? 'hidden' : '' }}
-                                title="Edit Barang"> <i class="fa fa-pen"></i></a>
 
 
                               
@@ -49,13 +38,26 @@
                                 @csrf
                                 @method('DELETE')
                                 
+                            {{-- tombol modalnya --}}
+                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdropspo{{ $income->id }}"
+                            {{ $income->Status ? 'hidden' : '' }} title="Input no PO">
+                            <i class="fa fa-keyboard"></i></i>
+                            </button>
+                       
+
+                            {{-- tombol Edit --}}
+                            <a class="btn btn-primary btn-sm"
+                                href="{{ route('income.edit', $income->id) }}"{{ $income->Status ? 'hidden' : '' }}
+                                title="Edit Barang"> <i class="fa fa-pen"></i></a>
+
                                 @if (auth()->user()->leveluser > 4)
                                 <button type="submit" class="btn btn-danger btn-sm"
                                     onclick="return confirm('Are you sure want to delete this ?');"
                                     title="Delete Barang"><i class="fa fa-trash"></i></button>
                                     @endif
                             </form>
-                            
+                            @include('income.includelist.modalinputpo')
                         </td>
                         <td>{{ ++$i }}</td>
                         <td>{{ $income->No_PR }}</td>

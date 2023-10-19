@@ -127,6 +127,7 @@ class UsageController extends Controller
     public function edit(Usage $usage)
     {
         
+   
         return view('usage.edit',compact('usage'));
     }
 

@@ -12,7 +12,8 @@
 </div> 
 
 <a href="{{ route('listkalibrasi.create') }}" class="btn btn-primary btn-sm">Create New Instrument</a>
-
+<a href="{{ route('kalibrasi.addbreakdown') }}" class="btn btn-warning btn-sm">Instrument Breakdowns</a>
+<a href="{{ route('barangtidakaktif') }}" class="btn btn-success btn-sm">Create Work Order List</a>
 
 
 <div
@@ -30,6 +31,9 @@
 <br>
 <div  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-1 border-bottom border-danger"></div>
 
+@include('kalibrasi.dashboardkalibrasi.breakdown')
+<br>
+<div  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-1 border-bottom border-danger"></div>
 
 
 

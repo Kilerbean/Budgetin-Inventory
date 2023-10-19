@@ -148,13 +148,78 @@ class KalibrasiController extends Controller
         ->where('nextcalibration', '<', now()->addDays(30))
         ->get();
 
-    $kalibrasiover = Calibration::where('nextcalibration', '<', now())
+        $kalibrasiover = Calibration::where('nextcalibration', '<', now())
         ->get();
 
-        
+        $kalibrasibreak=Calibration::whereNotNull('startbreakdown')->get();
 
-        return view('kalibrasi.dashboardkalibrasi.dashboard',compact('kalibrasinear','kalibrasiover'));
+        return view('kalibrasi.dashboardkalibrasi.dashboard',compact('kalibrasinear','kalibrasiover','kalibrasibreak'));
     }
+
+public function breakdown(Calibration $kalibrasi)
+{
+    return view('kalibrasi.listinstrument.breakdown',compact('kalibrasi'));
+}
+
+public function breakdownedit(Request $request, Calibration $kalibrasi)
+{
+    $request->validate(
+        [
+            'startbreakdown' => 'required',
+            'serviceby' => 'required',
+        ],
+    );
+
+    $kalibrasi->instrumentid=$request->instrumentid;
+    $kalibrasi->instrumentname=$request->instrumentname;
+    $kalibrasi->location=$request->location;
+    $kalibrasi->startbreakdown=$request->startbreakdown;
+    $kalibrasi->serviceby=$request->serviceby;
+    $kalibrasi->startservicedate=$request->startservicedate;
+    $kalibrasi->finishservice=$request->finishservice;
+    $kalibrasi->save();
+
+    return redirect()->route('dashboard.kalibrasi')
+    ->with('success', 'Instrument Breakdown Data is Recorded ');
+    
+}
+public function addbreakdown(Calibration $kalibrasi)
+{
+    $uniqueIncomes=Calibration::get();
+
+    return view('kalibrasi.listinstrument.addbreakdown',compact('kalibrasi','uniqueIncomes'));
+}
+
+public function addbreakdownedit(Request $request)
+{
+    $request->validate(
+        [
+            'startbreakdown' => 'required',
+            'serviceby' => 'required',
+        ],
+    );
+
+    $kalibrasi=Calibration::where('instrumentid',$request->instrumentid)->where('needcalibration',1)->first();
+    dd($kalibrasi);
+  
+    $kalibrasi->location=$request->location;
+    $kalibrasi->startbreakdown=$request->startbreakdown;
+    $kalibrasi->serviceby=$request->serviceby;
+    $kalibrasi->startservicedate=$request->startservicedate;
+    $kalibrasi->finishservice=$request->finishservice;
+
+    $kalibrasi->save();
+
+    return redirect()->route('dashboard.kalibrasi')
+    ->with('success', 'Instrument Breakdown Data is Recorded ');
+
+}
+
+
+
+
+
+
 
 
 

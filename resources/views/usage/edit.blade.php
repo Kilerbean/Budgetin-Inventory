@@ -48,14 +48,13 @@
       </div>
 
       <div class="col-md-4">
-        <div class="form-label"><strong>Usage</strong></div>
-
+        <strong>Usage</strong>
         <select class="form-select" name="usage">
             <option value="Usage for analysis" 
-            {{ old('usage', $income->usage) === 'Usage for analysis' ? 'selected' : '' }}>
+            {{ old('usage', $usage->usage) === 'Usage for analysis' ? 'selected' : '' }}>
                 Usage for analysis</option>
             <option value="Usage by other departement"
-                {{ old('usage', $income->usage) === 'Usage by other departement' ? 'selected' : '' }}>
+                {{ old('usage', $usage->usage) === 'Usage by other departement' ? 'selected' : '' }}>
                 Usage by other departement</option>
            
         </select>

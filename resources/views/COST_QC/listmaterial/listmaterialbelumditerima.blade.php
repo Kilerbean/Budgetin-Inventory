@@ -28,29 +28,34 @@
                     <tr>
                         <td>
                             {{-- tombol modalnya --}}
-                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop{{ $income->id }}"
-                                {{ $income->Status ? 'hidden' : '' }} title="Terima Barang">
-                                <i class="fa fa-check"></i>
-                            </button>
 
-                            @include('income.includelist.modalterima')
 
-                            {{-- tombol Edit --}}
-                            <a class="btn btn-primary btn-sm"
-                                href="{{ route('income.edit', $income->id) }}"{{ $income->Status ? 'hidden' : '' }}
-                                title="Edit Barang"><i class="fa fa-pen"></i></a>
-
-                            @if (auth()->user()->leveluser >4)
+                           
                                 <form action="{{ route('income.destroy', $income->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
+                                    
+                                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop{{ $income->id }}"
+                                    {{ $income->Status ? 'hidden' : '' }} title="Terima Barang">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                               
     
+                                {{-- tombol Edit --}}
+                                <a class="btn btn-primary btn-sm"
+                                    href="{{ route('income.edit', $income->id) }}"{{ $income->Status ? 'hidden' : '' }}
+                                    title="Edit Barang"><i class="fa fa-pen"></i></a>
+
+
+
+                                    @if (auth()->user()->leveluser >4)
                                     <button type="submit" class="btn btn-danger btn-sm"
                                         onclick="return confirm('Are you sure want to delete this ?');"
                                         title="Delete Barang"><i class="fa fa-trash"></i></button>
-                                </form>
-                                @endif
+                                        @endif
+                                    </form>
+                                    @include('income.includelist.modalterima')
                         
                         </td>
                         <td>{{ ++$x }}</td>

@@ -133,6 +133,20 @@ route::get('/kalibrasi/{kalibrasi}/edit',[KalibrasiController::class,'edit'])->n
 route::put('/kalibrasi/{kalibrasi}',[KalibrasiController::class,'update'])->name('listKalibrasi.update')->middleware('user.level:2,3,4,5');
 Route::delete('/kalibrasi/{kalibrasi}',[KalibrasiController::class,'destroy'])-> name('kalibrasi.destroy')->middleware('user.level:4,5');
 
+
+
+Route::get('/kalibrasi/{kalibrasi}/breakdown',[KalibrasiController::class,'breakdown'])->name('kalibrasi.breakdown')->middleware('user.level:2,3,4,5');
+Route::put('/kalibrasi/breakdown/{kalibrasi}',[KalibrasiController::class,'breakdownedit'])->name('kalibrasi.breakdown.edit')->middleware('user.level:2,3,4,5');
+
+
+Route::get('/kalibrasi/breakdown',[KalibrasiController::class,'addbreakdown'])->name('kalibrasi.addbreakdown')->middleware('user.level:2,3,4,5');
+Route::put('/kalibrasi/addbreakdowns',[KalibrasiController::class,'addbreakdownedit'])->name('kalibrasi.addbreakdown.edit')->middleware('user.level:2,3,4,5');
+
+
+
+
+
+
 });
 
 require __DIR__.'/auth.php';
