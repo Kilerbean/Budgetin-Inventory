@@ -28,8 +28,6 @@
 
                 <div class="row">
                 
-
-
                     <div class="col-12 ">
                         <div class="form-label"><strong>Intrument Name |Instrument ID</strong></div>
                         <select class="form-select" name="instrumentid" id="instrumentid">
@@ -98,15 +96,32 @@
                     </div>
 
 
+
+
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Service By</label>
-                        <input type="text" name="serviceby"class="form-control @error('serviceby')is-invalid @enderror"
-                            placeholder="Input here" value="{{ old('serviceby', $kalibrasi->serviceby) }}">
-                        @error('serviceby')
-                            <span class="invalid-feedback">{{ $message }}</span>
-                        @enderror
-                    </div>
+                         <select class="form-select @error('serviceby')is-invalid @enderror " name="serviceby" id="serviceby">
+                             <option value="">Click to search for materials</option>
+                             @foreach ($vendor as $row)
+                                 <option value="{{ $row->nama }}"
+                                     @if (old('serviceby') == $row->nama) selected @endif>
+                                     {{ $row->nama }}
+                                 </option>
+                             @endforeach
+                         </select>
+                         @error('serviceby')
+                         <span class="invalid-feedback">{{ $message }}</span>
+                         @enderror
+                 </div>
 
+                 <div class="col-md-6 mb-3">
+                    <label class="form-label">Reason</label>
+                    <input type="text" name="reason"class="form-control @error('reason')is-invalid @enderror"
+                        placeholder="Input here" value="{{ old('reason', $kalibrasi->reason) }}">
+                    @error('reason')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
                         <input type="submit" value="Save" class="btn btn-primary">

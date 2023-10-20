@@ -75,8 +75,25 @@
                     <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
+                
+                <div class="col-md-6 mb-3">
+                       <label class="form-label">Calibration By</label>
+                        <select class="form-select @error('calibrationby')is-invalid @enderror " name="calibrationby" id="calibrationby">
+                            <option value="">Click to search for materials</option>
+                            @foreach ($vendor as $row)
+                                <option value="{{ $row->nama }}"
+                                    @if (old('calibrationby') == $row->nama) selected @endif>
+                                    {{ $row->nama }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('calibrationby')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                </div>
 
 
+{{-- 
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Calibration By</label>
                     <input type="text" name="calibrationby"class="form-control @error('calibrationby')is-invalid @enderror"
@@ -84,7 +101,7 @@
                     @error('calibrationby')
                         <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
-                </div>
+                </div> --}}
 
 
                 <div class=" col-md-4 mb-3">

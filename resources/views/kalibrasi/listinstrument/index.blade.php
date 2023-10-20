@@ -19,8 +19,9 @@
                 <div class="col">
                     <a href="{{ route('listkalibrasi.create') }}" class="btn btn-primary btn-sm">Create New Instrument</a>
                     <a href="{{ route('kalibrasi.addbreakdown') }}" class="btn btn-warning btn-sm">Instrument Breakdown</a>
-                    <a href="{{ route('barangtidakaktif') }}" class="btn btn-success btn-sm">Create Work Order List</a>
-                    
+                    <a href="{{ route('barangtidakaktif') }}" class="btn btn-success btn-sm">Add Calibration Schedule</a>
+                    <a href="{{ route('barangtidakaktif') }}" class="btn btn-dark btn-sm">Create Work Order List</a>
+                    <a href="{{ route('kalibrasi.vendor') }}" class="btn btn-secondary btn-sm">Add Vendor</a>
                 </div>
             </div>
             <div class="mx-2 mt-2">

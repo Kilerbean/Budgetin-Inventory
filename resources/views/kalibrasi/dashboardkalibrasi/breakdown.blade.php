@@ -16,6 +16,7 @@
                         <th style="background-color: lightgray;">Instrument ID</th>
                         <th style="background-color: lightgray;">Instrument Name</th>
                         <th style="background-color: lightgray;">Start Breakdown</th>
+                        <th style="background-color: lightgray;">Reason</th>
                         <th style="background-color: lightgray;">Servive By</th>
                         <th style="background-color: lightgray;">Start Service</th>
                         <th style="background-color: lightgray;">Finish Service</th>
@@ -45,6 +46,7 @@
                             <td>{{ $kalibrasis->instrumentid }}</td>
                             <td>{{ $kalibrasis->instrumentname }}</td>
                             <td>{{ $kalibrasis->startbreakdown }}</td>
+                            <td>{{ $kalibrasis->reason }}</td>
                             <td>{{ $kalibrasis->serviceby }}</td>
                             <td>{{ $kalibrasis->startservicedate }}</td>
                             <td>{{ $kalibrasis->finishservice }}</td>

@@ -24,10 +24,10 @@
                 @csrf
 
                 <div class="row">
+                    
                     <div class="mb-3">
                         <div class="form-group">
                             <div class="form-label"><strong>Catalog Number | Material Name - Type of Material |Manufacture |Packing Size</strong></div>
-                            
                             <select class="form-control" name="Catalog_Number" id="Catalog_Number">
                                 <option value="">Click to search for materials</option>
                                 @foreach ($barang as $row)

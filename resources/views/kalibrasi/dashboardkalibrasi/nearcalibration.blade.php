@@ -30,12 +30,26 @@
                                 <a href="{{ route('Barang.show', $kalibrasis->id) }}"title="Info Detail Material"
                                     class="btn btn-info btn-sm"><i class="fa fa-info"></i></a> --}}
 
-                               
+                                    <form action="{{ route('Kalibrasi.update.ontime', $kalibrasis->id) }}" class=""
+                                        method="post">
+        
+                                        @csrf
+                                        @method('PUT')
 
 
-                                        <a href="{{ route('listKalibrasi.edit', $kalibrasis->id) }}" class="btn btn-primary btn-sm"
-                                            title="Edit Barang"><i class="fa fa-pen"></i></a>
-      
+                                        <button type="submit" class="btn btn-success btn-sm"
+                                            onclick="return confirm('Are You Sure About Calibrating This Instrument??');"title="Done Calibrated">
+                                            <i class="fa fa-calendar-check"></i></button>
+
+                                            <a href="{{ route('listKalibrasi.edit', $kalibrasis->id) }}" class="btn btn-primary btn-sm"
+                                                title="Edit Instrument"><i class="fa fa-pen"></i></a>
+    
+                                            </form>
+
+
+                                     
+
+                                         
                             </td>
 
                             <td><span class="text-muted">{{ $no++ }}</span></td>
