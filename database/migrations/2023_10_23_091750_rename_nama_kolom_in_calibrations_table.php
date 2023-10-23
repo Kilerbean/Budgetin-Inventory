@@ -12,21 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('calibrations', function (Blueprint $table) {
-            $table->date('jadwalkalibrasi')->nullable();
-            $table->string('reason_overdue')->nullable();
-    
+            $table->renameColumn('reason', 'reason_breakdown');
         });
     }
 
-
-
-
-    
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        // 
+        Schema::table('calibrations', function (Blueprint $table) {
+            //
+        });
     }
 };
