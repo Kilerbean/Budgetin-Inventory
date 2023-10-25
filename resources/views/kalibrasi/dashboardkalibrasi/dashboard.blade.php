@@ -15,8 +15,9 @@
 <a href="{{ route('listKalibrasi') }}" class="btn btn-info btn-sm">List Instrument</a>
 
 <a href="{{ route('kalibrasi.addbreakdown') }}" class="btn btn-warning btn-sm">Instrument Breakdowns</a>
-<a href="{{ route('barangtidakaktif') }}" class="btn btn-success btn-sm">Add Calibration Schedule</a>
-<a href="{{ route('barangtidakaktif') }}" class="btn btn-dark btn-sm">Create Work Order List</a>
+<a href="{{ route('jadwal') }}" class="btn btn-success btn-sm">Add Calibration Schedule</a>
+<a href="{{ route('index.workorderlist') }}" class="btn btn-dark btn-sm">Create Work Order List</a>
+
 
 
 <div
@@ -31,6 +32,10 @@
 <br>
 
 @include('kalibrasi.dashboardkalibrasi.overduecalibration')
+<br>
+<div  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-1 border-bottom border-danger"></div>
+
+@include('kalibrasi.dashboardkalibrasi.kalibrasi')
 <br>
 <div  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-1 border-bottom border-danger"></div>
 

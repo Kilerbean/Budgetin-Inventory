@@ -93,18 +93,9 @@
                 </div>
 
 
-{{-- 
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Calibration By</label>
-                    <input type="text" name="calibrationby"class="form-control @error('calibrationby')is-invalid @enderror"
-                    placeholder="Input here" value="{{ old('calibrationby') }}">
-                    @error('calibrationby')
-                        <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
-                </div> --}}
 
 
-                <div class=" col-md-4 mb-3">
+                {{-- <div class=" col-md-4 mb-3">
                     <div class="form-label">Location</div>
                     <select class="form-select @error('location') is-invalid @enderror" name="location">
                         <option value="">Select</option>
@@ -115,7 +106,25 @@
                     @error('location')
                         <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
-                </div>
+                </div> --}}
+
+
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Location</label>
+                     <select class="form-select @error('location')is-invalid @enderror " name="location" id="location">
+                         <option value="">Click to search for materials</option>
+                         @foreach ($location as $row)
+                             <option value="{{ $row->location }}"
+                                 @if (old('location') == $row->location) selected @endif>
+                                 {{ $row->location }}
+                             </option>
+                         @endforeach
+                     </select>
+                     @error('location')
+                     <span class="invalid-feedback">{{ $message }}</span>
+                     @enderror
+             </div>
+
 
 
                 <div class="col-md-2 mb-3">

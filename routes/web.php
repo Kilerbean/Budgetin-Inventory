@@ -9,6 +9,7 @@ use App\Http\Controllers\FinancialController;
 use App\Http\Controllers\QcDashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KalibrasiController;
+use App\Http\Controllers\WorkorderlistController;
 use App\Models\User;
 
 /*
@@ -150,14 +151,21 @@ Route::put('/kalibrasis/addbreakdowns',[KalibrasiController::class,'addbreakdown
 
 
 //route Work Order List
+Route::get('/kalibrasi/workorderlist',[WorkorderlistController::class,'index'])->name('index.workorderlist')->middleware('user.level:2,3,4,5');
 
 
 
 
 
 
+//route jadwal kalibrasi
+Route::get('/kalibrasi/jadwal',[KalibrasiController::class,'jadwal'])->name('jadwal')->middleware('user.level:2,3,4,5');
+Route::put('/kalibrasis/jadwalkanlibrasi',[KalibrasiController::class,'jadwalkalibrasi'])->name('kalibrasi.jadwalkalibrasi')->middleware('user.level:2,3,4,5');
+route::put('/kalibrasis/{kalibrasi}',[KalibrasiController::class,'terjadwal'])->name('kalibrasi.terjadwal')->middleware('user.level:2,3,4,5');
 
-//route breakdown
+
+
+//route add Vendor
 Route::get('/kalibrasi/vendor',[KalibrasiController::class,'vendor'])->name('kalibrasi.vendor')->middleware('user.level:2,3,4,5');
 Route::post('/kalibrasis/addvendor',[KalibrasiController::class,'addvendor'])->name('kalibrasi.addvedor')->middleware('user.level:2,3,4,5');
 

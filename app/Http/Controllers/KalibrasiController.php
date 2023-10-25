@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Vendor;
-use App\Models\Calibration;
+use App\Models\Location;
 
+use App\Models\Calibration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Validated;
+
 
 class KalibrasiController extends Controller
 {
@@ -31,7 +33,8 @@ class KalibrasiController extends Controller
     public function create()
     {
         $vendor=Vendor::get();
-        return view('kalibrasi.listinstrument.create',compact('vendor'));
+        $location=Location::get();
+        return view('kalibrasi.listinstrument.create',compact('vendor','location'));
     }
 
     /**
@@ -176,7 +179,9 @@ public function addvendor(Request $request)
 
         $kalibrasibreak=Calibration::whereNotNull('startbreakdown')->get();
 
-        return view('kalibrasi.dashboardkalibrasi.dashboard',compact('kalibrasinear','kalibrasiover','kalibrasibreak'));
+        $jadwalkalibrasi=Calibration::whereNotNull('jadwalkalibrasi')->get();
+
+        return view('kalibrasi.dashboardkalibrasi.dashboard',compact('kalibrasinear','kalibrasiover','kalibrasibreak','jadwalkalibrasi'));
     }
 
 
@@ -189,7 +194,8 @@ public function breakdown(Calibration $kalibrasi)
 {
 
     $vendor=Vendor::get();
-    return view('kalibrasi.listinstrument.breakdown',compact('kalibrasi','vendor'));
+    $location=Location::get();
+    return view('kalibrasi.listinstrument.breakdown',compact('kalibrasi','vendor','location'));
 }
 
 public function breakdownedit(Request $request, Calibration $kalibrasi)
@@ -198,7 +204,7 @@ public function breakdownedit(Request $request, Calibration $kalibrasi)
         [
             'startbreakdown' => 'required',
             'serviceby' => 'required',
-            'reason'=>'required',
+            'reason_breakdown'=>'required',
             
         ],
     );
@@ -210,7 +216,7 @@ public function breakdownedit(Request $request, Calibration $kalibrasi)
     $kalibrasi->serviceby=$request->serviceby;
     $kalibrasi->startservicedate=$request->startservicedate;
     $kalibrasi->finishservice=$request->finishservice;
-    $kalibrasi->reason=$request->reason;
+    $kalibrasi->reason_breakdown=$request->reason_breakdown;
     $kalibrasi->save();
 
     return redirect()->route('dashboard.kalibrasi')
@@ -221,18 +227,20 @@ public function addbreakdown(Calibration $kalibrasi)
 {
     $uniqueIncomes=Calibration::whereNull('startbreakdown')->get();
     $vendor=Vendor::get();
+    $location=Location::get();
 
 
-    return view('kalibrasi.listinstrument.addbreakdown',compact('kalibrasi','uniqueIncomes','vendor'));
+    return view('kalibrasi.listinstrument.addbreakdown',compact('kalibrasi','uniqueIncomes','vendor','location'));
 }
 
 public function addbreakdownedit(Request $request)
 {
     $request->validate(
         [
+
             'startbreakdown' => 'required',
             'serviceby' => 'required',
-            'reason'=>'required',
+            'reason_breakdown'=>'required',
         ],
     );
 
@@ -244,7 +252,7 @@ public function addbreakdownedit(Request $request)
     $kalibrasi->serviceby=$request->serviceby;
     $kalibrasi->startservicedate=$request->startservicedate;
     $kalibrasi->finishservice=$request->finishservice;
-    $kalibrasi->reason=$request->reason;
+    $kalibrasi->reason_breakdown=$request->reason_breakdown;
     $kalibrasi->save();
 
     return redirect()->route('dashboard.kalibrasi')
@@ -284,8 +292,8 @@ public function ontime(Request $request, $kalibrasi)
 
 public function overcalibration(Calibration $kalibrasi)
 {
-
-    return view('',compact('kalibrasi'));
+    $location=Location::get();
+    return view('',compact('kalibrasi','location'));
 }
 
 public function overcalibrationdone(Request $request,$kalibrasi)
@@ -313,6 +321,99 @@ public function overcalibrationdone(Request $request,$kalibrasi)
     ->with('success', 'The Instrument Has Been Calibrated Successfully');
 
 }
+
+//JADWALKAN KALIBRASI
+public function jadwal(Calibration $kalibrasi)
+{
+    $uniqueIncomes=Calibration::whereNull('startbreakdown')->get();
+    $vendor=Vendor::get();
+    $location=Location::get();
+
+
+    return view('kalibrasi.listinstrument.jadwalkalibrasi',compact('kalibrasi','uniqueIncomes','vendor','location'));
+}
+
+public function jadwalkalibrasi(Request $request , Calibration $kalibrasi)
+{
+    $request->validate(
+        [
+            
+           'instrumentid'=>'required',
+            'jadwalkalibrasi' => 'required',
+            'calibrationby' => 'required',
+            'location'=>'required',
+        ],
+    );
+
+    $kalibrasi=Calibration::where('instrumentid',$request->instrumentid)->where('needcalibration',1)->first();
+
+    $kalibrasi->location=$request->location;
+    $kalibrasi->calibrationby=$request->calibrationby;
+    $kalibrasi->jadwalkalibrasi=$request->jadwalkalibrasi;
+    $kalibrasi->save();
+
+    return redirect()->route('dashboard.kalibrasi')
+    ->with('success', 'Instrument Calbration is scheduled ');
+
+
+}
+
+public function terjadwal(Request $request, $kalibrasi)
+{
+
+    // $old= \getoldvalues('mysql','calibrations',$kalibrasi);
+    // dd($old);
+    // $old_nextcalibration=$old["old"]["nextcalibration"];
+
+    // dd($old_nextcalibration);
+
+    $kalibrasi=Calibration::find($kalibrasi);
+
+    $kalibrasi->lastcalibration=$kalibrasi->jadwalkalibrasi;
+    $kalibrasi->save();
+ 
+    $lastCalibrationDate = Carbon::parse($kalibrasi->lastcalibration);
+    $nextCalibrationDate = $lastCalibrationDate->addMonths($kalibrasi->frekuensicalibration);
+    $kalibrasi->nextcalibration = $nextCalibrationDate;
+    $kalibrasi->jadwalkalibrasi=NULL;
+
+    $kalibrasi->save();
+    return redirect()->route('dashboard.kalibrasi')
+    ->with('success', 'The Instrument Has Been Calibrated Successfully');
+}
+
+
+public function overduecalibration(Request $request, $kalibrasi)
+{
+    $request->validate([
+
+        'No_PO' => 'required',
+    ]);
+
+    $kalibrasi = Calibration::find($kalibrasi);
+    $kalibrasi->update(['reason_overdue' => $request->reason_overdue]);
+    $kalibrasi->update(['lastcalibration' => $request->lastcalibration]);
+    $kalibrasi->update(['nodeviasi' => $request->nodeviasi]);
+
+    $lastCalibrationDate = Carbon::parse($kalibrasi->lastcalibration);
+    $nextCalibrationDate = $lastCalibrationDate->addMonths($kalibrasi->frekuensicalibration);
+    $kalibrasi->nextcalibration = $nextCalibrationDate;
+    $kalibrasi->save();
+
+
+
+    
+    return back()->with('success', 'The Instrument Has Been Calibrated Successfully');
+
+}
+
+
+
+
+
+
+
+
 
 
 

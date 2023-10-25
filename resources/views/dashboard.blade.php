@@ -62,14 +62,13 @@ background-repeat: no-repeat; background-size: cover"> --}}
                 <div class="text-center mb-2">
                     <h5 class="card-title mb-0">Callibration</h5>
                     <p class="card-text">Q-LIS</p>
-                    <a href="{{ route('Dashboards') }}" class="btn btn-primary" title="Dashboard EXPENSE QC"><i
+                    <a href="{{ route('dashboard.kalibrasi') }}" class="btn btn-primary" title="Dashboard Calibration"><i
                             class="fa fa-house"></i></a>
                     <a href="{{ route('listKalibrasi') }}" class="btn btn-info" title="List of All Instrument"><i
                             class="fa-solid fa-boxes-stacked"></i></a>
-                    <a href="{{ route('income.create') }}" class="btn btn-warning" title="Purchasing Material"><i
+                    <a href="{{ route('index.workorderlist') }}" class="btn btn-dark" title="Work Order List"><i
                             class="fa-solid fa-cart-shopping"></i></a>
-                    <a href="{{ route('usage.create') }}" class="btn btn-success" title="Material Usage"><i
-                            class="fa-solid fa-bag-shopping"></i>
+
                     </a>
                 </div>
             </div>

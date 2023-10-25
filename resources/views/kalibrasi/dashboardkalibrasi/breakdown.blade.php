@@ -46,7 +46,7 @@
                             <td>{{ $kalibrasis->instrumentid }}</td>
                             <td>{{ $kalibrasis->instrumentname }}</td>
                             <td>{{ $kalibrasis->startbreakdown }}</td>
-                            <td>{{ $kalibrasis->reason }}</td>
+                            <td>{{ $kalibrasis->reason_breakdown }}</td>
                             <td>{{ $kalibrasis->serviceby }}</td>
                             <td>{{ $kalibrasis->startservicedate }}</td>
                             <td>{{ $kalibrasis->finishservice }}</td>

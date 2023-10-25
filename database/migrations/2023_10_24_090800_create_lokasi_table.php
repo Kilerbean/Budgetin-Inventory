@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('calibrations', function (Blueprint $table) {
-            $table->renameColumn('reason', 'reason_breakdown');
+        Schema::create('locations', function (Blueprint $table) {
+            $table->id();
+            $table->string('location');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('calibrations', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('locations');
     }
 };

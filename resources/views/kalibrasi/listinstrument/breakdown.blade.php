@@ -69,24 +69,24 @@
                         @enderror
                     </div>
 
-                    <div class=" col-md-3 mb-3">
-                        <div class="form-label">Location</div>
-                        <select class="form-select @error('location') is-invalid @enderror" name="location">
-                            <option
-                                value="Chemical Lab"{{ old('location', $kalibrasi->location) === 'Chemical Lab' ? 'selected' : '' }}>
-                                Chemical Lab</option>
-                            <option
-                                value="Microbiology Lab"{{ old('location', $kalibrasi->location) === 'Microbiology Lab' ? 'selected' : '' }}>
-                                Microbiology Lab</option>
-                            <option
-                                value="Sampling Room"{{ old('location', $kalibrasi->location) === 'Sampling Room' ? 'selected' : '' }}>
-                                Sampling Room</option>
+                    <div class="col-md-3 mb-3">
+                        <label class="form-label">Location</label>
+                         <select class="form-select @error('location')is-invalid @enderror " name="location" id="location">
+                             <option value="">Click to search for materials</option>
+                             @foreach ($location as $row)
+                                 <option value="{{ $row->location }}"
+                                     @if (old('location') == $row->location) selected @endif>
+                                     {{ $row->location }}
+                                 </option>
+                             @endforeach
+                         </select>
+                         @error('location')
+                         <span class="invalid-feedback">{{ $message }}</span>
+                         @enderror
+                 </div>
 
-                        </select>
-                        @error('location')
-                            <span class="invalid-feedback">{{ $message }}</span>
-                        @enderror
-                    </div>
+
+
 
 
                     <div class="col-md-6 mb-3">
@@ -110,9 +110,9 @@
 
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Reason</label>
-                        <input type="text" name="reason"class="form-control @error('reason')is-invalid @enderror"
-                            placeholder="Input here" value="{{ old('reason', $kalibrasi->reason) }}">
-                        @error('reason')
+                        <input type="text" name="reason_breakdown"class="form-control @error('reason_breakdown')is-invalid @enderror"
+                            placeholder="Input here" value="{{ old('reason_breakdown', $kalibrasi->reason_breakdown) }}">
+                        @error('reason_breakdown')
                             <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
                     </div>

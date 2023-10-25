@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @php
-    $titles = 'QC - LIST INSTRUMENT/ ASSET QUALITY CONTROL DEPARTMENT';
-    $title = 'Q-LIS | LIST INSTRUMENT ';
+    $titles = 'QC - Work Order List';
+    $title = 'Q-LIS | WORK ORDER LIST ';
     $pretitle = 'Calibration  Q-LIS';
     $pages = $title;
 @endphp
@@ -9,23 +9,19 @@
 @section('content')
 
 
-
-
-
-
     <div class="col-12">
         <div class="card">
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col">
                     <a href="{{ route('listkalibrasi.create') }}" class="btn btn-primary btn-sm">Create New Instrument</a>
                     <a href="{{ route('kalibrasi.addbreakdown') }}" class="btn btn-warning btn-sm">Instrument Breakdown</a>
                     <a href="{{ route('jadwal') }}" class="btn btn-success btn-sm">Add Calibration Schedule</a>
-                    <a href="{{ route('index.workorderlist') }}" class="btn btn-dark btn-sm">Create Work Order List</a>
+                    <a href="{{ route('barangtidakaktif') }}" class="btn btn-dark btn-sm">Create Work Order List</a>
                     <a href="{{ route('kalibrasi.vendor') }}" class="btn btn-secondary btn-sm">Add Vendor</a>
                 </div>
-            </div>
+            </div> --}}
             <div class="mx-2 mt-2">
-                <h4 class="mb-2">List Instrument / Asset Quality Control Departement</h4>
+                <h4 class="mb-2">Work Order List</h4>
             </div>
 
 
@@ -37,16 +33,24 @@
                             <th class="w-1 ml-1" style="background-color: lightgray;">Action
                             </th>
                             <th style="background-color: lightgray;">No.</th>
-                            <th style="background-color: lightgray;">Instrument Name</th>
                             <th style="background-color: lightgray;">Instrument ID</th>
-                            <th style="background-color: lightgray;">Serial number</th>
-                            <th style="background-color: lightgray;">Calibration Frequency</th>
-                            <th style="background-color: lightgray;">Need Calibration</th>
-                            <th style="background-color: lightgray;">Last Calibration</th>
-                            <th style="background-color: lightgray;">Next Calibration</th>
-                            <th style="background-color: lightgray;">Calibration By</th>
-                            <th style="background-color: lightgray;">Year of Investment</th>
+                            <th style="background-color: lightgray;">Instrument Name</th>
                             <th style="background-color: lightgray;">Location</th>
+                            <th style="background-color: lightgray;">Service By</th>
+                            <th style="background-color: lightgray;">Requestor</th>
+                            <th style="background-color: lightgray;">Breakdown Date</th>
+                            <th style="background-color: lightgray;">Date of Create</th>
+                            <th style="background-color: lightgray;">Problem</th>
+                            <th style="background-color: lightgray;">Status</th>
+                            <th style="background-color: lightgray;">Start Service Date</th>
+                            <th style="background-color: lightgray;">Finish Service</th>
+                            <th style="background-color: lightgray;">Root Cause</th>
+                            <th style="background-color: lightgray;">Preventive Action</th>
+                            <th style="background-color: lightgray;">Change Part</th>
+
+
+
+
 
                         </tr>
                     </thead>
@@ -78,16 +82,22 @@
                                 </td>
 
                                 <td><span class="text-muted">{{ $no++ }}</span></td>
-                                <td>{{ $kalibrasis->instrumentname }}</td>
                                 <td>{{ $kalibrasis->instrumentid }}</td>
-                                <td>{{ $kalibrasis->serialnumber }}</td>
-                                <td>{{ $kalibrasis->frekuensicalibration }} Month</td>
-                                <td>{{ $kalibrasis->needcalibration== 1 ? 'Yes' : 'No'  }}</td>
-                                <td>{{ $kalibrasis->lastcalibration}}</td>
-                                <td>{{ $kalibrasis->nextcalibration}}</td>
-                                <td>{{ $kalibrasis->calibrationby }}</td>
-                                <td>{{ $kalibrasis->yearofinvestment }}</td>
-                                <td>{{ $kalibrasis->location }}</td>
+                                <td>{{ $kalibrasis->instrumentname }}</td>
+                                <td>{{ $kalibrasis->location}}</td>
+                                <td>{{ $kalibrasis->serviceby}}</td>
+                                <td>{{ $kalibrasis->requestor}}</td>
+                                <td>{{ $kalibrasis->breakdowndate}}</td>
+                                <td>{{ $kalibrasis->dateofcreate}}</td>
+                                <td>{{ $kalibrasis->problem}}</td>
+                                <td>{{ $kalibrasis->Status== 1 ? 'Solve' : 'Not Solve'}}</td>
+                                <td>{{ $kalibrasis->startservicedate}}</td>
+                                <td>{{ $kalibrasis->finishservice}}</td>
+                                <td>{{ $kalibrasis->rootcause}}</td>
+                                <td>{{ $kalibrasis->preventiveaction}}</td>
+                                <td>{{ $kalibrasis->changepart== 1 ? 'Yes' : 'No'}}</td>
+
+             
  
                         @endforeach
 
