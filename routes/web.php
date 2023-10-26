@@ -123,7 +123,7 @@ Route::get('/karyawan/profil', [UserController::class,'profil']) ->name('profil'
 
 
 
-//Route Calibration
+//ROUTE CALIBRATION
 
 Route::get('/Dashboard/Kalibrasi',[KalibrasiController::class,'dashboard'])->name('dashboard.kalibrasi')->middleware('user.level:2,3,4,5');
 
@@ -134,26 +134,11 @@ route::get('/kalibrasi/{kalibrasi}/edit',[KalibrasiController::class,'edit'])->n
 route::put('/kalibrasi/{kalibrasi}',[KalibrasiController::class,'update'])->name('listKalibrasi.update')->middleware('user.level:2,3,4,5');
 Route::delete('/kalibrasi/{kalibrasi}',[KalibrasiController::class,'destroy'])-> name('kalibrasi.destroy')->middleware('user.level:4,5');
 
-//kalibrasinya
+//kalibrasinya tepat waktu
 route::put('/calibrasi/{kalibrasi}',[KalibrasiController::class,'ontime'])->name('Kalibrasi.update.ontime')->middleware('user.level:2,3,4,5');
 
-
-
-
-
-//rote breakdown 
-Route::get('/kalibrasi/{kalibrasi}/breakdown',[KalibrasiController::class,'breakdown'])->name('kalibrasi.breakdown')->middleware('user.level:2,3,4,5');
-Route::put('/kalibrasi/breakdown/{kalibrasi}',[KalibrasiController::class,'breakdownedit'])->name('kalibrasi.breakdown.edit')->middleware('user.level:2,3,4,5');
-
-
-Route::get('/kalibrasi/breakdown',[KalibrasiController::class,'addbreakdown'])->name('kalibrasi.addbreakdown')->middleware('user.level:2,3,4,5');
-Route::put('/kalibrasis/addbreakdowns',[KalibrasiController::class,'addbreakdownedit'])->name('kalibrasi.addbreakdown.edit')->middleware('user.level:2,3,4,5');
-
-
-//route Work Order List
-Route::get('/kalibrasi/workorderlist',[WorkorderlistController::class,'index'])->name('index.workorderlist')->middleware('user.level:2,3,4,5');
-
-
+//kalibrasinya tidak tepat waktu
+route::get('/calibrasi/{kalibrasi}',[KalibrasiController::class,'overcalibration'])->name('Kalibrasi.update.overdue')->middleware('user.level:2,3,4,5');
 
 
 
@@ -168,6 +153,29 @@ route::put('/kalibrasis/{kalibrasi}',[KalibrasiController::class,'terjadwal'])->
 //route add Vendor
 Route::get('/kalibrasi/vendor',[KalibrasiController::class,'vendor'])->name('kalibrasi.vendor')->middleware('user.level:2,3,4,5');
 Route::post('/kalibrasis/addvendor',[KalibrasiController::class,'addvendor'])->name('kalibrasi.addvedor')->middleware('user.level:2,3,4,5');
+
+
+
+
+
+
+
+//rote breakdown 
+Route::get('/kalibrasi/{kalibrasi}/breakdown',[KalibrasiController::class,'breakdown'])->name('kalibrasi.breakdown')->middleware('user.level:2,3,4,5');
+Route::put('/kalibrasi/breakdown/{kalibrasi}',[KalibrasiController::class,'breakdownedit'])->name('kalibrasi.breakdown.edit')->middleware('user.level:2,3,4,5');
+
+
+Route::get('/kalibrasi/addbreakdown',[KalibrasiController::class,'addbreakdown'])->name('kalibrasi.addbreakdown')->middleware('user.level:2,3,4,5');
+Route::put('/kalibrasis/addbreakdowns',[KalibrasiController::class,'addbreakdownedit'])->name('kalibrasi.addbreakdown.edit')->middleware('user.level:2,3,4,5');
+
+
+//route Work Order List
+Route::get('/kalibrasi/workorderlist',[WorkorderlistController::class,'index'])->name('index.workorderlist')->middleware('user.level:2,3,4,5');
+Route::get('/kalibrasi/workorderlist/{kalibrasi}/edit',[WorkorderlistController::class,'edit'])->name('workorderlist.edit')->middleware('user.level:2,3,4,5');
+Route::put('/kalibrasi/workorderlist/{kalibrasi}/update',[WorkorderlistController::class,'update'])->name('workorderlist.update')->middleware('user.level:2,3,4,5');
+
+
+
 
 
 

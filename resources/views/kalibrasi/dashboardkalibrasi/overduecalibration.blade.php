@@ -30,15 +30,8 @@
                                     class="btn btn-info btn-sm"><i class="fa fa-info"></i></a> --}}
 
 
-                                    <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop{{ $kalibrasis->id }}"
-                                     title="Input no PO">
-                                    <i class="fa fa-keyboard"></i></i>
-                                    </button>
-                                    @include('kalibrasi.dashboardkalibrasi.modaloverdue')
-
-                                <a href="{{ route('listKalibrasi.edit', $kalibrasis->id) }}"
-                                    class="btn btn-primary btn-sm" title="Edit Barang"><i class="fa fa-pen"></i></a>
+                                <a href="{{ route('Kalibrasi.update.overdue', $kalibrasis->id) }}"
+                                    class="btn btn-primary btn-sm" title="Calibration"><i class="fa fa-pen"></i></a>
 
                                     
                             </td>

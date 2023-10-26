@@ -109,7 +109,7 @@
                 </div> --}}
 
 
-                <div class="col-md-4 mb-3">
+                <div class="col-md-6 mb-3">
                     <label class="form-label">Location</label>
                      <select class="form-select @error('location')is-invalid @enderror " name="location" id="location">
                          <option value="">Click to search for materials</option>
@@ -127,17 +127,6 @@
 
 
 
-                <div class="col-md-2 mb-3">
-                    <label class="form-label">Year of Investment</label>
-                    <input type="number" name="yearofinvestment"
-                        class="form-control 
-                    @error('yearofinvestment') is-invalid @enderror"
-                        name="example-text-input" placeholder="Input here" value="{{ old('yearofinvestment') }}">
-                    @error('yearofinvestment')
-                        <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
-
-                </div>
           
 
             
@@ -156,3 +145,46 @@
 
 
 @stop
+@push('js')
+    <script>
+        $(document).ready(function() {
+            $('#location',).select2({
+                theme: "bootstrap-5",
+                width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' :
+                    'style',
+                placeholder: $(this).data('placeholder'),
+                closeOnSelect: true,
+                tags: true,
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+            });
+            $(document).on("select2:open", () => {
+                document.querySelector(".select2-container--open .select2-search__field").focus()
+            });
+        });
+    </script>
+<script>
+    $(document).ready(function() {
+        $('#calibrationby',).select2({
+            theme: "bootstrap-5",
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' :
+                'style',
+            placeholder: $(this).data('placeholder'),
+            closeOnSelect: true,
+            tags: true,
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+        });
+        $(document).on("select2:open", () => {
+            document.querySelector(".select2-container--open .select2-search__field").focus()
+        });
+    });
+</script>
+    <script type="text/javascript">
+        $(function() {
+            var table = $('#listlow,#listlowss,#listlowq').DataTable({
+
+            });
+        });
+    </script>
+@endpush

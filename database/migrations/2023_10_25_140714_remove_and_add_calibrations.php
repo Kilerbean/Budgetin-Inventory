@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('calibrations', function (Blueprint $table) {
-            $table->longText('reason_breakdown')->nullable();
-            $table->string('nodeviasi')->nullable();
+            $table->string('nowo')->nullable();
+            $table->dropColumn('yearofinvestment');
+            
         });
     }
 
@@ -22,6 +23,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('calibrations', function (Blueprint $table) {
+            $table->integer('yearofinvestment');
+            $table->string('nowo')->nullable();
+        });
     }
 };

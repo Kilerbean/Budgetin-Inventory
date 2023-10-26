@@ -11,15 +11,14 @@
 
     <div class="col-12">
         <div class="card">
-            {{-- <div class="row">
+            <div class="row">
                 <div class="col">
                     <a href="{{ route('listkalibrasi.create') }}" class="btn btn-primary btn-sm">Create New Instrument</a>
-                    <a href="{{ route('kalibrasi.addbreakdown') }}" class="btn btn-warning btn-sm">Instrument Breakdown</a>
+                    
                     <a href="{{ route('jadwal') }}" class="btn btn-success btn-sm">Add Calibration Schedule</a>
-                    <a href="{{ route('barangtidakaktif') }}" class="btn btn-dark btn-sm">Create Work Order List</a>
-                    <a href="{{ route('kalibrasi.vendor') }}" class="btn btn-secondary btn-sm">Add Vendor</a>
+
                 </div>
-            </div> --}}
+            </div>
             <div class="mx-2 mt-2">
                 <h4 class="mb-2">Work Order List</h4>
             </div>
@@ -35,11 +34,11 @@
                             <th style="background-color: lightgray;">No.</th>
                             <th style="background-color: lightgray;">Instrument ID</th>
                             <th style="background-color: lightgray;">Instrument Name</th>
+                            <th style="background-color: lightgray;">No WO</th>
                             <th style="background-color: lightgray;">Location</th>
                             <th style="background-color: lightgray;">Service By</th>
                             <th style="background-color: lightgray;">Requestor</th>
                             <th style="background-color: lightgray;">Breakdown Date</th>
-                            <th style="background-color: lightgray;">Date of Create</th>
                             <th style="background-color: lightgray;">Problem</th>
                             <th style="background-color: lightgray;">Status</th>
                             <th style="background-color: lightgray;">Start Service Date</th>
@@ -62,33 +61,21 @@
                                     <a href="{{ route('Barang.show', $kalibrasis->id) }}"title="Info Detail Material"
                                         class="btn btn-info btn-sm"><i class="fa fa-info"></i></a> --}}
 
-                                   
+                                        <a href="{{ route('workorderlist.edit', $kalibrasis->id) }}" class="btn btn-primary btn-sm"
+                                            title="Edit Instrument"><i class="fa fa-pen"></i></a>
 
-                                        <form action="{{ route('kalibrasi.destroy', $kalibrasis->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <a href="{{ route('listKalibrasi.edit', $kalibrasis->id) }}" class="btn btn-primary btn-sm"
-                                                title="Edit Instrument"><i class="fa fa-pen"></i></a>
-                                                <a href="{{ route('kalibrasi.breakdown', $kalibrasis->id) }}" class="btn btn-warning btn-sm"
-                                                    title="Breakdown Instrument"><i class="fa fa-pen-to-square"></i></a>
-
-                                                @if (auth()->user()->leveluser >3)
-                                            <button type="submit" class="btn btn-danger btn-sm"
-                                                onclick="return confirm('Are you sure want to delete this ?');" title="Delete"><i
-                                                    class="fa fa-trash"></i></button>
-                                                @endif
-                                        </form>
+                                        
 
                                 </td>
 
                                 <td><span class="text-muted">{{ $no++ }}</span></td>
                                 <td>{{ $kalibrasis->instrumentid }}</td>
                                 <td>{{ $kalibrasis->instrumentname }}</td>
+                                <td>{{ $kalibrasis->nowo}}</td>
                                 <td>{{ $kalibrasis->location}}</td>
                                 <td>{{ $kalibrasis->serviceby}}</td>
                                 <td>{{ $kalibrasis->requestor}}</td>
-                                <td>{{ $kalibrasis->breakdowndate}}</td>
-                                <td>{{ $kalibrasis->dateofcreate}}</td>
+                                <td>{{ $kalibrasis->startbreakdown}}</td>
                                 <td>{{ $kalibrasis->problem}}</td>
                                 <td>{{ $kalibrasis->Status== 1 ? 'Solve' : 'Not Solve'}}</td>
                                 <td>{{ $kalibrasis->startservicedate}}</td>

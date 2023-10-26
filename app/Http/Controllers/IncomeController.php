@@ -44,7 +44,7 @@ class IncomeController extends Controller
 
         $request->validate(
             [
-                'Catalog_Number' => 'required',
+                'Catalog_Number' => 'required|exists:barangs,Catalog_Number',
                 'Propose' => 'required',
                 'request_by' => 'required',
                 'No_PR' => 'required',

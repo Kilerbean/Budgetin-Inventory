@@ -45,7 +45,6 @@
                             <th style="background-color: lightgray;">Last Calibration</th>
                             <th style="background-color: lightgray;">Next Calibration</th>
                             <th style="background-color: lightgray;">Calibration By</th>
-                            <th style="background-color: lightgray;">Year of Investment</th>
                             <th style="background-color: lightgray;">Location</th>
 
                         </tr>
@@ -65,8 +64,8 @@
                                             @method('DELETE')
                                             <a href="{{ route('listKalibrasi.edit', $kalibrasis->id) }}" class="btn btn-primary btn-sm"
                                                 title="Edit Instrument"><i class="fa fa-pen"></i></a>
-                                                <a href="{{ route('kalibrasi.breakdown', $kalibrasis->id) }}" class="btn btn-warning btn-sm"
-                                                    title="Breakdown Instrument"><i class="fa fa-pen-to-square"></i></a>
+                                                {{-- <a href="{{ route('kalibrasi.breakdown', $kalibrasis->id) }}" class="btn btn-warning btn-sm"
+                                                    title="Breakdown Instrument"><i class="fa fa-pen-to-square"></i></a> --}}
 
                                                 @if (auth()->user()->leveluser >3)
                                             <button type="submit" class="btn btn-danger btn-sm"
@@ -86,7 +85,7 @@
                                 <td>{{ $kalibrasis->lastcalibration}}</td>
                                 <td>{{ $kalibrasis->nextcalibration}}</td>
                                 <td>{{ $kalibrasis->calibrationby }}</td>
-                                <td>{{ $kalibrasis->yearofinvestment }}</td>
+        
                                 <td>{{ $kalibrasis->location }}</td>
  
                         @endforeach

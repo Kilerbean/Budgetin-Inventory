@@ -71,18 +71,21 @@
 
 
 
-                 <div class=" col-md-3 mb-3">
-                    <div class="form-label">Location</div>
-                    <select class="form-select @error('location') is-invalid @enderror" name="location">
-                        <option value="">Select</option>
-                        <option value="Chemical QC Lab" {{ old('location') === 'Chemical QC Lab' ? 'selected' : '' }}>Chemical QC Lab</option>
-                        <option value="Microbiology Lab" {{ old('location') === 'Microbiology Lab' ? 'selected' : '' }}>Microbiology Lab</option>
-                        <option value="Sampling Room" {{ old('location') === 'Sampling Room' ? 'selected' : '' }}>Sampling Room</option>
-                    </select>
-                    @error('location')
-                        <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
-                </div>
+                 <div class="col-md-3 mb-3">
+                    <label class="form-label">Location</label>
+                     <select class="form-select @error('location')is-invalid @enderror " name="location" id="location">
+                         <option value="">Click to search for materials</option>
+                         @foreach ($location as $row)
+                             <option value="{{ $row->location }}"
+                                 @if (old('location') == $row->location) selected @endif>
+                                 {{ $row->location }}
+                             </option>
+                         @endforeach
+                     </select>
+                     @error('location')
+                     <span class="invalid-feedback">{{ $message }}</span>
+                     @enderror
+             </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
                         <input type="submit" value="Save" class="btn btn-primary">
