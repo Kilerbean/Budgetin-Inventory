@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('instrumentid');
             $table->string('instrumentname');
             $table->integer('tipe_data');
+            $table->string('statuskalibrasi')->nullable();
             $table->integer('frekuensicalibration')->nullable();
             $table->boolean('needcalibration')->nullable();
             $table->date('lastcalibration')->nullable();
@@ -35,6 +36,7 @@ return new class extends Migration
             $table->string('nowo')->nullable();
             $table->string('reason_overdue')->nullable();
             $table->string('reason_breakdown')->nullable();
+            $table->string('nodeviasi')->nullable();
             $table->timestamps();
         });
     }

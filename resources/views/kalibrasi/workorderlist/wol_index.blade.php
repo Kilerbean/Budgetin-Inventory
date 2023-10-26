@@ -61,9 +61,23 @@
                                     <a href="{{ route('Barang.show', $kalibrasis->id) }}"title="Info Detail Material"
                                         class="btn btn-info btn-sm"><i class="fa fa-info"></i></a> --}}
 
-                                        <a href="{{ route('workorderlist.edit', $kalibrasis->id) }}" class="btn btn-primary btn-sm"
-                                            title="Edit Instrument"><i class="fa fa-pen"></i></a>
+                                      
+                                            
+                                            <form action="{{ route('workorderlist.done', $kalibrasis->id) }}" class=""
+                                                method="post">
+                
+                                                @csrf
+                                                @method('PUT')
+                                                <a href="{{ route('workorderlist.edit', $kalibrasis->id) }}" class="btn btn-primary btn-sm"
+                                                    title="Edit Instrument"><i class="fa fa-pen"></i></a>
 
+                                                    
+                                                <button type="submit" class="btn btn-success btn-sm"
+                                                    onclick="return confirm('Are you sure want to Done?');"title="Done Work Order">
+                                                    <i class="fa-regular fa-square-check"></i></button>
+                                                {{-- <a href="{{ route('income.edit', $baranglow->id) }}" class="btn btn-primary btn-sm"
+                                                    title="Edit Material"><i class="fa fa-pen"></i></a> --}}
+                                            </form>
                                         
 
                                 </td>

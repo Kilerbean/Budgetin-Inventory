@@ -13,7 +13,8 @@
         {{-- <a class="btn btn-info btn-sm" href="{{ route('income.index') }}"><i class="fa fa-clipboard-list"></i><i
                 class="fa fa-turn-up"></i> List of Incoming Material</a> --}}
         <a class="btn btn-primary btn-sm" href="{{ route('index.workorderlist') }}">Back</a>
-        <a href="{{ route('jadwal') }}" class="btn btn-success btn-sm" >Done WO <i class="fa-regular fa-circle-check"></i> </a>
+
+        {{-- <a href="{{ route('workorderlist.done',$kalibrasi->id) }}" class="btn btn-success btn-sm" >Done WO <i class="fa-regular fa-circle-check"></i> </a> --}}
     </div>
 </div>
 

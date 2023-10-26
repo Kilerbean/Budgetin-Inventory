@@ -9,11 +9,11 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <a class="btn btn-primary text-white" href="{{ route('Barang.index') }}"> Back</a>
+            <a class="btn btn-primary text-white" href="{{ route('listKalibrasi') }}"> Back</a>
         </div>
     </div>
     <div class="mx-2 mt-2">
-        <h4 class="mb-2">Detail Material</h4>
+        <h4 class="mb-2">Detail Instrument</h4>
     </div>
 
     <div class="col-12">
@@ -39,71 +39,33 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title"> List of All Material Batch </h3>
+                <h3 class="card-title">Calibration History </h3>
             </div>
 
             <div class="table-responsive">
                 <table class="table card-table  table-bordered   table-vcenter  text-nowrap datatable" id="lis">
                     <thead>
                         <tr>
-                            <th class="w-1 ml-1"style="background-color: lightgray;">Action</th>
+                            <?php $i = 0; ?>
                             <th style="background-color: lightgray;">No</th>
-                            <th style="background-color: lightgray;">PR Date</th>
-                            <th style="background-color: lightgray;">No PR </th>
-                            <th style="background-color: lightgray;">No PO</th>
-                            <th style="background-color: lightgray;">Request By</th>
-                            <th style="background-color: lightgray;">Input By</th>
-                            <th style="background-color: lightgray;">Quantity</th>
-                            <th style="background-color: lightgray;">Quantity Unit</th>
-                            <th style="background-color: lightgray;">Batch Number</th>
-                            <th style="background-color: lightgray;">Expire Date</th>
-                            <th style="background-color: lightgray;">Propose</th>
-                            <th style="background-color: lightgray;">Packing Size</th>
-                            <th style="background-color: lightgray;">Packing Size Unit</th>
+                            <th style="background-color: lightgray;">Calibration Date</th>
+                            <th style="background-color: lightgray;">Calibration By</th>
+                            <th style="background-color: lightgray;">Status Calibration</th>
+                            <th style="background-color: lightgray;">Reason if Overdue</th>
+                            <th style="background-color: lightgray;">No Deviasi</th>
 
-
-                            <th style="background-color: lightgray;">Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($incomes as $income)
+                        @foreach ($kalibrasiontime as $kalibrasi)
                             <tr>
-                                <td class="text-nowrap">
-
-                                   
-
-                                
-                                        <form action="{{ route('income.destroy', $income->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <a class="btn btn-primary btn-sm" href="{{ route('income.edit', $income->id) }}"
-                                                title="Edit Material"> <i class="fa fa-pen"></i></a>
-        
-                                            @if (auth()->user()->leveluser > 4)
-                                            <button type="submit" class="btn btn-danger btn-sm"
-                                                onclick="return confirm('Are you sure want to delete this ?');"
-                                                title="Delete"><i class="fa fa-trash"></i></button>
-                                        </form>
-                                    @endif
-                                </td>
-
+                               
                                 <td>{{ ++$i }}</td>
-                                <td>{{ \Carbon\Carbon::parse($income->created_at)->setTimezone('Asia/Jakarta')->format('d-M-Y ') }}
-                                </td>
-                                <td>{{ $income->No_PR }}</td>
-                                <td>{{ $income->No_PO }}</td>
-                                <td>{{ $income->request_by }}</td>
-                                <td>{{ $income->input_by }}</td>
-                                <td>{{ $income->Quantity }}</td>
-                                <td>{{ $income->Unit }}</td>
-                                <td>{{ $income->no_batch }}</td>
-                                <td>{{ $income->Expire_Date }}</td>
-                                <td>{{ $income->Propose }}</td>
-                                <td>{{ $income->packingsize }}</td>
-                                <td>{{ $income->packingsize_unit }}</td>
-
-
-                                <td>{{ $income->Status == 1 ? 'Accepted' : 'Unaccepted' }}</td>
+                                <td>{{ $kalibrasi->lastcalibration}}</td>
+                                <td>{{ $kalibrasi->calibrationby }}</td>
+                                <td>{{ $kalibrasi->statuskalibrasi }}</td>
+                                <td>{{ $kalibrasi->reason_overdue }}</td>
+                                <td>{{ $kalibrasi->nodeviasi }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -121,7 +83,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title"> List of Material Usage </h3>
+                <h3 class="card-title">Work Order List </h3>
             </div>
 
             <div class="table-responsive">
@@ -130,53 +92,40 @@
                     <thead>
                         <?php $l = 0; ?>
                         <tr>
-                            <th class="w-1 ml-1"style="background-color: lightgray;">Action</th>
+
                             <th style="background-color: lightgray;">No</th>
-                            <th style="background-color: lightgray;">PR Date</th>
-                            <th style="background-color: lightgray;">Input By</th>
-                            <th style="background-color: lightgray;">Open By</th>
-                            <th style="background-color: lightgray;">Quantity</th>
-                            <th style="background-color: lightgray;">Quantity Unit</th>
-                            <th style="background-color: lightgray;">Batch Number</th>
-                            <th style="background-color: lightgray;">Expire Date</th>
-                            <th style="background-color: lightgray;">Packing Size</th>
-                            <th style="background-color: lightgray;">Packing Size Unit</th>
+                            <th style="background-color: lightgray;">No WO</th>
+                            <th style="background-color: lightgray;">Location</th>
+                            <th style="background-color: lightgray;">Service By</th>
+                            <th style="background-color: lightgray;">Requestor</th>
+                            <th style="background-color: lightgray;">Breakdown Date</th>
+                            <th style="background-color: lightgray;">Problem</th>
+                            <th style="background-color: lightgray;">Status</th>
+                            <th style="background-color: lightgray;">Start Service Date</th>
+                            <th style="background-color: lightgray;">Finish Service Date</th>
+                            <th style="background-color: lightgray;">Root Cause</th>
+                            <th style="background-color: lightgray;">Preventive Action</th>
+                            <th style="background-color: lightgray;">Change Part</th>
 
 
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($usage as $usages)
+                        @foreach ($breakdown as $kalibrasi)
                             <tr>
-                                <td>
-
-
-                                 
-                                        <form action="{{ route('usage.destroy', $usages->id) }}" method="POST">
-                                            {{-- <a class="btn btn-info btn-sm" href="{{ route('usages.show',$usages->id) }}">Show</a> --}}
-                                            <a class="btn btn-primary btn-sm"
-                                            href="{{ route('usage.edit', $usages->id) }}"title="Edit Barang"> <i
-                                                class="fa fa-pen"></i></a>
-                                            @csrf
-                                            @method('DELETE')
-                                            @if (auth()->user()->leveluser > 4)
-                                            <button type="submit" class="btn btn-danger btn-sm"
-                                                onclick="return confirm('Are you sure want to delete this ?');"
-                                                title="Delete"><i class="fa fa-trash"></i></button>
-                                        </form>
-                                    @endif
-                                </td>
                                 <td>{{ ++$l }}</td>
-                                <td>{{ \Carbon\Carbon::parse($usages->created_at)->setTimezone('Asia/Jakarta')->format('d-M-Y ') }}
-                                </td>
-                                <td>{{ $usages->input_by }}</td>
-                                <td>{{ $usages->Open_By }}</td>
-                                <td>{{ $usages->Quantity }}</td>
-                                <td>{{ $usages->Unit }}</td>
-                                <td>{{ $usages->no_batch }}</td>
-                                <td>{{ $usages->Expire_Date }}</td>
-                                <td>{{ $usages->Income->packingsize }}</td>
-                                <td>{{ $usages->Income->packingsize_unit }}</td>
+                                <td>{{ $kalibrasi->nowo }}</td>
+                                <td>{{ $kalibrasi->location }}</td>
+                                <td>{{ $kalibrasi->serviceby }}</td>
+                                <td>{{ $kalibrasi->requestor}}</td>
+                                <td>{{ $kalibrasi->breakdowndate }}</td>
+                                <td>{{ $kalibrasi->problem }}</td>
+                                <td>{{ $kalibrasi->Status== 1 ? 'Solve' : 'Not Solve' }}</td>
+                                <td>{{ $kalibrasi->startservicedate }}</td>
+                                <td>{{ $kalibrasi->finishservice }}</td>
+                                <td>{{ $kalibrasi->rootcause }}</td>
+                                <td>{{ $kalibrasi->preventiveaction }}</td>
+                                <td>{{ $kalibrasi->changepart== 1 ? 'Yes' : 'No'}}</td>
     
                             </tr>
                         @endforeach

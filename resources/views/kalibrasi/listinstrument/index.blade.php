@@ -62,10 +62,14 @@
                                         <form action="{{ route('kalibrasi.destroy', $kalibrasis->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
+                                            <a href="{{ route('listKalibrasi.show', $kalibrasis->id) }}"title="Info Detail Material"
+                                                class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
+
                                             <a href="{{ route('listKalibrasi.edit', $kalibrasis->id) }}" class="btn btn-primary btn-sm"
                                                 title="Edit Instrument"><i class="fa fa-pen"></i></a>
                                                 {{-- <a href="{{ route('kalibrasi.breakdown', $kalibrasis->id) }}" class="btn btn-warning btn-sm"
                                                     title="Breakdown Instrument"><i class="fa fa-pen-to-square"></i></a> --}}
+                                                  
 
                                                 @if (auth()->user()->leveluser >3)
                                             <button type="submit" class="btn btn-danger btn-sm"

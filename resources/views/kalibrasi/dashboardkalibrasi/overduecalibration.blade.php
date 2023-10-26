@@ -18,7 +18,8 @@
                         <th style="background-color: lightgray;">Last Calibration</th>
                         <th style="background-color: lightgray;">Calibration By</th>
                         <th style="background-color: lightgray;">Location</th>
-
+                        {{-- <th style="background-color: lightgray;">No Deviasi</th>
+                        <th style="background-color: lightgray;">Reason</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -42,6 +43,9 @@
                             <td>{{ $kalibrasis->lastcalibration }}</td>
                             <td>{{ $kalibrasis->calibrationby }}</td>
                             <td>{{ $kalibrasis->location }}</td>
+                            {{-- <td>{{ $kalibrasis->nodeviasi }}</td>
+                            <td>{{ $kalibrasis->reason_overdue }}</td> --}}
+
                     @endforeach
 
                     </tr>

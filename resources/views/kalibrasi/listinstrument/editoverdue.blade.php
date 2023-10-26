@@ -9,9 +9,17 @@
 @section('content')
 <div class="row">
     <div class="col">
-        {{-- <a class="btn btn-info btn-sm" href="{{ route('income.index') }}"><i class="fa fa-clipboard-list"></i><i
-                class="fa fa-turn-up"></i> List of Incoming Material</a> --}}
+
+        
         <a class="btn btn-primary btn-sm" href="{{ route('dashboard.kalibrasi') }}">Back</a>
+        {{-- <form action="{{ route('Kalibrasi.overdue', $kalibrasi->id) }}" class="" method="post">
+            @csrf
+            @method('PUT')
+             <div class="card" hidden>
+             </div>
+        <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Are you sure want to calibrated this Instrument ?');"title="Done Calibration">Instrument Calibrated <i class="fa fa-circle-check"></i></button>
+    </form> --}}
+   
     </div>
 </div>
 
@@ -19,9 +27,9 @@
         <h4 class="mb-2">Instrument Overdue Calibration </h4>
     </div>
 
-    <div class="card ">
+    <div class="card">
         <div class="card-body " style="background-color: rgb(230, 225, 225);">
-            <form action="{{ route('kalibrasi.breakdown.edit', $kalibrasi->id) }}" class="" method="post">
+            <form action="{{ route('Kalibrasi.overdue', $kalibrasi->id) }}" class="" method="post">
 
                 @csrf
                 @method('PUT')
@@ -77,10 +85,10 @@
 
                     <div class="col-md-3 mb-3">
                         <label class="form-label">Calibration Date</label>
-                        <input class="form-control @error('startbreakdown')is-invalid @enderror" type="date"
-                            name="startbreakdown" placeholder=" Input Last Calibration Date"
-                            value="{{ old('startbreakdown', $kalibrasi->startbreakdown) }}">
-                        @error('startbreakdown')
+                        <input class="form-control @error('lastcalibration')is-invalid @enderror" type="date"
+                            name="lastcalibration" placeholder=" Input Last Calibration Date"
+                            value="{{ old('lastcalibration') }}">
+                        @error('lastcalibration')
                             <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
                     </div>

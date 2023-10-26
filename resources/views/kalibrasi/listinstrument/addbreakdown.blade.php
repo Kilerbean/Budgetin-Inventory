@@ -132,3 +132,49 @@
 
 
 @stop
+@push('js')
+<script>
+    $(document).ready(function() {
+        $('#serviceby',).select2({
+            theme: "bootstrap-5",
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' :
+                'style',
+            placeholder: $(this).data('placeholder'),
+            closeOnSelect: true,
+            tags: true,
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+        });
+        $(document).on("select2:open", () => {
+            document.querySelector(".select2-container--open .select2-search__field").focus()
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('#instrumentid',).select2({
+            theme: "bootstrap-5",
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' :
+                'style',
+            placeholder: $(this).data('placeholder'),
+            closeOnSelect: true,
+            tags: true,
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+        });
+        $(document).on("select2:open", () => {
+            document.querySelector(".select2-container--open .select2-search__field").focus()
+        });
+    });
+</script>
+    <script type="text/javascript">
+        $(function() {
+            var table = $('#listlow,#listlowss,#listlowq').DataTable({
+
+            });
+        });
+    </script>
+
+
+@endpush
