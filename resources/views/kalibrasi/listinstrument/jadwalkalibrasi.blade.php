@@ -42,7 +42,7 @@
                     </div>
 
                  
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label class="form-label">Calibration date</label>
                         <input class="form-control @error('jadwalkalibrasi')is-invalid @enderror" type="date"
                             name="jadwalkalibrasi" placeholder=" Input Last Calibration Date"
@@ -53,7 +53,7 @@
                     </div>
 
 
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-8 mb-3">
                         <label class="form-label">Calibration By</label>
                          <select class="form-select @error('calibrationby')is-invalid @enderror " name="calibrationby" id="calibrationby">
                              <option value="">Click to search for materials</option>
@@ -70,22 +70,6 @@
                  </div>
 
 
-
-                 <div class="col-md-3 mb-3">
-                    <label class="form-label">Location</label>
-                     <select class="form-select @error('location')is-invalid @enderror " name="location" id="location">
-                         <option value="">Click to search for materials</option>
-                         @foreach ($location as $row)
-                             <option value="{{ $row->location }}"
-                                 @if (old('location') == $row->location) selected @endif>
-                                 {{ $row->location }}
-                             </option>
-                         @endforeach
-                     </select>
-                     @error('location')
-                     <span class="invalid-feedback">{{ $message }}</span>
-                     @enderror
-             </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
                         <input type="submit" value="Save" class="btn btn-primary">

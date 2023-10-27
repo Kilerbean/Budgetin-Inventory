@@ -34,12 +34,11 @@
         
                                         @csrf
                                         @method('PUT')
-
                                         <button type="submit" class="btn btn-success btn-sm"
                                             onclick="return confirm('Are You Sure About Calibrating This Instrument??');"title="Done Calibrated">
                                             <i class="fa fa-calendar-check"></i></button>
 
-                                            <a href="{{ route('listKalibrasi.edit', $kalibrasis->id) }}" class="btn btn-primary btn-sm"
+                                            <a href="{{ route('jadwalkalibrasi.edit', $kalibrasis->id) }}" class="btn btn-primary btn-sm"
                                                 title="Edit Instrument"><i class="fa fa-pen"></i></a>
     
                                             </form>

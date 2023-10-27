@@ -67,7 +67,7 @@
                         @enderror
                     </div>
 
-
+{{-- 
                     <div class="col-md-3 mb-3">
                         <label class="form-label">Location</label>
                          <select class="form-select @error('location')is-invalid @enderror " name="location" id="location">
@@ -80,18 +80,10 @@
                          @error('location')
                          <span class="invalid-feedback">{{ $message }}</span>
                          @enderror
-                 </div>
+                 </div> --}}
 
 
-                    <div class="col-md-3 mb-3">
-                        <label class="form-label">Calibration Date</label>
-                        <input class="form-control @error('lastcalibration')is-invalid @enderror" type="date"
-                            name="lastcalibration" placeholder=" Input Last Calibration Date"
-                            value="{{ old('lastcalibration') }}">
-                        @error('lastcalibration')
-                            <span class="invalid-feedback">{{ $message }}</span>
-                        @enderror
-                    </div>
+                   
 
 
                     <div class="col-md-6 mb-3">
@@ -117,6 +109,16 @@
                         <input type="text" name="reason_overdue"class="form-control @error('reason_overdue')is-invalid @enderror"
                             placeholder="Input here" value="{{ old('reason_overdue', $kalibrasi->reason_overdue) }}">
                         @error('reason_overdue')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label class="form-label">Calibration Date</label>
+                        <input class="form-control @error('lastcalibration')is-invalid @enderror" type="date"
+                            name="lastcalibration" placeholder=" Input Last Calibration Date"
+                            value="{{ old('lastcalibration') }}">
+                        @error('lastcalibration')
                             <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
                     </div>

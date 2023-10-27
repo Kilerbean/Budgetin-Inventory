@@ -16,7 +16,7 @@
 </div>
 
     <div class="mx-2 mt-2">
-        <h4 class="mb-2">Instrument Breakdown </h4>
+        <h4 class="mb-2">Instrument Breakdowns </h4>
     </div>
 
     <div class="card ">
@@ -69,26 +69,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-3 mb-3">
-                        <label class="form-label">Location</label>
-                         <select class="form-select @error('location')is-invalid @enderror " name="location" id="location">
-                             <option value="">Click to search for materials</option>
-                             @foreach ($location as $row)
-                                 <option value="{{ $row->location }}"
-                                     @if (old('location') == $row->location) selected @endif>
-                                     {{ $row->location }}
-                                 </option>
-                             @endforeach
-                         </select>
-                         @error('location')
-                         <span class="invalid-feedback">{{ $message }}</span>
-                         @enderror
-                 </div>
-
-
-
-
-
+                    
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Service By</label>
                          <select class="form-select @error('serviceby')is-invalid @enderror " name="serviceby" id="serviceby">

@@ -43,7 +43,7 @@
 
                  
 
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label class="form-label">Start Breakdown</label>
                         <input class="form-control @error('startbreakdown')is-invalid @enderror" type="date"
                             name="startbreakdown" placeholder=" Input Last Calibration Date"
@@ -53,23 +53,9 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-3 mb-3">
-                        <label class="form-label">Location</label>
-                         <select class="form-select @error('location')is-invalid @enderror " name="location" id="location">
-                             <option value="">Click to search for materials</option>
-                             @foreach ($location as $row)
-                                 <option value="{{ $row->location }}"
-                                     @if (old('location') == $row->location) selected @endif>
-                                     {{ $row->location }}
-                                 </option>
-                             @endforeach
-                         </select>
-                         @error('location')
-                         <span class="invalid-feedback">{{ $message }}</span>
-                         @enderror
-                 </div>
+                  
 
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label class="form-label">Start Service</label>
                         <input class="form-control @error('startservicedate')is-invalid @enderror" type="date"
                             name="startservicedate" placeholder=" Input Last Calibration Date"
@@ -80,7 +66,7 @@
                     </div>
 
 
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label class="form-label">Finish Service</label>
                         <input class="form-control @error('finishservice')is-invalid @enderror" type="date"
                             name="finishservice" placeholder=" Input Last Calibration Date"

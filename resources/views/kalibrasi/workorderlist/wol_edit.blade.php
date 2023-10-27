@@ -71,7 +71,7 @@
                     @enderror
                 </div>
 
-                <div class="col-md-3 mb-3">
+                {{-- <div class="col-md-3 mb-3">
                     <label class="form-label">Location</label>
                     <select class="form-select @error('location')is-invalid @enderror " name="location" id="location">
                         @foreach ($location as $row)
@@ -83,7 +83,7 @@
                      @error('location')
                      <span class="invalid-feedback">{{ $message }}</span>
                      @enderror
-             </div>
+             </div> --}}
 
              <div class="col-md-6 mb-3">
                 <label class="form-label">Service By</label>

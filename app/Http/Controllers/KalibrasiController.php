@@ -221,7 +221,6 @@ public function breakdownedit(Request $request, Calibration $kalibrasi)
     $kalibrasi->instrumentid=$request->instrumentid;
     $kalibrasi->instrumentname=$request->instrumentname;
     $kalibrasi->nowo=$request->nowo;
-    $kalibrasi->location=$request->location;
     $kalibrasi->startbreakdown=$request->startbreakdown;
     $kalibrasi->serviceby=$request->serviceby;
     $kalibrasi->startservicedate=$request->startservicedate;
@@ -256,8 +255,6 @@ public function addbreakdownedit(Request $request)
 
     $kalibrasi=Calibration::where('instrumentid',$request->instrumentid)->where('needcalibration',1)->first();
    
-  
-    $kalibrasi->location=$request->location;
     $kalibrasi->startbreakdown=$request->startbreakdown;
     $kalibrasi->serviceby=$request->serviceby;
     $kalibrasi->startservicedate=$request->startservicedate;
@@ -320,20 +317,13 @@ public function overcalibration(Calibration $kalibrasi)
 
 public function overcalibrationsave(Request $request,$kalibrasi)
 {
-    $request->validate([
-
-        'location' => 'required',
-
-    ]);
-
-
+   
 
     $kalibrasi = Calibration::find($kalibrasi);
      $kalibrasi->update(['reason_overdue' => $request->reason_overdue]);
      $kalibrasi->update(['nodeviasi' => $request->nodeviasi]);
      $kalibrasi->update(['lastcalibration' => $request->lastcalibration]);
      $kalibrasi->update(['calibrationby' => $request->calibrationby]);
-     $kalibrasi->update(['location' => $request->location]);
 
 
      return redirect()->route('dashboard.kalibrasi')
@@ -398,13 +388,13 @@ public function jadwalkalibrasi(Request $request , Calibration $kalibrasi)
            'instrumentid'=>'required',
             'jadwalkalibrasi' => 'required',
             'calibrationby' => 'required',
-            'location'=>'required',
+
         ],
     );
 
     $kalibrasi=Calibration::where('instrumentid',$request->instrumentid)->where('needcalibration',1)->first();
 
-    $kalibrasi->location=$request->location;
+
     $kalibrasi->calibrationby=$request->calibrationby;
     $kalibrasi->jadwalkalibrasi=$request->jadwalkalibrasi;
     $kalibrasi->save();
@@ -445,10 +435,37 @@ public function terjadwal(Request $request, $kalibrasi)
 }
 
 
+public function jadwaledit(Calibration $kalibrasi)
+{
+
+    $vendor=Vendor::get();
+
+    return view('kalibrasi.listinstrument.jadwalkalibrasiedit',compact('kalibrasi','vendor'));
+}
 
 
+public function jadwalkalibrasiedit(Request $request ,$kalibrasi)
+{
+    $request->validate(
+        [
+          
+            'jadwalkalibrasi' => 'required',
+            'calibrationby' => 'required',
+
+        ],
+    );
+
+    $kalibrasi=Calibration::find($kalibrasi);;
+    $kalibrasi->calibrationby=$request->calibrationby;
+    $kalibrasi->jadwalkalibrasi=$request->jadwalkalibrasi;
+    $kalibrasi->save();
 
 
+    return redirect()->route('dashboard.kalibrasi')
+    ->with('success', 'Instrument Calbration is Updated ');
+
+
+}
 
 
 

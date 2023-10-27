@@ -149,6 +149,8 @@ route::put('/calibrasiz/{kalibrasi}/overduedone',[KalibrasiController::class,'ov
 //route jadwal kalibrasi
 Route::get('/kalibrasi/jadwal',[KalibrasiController::class,'jadwal'])->name('jadwal')->middleware('user.level:2,3,4,5');
 Route::put('/kalibrasis/jadwalkanlibrasi',[KalibrasiController::class,'jadwalkalibrasi'])->name('kalibrasi.jadwalkalibrasi')->middleware('user.level:2,3,4,5');
+Route::get('/kalibrasis/jadwalkanlibrasis/{kalibrasi}',[KalibrasiController::class,'jadwaledit'])->name('jadwalkalibrasi.edit')->middleware('user.level:2,3,4,5');
+Route::put('/kalibrasis/jadwalkanlibrasisedit/{kalibrasi}',[KalibrasiController::class,'jadwalkalibrasiedit'])->name('kalibrasi.jadwalkalibrasi.edit')->middleware('user.level:2,3,4,5');
 route::put('/kalibrasis/{kalibrasi}',[KalibrasiController::class,'terjadwal'])->name('kalibrasi.terjadwal')->middleware('user.level:2,3,4,5');
 
 

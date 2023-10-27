@@ -64,12 +64,10 @@ class WorkorderlistController extends Controller
             [
                 'startbreakdown' => 'required',
                 'serviceby' => 'required',
-                'location' => 'required',
                 'nowo'=>'required',
             ],
         );
 
-        $kalibrasi->location=$request->location;
         $kalibrasi->startbreakdown=$request->startbreakdown;
         $kalibrasi->serviceby=$request->serviceby;
         $kalibrasi->nowo=$request->nowo;
