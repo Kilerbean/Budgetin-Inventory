@@ -35,6 +35,8 @@ class UserController extends Controller
                 return 'Manager';
             case 5:
                 return 'Administrator';
+                case 6:
+                    return 'Calibration';
             default:
                 return 'Unknown';
         }
@@ -144,6 +146,9 @@ class UserController extends Controller
             case 5:
                 $user_type = 'Administrator';
                 break;
+            case 6:
+                    $user_type = 'Calibration';
+                    break;
             default:
                 $user_type = 'Unknown';
         }
@@ -177,7 +182,11 @@ class UserController extends Controller
             case 5:
                 $user_type = 'Administrator';
                 break;
+                case 6:
+                    $user_type = 'Calibration';
+                    break;
             default:
+
                 $user_type = 'Unknown';
         }
 
@@ -209,6 +218,9 @@ class UserController extends Controller
             case 5:
                 $user_type = 'Administrator';
                 break;
+                case 6:
+                    $user_type = 'Calibration';
+                    break;
             default:
                 $user_type = 'Unknown';
         }
@@ -240,6 +252,9 @@ class UserController extends Controller
             case 5:
                 $user_type = 'Administrator';
                 break;
+                case 6:
+                    $user_type = 'Calibration';
+                    break;
             default:
                 $user_type = 'Unknown';
         }
@@ -248,6 +263,39 @@ class UserController extends Controller
         return back()->with('success','Employees are promoted to Administator');
     }
     
+    public function updatekalibrasi(Request $request,$user)
+    {
+        $user=User::find($user);
+        $old=\getoldvalues('mysql','users',$user);
+        $old_level=$old["old"]["leveluser"];
+        $user->update(['leveluser'=>6]);
+        switch ($old_level) {
+            case 1:
+                $user_type = 'User';
+                break;
+            case 2:
+                $user_type = 'Staff';
+                break;
+            case 3:
+                $user_type = 'Supervisor';
+                break;
+            case 4:
+                $user_type = 'Manager';
+                break;
+            case 5:
+                $user_type = 'Administrator';
+                break;
+                case 6:
+                    $user_type = 'Calibration';
+                    break;
+            default:
+                $user_type = 'Unknown';
+        }
+
+        \auditmms(auth()->user()->name, 'Edit Level User',$user->email,'Users','Level User',$user_type,'Calibration');
+        return back()->with('success','Employees are promoted to Calibrator');
+    }
+
     public function updateaktif(Request $request,$user)
     {
         $user=User::find($user);

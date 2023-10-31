@@ -64,9 +64,9 @@
               <div class="col-md-6">
                   <strong>Status</strong>
                   <select class="form-select" name="Status">
-                      <option value=1 {{ old('Status', $user->Status) === 1 ? 'selected' : '' }}>
+                      <option value=1 {{ old('Status', $user->Status) == 1 ? 'selected' : '' }}>
                           Active</option>
-                      <option value=0 {{ old('Status', $user->Status) === 0 ? 'selected' : '' }}>
+                      <option value=0 {{ old('Status', $user->Status) == 0 ? 'selected' : '' }}>
                           Inactive</option>
                   </select>
               </div>
@@ -84,7 +84,7 @@
           class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-1 border-bottom border-danger">
       </div>
       <div class="col-12 mt-4">
-          <label class="form-label">Access Level :
+          <label class="form-label">Access Level Expense:
               {{ $user->leveluser == 1 ? 'User' : ($user->leveluser == 2 ? 'Staff' : ($user->leveluser == 3 ? 'SuperVisor' : ($user->leveluser == 4 ? 'Manager' : ($user->leveluser == 5 ? 'Administrator' : '')))) }}
           </label><br>
           @if ($user->leveluser < 2)
@@ -104,7 +104,7 @@
               <a href="{{ route('karyawan.edit.staff', $user->id) }}" class="btn btn-primary">Turn into Staff</a>
               <a href="{{ route('karyawan.edit.spv', $user->id) }}" class="btn btn-primary">Turn into Supervisor</a>
               <a href="{{ route('karyawan.edit.admin', $user->id) }}" class="btn btn-primary">Turn into Administrator</a>
-          @elseif ($user->leveluser < 6)
+          @elseif ($user->leveluser < 7)
               <a href="{{ route('karyawan.edit.staff', $user->id) }}" class="btn btn-primary">Turn into Staff</a>
               <a href="{{ route('karyawan.edit.spv', $user->id) }}" class="btn btn-primary">Turn into Supervisor</a>
               <a href="{{ route('karyawan.edit.manager', $user->id) }}" class="btn btn-primary">Turn into Manager</a>
@@ -116,7 +116,17 @@
       <div
           class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-1 border-bottom border-danger">
       </div>
+      <label class="form-label">Access Level Calibration:
+    </label><br>
+    @if ($user->leveluser < 6)
 
+    <a href="{{ route('karyawan.edit.kalibrasi', $user->id) }}" class="btn btn-primary">Turn into Admin Calibration</a>
+    @endif
+    
+      <br>
+      <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-1 border-bottom border-danger">
+      </div>
       @include('users.audit')
 
   @stop

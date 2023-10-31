@@ -66,8 +66,7 @@ background-repeat: no-repeat; background-size: cover"> --}}
                             class="fa fa-house"></i></a>
                     <a href="{{ route('listKalibrasi') }}" class="btn btn-info" title="List of All Instrument"><i
                             class="fa-solid fa-boxes-stacked"></i></a>
-                    <a href="{{ route('index.workorderlist') }}" class="btn btn-dark" title="Work Order List"><i
-                            class="fa-solid fa-cart-shopping"></i></a>
+                    <a href="{{ route('index.workorderlist') }}" class="btn btn-secondary" title="Work Order List"><i class="fa fa-clipboard-list"></i></a>
 
                     </a>
                 </div>

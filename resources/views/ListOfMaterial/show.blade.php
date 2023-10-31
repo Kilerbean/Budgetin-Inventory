@@ -173,8 +173,7 @@
                                     @endif
                                 </td>
                                 <td>{{ ++$l }}</td>
-                                <td>{{ \Carbon\Carbon::parse($usages->created_at)->setTimezone('Asia/Jakarta')->format('d-M-Y ') }}
-                                </td>
+                                <td>{{ \Carbon\Carbon::parse($usages->created_at)->setTimezone('Asia/Jakarta')->format('d-M-Y ') }}</td>
                                 <td>{{ $usages->input_by }}</td>
                                 <td>{{ $usages->Open_By }}</td>
                                 <td>{{ $usages->Quantity }}</td>

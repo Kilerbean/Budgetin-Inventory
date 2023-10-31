@@ -94,6 +94,7 @@
                         <tr>
 
                             <th style="background-color: lightgray;">No</th>
+                            <th style="background-color: lightgray;">Date</th>
                             <th style="background-color: lightgray;">No WO</th>
                             <th style="background-color: lightgray;">Location</th>
                             <th style="background-color: lightgray;">Service By</th>
@@ -114,6 +115,7 @@
                         @foreach ($breakdown as $kalibrasi)
                             <tr>
                                 <td>{{ ++$l }}</td>
+                                <td>{{ \Carbon\Carbon::parse($kalibrasi->created_at)->setTimezone('Asia/Jakarta')->format('d-M-Y ') }}</td>
                                 <td>{{ $kalibrasi->nowo }}</td>
                                 <td>{{ $kalibrasi->location }}</td>
                                 <td>{{ $kalibrasi->serviceby }}</td>
@@ -137,7 +139,53 @@
 
     <br>
  
-    
+    <div
+    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-1 border-bottom border-danger">
+</div>
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">History Edit Activity</h3>
+        </div>
+
+        <div class="table-responsive ">
+            <table class="table card-table table-bordered table-vcenter text-nowrap datatable" id="listlowss">
+                <thead>
+                    <tr>
+                        <?php $no = 1; ?>
+
+                        <th style="background-color: lightgray;">No.</th>
+                        <th style="background-color: lightgray;">date</th>
+                        <th style="background-color: lightgray;">Change by</th>
+                        <th style="background-color: lightgray;">Activity</th>
+                        <th style="background-color: lightgray;">Table</th>
+                        <th style="background-color: lightgray;">Field</th>
+                        <th style="background-color: lightgray;">Before</th>
+                        <th style="background-color: lightgray;">After</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($audit as $audits)
+                        <tr>
+                            <td><span class="text-muted">{{ $no++ }}</span></td>
+                            <td>{{ \Carbon\Carbon::parse($audits->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y  H:i:s') }}
+                            </td>
+                            <td> {{ $audits->change_by }}</td>
+                            <td>{{ $audits->activity }}</td>
+                            <td>{{ $audits->sourcetable }}</td>
+                            <td>{{ $audits->sourcefield }}</td>
+                            <td>{{ $audits->beforevalue }}</td>
+                            <td>{{ $audits->aftervalue }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
 
 @stop
 @push('js')

@@ -25,6 +25,23 @@ function auditmms($change_by,$activity,$recordid,$table,$field,$before,$after){
                 
 }
 
+function startauditkalibrasi($data, $fields, $old, $table, $activity)
+{
+    if ($data->wasChanged() == true) {
+        foreach ($fields as $field) {
+            if ($data->wasChanged($field)) {
+                if ($old[$field] != $data->$field) {
+                    auditmms(Auth::user()->name, $activity, $data->instrumentid,
+                        $table, $field, $old[$field], $data->$field);
+                }
+            }
+        }       
+
+        return back()->with('success', 'Data was Saved !')->withInput(['messages' => 'success']);
+    } else {
+        return back()->with('info', 'Nothing Changed!');
+    }
+}
 
 function startauditmms($data, $fields, $old, $table, $activity)
 {

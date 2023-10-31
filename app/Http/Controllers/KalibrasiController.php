@@ -10,6 +10,7 @@ use App\Models\Calibration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Models\Auditcalibration;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Validated;
 
@@ -90,7 +91,9 @@ class KalibrasiController extends Controller
         ->where('tipe_data',2)
         ->get();
 
-        return view('kalibrasi.listinstrument.show',compact('kalibrasi','kalibrasiontime','breakdown'));
+        $audit = DB::table('audits')->latest()->where('recordid',$kalibrasi->instrumentid)->get();
+
+        return view('kalibrasi.listinstrument.show',compact('kalibrasi','kalibrasiontime','breakdown','audit'));
     }
 
     /**
@@ -120,7 +123,8 @@ class KalibrasiController extends Controller
                
             ],
         );
-  
+        $old= \getoldvalues('mysql','calibrations',$kalibrasi);    
+        
         $kalibrasi->instrumentid=$request->instrumentid;
         $kalibrasi->instrumentname=$request->instrumentname;
         $kalibrasi->serialnumber=$request->serialnumber;
@@ -131,10 +135,10 @@ class KalibrasiController extends Controller
          
         $lastCalibrationDate = Carbon::parse($request->lastcalibration);
         $nextCalibrationDate = $lastCalibrationDate->addMonths($request->frekuensicalibration);
-        $kalibrasi->nextcalibration = $nextCalibrationDate;
-       
+        $kalibrasi->nextcalibration = date('Y-m-d',strtotime($nextCalibrationDate));
+        //dd($kalibrasi->nextcalibration);
         $kalibrasi->save();
-     
+        \startauditkalibrasi($kalibrasi, $old['fields'], $old['old'], $old['table'], 'Edit instrument Data'); 
         return redirect()->route('listKalibrasi')
             ->with('success', 'Instrument Data updated successfully');
     }

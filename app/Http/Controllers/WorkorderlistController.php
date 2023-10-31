@@ -81,6 +81,26 @@ class WorkorderlistController extends Controller
         $kalibrasi->changepart=$request->changepart;
         $kalibrasi->save();
     
+
+        $kalibrasis = Auditcalibration::create([
+            'instrumentid' => $kalibrasi->instrumentid,
+            'instrumentname' => $kalibrasi->instrumentname,
+            'nowo'=>$kalibrasi->nowo,
+            'location'=>$kalibrasi->location,
+            'serviceby' => $kalibrasi->serviceby,
+            'tipe_data'=>2,
+            'requestor'=>$kalibrasi->requestor,
+            'breakdowndate'=>$kalibrasi->startbreakdown,
+            'problem'=>$kalibrasi->problem,
+            'Status'=>$kalibrasi->Status,
+            'startservicedate'=>$kalibrasi->startservicedate,
+            'finishservice'=>$kalibrasi->finishservice,
+            'rootcause'=>$kalibrasi->rootcause,
+            'preventiveaction'=>$kalibrasi->preventiveaction,
+            'changepart'=>$kalibrasi->changepart,
+        ]);
+
+
         return redirect()->route('index.workorderlist')
         ->with('success', 'Work Order List Updated ');
 
