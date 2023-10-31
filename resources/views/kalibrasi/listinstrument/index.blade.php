@@ -40,10 +40,10 @@
                             <th style="background-color: lightgray;">Instrument Name</th>
                             <th style="background-color: lightgray;">Instrument ID</th>
                             <th style="background-color: lightgray;">Serial number</th>
-                            <th style="background-color: lightgray;">Calibration Frequency</th>
-                            <th style="background-color: lightgray;">Need Calibration</th>
                             <th style="background-color: lightgray;">Last Calibration</th>
                             <th style="background-color: lightgray;">Next Calibration</th>
+                            <th style="background-color: lightgray;">Calibration Frequency</th>
+                            <th style="background-color: lightgray;">Need Calibration</th>
                             <th style="background-color: lightgray;">Calibration By</th>
                             <th style="background-color: lightgray;">Location</th>
 
@@ -84,10 +84,11 @@
                                 <td>{{ $kalibrasis->instrumentname }}</td>
                                 <td>{{ $kalibrasis->instrumentid }}</td>
                                 <td>{{ $kalibrasis->serialnumber }}</td>
-                                <td>{{ $kalibrasis->frekuensicalibration }} Month</td>
-                                <td>{{ $kalibrasis->needcalibration== 1 ? 'Yes' : 'No'  }}</td>
                                 <td>{{ $kalibrasis->lastcalibration}}</td>
                                 <td>{{ $kalibrasis->nextcalibration}}</td>
+                                <td>{{ $kalibrasis->frekuensicalibration }} Month</td>
+                                <td>{{ $kalibrasis->needcalibration== 1 ? 'Yes' : 'No'  }}</td>
+                                
                                 <td>{{ $kalibrasis->calibrationby }}</td>
         
                                 <td>{{ $kalibrasis->location }}</td>
