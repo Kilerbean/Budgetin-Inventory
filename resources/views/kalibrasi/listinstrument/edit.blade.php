@@ -92,13 +92,18 @@
 
 
                 <div class="col-md-6 mb-3">
-                    <label class="form-label">Calibration By</label>
-                    <input type="text" name="calibrationby"class="form-control @error('calibrationby')is-invalid @enderror"
-                    placeholder="Input here" value="{{ old('calibrationby',$kalibrasi->calibrationby) }}">
-                    @error('calibrationby')
-                        <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
-                </div>
+                        <label class="form-label">Calibration By</label>
+                         <select class="form-select @error('calibrationby')is-invalid @enderror " name="calibrationby" id="calibrationby">
+                             @foreach ($vendor as $row)
+                             <option value="{{ $row->nama }}" {{ old('nama', $kalibrasi->calibrationby) == $row->nama ? 'selected' : '' }}>
+                                {{ $row->nama }}
+                            </option>
+                             @endforeach
+                         </select>
+                         @error('calibrationby')
+                         <span class="invalid-feedback">{{ $message }}</span>
+                         @enderror
+                    </div>
 
 
                 <div class="col-md-6 mb-3">

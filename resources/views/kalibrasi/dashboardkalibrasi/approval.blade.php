@@ -51,9 +51,9 @@
 
      
 
-                                            <button type="submit" class="btn btn-info btn-sm"
+                                            <button type="submit" class="btn btn-success btn-sm"
                                             onclick="return confirm('Are You Sure About Approved Calibrating This Instrument??');"title="Done Approved">
-                                            <i class="fa fa-calendar-check"></i></button>
+                                            <i class="fa-solid fa-check-double"></i></button>
 
 
 
