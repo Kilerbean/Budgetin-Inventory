@@ -10,12 +10,12 @@
     <h1><img {{-- class="slide-fwd-top" --}} src="{{asset('icon/laboratory.png')}}" alt="Unsplash" style="width: 50px">
     <span {{-- class="slide-left" --}} style="display: inline-block">   Welcome to <strong>{{$pretitle}}</strong></span></h1>        
 </div> 
-<a href="{{ route('listkalibrasi.create') }}" class="btn btn-danger btn-sm"><i class="fa fa-check-to-slot"></i> List Need Approved</a>
+<a href="{{ route('listkalibrasi.approval') }}" class="btn btn-danger btn-sm"><i class="fa fa-check-to-slot"></i> List Need Approved</a>
 <a href="{{ route('listkalibrasi.create') }}" class="btn btn-primary btn-sm"><i class="fa-solid fa-circle-plus"></i> Create New Instrument</a>
 <a href="{{ route('listKalibrasi') }}" class="btn btn-info btn-sm"><i class="fa-solid fa-file-lines"></i> List Instrument</a>
 
 <a href="{{ route('kalibrasi.addbreakdown') }}" class="btn btn-warning btn-sm">Instrument Breakdowns</a>
-<a href="{{ route('jadwal') }}" class="btn btn-success btn-sm">Add Calibration Schedule</a>
+<a href="{{ route('jadwal') }}" class="btn btn-success btn-sm"><i class="fa-solid fa-calendar-plus"></i> Add Calibration Schedule</a>
 <a href="{{ route('index.workorderlist') }}" class="btn btn-dark btn-sm"><i class="fa fa-file-invoice"></i> Work Order List</a>
 
 
@@ -26,8 +26,7 @@
 
 @include('kalibrasi.dashboardkalibrasi.nearcalibration')
 <br>
-<div
-    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-1 border-bottom border-danger">
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-1 border-bottom border-danger">
 </div>
 <br>
 

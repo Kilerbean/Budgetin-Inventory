@@ -136,6 +136,16 @@ route::put('/kalibrasi/{kalibrasi}',[KalibrasiController::class,'update'])->name
 Route::delete('/kalibrasi/{kalibrasi}',[KalibrasiController::class,'destroy'])-> name('kalibrasi.destroy')->middleware('user.level:4,5');
 route::get('/Calibrasi/{kalibrasi}/show',[KalibrasiController::class,'show'])->name('listKalibrasi.show')->middleware('user.level:4,5,6');
 
+Route::get('/kalibrasis/{kalibrasi}/statuskalibnonaktif',[KalibrasiController::class,'statusnkalibrasinonaktif'])-> name('kalibrasi.nonaktif')->middleware('user.level:4,5,6');
+Route::get('/kalibrasis/{kalibrasi}/statuskalibaktif',[KalibrasiController::class,'statuskalibrasiaktif'])-> name('kalibrasi.aktif')->middleware('user.level:4,5,6');
+
+
+
+//Route Kalibrasi Approval
+route::get('/kalibrasi/approval',[KalibrasiController::class,'aproval'])->name('listkalibrasi.approval')->middleware('user.level:4,5,6');
+
+
+
 //kalibrasinya tepat waktu
 route::put('/calibrasi/{kalibrasi}/ontime',[KalibrasiController::class,'ontime'])->name('Kalibrasi.update.ontime')->middleware('user.level:4,5,6');
 
@@ -152,9 +162,9 @@ Route::get('/kalibrasi/jadwal',[KalibrasiController::class,'jadwal'])->name('jad
 Route::put('/kalibrasis/jadwalkanlibrasi',[KalibrasiController::class,'jadwalkalibrasi'])->name('kalibrasi.jadwalkalibrasi')->middleware('user.level:4,5,6');
 Route::get('/kalibrasis/jadwalkanlibrasis/{kalibrasi}',[KalibrasiController::class,'jadwaledit'])->name('jadwalkalibrasi.edit')->middleware('user.level:4,5,6');
 Route::put('/kalibrasis/jadwalkanlibrasisedit/{kalibrasi}',[KalibrasiController::class,'jadwalkalibrasiedit'])->name('kalibrasi.jadwalkalibrasi.edit')->middleware('user.level:4,5,6');
-route::put('/kalibrasis/{kalibrasi}',[KalibrasiController::class,'terjadwal'])->name('kalibrasi.terjadwal')->middleware('user.level:4,5,6');
-
-
+route::put('/kalibrasis/{kalibrasi}/jadwalpertama',[KalibrasiController::class,'terjadwalpertama'])->name('kalibrasi.terjadwal')->middleware('user.level:4,5,6');
+route::put('/kalibrasis/{kalibrasi}/terjadwalfinal',[KalibrasiController::class,'terjadwalfinal'])->name('kalibrasi.terjadwal.final')->middleware('user.level:4,5,6');
+route::put('/kalibrasisz/{kalibrasi}/terjadwalgagal',[KalibrasiController::class,'terjadwalgagal'])->name('kalibrasi.terjadwal.gagal')->middleware('user.level:4,5,6');
 
 //route add Vendor
 Route::get('/kalibrasi/vendor',[KalibrasiController::class,'vendor'])->name('kalibrasi.vendor')->middleware('user.level:4,5,6');

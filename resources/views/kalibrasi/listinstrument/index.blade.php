@@ -46,6 +46,7 @@
                             <th style="background-color: lightgray;">Need Calibration</th>
                             <th style="background-color: lightgray;">Calibration By</th>
                             <th style="background-color: lightgray;">Location</th>
+                            <th style="background-color: lightgray;">Status Instrument</th>
 
                         </tr>
                     </thead>
@@ -71,7 +72,7 @@
                                                     title="Breakdown Instrument"><i class="fa fa-pen-to-square"></i></a> --}}
                                                   
 
-                                                @if (auth()->user()->leveluser >3)
+                                                @if (auth()->user()->leveluser =5)
                                             <button type="submit" class="btn btn-danger btn-sm"
                                                 onclick="return confirm('Are you sure want to delete this ?');" title="Delete"><i
                                                     class="fa fa-trash"></i></button>
@@ -92,7 +93,8 @@
                                 <td>{{ $kalibrasis->calibrationby }}</td>
         
                                 <td>{{ $kalibrasis->location }}</td>
- 
+
+                                <td>{{ $kalibrasis->status_instrument== 1 ? 'Active' : 'Inactive' }}</td>
                         @endforeach
 
                         </tr>

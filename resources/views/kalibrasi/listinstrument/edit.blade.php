@@ -20,6 +20,18 @@
     <h4 class="mb-2">Edit Instrument </h4>
 </div>
 
+<div class="col">
+    <label class="form-label h5"> Status Instrument : {{ $kalibrasi->status_instrument == 1 ? 'Active' : 'Inactive' }}
+
+    </label>
+    <a class="btn btn-danger btn-sm" href="{{ route('kalibrasi.nonaktif', $kalibrasi->id) }}"{{ $kalibrasi->status_instrument ? '' : 'hidden' }}
+        title="Deactivate Material"> <i class="fa fa-pen"></i> Deactivate</a>
+    <a class="btn btn-primary btn-sm" href="{{ route('kalibrasi.aktif', $kalibrasi->id) }}"{{ $kalibrasi->status_instrument ? 'hidden' : '' }}
+        title="Activate Material"> <i class="fa fa-pen"></i> Activate</a>
+</div>
+
+
+
 <div class="card ">
     <div class="card-body " style="background-color: rgb(230, 225, 225);">
         <form action="{{ route('listKalibrasi.update',$kalibrasi->id) }}" class="" method="post">
