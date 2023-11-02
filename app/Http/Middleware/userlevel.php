@@ -21,7 +21,7 @@ class userlevel
 
         $userLevel = $request->user()->leveluser;
         $userStatus=$request->user()->Status;
-        $infoMassage='you dont have access to continue,need a higher user level';
+        $infoMassage='You Dont Have Access to Continue,Please Contact the Administrator';
         if (is_int($userLevel) && in_array($userLevel, $leveluser)&& $userStatus==1) {
             return $next($request);
         }

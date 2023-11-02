@@ -104,7 +104,7 @@
               <a href="{{ route('karyawan.edit.staff', $user->id) }}" class="btn btn-primary">Turn into Staff</a>
               <a href="{{ route('karyawan.edit.spv', $user->id) }}" class="btn btn-primary">Turn into Supervisor</a>
               <a href="{{ route('karyawan.edit.admin', $user->id) }}" class="btn btn-primary">Turn into Administrator</a>
-          @elseif ($user->leveluser < 7)
+          @elseif ($user->leveluser < 8)
               <a href="{{ route('karyawan.edit.staff', $user->id) }}" class="btn btn-primary">Turn into Staff</a>
               <a href="{{ route('karyawan.edit.spv', $user->id) }}" class="btn btn-primary">Turn into Supervisor</a>
               <a href="{{ route('karyawan.edit.manager', $user->id) }}" class="btn btn-primary">Turn into Manager</a>
@@ -119,10 +119,25 @@
       <label class="form-label">Access Level Calibration:
     </label><br>
     @if ($user->leveluser < 6)
-
-    <a href="{{ route('karyawan.edit.kalibrasi', $user->id) }}" class="btn btn-primary">Turn into Admin Calibration</a>
+     <a href="{{ route('karyawan.edit.kalibrasi.staff', $user->id) }}" class="btn btn-primary">Turn into Staff Calibration</a>
+     <a href="{{ route('karyawan.edit.kalibrasi.manager', $user->id) }}" class="btn btn-primary">Turn into Admin Calibration</a>
+    @elseif ($user->leveluser < 7 )
+    <a href="{{ route('karyawan.edit.kalibrasi.manager', $user->id) }}" class="btn btn-primary">Turn into Admin Calibration</a>
+    @elseif ($user->leveluser < 8)
+    <a href="{{ route('karyawan.edit.kalibrasi.staff', $user->id) }}" class="btn btn-primary">Turn into Staff Calibration</a>
     @endif
+
+    {{-- @if ($user->leveluser = 6)
+    <a href="{{ route('karyawan.edit.kalibrasi.manager', $user->id) }}" class="btn btn-primary">Turn into Admin Calibration</a>
+    @endif --}}
+
+    @if ($user->leveluser < 7)
     
+    @endif
+    @if ($user->leveluser < 8)
+    
+    @endif
+
       <br>
       <div
           class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-1 border-bottom border-danger">

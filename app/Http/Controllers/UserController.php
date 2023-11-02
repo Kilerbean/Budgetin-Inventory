@@ -15,11 +15,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user=User::latest()->get();
-        $incomess = Income::latest()->whereNotNull('No_PO')->where('Status', '1')->where('tipe_transaksi', '1')->where('Quantity','>','0')->get();
+        $user = User::latest()->get();
+        $incomess = Income::latest()->whereNotNull('No_PO')->where('Status', '1')->where('tipe_transaksi', '1')->where('Quantity', '>', '0')->get();
 
 
-        return view('users.index',compact('user','incomess'))-> with('i');
+        return view('users.index', compact('user', 'incomess'))->with('i');
     }
 
     public static function getLevelUserText($level)
@@ -35,8 +35,10 @@ class UserController extends Controller
                 return 'Manager';
             case 5:
                 return 'Administrator';
-                case 6:
-                    return 'Calibration';
+            case 6:
+                return 'Calibration Staff';
+            case 7:
+                return 'Calibration Manager';
             default:
                 return 'Unknown';
         }
@@ -70,11 +72,11 @@ class UserController extends Controller
      */
     public function edit($user)
     {
-        $user=User::find($user);
-        $audit = DB::table('audits')->latest()->where('recordid',$user->email)->get();
-        return view('users.edit',compact('user','audit'));
+        $user = User::find($user);
+        $audit = DB::table('audits')->latest()->where('recordid', $user->email)->get();
+        return view('users.edit', compact('user', 'audit'));
     }
-    public function update(Request $request ,$user)
+    public function update(Request $request, $user)
     {
         $request->validate(
             [
@@ -84,28 +86,35 @@ class UserController extends Controller
                 'title' => 'required',
             ],
         );
-        $user=User::find($user);
-      
-        $old= \getoldvalues('mysql','users',$user); 
-     
-        $user->name=$request->name;
-        $user->email=$request->email;
-        $user->Status=$request->Status;
-        $user->title=$request->title;
+        $user = User::find($user);
+
+        $old = \getoldvalues('mysql', 'users', $user);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->Status = $request->Status;
+        $user->title = $request->title;
         $user->save();
 
 
-        
-        $old_level = $old["old"]["leveluser"];
-        $old_name=$old["old"]["name"];
-        $old_email=$old["old"]["email"];
-        $old_title=$old["old"]["title"];
-        $old_Status=$old["old"]["Status"];
 
-  \auditmms(auth()->user()->name, 'Edit Data User',$user->email,'Users','User Data'
-  ,"Name :".$old_name."| Email :".$old_email."|Title :".$old_title."|Status :".($old_Status == 1 ? 'Active' : 'Inactive' ),"Name :".$request->name."| Email :".$request->email."|Title :".$request->title."|Status :".($request->Status == 1 ? 'Active' : 'Inactive'));
+        $old_level = $old["old"]["leveluser"];
+        $old_name = $old["old"]["name"];
+        $old_email = $old["old"]["email"];
+        $old_title = $old["old"]["title"];
+        $old_Status = $old["old"]["Status"];
+
+        \auditmms(
+            auth()->user()->name,
+            'Edit Data User',
+            $user->email,
+            'Users',
+            'User Data',
+            "Name :" . $old_name . "| Email :" . $old_email . "|Title :" . $old_title . "|Status :" . ($old_Status == 1 ? 'Active' : 'Inactive'),
+            "Name :" . $request->name . "| Email :" . $request->email . "|Title :" . $request->title . "|Status :" . ($request->Status == 1 ? 'Active' : 'Inactive')
+        );
         return back()
-        ->with('success','User updated successfully');
+            ->with('success', 'User updated successfully');
     }
 
 
@@ -114,22 +123,22 @@ class UserController extends Controller
 
     public function profil(User $user)
     {
-        return view('COST_QC.profil',compact('user'));
+        return view('COST_QC.profil', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-   
 
-    public function updatestaff(Request $request,$user)
+
+    public function updatestaff(Request $request, $user)
     {
-        $user=User::find($user);
-        $old= \getoldvalues('mysql','users',$user); 
+        $user = User::find($user);
+        $old = \getoldvalues('mysql', 'users', $user);
         $old_level = $old["old"]["leveluser"];
-  
-        $user->update(['leveluser'=>2]);
-        
+
+        $user->update(['leveluser' => 2]);
+
         switch ($old_level) {
             case 1:
                 $user_type = 'User';
@@ -147,24 +156,27 @@ class UserController extends Controller
                 $user_type = 'Administrator';
                 break;
             case 6:
-                    $user_type = 'Calibration';
-                    break;
+                $user_type = 'Calibration Staff';
+                break;
+            case 7:
+                $user_type = 'Calibration Manager';
+                break;
             default:
                 $user_type = 'Unknown';
         }
 
-        \auditmms(auth()->user()->name, 'Edit Level User',$user->email,'Users','Level User',$user_type,'Staff');
+        \auditmms(auth()->user()->name, 'Edit Level User', $user->email, 'Users', 'Level User', $user_type, 'Staff');
 
-        return back()->with('success','Employees are promoted to staff');
+        return back()->with('success', 'Employees are promoted to staff');
     }
 
-    public function updatespv(Request $request,$user)
+    public function updatespv(Request $request, $user)
     {
-        $user=User::find($user);
-        $old= \getoldvalues('mysql','users',$user); 
+        $user = User::find($user);
+        $old = \getoldvalues('mysql', 'users', $user);
         $old_level = $old["old"]["leveluser"];
 
-        $user->update(['leveluser'=>3]);
+        $user->update(['leveluser' => 3]);
 
         switch ($old_level) {
             case 1:
@@ -183,25 +195,28 @@ class UserController extends Controller
                 $user_type = 'Administrator';
                 break;
                 case 6:
-                    $user_type = 'Calibration';
+                    $user_type = 'Calibration Staff';
+                    break;
+                case 7:
+                    $user_type = 'Calibration Manager';
                     break;
             default:
 
                 $user_type = 'Unknown';
         }
 
-        \auditmms(auth()->user()->name, 'Edit Level User',$user->email,'Users','Level User',$user_type,'SuperVisor');
+        \auditmms(auth()->user()->name, 'Edit Level User', $user->email, 'Users', 'Level User', $user_type, 'SuperVisor');
 
-        return back()->with('success','Employees are promoted to SuperVisor');
+        return back()->with('success', 'Employees are promoted to SuperVisor');
     }
 
-    public function updatemanager(Request $request,$user)
+    public function updatemanager(Request $request, $user)
     {
-        $user=User::find($user);
-        $old= \getoldvalues('mysql','users',$user); 
+        $user = User::find($user);
+        $old = \getoldvalues('mysql', 'users', $user);
         $old_level = $old["old"]["leveluser"];
 
-        $user->update(['leveluser'=>4]);
+        $user->update(['leveluser' => 4]);
         switch ($old_level) {
             case 1:
                 $user_type = 'User';
@@ -219,23 +234,26 @@ class UserController extends Controller
                 $user_type = 'Administrator';
                 break;
                 case 6:
-                    $user_type = 'Calibration';
+                    $user_type = 'Calibration Staff';
+                    break;
+                case 7:
+                    $user_type = 'Calibration Manager';
                     break;
             default:
                 $user_type = 'Unknown';
         }
 
-        \auditmms(auth()->user()->name, 'Edit Level User',$user->email,'Users','Level User',$user_type,'Manager');
+        \auditmms(auth()->user()->name, 'Edit Level User', $user->email, 'Users', 'Level User', $user_type, 'Manager');
 
-        return back()->with('success','Employees are promoted to Manager');
+        return back()->with('success', 'Employees are promoted to Manager');
     }
 
-    public function updateadmin(Request $request,$user)
+    public function updateadmin(Request $request, $user)
     {
-        $user=User::find($user);
-        $old=\getoldvalues('mysql','users',$user);
-        $old_level=$old["old"]["leveluser"];
-        $user->update(['leveluser'=>5]);
+        $user = User::find($user);
+        $old = \getoldvalues('mysql', 'users', $user);
+        $old_level = $old["old"]["leveluser"];
+        $user->update(['leveluser' => 5]);
         switch ($old_level) {
             case 1:
                 $user_type = 'User';
@@ -253,22 +271,25 @@ class UserController extends Controller
                 $user_type = 'Administrator';
                 break;
                 case 6:
-                    $user_type = 'Calibration';
+                    $user_type = 'Calibration Staff';
+                    break;
+                case 7:
+                    $user_type = 'Calibration Manager';
                     break;
             default:
                 $user_type = 'Unknown';
         }
 
-        \auditmms(auth()->user()->name, 'Edit Level User',$user->email,'Users','Level User',$user_type,'Administrator');
-        return back()->with('success','Employees are promoted to Administator');
+        \auditmms(auth()->user()->name, 'Edit Level User', $user->email, 'Users', 'Level User', $user_type, 'Administrator');
+        return back()->with('success', 'Employees are promoted to Administator');
     }
-    
-    public function updatekalibrasi(Request $request,$user)
+
+    public function updatekalibrasistaff(Request $request, $user)
     {
-        $user=User::find($user);
-        $old=\getoldvalues('mysql','users',$user);
-        $old_level=$old["old"]["leveluser"];
-        $user->update(['leveluser'=>6]);
+        $user = User::find($user);
+        $old = \getoldvalues('mysql', 'users', $user);
+        $old_level = $old["old"]["leveluser"];
+        $user->update(['leveluser' => 6]);
         switch ($old_level) {
             case 1:
                 $user_type = 'User';
@@ -286,31 +307,71 @@ class UserController extends Controller
                 $user_type = 'Administrator';
                 break;
                 case 6:
-                    $user_type = 'Calibration';
+                    $user_type = 'Calibration Staff';
+                    break;
+                case 7:
+                    $user_type = 'Calibration Manager';
                     break;
             default:
                 $user_type = 'Unknown';
         }
 
-        \auditmms(auth()->user()->name, 'Edit Level User',$user->email,'Users','Level User',$user_type,'Calibration');
-        return back()->with('success','Employees are promoted to Calibrator');
+        \auditmms(auth()->user()->name, 'Edit Level User', $user->email, 'Users', 'Level User', $user_type, 'Calibration  Staff');
+        return back()->with('success', 'Employees are promoted to Staff Calibration');
     }
 
-    public function updateaktif(Request $request,$user)
+    public function updatekalibrasimanager(Request $request, $user)
     {
-        $user=User::find($user);
-        $user->update(['Status'=>1]);
+        $user = User::find($user);
+        $old = \getoldvalues('mysql', 'users', $user);
+        $old_level = $old["old"]["leveluser"];
+        $user->update(['leveluser' => 7]);
+        switch ($old_level) {
+            case 1:
+                $user_type = 'User';
+                break;
+            case 2:
+                $user_type = 'Staff';
+                break;
+            case 3:
+                $user_type = 'Supervisor';
+                break;
+            case 4:
+                $user_type = 'Manager';
+                break;
+            case 5:
+                $user_type = 'Administrator';
+                break;
+                case 6:
+                    $user_type = 'Calibration Staff';
+                    break;
+                case 7:
+                    $user_type = 'Calibration Manager';
+                    break;
+            default:
+                $user_type = 'Unknown';
+        }
 
-        return back()->with('success','Employees are activated');
+        \auditmms(auth()->user()->name, 'Edit Level User', $user->email, 'Users', 'Level User', $user_type, 'Calibration Manager');
+        return back()->with('success', 'Employees are promoted to Manager Calibration');
     }
 
-    public function updatenonaktif(Request $request,$user)
+
+    public function updateaktif(Request $request, $user)
     {
-        $user=User::find($user);
+        $user = User::find($user);
+        $user->update(['Status' => 1]);
 
-        $user->update(['Status'=>0]);
+        return back()->with('success', 'Employees are activated');
+    }
 
-        return back()->with('success','Employees are Deactivated');
+    public function updatenonaktif(Request $request, $user)
+    {
+        $user = User::find($user);
+
+        $user->update(['Status' => 0]);
+
+        return back()->with('success', 'Employees are Deactivated');
     }
 
     /**
