@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Vendor;
 use App\Models\Location;
+use App\Mail\ReminderEmail;
 use App\Models\Calibration;
 use Illuminate\Http\Request;
 use App\Models\Auditcalibration;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class WorkorderlistController extends Controller
 {
@@ -16,6 +18,26 @@ class WorkorderlistController extends Controller
      */
     public function index()
     {
+
+        $kalibrasinear = Calibration::where('nextcalibration', '>=', now())
+        ->where('nextcalibration', '<', now()->addDays(30))
+        ->where('status_approval',1)
+        ->where('status_instrument',1)
+        ->get();
+
+
+        $mailData = [
+            'outputs' => 'test',   
+            'file'=>'testfile',    
+            'jumlah' => 3,
+                                
+        ];
+        
+        
+
+        // Mail::to('kilerbean11@gmail.com')                 
+        // ->send(new ReminderEmail($mailData,$kalibrasinear));
+
         $kalibrasi=Calibration::latest()->whereNotNull('startbreakdown')->get();
 
         return view('kalibrasi.workorderlist.wol_index',compact('kalibrasi'));

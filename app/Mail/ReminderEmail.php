@@ -9,16 +9,19 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ReminderEmail extends Mailable
+class ReminderEmail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
-
+    public $kalibrasinear;
     /**
      * Create a new message instance.
+     *
+     * @return void
      */
-    public function __construct()
+    public function __construct($kalibrasinear)
     {
-        //
+        $this->kalibrasinear = $kalibrasinear;
+
     }
 
     /**
@@ -27,7 +30,7 @@ class ReminderEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Reminder Email',
+            subject: 'Q-LIS |Reminder Of Calibration Schedule Approaching 1 Month of Calibration Time',
         );
     }
 
@@ -37,7 +40,7 @@ class ReminderEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.email_reminder',
         );
     }
 

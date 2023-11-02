@@ -9,7 +9,7 @@
                         <div class="text-center mt-4">
                             <img class="img-fluid" src="https://img.icons8.com/color/96/company.png"
                                 style="height: 100px">
-                            <h1 class="h2">QC Lab System</h1>
+                            <h1 class="h2">Q-LIS Lab System</h1>
                             <p class="lead">
                                Reset your password 
                             </p>

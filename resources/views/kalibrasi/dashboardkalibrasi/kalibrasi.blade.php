@@ -38,8 +38,8 @@
                                             onclick="return confirm('Are You Sure About confirm Calibrating This Instrument?');"title="First Approved">
                                             <i class="fa fa-calendar-check"></i></button>
 
-                                            <a href="{{ route('jadwalkalibrasi.edit', $kalibrasis->id) }}" class="btn btn-primary btn-sm"
-                                                title="Edit Instrument"><i class="fa fa-pen"></i></a>
+                                            {{-- <a href="{{ route('jadwalkalibrasi.edit', $kalibrasis->id) }}" class="btn btn-primary btn-sm"
+                                                title="Edit Instrument"><i class="fa fa-pen"></i></a> --}}
     
                                             </form>
 

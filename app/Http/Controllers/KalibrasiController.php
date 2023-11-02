@@ -219,7 +219,7 @@ public function addvendor(Request $request)
 
         $jadwalkalibrasi=Calibration::whereNotNull('jadwalkalibrasi')
         ->where('status_instrument',1)
-        ->where('status_approval',1)
+        ->where('status_approval',4)
         ->get();
 
         return view('kalibrasi.dashboardkalibrasi.dashboard',compact('kalibrasinear','kalibrasiover','kalibrasibreak','jadwalkalibrasi'));
@@ -429,7 +429,8 @@ public function overcalibrationdone(Request $request,$kalibrasi)
 public function jadwal(Calibration $kalibrasi)
 {
     $uniqueIncomes=Calibration::whereNull('startbreakdown')
-    ->where('status_approval',1)  
+    ->where('status_approval',1) 
+    ->where('status_instrument',1)
     ->get();
     $vendor=Vendor::get();
     $location=Location::get();
@@ -455,6 +456,7 @@ public function jadwalkalibrasi(Request $request , Calibration $kalibrasi)
 
     $kalibrasi->calibrationby=$request->calibrationby;
     $kalibrasi->jadwalkalibrasi=$request->jadwalkalibrasi;
+    $kalibrasi->status_approval=2;
     $kalibrasi->save();
 
 
@@ -464,27 +466,11 @@ public function jadwalkalibrasi(Request $request , Calibration $kalibrasi)
 
 }
 
-public function terjadwalpertama(Request $request, $kalibrasi)
+public function terjadwal(Request $request, $kalibrasi)
 {
 
     $kalibrasi=Calibration::find($kalibrasi);
-    $kalibrasi->status_approval=2;
-
-    $kalibrasi->save();
-
-    return redirect()->route('dashboard.kalibrasi')
-    ->with('success', 'The Instrument Has Been Confirm Calibration schedule');
-}
-
-public function terjadwalfinal(Request $request, $kalibrasi)
-{
-
-    $kalibrasi=Calibration::find($kalibrasi);
-
     $kalibrasi->status_approval=1;
-
-
-
 
     $kalibrasi->lastcalibration=$kalibrasi->jadwalkalibrasi;
     $kalibrasi->save();
@@ -493,7 +479,7 @@ public function terjadwalfinal(Request $request, $kalibrasi)
     $nextCalibrationDate = $lastCalibrationDate->addMonths($kalibrasi->frekuensicalibration);
     $kalibrasi->nextcalibration = $nextCalibrationDate;
     $kalibrasi->jadwalkalibrasi=NULL;
-    $kalibrasi->reason_notapprove=NULL;
+    $kalibrasi->save();
 
     $kalibrasis = Auditcalibration::create([
         'instrumentid' => $kalibrasi->instrumentid,
@@ -505,9 +491,28 @@ public function terjadwalfinal(Request $request, $kalibrasi)
 
     ]);
 
+    return redirect()->route('dashboard.kalibrasi')
+    ->with('success', 'The Instrument Has Been Confirm Calibration schedule');
+}
+
+
+
+
+
+public function terjadwalfinal(Request $request, $kalibrasi)
+{
+
+    $kalibrasi=Calibration::find($kalibrasi);
+
+    $kalibrasi->status_approval=4;
+
+    $kalibrasi->reason_notapprove=NULL;
+    $kalibrasi->save();
+ 
+
     $kalibrasi->save();
     return redirect()->route('dashboard.kalibrasi')
-    ->with('success', 'The Instrument Has Been Calibrated Successfully');
+    ->with('success', 'The Instrument Has Been Approved Calibration Schedule');
 }
 
 public function terjadwalgagal(Request $request, $kalibrasi)
@@ -556,19 +561,29 @@ public function jadwalkalibrasiedit(Request $request ,$kalibrasi)
         ],
     );
 
-    $kalibrasi=Calibration::find($kalibrasi);;
+    $kalibrasi=Calibration::find($kalibrasi);
     $kalibrasi->calibrationby=$request->calibrationby;
     $kalibrasi->jadwalkalibrasi=$request->jadwalkalibrasi;
     $kalibrasi->save();
 
 
-    return redirect()->route('dashboard.kalibrasi')
+    return redirect()->route('listkalibrasi.approval')
     ->with('success', 'Instrument Calbration is Updated ');
 
 
 }
 
+public function terjadwalrevisi(Request $request, $kalibrasi)
+{
 
+    $kalibrasi=Calibration::find($kalibrasi);
+    $kalibrasi->status_approval=2;
+
+    $kalibrasi->save();
+
+    return redirect()->route('listkalibrasi.approval')
+    ->with('success', 'The Instrument Has Been Confirm Revision Calibration schedule');
+}
 
 
 
