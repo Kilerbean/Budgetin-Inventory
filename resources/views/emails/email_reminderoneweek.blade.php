@@ -13,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($kalibrasinearoneweek as $item)
+        @foreach ($kalibrasinearweek as $item)
             <tr>
                 <td>{{ $item->instrumentid }}</td>
                 <td>{{ $item->instrumentname }}</td>

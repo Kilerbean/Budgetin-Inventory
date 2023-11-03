@@ -17,7 +17,10 @@ class Kernel extends ConsoleKernel
         $schedule->command('app:remindernearcalib')->lastDayOfMonth('8:00');
         $schedule->command('clear:session')->everyTenMinutes();
         $schedule->command('app:email_reminder_calibraation_oneweek')
-             ->dailyAt('08:00');
+             ->dailyAt('08:00')
+             ->when(function () {
+                 return now()->dayOfWeek < 6;
+             });
     }
 
     /**

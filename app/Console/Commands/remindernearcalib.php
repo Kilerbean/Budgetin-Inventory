@@ -22,7 +22,7 @@ class remindernearcalib extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Kirim email pengingat untuk kalibrasi alat yang mendekati dalam 1 bulan dan di email tiap akhir bulan';
 
     /**
      * Execute the console command.

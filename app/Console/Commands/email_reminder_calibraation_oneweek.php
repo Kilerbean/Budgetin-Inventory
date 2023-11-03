@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Mail\ReminderEmail;
+use App\Mail\Reminderoneweek;
 use App\Models\Calibration;
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Auth\User;
@@ -36,15 +37,15 @@ class email_reminder_calibraation_oneweek extends Command
         $emailto[] = $recipient->email;
     }
 
-    $kalibrasinearoneweek = Calibration::where('nextcalibration', '>=', now())
+    $kalibrasinearweek = Calibration::where('nextcalibration', '>=', now())
         ->where('nextcalibration', '<', now()->addDays(7))
         ->where('status_approval', 1)
         ->where('status_instrument', 1)
         ->get();
-// dd($kalibrasinearoneweek->count());
-    if ($kalibrasinearoneweek->isNotEmpty()) {
+// dd($kalibrasinearweek->count());
+    if ($kalibrasinearweek->isNotEmpty()) {
         Mail::to($emailto)
-            ->send(new ReminderEmail($kalibrasinearoneweek));
+            ->send(new Reminderoneweek($kalibrasinearweek));
     } else {
         $this->info('Tidak ada alat kalibrasi yang mendekati 7 hari.');
     }
