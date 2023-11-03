@@ -33,14 +33,15 @@ class remindernearcalib extends Command
         foreach($recipients as $recipient){
             $emailto[]=$recipient->email;
         }
+       
         $kalibrasinear = Calibration::where('nextcalibration', '>=', now())
         ->where('nextcalibration', '<', now()->addDays(30))
         ->where('status_approval',1)
         ->where('status_instrument',1)
         ->get();
-
-        Mail::to('kilerbean11@gmail.com')                 
+        // dd($kalibrasinear->count());
+        Mail::to($emailto)                 
         ->send(new ReminderEmail($kalibrasinear));
-        return Command::SUCCESS;
+     
     }
 }
