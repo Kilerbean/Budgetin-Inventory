@@ -64,7 +64,7 @@ class UsageController extends Controller
         
         //dd($barang->Quantity);
         $request->validate([
-            'Catalog_Number'=>'required',
+            'Catalog_Number'=>'required|exists:incomes,Catalog_Number',
             'no_batch'=>'required',
             'Quantity' => 'required|numeric|min:1',
             'Open_By' => 'required',

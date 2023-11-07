@@ -27,6 +27,14 @@
                 <label class="form-label"> Calibration By : {{ $kalibrasi->calibrationby }} </label><br>
                 <label class="form-label"> Location : {{ $kalibrasi->location }} </label><br>
                
+                    <label class="form-label h5"> Status Instrument : {{ $kalibrasi->status_instrument == 1 ? 'Active' : 'Inactive' }}
+                
+                    </label>
+                    <a class="btn btn-danger btn-sm" href="{{ route('kalibrasi.nonaktif', $kalibrasi->id) }}"{{ $kalibrasi->status_instrument ? '' : 'hidden' }}
+                        title="Deactivate Material"> <i class="fa fa-pen"></i> Deactivate</a>
+                    <a class="btn btn-primary btn-sm" href="{{ route('kalibrasi.aktif', $kalibrasi->id) }}"{{ $kalibrasi->status_instrument ? 'hidden' : '' }}
+                        title="Activate Material"> <i class="fa fa-pen"></i> Activate</a>
+                
                
             </div>
         </div>

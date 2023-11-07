@@ -30,12 +30,12 @@ class email_reminder_calibraation_oneweek extends Command
      */
     public function handle()
     {
-        $recipients = User::where('leveluser', 6)->get();
-    $emailto = [];
+        $levels = [3,6,7];
+        $recipients = User::whereIn('leveluser',$levels)->get();
+        foreach($recipients as $recipient){
+            $emailto[]=$recipient->email;
+        }
 
-    foreach ($recipients as $recipient) {
-        $emailto[] = $recipient->email;
-    }
 
     $kalibrasinearweek = Calibration::where('nextcalibration', '>=', now())
         ->where('nextcalibration', '<', now()->addDays(7))

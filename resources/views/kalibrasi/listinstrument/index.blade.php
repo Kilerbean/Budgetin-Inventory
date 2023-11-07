@@ -17,11 +17,11 @@
         <div class="card">
             <div class="row">
                 <div class="col">
-                    <a href="{{ route('listkalibrasi.create') }}" class="btn btn-primary btn-sm">Create New Instrument</a>
-                    <a href="{{ route('kalibrasi.addbreakdown') }}" class="btn btn-warning btn-sm">Instrument Breakdown</a>
-                    <a href="{{ route('jadwal') }}" class="btn btn-success btn-sm">Add Calibration Schedule</a>
-                    <a href="{{ route('index.workorderlist') }}" class="btn btn-dark btn-sm">Create Work Order List</a>
-                    <a href="{{ route('kalibrasi.vendor') }}" class="btn btn-secondary btn-sm">Add Vendor</a>
+                    <a href="{{ route('listkalibrasi.create') }}" class="btn btn-primary btn-sm"><i class="fa-solid fa-circle-plus"></i> Create New Instrument</a>
+                    <a href="{{ route('kalibrasi.addbreakdown') }}" class="btn btn-warning btn-sm"><i class="fa-solid fa-gear"></i> Instrument Breakdown</a>
+                    <a href="{{ route('jadwal') }}" class="btn btn-success btn-sm"><i class="fa-solid fa-calendar-plus"></i> Add Calibration Schedule</a>
+                    <a href="{{ route('index.workorderlist') }}" class="btn btn-dark btn-sm"><i class="fa fa-file-invoice"></i> Work Order List</a>
+                    <a href="{{ route('kalibrasi.vendor') }}" class="btn btn-secondary btn-sm"><i class="fa-solid fa-user-gear"></i> Add Vendor</a>
                 </div>
             </div>
             <div class="mx-2 mt-2">

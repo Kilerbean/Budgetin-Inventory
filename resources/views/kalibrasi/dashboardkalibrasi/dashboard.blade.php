@@ -14,7 +14,7 @@
 <a href="{{ route('listkalibrasi.create') }}" class="btn btn-primary btn-sm"><i class="fa-solid fa-circle-plus"></i> Create New Instrument</a>
 <a href="{{ route('listKalibrasi') }}" class="btn btn-info btn-sm"><i class="fa-solid fa-file-lines"></i> List Instrument</a>
 
-<a href="{{ route('kalibrasi.addbreakdown') }}" class="btn btn-warning btn-sm">Instrument Breakdowns</a>
+<a href="{{ route('kalibrasi.addbreakdown') }}" class="btn btn-warning btn-sm"><i class="fa-solid fa-gears"></i> Instrument Breakdowns</a>
 <a href="{{ route('jadwal') }}" class="btn btn-success btn-sm"><i class="fa-solid fa-calendar-plus"></i> Add Calibration Schedule</a>
 <a href="{{ route('index.workorderlist') }}" class="btn btn-dark btn-sm"><i class="fa fa-file-invoice"></i> Work Order List</a>
 

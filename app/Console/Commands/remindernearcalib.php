@@ -29,11 +29,12 @@ class remindernearcalib extends Command
      */
     public function handle()
     {
-        $recipients = User::where('leveluser',6)->get();
+        $levels = [3,6,7];
+        $recipients = User::whereIn('leveluser',$levels)->get();
         foreach($recipients as $recipient){
             $emailto[]=$recipient->email;
         }
-       
+    
         $kalibrasinear = Calibration::where('nextcalibration', '>=', now())
         ->where('nextcalibration', '<', now()->addDays(30))
         ->where('status_approval',1)

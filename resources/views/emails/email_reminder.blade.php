@@ -70,7 +70,7 @@
             @endforeach
         </tbody>
     </table>
-    <a href="http://172.19.19.39:98" class="button">Login to Calibration System</a>
+    <a href="http://172.19.19.39:98/Dashboard/Kalibrasi" class="button">Login to Calibration System</a>
     <div class="footer">This email is auto-generated from the Q-LIS Calibration System Database. Please do not reply.</div>
     <div class="footer">Best Regards</div>
 </body>
