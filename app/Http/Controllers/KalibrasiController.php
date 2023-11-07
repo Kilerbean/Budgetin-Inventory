@@ -158,7 +158,7 @@ class KalibrasiController extends Controller
         $kalibrasi->nextcalibration = date('Y-m-d',strtotime($nextCalibrationDate));
         //dd($kalibrasi->nextcalibration);
         $kalibrasi->save();
-        \startauditkalibrasi($kalibrasi, $old['fields'], $old['old'], $old['table'], 'Edit instrument Data'); 
+        \startauditkalibrasi($kalibrasi, $old['fields'], $old['old'],'List of Material', 'Edit instrument Data'); 
         return redirect()->route('listKalibrasi')
             ->with('success', 'Instrument Data updated successfully');
     }
@@ -428,9 +428,12 @@ public function overcalibrationdone(Request $request,$kalibrasi)
                         //JADWALKAN KALIBRASI
 public function jadwal(Calibration $kalibrasi)
 {
+
     $uniqueIncomes=Calibration::whereNull('startbreakdown')
+    ->where('nextcalibration', '>=', now())
     ->where('status_approval',1) 
     ->where('status_instrument',1)
+
     ->get();
     $vendor=Vendor::get();
     $location=Location::get();
@@ -444,7 +447,7 @@ public function jadwalkalibrasi(Request $request , Calibration $kalibrasi)
     $request->validate(
         [
             
-           'instrumentid'=>'required',
+           'instrumentid'=>'required|exists:calibrations,instrumentid',
             'jadwalkalibrasi' => 'required',
             'calibrationby' => 'required',
 

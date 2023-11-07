@@ -178,20 +178,21 @@ class BarangController extends Controller
         ]);
         $barang = barang::find($id);
         $old= \getoldvalues('mysql','barangs',$barang);
-        $old_code=$old["old"]["Material_Code"];
-        $old_tipematerial=$old["old"]["Type_of_Material"];
-        $old_tipebudget=$old["old"]["Type_of_Budget"];
-        $old_name=$old["old"]["Name_of_Material"];
-        $old_katalog=$old["old"]["Catalog_Number"];
-        $old_packsize=$old["old"]["packingsize"];
-        $old_packsizeunit=$old["old"]["packingsize_unit"];
-        $old_manufaktur=$old["old"]["Manufaktur"];
-        $old_Quantity=$old["old"]["Quantity"];
-        $old_Harga=$old["old"]["Harga"];
-        $old_Unit=$old["old"]["Unit"];
-        $old_safestock=$old["old"]["Safety_Stock"];
-        $old_maxstock=$old["old"]["Maximum_Stock"];
-        $old_category=$old["old"]["category"];
+    
+        // $old_code=$old["old"]["Material_Code"];
+        // $old_tipematerial=$old["old"]["Type_of_Material"];
+        // $old_tipebudget=$old["old"]["Type_of_Budget"];
+        // $old_name=$old["old"]["Name_of_Material"];
+        // $old_katalog=$old["old"]["Catalog_Number"];
+        // $old_packsize=$old["old"]["packingsize"];
+        // $old_packsizeunit=$old["old"]["packingsize_unit"];
+        // $old_manufaktur=$old["old"]["Manufaktur"];
+        // $old_Quantity=$old["old"]["Quantity"];
+        // $old_Harga=$old["old"]["Harga"];
+        // $old_Unit=$old["old"]["Unit"];
+        // $old_safestock=$old["old"]["Safety_Stock"];
+        // $old_maxstock=$old["old"]["Maximum_Stock"];
+        // $old_category=$old["old"]["category"];
 
 
         $barang->Material_Code = $request->Material_Code;
@@ -219,12 +220,8 @@ class BarangController extends Controller
         
 
 
-
-        \auditmms(auth()->user()->name,'Edit Material',$barang->Name_of_Material."|".$barang->Catalog_Number, 'List of Material', 'Edit All'
-        ,"Material Code =".$old_code."| Type of Material=".$old_tipematerial."| Tipe of Budget=".$old_tipebudget."| Name of Material=".$old_name."|Catalog Number=".$old_katalog."| Packing Size=".$old_packsize."| Packing Size Unit =".$old_packsizeunit."|Manufacture =".$old_manufaktur."|Quantity =".$old_Quantity."| Harga=".$old_Harga."|Unit=".$old_Unit."|Safety Stock=".$old_safestock."|Maximum Stock=".$old_maxstock
-
-        ,"Material Code =".$request->Material_Code."| Type of Material=".$request->Type_of_Material."| Tipe of Budget=".$request->Type_of_Budget."| Name of Material=".$request->Name_of_Material."|Catalog Number=".$request->Catalog_Number."| Packing Size=".$request->packingsize."| Packing Size Unit =". $request->packingsize_unit."|Manufacture =".$request->Manufaktur."|Quantity =".$request->Quantity."| Harga=".$request->Harga."|Unit=".$request->Unit."|Safety Stock=".$request->Safety_Stock."|Maximum Stock=".$request->Maximum_Stock);
-        session()->flash('info', 'Material data Successfully edited.');
+        \startauditexpanse($barang, $old['fields'], $old['old'], $old['table'], 'Edit Material Data'); 
+       
         return redirect()->route('Barang.index');
     }
 
