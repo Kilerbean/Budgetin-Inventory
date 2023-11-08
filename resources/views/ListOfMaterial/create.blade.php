@@ -136,6 +136,7 @@
                         <select class="form-select @error('packingsize_unit') is-invalid @enderror" name="packingsize_unit">
                             <option value="">Select</option>
                             <option value="mL" {{ old('packingsize_unit') === 'mL' ? 'selected' : '' }}>mL</option>
+                            <option value="mg" {{ old('packingsize_unit') === 'mg' ? 'selected' : '' }}>mg</option>
                             <option value="gram" {{ old('packingsize_unit') === 'gram' ? 'selected' : '' }}>gram</option>
                             <option value="liter" {{ old('packingsize_unit') === 'liter' ? 'selected' : '' }}>liter
                             </option>

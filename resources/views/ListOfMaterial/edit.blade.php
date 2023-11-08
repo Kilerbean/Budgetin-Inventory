@@ -128,6 +128,8 @@
                         <option value="gram"
                             {{ old('packingsize_unit', $barang->packingsize_unit) === 'gram' ? 'selected' : '' }}>gram
                         </option>
+                        <option value="mg"
+                            {{ old('packingsize_unit', $barang->packingsize_unit) === 'mg' ? 'selected' : '' }}>mg</option>
                         <option value="Lb"
                             {{ old('packingsize_unit', $barang->packingsize_unit) === 'Lb' ? 'selected' : '' }}>Lb</option>
                         <option value="pcs"
