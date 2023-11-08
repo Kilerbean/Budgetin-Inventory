@@ -10,7 +10,7 @@
     <h1><img {{-- class="slide-fwd-top" --}} src="{{asset('icon/laboratory.png')}}" alt="Unsplash" style="width: 50px">
     <span {{-- class="slide-left" --}} style="display: inline-block">   Welcome to <strong>{{$pretitle}}</strong></span></h1>        
 </div> 
-<a href="{{ route('listkalibrasi.approval') }}" class="btn btn-danger btn-sm"><i class="fa fa-check-to-slot"></i> List Need Approved</a>
+<a href="{{ route('listkalibrasi.approval') }}" class="btn btn-danger btn-sm"><i class="fa fa-check-to-slot"></i> List Of  Approval Request</a>
 <a href="{{ route('listkalibrasi.create') }}" class="btn btn-primary btn-sm"><i class="fa-solid fa-circle-plus"></i> Create New Instrument</a>
 <a href="{{ route('listKalibrasi') }}" class="btn btn-info btn-sm"><i class="fa-solid fa-file-lines"></i> List Instrument</a>
 

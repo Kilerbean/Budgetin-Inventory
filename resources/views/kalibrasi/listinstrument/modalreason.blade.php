@@ -28,7 +28,7 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12 right-align-text">
                 <div class="form-group">
-                    <strong>Reason Rejected</strong>
+                    <strong>Rejection Reason</strong>
                     <input type="text" name="reason_notapprove" value="{{ $kalibrasis->reason_notapprove }}" class="form-control" placeholder="Input Reason Here">
                 </div>
             </div>

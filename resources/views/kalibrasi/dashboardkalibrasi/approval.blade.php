@@ -52,14 +52,14 @@
      
 
                                             <button type="submit" class="btn btn-success btn-sm"
-                                            onclick="return confirm('Are You Sure About Approved Calibrating This Instrument??');"title="Done Approved">
+                                            onclick="return confirm('Are You Sure About Approved Calibrating This Instrument??');"title="Approve">
                                             <i class="fa-solid fa-check-double"></i></button>
 
 
 
                                             <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#staticBackdropsreject{{$kalibrasis->id}}"
-                                            title="Reject Approval">
+                                            title="Rejected">
                                             <i class="fa-solid fa-xmark"></i>
                                             </button>
                                            

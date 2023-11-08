@@ -63,7 +63,7 @@
                                         <form action="{{ route('kalibrasi.destroy', $kalibrasis->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <a href="{{ route('listKalibrasi.show', $kalibrasis->id) }}"title="Info Detail Material"
+                                            <a href="{{ route('listKalibrasi.show', $kalibrasis->id) }}"title="Info Detail Instrument"
                                                 class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
 
                                             <a href="{{ route('listKalibrasi.edit', $kalibrasis->id) }}" class="btn btn-primary btn-sm"
