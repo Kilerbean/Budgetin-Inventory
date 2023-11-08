@@ -13,7 +13,7 @@
     @includeIf('layouts.partials.css')
     <style>
         .transparent-card {
-            background-color: rgba(255, 255, 255, 0.6); /* Ubah angka 0.8 sesuai dengan tingkat transparansi yang Anda inginkan */
+            background-color: rgba(255, 255, 255, 0.7); /* Ubah angka 0.8 sesuai dengan tingkat transparansi yang Anda inginkan */
             padding: 20px; /* Sesuaikan sesuai kebutuhan Anda */
             border-radius: 10px; /* Atur border-radius sesuai kebutuhan Anda */
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Efek bayangan untuk memberikan kedalaman */
@@ -24,7 +24,7 @@
 
 <body>
     <div class="wrapper">        
-        <div class="main" style="background-image: url('icon/LoginBG.png');background-position: center;
+        <div class="main" style="background-image: url('icon/backgroudlogin.png');background-position: center;
         background-repeat: no-repeat; background-size: cover;">           
             <main class="content px-4 pt-2">
                 @includeif('layouts.partials.sweetalert')

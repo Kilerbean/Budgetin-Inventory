@@ -35,7 +35,7 @@
         <div class="card">
             <div class="row">
                 <div class="col">
-                    <a href="{{ route('Barang.Create') }}" class="btn btn-primary btn-sm">Create New Material</a>
+                    <a href="{{ route('Barang.Create') }}" class="btn btn-primary btn-sm">Add New Material</a>
                     <a href="{{ route('barangtidakaktif') }}" class="btn btn-danger btn-sm">List Material Inactive</a>
                     <a href="{{ route('Barang.listcode') }}" class="btn btn-info btn-sm">List Material based Material Code</a>
                 </div>
