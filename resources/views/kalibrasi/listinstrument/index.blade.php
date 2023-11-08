@@ -60,9 +60,9 @@
 
                                    
 
-                                        <form action="{{ route('kalibrasi.destroy', $kalibrasis->id) }}" method="POST">
+                                        {{-- <form action="{{ route('kalibrasi.destroy', $kalibrasis->id) }}" method="POST">
                                             @csrf
-                                            @method('DELETE')
+                                            @method('DELETE') --}}
                                             <a href="{{ route('listKalibrasi.show', $kalibrasis->id) }}"title="Info Detail Instrument"
                                                 class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
 
@@ -72,11 +72,11 @@
                                                     title="Breakdown Instrument"><i class="fa fa-pen-to-square"></i></a> --}}
                                                   
 
-                                                @if (auth()->user()->leveluser =5)
+                                                {{-- @if (auth()->user()->leveluser =5)
                                             <button type="submit" class="btn btn-danger btn-sm"
                                                 onclick="return confirm('Are you sure want to delete this ?');" title="Delete"><i
                                                     class="fa fa-trash"></i></button>
-                                                @endif
+                                                @endif --}}
                                         </form>
 
                                 </td>
