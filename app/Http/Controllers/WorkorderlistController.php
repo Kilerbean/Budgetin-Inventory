@@ -105,6 +105,7 @@ class WorkorderlistController extends Controller
     
 
         $kalibrasis = Auditcalibration::create([
+            'input_by' => auth()->user()->name,
             'instrumentid' => $kalibrasi->instrumentid,
             'instrumentname' => $kalibrasi->instrumentname,
             'nowo'=>$kalibrasi->nowo,
@@ -170,6 +171,7 @@ class WorkorderlistController extends Controller
 
 
         $kalibrasis = Auditcalibration::create([
+            'input_by'=> auth()->user()->name,
             'instrumentid' => $kalibrasi->instrumentid,
             'instrumentname' => $kalibrasi->instrumentname,
             'nowo'=>$kalibrasi->nowo,

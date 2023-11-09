@@ -56,6 +56,7 @@
                         <tr>
                             <?php $i = 0; ?>
                             <th style="background-color: lightgray;">No</th>
+                            <th style="background-color: lightgray;">Input By</th>
                             <th style="background-color: lightgray;">Calibration Date</th>
                             <th style="background-color: lightgray;">Calibration By</th>
                             <th style="background-color: lightgray;">Status Calibration</th>
@@ -69,6 +70,7 @@
                             <tr>
                                
                                 <td>{{ ++$i }}</td>
+                                <td>{{ $kalibrasi->input_by }}</td>
                                 <td>{{ $kalibrasi->lastcalibration}}</td>
                                 <td>{{ $kalibrasi->calibrationby }}</td>
                                 <td>{{ $kalibrasi->statuskalibrasi }}</td>
@@ -103,6 +105,7 @@
 
                             <th style="background-color: lightgray;">No</th>
                             <th style="background-color: lightgray;">Date</th>
+                            <th style="background-color: lightgray;">Input By</th>
                             <th style="background-color: lightgray;">No WO</th>
                             <th style="background-color: lightgray;">Location</th>
                             <th style="background-color: lightgray;">Service By</th>
@@ -124,6 +127,7 @@
                             <tr>
                                 <td>{{ ++$l }}</td>
                                 <td>{{ \Carbon\Carbon::parse($kalibrasi->created_at)->setTimezone('Asia/Jakarta')->format('d-M-Y ') }}</td>
+                                <td>{{ $kalibrasi->input_by }}</td>
                                 <td>{{ $kalibrasi->nowo }}</td>
                                 <td>{{ $kalibrasi->location }}</td>
                                 <td>{{ $kalibrasi->serviceby }}</td>

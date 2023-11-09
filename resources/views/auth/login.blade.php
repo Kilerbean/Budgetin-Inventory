@@ -3,7 +3,7 @@
 @section('content')   
 
     <main class="d-flex w-100" >
-        <div class="container d-flex flex-column"  style="padding-top:85px;padding-left:120px;padding-right:120px">
+        <div class="container d-flex flex-column"  style="padding-top:85px">
             <div class="row vh-100">
                 <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100" style="padding-top:100px;">
                     <div class="d-table-cell align-middle">                        

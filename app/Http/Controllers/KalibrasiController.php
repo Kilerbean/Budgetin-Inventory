@@ -343,6 +343,7 @@ public function ontime(Request $request, $kalibrasi)
 
 
     $kalibrasis = Auditcalibration::create([
+        'input_by'=> auth()->user()->name,
         'instrumentid' => $kalibrasi->instrumentid,
         'instrumentname' => $kalibrasi->instrumentname,
         'lastcalibration' =>$kalibrasi->lastcalibration,
@@ -406,6 +407,7 @@ public function overcalibrationdone(Request $request,$kalibrasi)
     $kalibrasi->save();
 
     $kalibrasis = Auditcalibration::create([
+        'input_by'=>auth()->user()->name,
         'instrumentid' => $kalibrasi->instrumentid,
         'instrumentname' => $kalibrasi->instrumentname,
         'lastcalibration' =>$kalibrasi->lastcalibration,
@@ -485,6 +487,7 @@ public function terjadwal(Request $request, $kalibrasi)
     $kalibrasi->save();
 
     $kalibrasis = Auditcalibration::create([
+        'input_by'=>  auth()->user()->name,
         'instrumentid' => $kalibrasi->instrumentid,
         'instrumentname' => $kalibrasi->instrumentname,
         'lastcalibration' =>$kalibrasi->lastcalibration,
