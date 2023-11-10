@@ -13,9 +13,10 @@
         <div class="card">
             <div class="row">
                 <div class="col">
-                    <a href="{{ route('listkalibrasi.create') }}" class="btn btn-primary btn-sm">Create New Instrument</a>
-                    
-                    <a href="{{ route('jadwal') }}" class="btn btn-success btn-sm">Add Calibration Schedule</a>
+                    <a class="btn btn-primary btn-sm" href="{{ route('dashboard.kalibrasi') }}">Dashboard</a>
+                    <a href="{{ route('listKalibrasi') }}" class="btn btn-info btn-sm"><i class="fa-solid fa-file-lines"></i> List Instrument</a>
+                    {{-- <a href="{{ route('listkalibrasi.create') }}" class="btn btn-primary btn-sm">Create New Instrument</a>
+                    <a href="{{ route('jadwal') }}" class="btn btn-success btn-sm">Add Calibration Schedule</a> --}}
 
                 </div>
             </div>

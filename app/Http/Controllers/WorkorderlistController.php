@@ -9,6 +9,7 @@ use App\Models\Calibration;
 use Illuminate\Http\Request;
 use App\Models\Auditcalibration;
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Mail;
 
 class WorkorderlistController extends Controller
@@ -26,17 +27,7 @@ class WorkorderlistController extends Controller
         ->get();
 
 
-        $mailData = [
-            'outputs' => 'test',   
-            'file'=>'testfile',    
-            'jumlah' => 3,
-                                
-        ];
-        
-        
-
-        // Mail::to('kilerbean11@gmail.com')                 
-        // ->send(new ReminderEmail($mailData,$kalibrasinear));
+      
 
         $kalibrasi=Calibration::latest()->whereNotNull('startbreakdown')->get();
 
@@ -74,7 +65,9 @@ class WorkorderlistController extends Controller
     {
         $vendor=Vendor::get();
         $location=Location::get();
-        return view('kalibrasi.workorderlist.wol_edit',compact('kalibrasi','vendor','location'));
+        $user=User::where('Status','1')->get();
+
+        return view('kalibrasi.workorderlist.wol_edit',compact('kalibrasi','vendor','location','user'));
     }
 
     /**

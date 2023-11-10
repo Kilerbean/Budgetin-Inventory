@@ -100,16 +100,22 @@
          </div>
 
 
+         <div class="col-md-6 mb-3">
+            <label class="form-label">Requestor</label>
+             <select class="form-select @error('requestor')is-invalid @enderror " name="requestor" id="requestor">
+                <option value="">Click to search</option>
+                 @foreach ($user as $row)
+                 <option value="{{ $row->name }}" {{ old('name', $kalibrasi->requestor) == $row->name ? 'selected' : '' }}>
+                    {{ $row->name }}
+                </option>
+                 @endforeach
+             </select>
+             @error('requestor')
+             <span class="invalid-feedback">{{ $message }}</span>
+             @enderror
+     </div>
 
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Requestor</label>
-                    <input type="text" name="requestor"class="form-control @error('requestor')is-invalid @enderror"
-                        placeholder="Input here" value="{{ old('requestor', $kalibrasi->requestor) }}">
-                    @error('requestor')
-                        <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
-                </div>
-    
+               
 
              <div class="col-md-6 mb-3">
                 <label class="form-label">Problem</label>
@@ -198,3 +204,46 @@
 </div>
 
 @stop
+@push('js')
+    <script>
+        $(document).ready(function() {
+            $('#serviceby', ).select2({
+                theme: "bootstrap-5",
+                width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' :
+                    'style',
+                placeholder: $(this).data('placeholder'),
+                closeOnSelect: true,
+                tags: true,
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+            });
+            $(document).on("select2:open", () => {
+                document.querySelector(".select2-container--open .select2-search__field").focus()
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#requestor', ).select2({
+                theme: "bootstrap-5",
+                width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' :
+                    'style',
+                placeholder: $(this).data('placeholder'),
+                closeOnSelect: true,
+                tags: true,
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+            });
+            $(document).on("select2:open", () => {
+                document.querySelector(".select2-container--open .select2-search__field").focus()
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(function() {
+            var table = $('#listlow,#listlowss,#listlowq').DataTable({
+
+            });
+        });
+    </script>
+@endpush
