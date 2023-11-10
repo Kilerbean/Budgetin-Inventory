@@ -12,8 +12,10 @@ use Illuminate\Support\Carbon;
 use App\Models\Auditcalibration;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Validated;
-
+use App\Mail\rejectedcalibration;
 
 class KalibrasiController extends Controller
 {
@@ -461,7 +463,7 @@ public function jadwalkalibrasi(Request $request , Calibration $kalibrasi)
 
     $kalibrasi->calibrationby=$request->calibrationby;
     $kalibrasi->jadwalkalibrasi=$request->jadwalkalibrasi;
-    $kalibrasi->status_approval=2;
+    $kalibrasi->status_approval=4;
     $kalibrasi->save();
 
 
@@ -475,27 +477,10 @@ public function terjadwal(Request $request, $kalibrasi)
 {
 
     $kalibrasi=Calibration::find($kalibrasi);
-    $kalibrasi->status_approval=1;
-
-    $kalibrasi->lastcalibration=$kalibrasi->jadwalkalibrasi;
+    $kalibrasi->status_approval=2;
     $kalibrasi->save();
- 
-    $lastCalibrationDate = Carbon::parse($kalibrasi->lastcalibration);
-    $nextCalibrationDate = $lastCalibrationDate->addMonths($kalibrasi->frekuensicalibration);
-    $kalibrasi->nextcalibration = $nextCalibrationDate;
-    $kalibrasi->jadwalkalibrasi=NULL;
-    $kalibrasi->save();
-
-    $kalibrasis = Auditcalibration::create([
-        'input_by'=>  auth()->user()->name,
-        'instrumentid' => $kalibrasi->instrumentid,
-        'instrumentname' => $kalibrasi->instrumentname,
-        'lastcalibration' =>$kalibrasi->lastcalibration,
-        'calibrationby' => $kalibrasi->calibrationby,
-        'statuskalibrasi' =>'On Schedule',
-        'tipe_data'=>1,
-
-    ]);
+    
+    
 
     return redirect()->route('dashboard.kalibrasi')
     ->with('success', 'The Instrument Has Been Confirm Calibration schedule');
@@ -510,16 +495,37 @@ public function terjadwalfinal(Request $request, $kalibrasi)
 
     $kalibrasi=Calibration::find($kalibrasi);
 
-    $kalibrasi->status_approval=4;
+    $kalibrasi->status_approval=1;
 
-    $kalibrasi->reason_notapprove=NULL;
+    $kalibrasi->lastcalibration=$kalibrasi->jadwalkalibrasi;
     $kalibrasi->save();
  
-
+    $lastCalibrationDate = Carbon::parse($kalibrasi->lastcalibration);
+    $nextCalibrationDate = $lastCalibrationDate->addMonths($kalibrasi->frekuensicalibration);
+    $kalibrasi->nextcalibration = $nextCalibrationDate;
+    $kalibrasi->jadwalkalibrasi=NULL;
+    $kalibrasi->reason_notapprove=NULL;
     $kalibrasi->save();
+
+    $kalibrasis = Auditcalibration::create([
+        'input_by'=>  auth()->user()->name,
+        'instrumentid' => $kalibrasi->instrumentid,
+        'instrumentname' => $kalibrasi->instrumentname,
+        'lastcalibration' =>$kalibrasi->lastcalibration,
+        'calibrationby' => $kalibrasi->calibrationby,
+        'statuskalibrasi' =>'On Schedule',
+        'tipe_data'=>1,
+
+    ]);
+
+
+
     return redirect()->route('dashboard.kalibrasi')
     ->with('success', 'The Instrument Has Been Approved Calibration Schedule');
 }
+
+
+
 
 public function terjadwalgagal(Request $request, $kalibrasi)
 {
@@ -536,9 +542,23 @@ public function terjadwalgagal(Request $request, $kalibrasi)
 
     $kalibrasi->status_approval=3;
     $kalibrasi->reason_notapprove=$request->reason_notapprove;
+
     $kalibrasi->save();
- 
+ //EMAIL
     
+        $levels = [6];
+        $recipients = User::whereIn('leveluser',$levels)->get();
+        foreach($recipients as $recipient){
+            $emailto[]=$recipient->email;
+        }
+     $kalibrasiz=$kalibrasi;
+        Mail::to($emailto)                 
+        ->send(new rejectedcalibration($kalibrasiz));
+
+
+
+
+
     return redirect()->route('listkalibrasi.approval')
     ->with('success', 'The Instrument Has Been Refused to Be Calibrated');
 }
@@ -584,7 +604,7 @@ public function terjadwalrevisi(Request $request, $kalibrasi)
 
     $kalibrasi=Calibration::find($kalibrasi);
     $kalibrasi->status_approval=2;
-
+    $kalibrasi->reason_notapprove=NULL;
     $kalibrasi->save();
 
     return redirect()->route('listkalibrasi.approval')

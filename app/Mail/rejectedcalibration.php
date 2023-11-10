@@ -9,16 +9,16 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class rejectedcalibration extends Mailable
+class rejectedcalibration extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
-public $kalibrasi;
+public $kalibrasiz;
     /**
      * Create a new message instance.
      */
-    public function __construct($kalibrasi)
+    public function __construct($kalibrasiz)
     {
-        $this->$kalibrasi=$kalibrasi;
+        $this->$kalibrasiz=$kalibrasiz;
     }
 
     /**
@@ -27,7 +27,7 @@ public $kalibrasi;
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Q-LIS |Calibration Instrument Rejected',
+            subject: 'Q-LIS |Notification: Calibration Rejection',
         );
     }
 
