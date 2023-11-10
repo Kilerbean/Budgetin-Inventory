@@ -62,7 +62,7 @@
                         <td>{{ ++$i }}</td>
                         <td>{{ $income->No_PR }}</td>
                         <td>{{ $income->Catalog_Number }}</td>
-                        <td>{{ $income->Barang->Name_of_Material }}</td>
+                        <td>{{ $income->Name_of_Material }}</td>
                         <td>{{ $income->Quantity }}</td>
                         <td>{{ $income->Unit }}</td>
                         {{-- <td>{{ number_format($income->Prices, 2, '.', ',') }}</td> --}}

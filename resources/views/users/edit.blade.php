@@ -56,6 +56,11 @@
                           QC Jr. Manager</option>
                       <option value="QC Manager" {{ old('title', $user->title) == 'QC Manager' ? 'selected' : '' }}>
                           QC Manager</option>
+                          <option value="Validation Support" {{ old('title', $user->title) == 'Validation Support' ? 'selected' : '' }}>
+                            Validation Support</option>
+                            <option value="Validation Manager" {{ old('title', $user->title) == 'Validation Manager' ? 'selected' : '' }}>
+                                Validation Manager</option>
+
                       <option value="Quality Operation Director"{{ old('title', $user->title) == 'Quality Operation Director' ? 'selected' : '' }}>
                           Quality Operation Director</option>
                   </select>

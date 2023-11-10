@@ -59,13 +59,13 @@
             </li>
             <li class="sidebar-item {{ str_contains($pages, 'Usage') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('listKalibrasi') }}">
-                    <i class="fa-solid fa-bag-shopping" style="width: 18px;"></i>
+                    <i class="fa-solid fa-file-lines" style="width: 18px;"></i>
                     <span class="align-middle">List Instrument</span>
                 </a>
             </li>
             <li class="sidebar-item {{ str_contains($pages, 'Purchas') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('index.workorderlist') }}">
-                    <i class="fa-solid fa-cart-shopping" style="width: 18px;"></i>
+                    <i class="fa fa-file-invoice" style="width: 18px;"></i>
                     <span class="align-middle">Work Order List</span>
                 </a>
             </li>

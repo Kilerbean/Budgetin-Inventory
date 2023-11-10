@@ -62,7 +62,7 @@
                         <td>{{ $income->No_PR }}</td>
                         <td>{{ $income->No_PO }}</td>
                         <td>{{ $income->Catalog_Number }}</td>
-                        <td>{{ $income->Barang->Name_of_Material }}</td>
+                        <td>{{ $income->Name_of_Material }}</td>
                         <td>{{ $income->Barang->Type_of_Budget }}</td>
                         <td>{{ $income->Barang->Manufaktur }}</td>
                         <td>{{ $income->Quantity }}</td>

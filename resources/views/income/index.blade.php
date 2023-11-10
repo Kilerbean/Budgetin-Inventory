@@ -9,8 +9,8 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <a class="btn btn-success" href="{{ route('income.create') }}"> Create new Purchasing Material</a>
-            <a class="btn btn-dark " href="{{ route('Income.deadstock') }}"> List Dead Stock</a>
+            <a class="btn btn-success btn-sm" href="{{ route('income.create') }}"> Create new Purchasing Material</a>
+            <a class="btn btn-dark btn-sm" href="{{ route('Income.deadstock') }}"> List Dead Stock</a>
         </div>
     </div>
     <div class="mx-2 mt-2">
@@ -86,7 +86,7 @@
                             <td>{{ $income->No_PR }}</td>
                             <td>{{ $income->No_PO }}</td>
                             <td>{{ $income->Catalog_Number }}</td>
-                            <td>{{ $income->Barang->Name_of_Material }}</td>
+                            <td>{{ $income->Name_of_Material }}</td>
                             <td>{{ $income->no_batch }}</td>
                             <td>{{ $income->Quantity }}</td>
                             <td>{{ $income->Unit }}</td>
