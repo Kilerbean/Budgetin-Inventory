@@ -34,7 +34,7 @@
                             <th style="background-color: lightgray;">No.</th>
                             <th style="background-color: lightgray;">Instrument ID</th>
                             <th style="background-color: lightgray;">Instrument Name</th>
-                            <th style="background-color: lightgray;">No WO</th>
+                            <th style="background-color: lightgray;">No WO/No PR</th>
                             <th style="background-color: lightgray;">Location</th>
                             <th style="background-color: lightgray;">Service By</th>
                             <th style="background-color: lightgray;">Requestor</th>

@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label class="form-label">No WO</label>
+                    <label class="form-label">No WO/No PO</label>
                     <input type="text" name="nowo"class="form-control @error('nowo')is-invalid @enderror"
                         placeholder="Input here" value="{{ old('nowo', $kalibrasi->nowo) }}">
                     @error('nowo')

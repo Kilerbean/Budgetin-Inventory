@@ -32,6 +32,14 @@
                 </label>
                 <br><br>
                 <div class="row">
+
+                    <div class="mb-3">
+                        <label class="form-label">Name of Material</label>
+                        <input type="text" name="Name_of_Material" class="form-control"
+                            value="{{ old('Name_of_Material', $income->Name_of_Material) }}">
+                    </div>
+
+
                     <div class="col-md-4">
                         <div class="form-group">
                             <div class="form-label"><strong>PR Date</strong></div>
@@ -39,6 +47,8 @@
                                 value="{{ old('PO_Date', $income->PO_Date) }}">
                         </div>
                     </div>
+
+
                     <div class="col-md-4">
                         <div class="form-group">
                             <div class="form-label"><strong>Catalog Number</strong></div>

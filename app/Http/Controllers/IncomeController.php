@@ -124,7 +124,7 @@ class IncomeController extends Controller
         $income->No_PR = $request->No_PR;
         $income->Catalog_Number = $request->Catalog_Number;
         $income->Type_of_Material = $barang->Type_of_Material;
-        $income->Name_of_Material = $barang->Name_of_Material;
+        $income->Name_of_Material = $request->Name_of_Material;
         $income->Quantity = $request->Quantity;
         $income->Unit = $barang->Unit;
         $income->packingsize = $barang->packingsize;

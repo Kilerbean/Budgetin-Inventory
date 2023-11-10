@@ -42,18 +42,18 @@
                     <span class="align-middle">Material Usage</span>
                 </a>
             </li>
-            <li class="sidebar-item {{ str_contains($pages, 'Karyawan') ? 'active' : '' }}">
-                <a class="sidebar-link" href="{{ route('karyawan') }}">
-                    <i class="fa-solid fa-users" style="width: 18px;"></i>
-                    <span class="align-middle">List Employees</span>
-                </a>
-            </li>
+
+
+
+
+
+
             <li class="sidebar-header mt-0">
                 Callibration
             </li>
             <li class="sidebar-item {{ str_contains($pages, 'Karyawan') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('dashboard.kalibrasi') }}">
-                    <i class="fa-solid fa-users" style="width: 18px;"></i>
+                    <i class="align-middle" data-feather="sliders" style="width: 18px;"></i>
                     <span class="align-middle">Dashboard</span>
                 </a>
             </li>
@@ -106,6 +106,14 @@
             <li class="sidebar-header">
                 Setting
             </li>
+
+            <li class="sidebar-item {{ str_contains($pages, 'Karyawan') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('karyawan') }}">
+                    <i class="fa-solid fa-users" style="width: 18px;"></i>
+                    <span class="align-middle">List Employees</span>
+                </a>
+            </li>
+            
             <li class="sidebar-item {{ $pages == 'Profile' ? 'active' : '' }}">
                 <a class="sidebar-link" href="/profile">
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>

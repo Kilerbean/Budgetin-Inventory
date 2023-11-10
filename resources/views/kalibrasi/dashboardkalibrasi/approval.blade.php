@@ -31,7 +31,7 @@
                             <th style="background-color: lightgray;">No.</th>
                             <th style="background-color: lightgray;">Instrument ID</th>
                             <th style="background-color: lightgray;">Instrument Name</th>
-                            <th style="background-color: lightgray;">Calibration Start</th>
+                            <th style="background-color: lightgray;">Calibration Date</th>
                             <th style="background-color: lightgray;">Calibration By</th>
                             <th style="background-color: lightgray;">Location</th>
 
@@ -114,7 +114,7 @@
                             <th style="background-color: lightgray;">Instrument ID</th>
                             <th style="background-color: lightgray;">Instrument Name</th>
                             <th style="background-color: lightgray;">Reason Rejected</th>
-                            <th style="background-color: lightgray;">Calibration Start</th>
+                            <th style="background-color: lightgray;">Calibration Date</th>
                             <th style="background-color: lightgray;">Calibration By</th>
                             <th style="background-color: lightgray;">Location</th>
 

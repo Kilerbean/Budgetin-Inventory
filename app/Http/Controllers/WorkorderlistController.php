@@ -135,7 +135,7 @@ class WorkorderlistController extends Controller
         $kalibrasi=Calibration::find($kalibrasi);
 
         if ($kalibrasi->nowo ==NULL) {
-            return redirect()->back()->with('error', 'The column "No WO" must be filled.');
+            return redirect()->back()->with('error', 'The column "No WO/no PO" must be filled.');
         } 
         elseif ($kalibrasi->startbreakdown == NULL) {
             return redirect()->back()->with('error', 'The column Start Start Breakdown must be filled.');

@@ -127,7 +127,7 @@ Route::get('/karyawan/profil', [UserController::class,'profil']) ->name('profil'
 
 //ROUTE CALIBRATION
 
-Route::get('/Dashboard/Kalibrasi',[KalibrasiController::class,'dashboard'])->name('dashboard.kalibrasi')->middleware('user.level:4,5,6,7');
+Route::get('/Dashboard/Kalibrasi',[KalibrasiController::class,'dashboard'])->name('dashboard.kalibrasi')->middleware('user.level:2,4,5,6,7');
 
 Route::get('/kalibrasi',[KalibrasiController::class,'index'])->name('listKalibrasi')->middleware('user.level:4,5,6,7');
 route::get('/kalibrasi/create',[KalibrasiController::class,'create'])->name('listkalibrasi.create')->middleware('user.level:4,5,6,7');

@@ -73,7 +73,7 @@
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Service By</label>
                          <select class="form-select @error('serviceby')is-invalid @enderror " name="serviceby" id="serviceby">
-                             <option value="">Click to search for materials</option>
+                             <option value="">Click to search</option>
                              @foreach ($vendor as $row)
                                  <option value="{{ $row->nama }}"
                                      @if (old('serviceby') == $row->nama) selected @endif>

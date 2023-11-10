@@ -50,7 +50,7 @@
                         Profile</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item"
-                        href="/profile"><i class="align-middle me-1" data-feather="github"></i> {{auth()->user()->leveluser== 1 ? 'User' : (auth()->user()->leveluser== 2 ? 'Staff' : (auth()->user()->leveluser== 3 ? 'SuperVisor' : (auth()->user()->leveluser== 4 ? 'Manager' :(auth()->user()->leveluser== 5 ? 'Administrator' : '') ))) }}</a>
+                        href="/profile"><i class="align-middle me-1" data-feather="github"></i> {{auth()->user()->leveluser== 1 ? 'User' : (auth()->user()->leveluser== 2 ? 'Staff' : (auth()->user()->leveluser== 3 ? 'SuperVisor' : (auth()->user()->leveluser== 4 ? 'Manager' :(auth()->user()->leveluser== 5 ? 'Administrator' :(auth()->user()->leveluser== 6 ? 'Validation Support' :(auth()->user()->leveluser== 7 ? 'Validation Manager' : '')) ) ))) }}</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/logout"><i class="align-middle me-1" data-feather="log-out"></i> Sign Out</a>
                 </div>

@@ -75,7 +75,7 @@
                             </div>
                         </div> --}}
                         <div class="col-4 md-3">
-                            <div class="form-label">Usage</div>
+                            <div class="form-label"><strong>Usage</strong></div>
                             <select class="form-select" name="usage">
                                 <option value="">Select</option>
                                 <option value="Usage for analysis" {{ old('usage') === 'Usage for analysis' ? 'selected' : '' }}>Usage for analysis</option>
@@ -139,7 +139,7 @@
                                         'DD-MMM-YYYY');
 
                                     var option = "<option value='" + batch + "'>" + batch +
-                                        " | Stok = " + stok + " | Expired = " + expired +
+                                        " | Stock = " + stok + " | Expired = " + expired +
                                         "</option>";
 
                                     $("#no_batch").append(option);
