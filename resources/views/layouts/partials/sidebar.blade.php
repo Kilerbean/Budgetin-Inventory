@@ -10,7 +10,6 @@
             <li class="sidebar-header mt-0">
                 EXPENSE
             </li>
-
             <li class="sidebar-item {{ str_contains($pages, 'Dashboard') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('Dashboards') }}">
                     <i class="align-middle" data-feather="sliders" style="width: 18px;"></i> <span class="align-middle">Dashboard</span>
@@ -51,19 +50,19 @@
             <li class="sidebar-header mt-0">
                 Callibration
             </li>
-            <li class="sidebar-item {{ str_contains($pages, 'Karyawan') ? 'active' : '' }}">
+            <li class="sidebar-item {{ str_contains($pages, 'Callibration Dashboard') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('dashboard.kalibrasi') }}">
                     <i class="align-middle" data-feather="sliders" style="width: 18px;"></i>
                     <span class="align-middle">Dashboard</span>
                 </a>
             </li>
-            <li class="sidebar-item {{ str_contains($pages, 'Usage') ? 'active' : '' }}">
+            <li class="sidebar-item {{ str_contains($pages, 'List Instrument') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('listKalibrasi') }}">
                     <i class="fa-solid fa-file-lines" style="width: 18px;"></i>
                     <span class="align-middle">List Instrument</span>
                 </a>
             </li>
-            <li class="sidebar-item {{ str_contains($pages, 'Purchas') ? 'active' : '' }}">
+            <li class="sidebar-item {{ str_contains($pages, 'Work Order') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('index.workorderlist') }}">
                     <i class="fa fa-file-invoice" style="width: 18px;"></i>
                     <span class="align-middle">Work Order List</span>
