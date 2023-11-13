@@ -89,7 +89,7 @@
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Calibration By</label>
                          <select class="form-select @error('calibrationby')is-invalid @enderror " name="calibrationby" id="calibrationby">
-                             <option value="">Click to search for materials</option>
+                             <option value="">Click to search</option>
                              @foreach ($vendor as $row)
                              <option value="{{ $row->nama }}" {{ old('nama', $kalibrasi->calibrationby) == $row->nama ? 'selected' : '' }}>
                                 {{ $row->nama }}

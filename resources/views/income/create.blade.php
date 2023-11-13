@@ -71,7 +71,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <div class="form-label"><strong>No PR:</strong></div>                            
-                            <input type="text" name="No_PR" class="form-control" placeholder="Input No PR Here"
+                            <input type="text" name="No_PR" class="form-control" placeholder="Input No PR here"
                                 value="{{ old('No_PR') }}">
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <div class="form-label"><strong>Quantity</strong></div>  
-                            <input class="form-control" type="number" name="Quantity" placeholder="input Quantity"
+                            <input class="form-control" type="number" name="Quantity" placeholder="Input quantity"
                                 value="{{ old('Quantity') }}">
                         </div>
                     </div>

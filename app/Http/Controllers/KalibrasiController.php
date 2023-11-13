@@ -75,7 +75,7 @@ class KalibrasiController extends Controller
                 'frekuensicalibration' => 'required|numeric|min:1',
                 'calibrationby' => 'required',
                 'location' => 'required',
-                'yearofinvestment' => 'required|numeric|min:2000',
+                'yearofinvestment' => 'required|numeric|min:0',
             ],
         );
 
@@ -158,7 +158,7 @@ class KalibrasiController extends Controller
         $kalibrasi->calibrationby=$request->calibrationby;
         $kalibrasi->location=$request->location;
         $kalibrasi->yearofinvestment=$request->yearofinvestment;
-        
+
         $lastCalibrationDate = Carbon::parse($request->lastcalibration);
         $nextCalibrationDate = $lastCalibrationDate->addMonths($request->frekuensicalibration);
         $kalibrasi->nextcalibration = date('Y-m-d',strtotime($nextCalibrationDate));
@@ -555,6 +555,8 @@ public function terjadwalgagal(Request $request, $kalibrasi)
         foreach($recipients as $recipient){
             $emailto[]=$recipient->email;
         }
+
+        
      $kalibrasiz=$kalibrasi;
         Mail::to($emailto)                 
         ->send(new rejectedcalibration($kalibrasiz));

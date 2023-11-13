@@ -12,13 +12,13 @@ use Illuminate\Queue\SerializesModels;
 class rejectedcalibration extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
-public $kalibrasiz;
+    public $kalibrasiz;
     /**
      * Create a new message instance.
      */
     public function __construct($kalibrasiz)
     {
-        $this->$kalibrasiz=$kalibrasiz;
+        $this->kalibrasiz = $kalibrasiz;
     }
 
     /**
