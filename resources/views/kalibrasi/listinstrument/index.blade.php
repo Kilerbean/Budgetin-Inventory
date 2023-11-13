@@ -46,6 +46,7 @@
                             <th style="background-color: lightgray;">Need Calibration</th>
                             <th style="background-color: lightgray;">Calibration By</th>
                             <th style="background-color: lightgray;">Location</th>
+                            <th style="background-color: lightgray;">Year of Investment</th>
                             <th style="background-color: lightgray;">Status Instrument</th>
 
                         </tr>
@@ -93,7 +94,7 @@
                                 <td>{{ $kalibrasis->calibrationby }}</td>
         
                                 <td>{{ $kalibrasis->location }}</td>
-
+                                <td>{{ $kalibrasis->yearofinvestment }}</td>
                                 <td>{{ $kalibrasis->status_instrument== 1 ? 'Active' : 'Inactive' }}</td>
                         @endforeach
 

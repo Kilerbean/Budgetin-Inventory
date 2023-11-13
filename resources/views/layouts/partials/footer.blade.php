@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row text-muted">
             <div class="col-6 text-start">
-                <p class="text-muted"><img class="img-fluid" src="{{ asset('icon/laboratorys.png') }}" alt="{{ config('app.name') }}"
+                <p class="text-muted"><img class="img-fluid" src="{{ asset('icon/QLIS_logo.png') }}" alt="{{ config('app.name') }}"
                     style="height: 25px"> Copyright {{date('Y')}}-{{date('Y', strtotime('+1 year'))}} © 
                     {{config('app.name')}} {{config('app.version')}} All rights reserved.</p>                 
             </div>

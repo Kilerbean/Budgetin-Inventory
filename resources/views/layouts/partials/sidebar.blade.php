@@ -1,7 +1,7 @@
 <nav id="sidebar" class="sidebar js-sidebar {{-- collapsed --}}">
     <div class="sidebar-content js-simplebar">
         <a class="sidebar-brand" href="/">
-            <img class="img-fluid" src="{{asset('icon/laboratorys.png')}}" alt="{{ config('app.name') }}"
+            <img class="img-fluid" src="{{asset('icon/QLIS_logo.png')}}" alt="{{ config('app.name') }}"
                 style="height: 35px">
             <span class="align-middle"> Q-LIS</span>
         </a>

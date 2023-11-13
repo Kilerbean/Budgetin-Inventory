@@ -22,7 +22,7 @@ background-repeat: no-repeat; background-size: cover"> --}}
 
     <div class="container-fluid p-0">
         <h1>{{-- class="slide-fwd-top" --}} 
-            <img src="{{ asset('icon/laboratorys.png') }}" alt="Unsplash" style="width: 50px">
+            <img src="{{ asset('icon/QLIS_logo.png') }}" alt="Unsplash" style="width: 50px">
             <span {{-- class="slide-left" --}} style="display: inline-block"> Welcome to <strong>Q-LIS</strong></span>
         </h1>
     </div>

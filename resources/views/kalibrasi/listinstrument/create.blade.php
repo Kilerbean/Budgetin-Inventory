@@ -95,21 +95,9 @@
 
 
 
-                {{-- <div class=" col-md-4 mb-3">
-                    <div class="form-label">Location</div>
-                    <select class="form-select @error('location') is-invalid @enderror" name="location">
-                        <option value="">Select</option>
-                        <option value="Chemical QC Lab" {{ old('location') === 'Chemical QC Lab' ? 'selected' : '' }}>Chemical QC Lab</option>
-                        <option value="Microbiology Lab" {{ old('location') === 'Microbiology Lab' ? 'selected' : '' }}>Microbiology Lab</option>
-                        <option value="Sampling Room" {{ old('location') === 'Sampling Room' ? 'selected' : '' }}>Sampling Room</option>
-                    </select>
-                    @error('location')
-                        <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
-                </div> --}}
 
 
-                <div class="col-md-6 mb-3">
+                <div class="col-md-3 mb-3">
                     <label class="form-label">Location</label>
                      <select class="form-select @error('location')is-invalid @enderror " name="location" id="location">
                          <option value="">Click to search for materials</option>
@@ -126,7 +114,15 @@
              </div>
 
 
-
+             <div class="col-md-3 mb-3">
+                <label class="form-label">Year of Investment</label>
+                <input type="number" name="yearofinvestment"
+                    class="form-control @error('yearofinvestment')is-invalid @enderror"
+                    name="example-text-input" placeholder="Input here" value="{{ old('yearofinvestment') }}">
+                @error('yearofinvestment')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                @enderror
+            </div>
           
 
             
