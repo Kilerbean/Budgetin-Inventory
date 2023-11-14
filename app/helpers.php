@@ -49,7 +49,7 @@ function startauditexpanse($data, $fields, $old, $table, $activity)
         foreach ($fields as $field) {
             if ($data->wasChanged($field)) {
                 if ($old[$field] != $data->$field) {
-                    auditmms(Auth::user()->name, $activity,$data->Name_of_Material." | ".$data->Catalog_Number,
+                    auditmms(Auth::user()->name, $activity,$data->Catalog_Number,
                     'List of Material', $field, $old[$field], $data->$field);
                 }
             }

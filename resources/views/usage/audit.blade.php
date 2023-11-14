@@ -27,7 +27,7 @@
               <td>{{ \Carbon\Carbon::parse($audits->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y  H:i:s') }}</td>
               <td> {{ $audits ->change_by }}</td>
               <td>{{ $audits ->activity}}</td>
-              <td>{{ $audits ->recordid }}</td>
+              <td>{{ $audits ->Barang->Name_of_Material.' | '.$audits->Barang->Catalog_Number }}</td>
               <td>{{ $audits ->sourcefield}}</td>
               <td>{{ $audits ->beforevalue }}</td>
               <td>{{ $audits ->aftervalue }}</td>

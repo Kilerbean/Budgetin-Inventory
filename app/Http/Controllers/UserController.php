@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Income;
+use App\Models\Audit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -73,7 +74,7 @@ class UserController extends Controller
     public function edit($user)
     {
         $user = User::find($user);
-        $audit = DB::table('audits')->latest()->where('recordid', $user->email)->get();
+        $audit = Audit::latest()->where('recordid', $user->email)->get();
         return view('users.edit', compact('user', 'audit'));
     }
     public function update(Request $request, $user)

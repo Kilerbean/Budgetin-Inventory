@@ -164,7 +164,7 @@ class KalibrasiController extends Controller
         $kalibrasi->nextcalibration = date('Y-m-d',strtotime($nextCalibrationDate));
         //dd($kalibrasi->nextcalibration);
         $kalibrasi->save();
-        \startauditkalibrasi($kalibrasi, $old['fields'], $old['old'],'List of Material', 'Edit instrument Data'); 
+        \startauditkalibrasi($kalibrasi, $old['fields'], $old['old'],'List Instrument', 'Edit instrument Data'); 
         return redirect()->route('listKalibrasi')
             ->with('success', 'Instrument Data updated successfully');
     }

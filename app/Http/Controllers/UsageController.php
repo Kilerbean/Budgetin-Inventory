@@ -6,6 +6,7 @@ use App\Models\Usage;
 use App\Models\barang;
 use App\Models\Income;
 use App\Models\User;
+use App\Models\Audit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUsageRequest;
@@ -20,7 +21,7 @@ class UsageController extends Controller
     {
         $usage=Usage::latest()->where('Status', '1')->where('tipe_transaksi','1')->get();
         $materialusage=Usage::latest()->where('Status', '0')->where('tipe_transaksi','1')->get();
-        $audit=DB::table('audits')->latest()->where('sourcetable','Material Usage')->get();
+        $audit=Audit::latest()->where('sourcetable','Material Usage')->get();
         return view('usage.index',compact('usage','materialusage','audit'))
         ->with('i');
     }
@@ -104,7 +105,7 @@ class UsageController extends Controller
         $barang->update(['Quantity'=>$new_qty]);
         $usage->update(['Quantity'=>$request->Quantity]);
         $income->update(['Quantity'=>$newincome]);
-        \auditmms(auth()->user()->name,'Create new Material Usage',$barang->Name_of_Material." | ".$barang->Catalog_Number,'Material Usage',$request->no_batch,$old_stok,$newincome);    
+        \auditmms(auth()->user()->name,'Create new Material Usage',$barang->Catalog_Number,'Material Usage',$request->no_batch,$old_stok,$newincome);    
         return redirect()->route('usage.index')
         ->with('success','Material Usage Created  successfully');
         }
@@ -176,7 +177,7 @@ class UsageController extends Controller
         $income->update(['Quantity'=>$new_quan]);
         $usage->update(['Open_By'=>$request->Open_By]);
         
-        \auditmms(auth()->user()->name,'Confirm Material Usage',$barang->Name_of_Material." | ".$barang->Catalog_Number,'Material Usage',$income->no_batch,$income->Quantity,$request->Quantity);
+        \auditmms(auth()->user()->name,'Confirm Material Usage',$barang->Catalog_Number,'Material Usage',$income->no_batch,$income->Quantity,$request->Quantity);
         return redirect()->route('usage.index')->with('success','Material Data Confirmed');
         }else {
             return back()->with('danger','not enough stock');
@@ -191,7 +192,7 @@ class UsageController extends Controller
         $usage=Usage::find($usage);
         $income=$usage->Income;
         $usage->delete();
-        \auditmms(auth()->user()->name,'Administrator Delete Material Usage ',$usage->Name_of_Material." | ".$usage->Catalog_Number,'Material Usage',$usage ->no_batch,$usage->Quantity,0);
+        \auditmms(auth()->user()->name,'Administrator Delete Material Usage ',$usage->Catalog_Number,'Material Usage',$usage ->no_batch,$usage->Quantity,0);
         return redirect()->route('usage.index')
                          ->with('success','Data deleted successfully');
     }

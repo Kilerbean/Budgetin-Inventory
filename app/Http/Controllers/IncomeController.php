@@ -7,7 +7,7 @@ use App\Models\Income;
 use App\Models\barang;
 use App\Models\financial;
 use App\Models\Usage;
-
+use App\Models\Audit;
 use Illuminate\Support\Facades\DB;
 
 class IncomeController extends Controller
@@ -20,7 +20,7 @@ class IncomeController extends Controller
         $incomes = Income::latest()->where('Status', '0')->whereNotNull('No_PO')->where('tipe_transaksi', '1')->get();
         $incomess = Income::latest()->whereNotNull('No_PO')->where('Status', '1')->where('tipe_transaksi', '1')->where('Quantity','>','0')->get();
         $incomeskurang = Income::latest()->whereNull('No_PO')->get();
-        $audit = DB::table('audits')->latest()->where('sourcetable', 'Incoming Material')->get();
+        $audit = Audit::latest()->where('sourcetable', 'Incoming Material')->get();
         // $incomes->status = true; // Mengubah nilai menjadi Diterima
         return view('income.index', compact('incomess', 'incomeskurang', 'incomes', 'audit'))
             ->with('i');
@@ -80,7 +80,7 @@ class IncomeController extends Controller
         // Income::create($request->all());
         
 
-        \auditmms(auth()->user()->name, 'Create new request purchasing',$barang->Name_of_Material." | ".$request->Catalog_Number, 'Incoming Material', 'N/A', 0, $request->Quantity);
+        \auditmms(auth()->user()->name, 'Create new request purchasing',$barang->Catalog_Number, 'Incoming Material', 'N/A', 0, $request->Quantity);
         return redirect()->route('income.index')
             ->with('success', 'Material Data Request Created.');
     }
@@ -223,7 +223,7 @@ class IncomeController extends Controller
 
     
             //dikarenakan nilai awalnya  
-            \auditmms(auth()->user()->name, 'Confirm material arrival',$barang->Name_of_Material." | ".$barang->Catalog_Number, 'Incoming Material', $request->no_batch, 0, $request->Quantity);
+            \auditmms(auth()->user()->name, 'Confirm material arrival',$barang->Catalog_Number, 'Incoming Material', $request->no_batch, 0, $request->Quantity);
             return back()->with('success', 'Material Data Received');
 
         }
@@ -266,7 +266,7 @@ class IncomeController extends Controller
         ]);
 
         //dikarenakan nilai awalnya  
-        \auditmms(auth()->user()->name, 'Confirm material arrival',$barang->Name_of_Material." | ".$request->Catalog_Number, 'Incoming Material', $request->no_batch, 0, $request->Quantity);
+        \auditmms(auth()->user()->name, 'Confirm material arrival',$barang->Catalog_Number, 'Incoming Material', $request->no_batch, 0, $request->Quantity);
         return back()->with('success', 'Material Data Received');
         }
         elseif($old_stok < $request->Quantity){
@@ -306,7 +306,7 @@ class IncomeController extends Controller
         $barang->update(['Quantity' => $newstok]);
         $income->update(['Quantity' => 0]);
 
-        \auditmms(auth()->user()->name, 'empty expired material ',$barang->Name_of_Material." | ".$barang->Catalog_Number, 'Incoming Material', $income->no_batch, $old_stok, 0);
+        \auditmms(auth()->user()->name, 'empty expired material ',$barang->Catalog_Number, 'Incoming Material', $income->no_batch, $old_stok, 0);
         return back()->with('success', 'Material Data empty');
     }
 
@@ -317,7 +317,7 @@ class IncomeController extends Controller
         $newqty=$barang->Quantity-$incomes->Quantity;
         $barang->update(['Quantity' => $newqty]);
         $incomes->delete();
-        \auditmms(auth()->user()->name, 'Administrator Delete material income',$barang->Name_of_Material." | ".$barang->Catalog_Number, 'Incoming Material', $incomes->no_batch, $incomes->Quantity,0);
+        \auditmms(auth()->user()->name, 'Administrator Delete material income',$barang->Catalog_Number, 'Incoming Material', $incomes->no_batch, $incomes->Quantity,0);
         return back()->with('success', 'Data deleted successfully');
     }
 
@@ -387,7 +387,7 @@ class IncomeController extends Controller
             $barang->update(['Quantity' =>$newqty]);
 
             
-            \auditmms(auth()->user()->name, 'Adjust Material Stock Manually',$barang->Name_of_Material." | ".$income->Catalog_Number,'List of Material',$income->no_batch, round($old_stok, 0), $request->Quantity);
+            \auditmms(auth()->user()->name, 'Adjust Material Stock Manually',$income->Catalog_Number,'List of Material',$income->no_batch, round($old_stok, 0), $request->Quantity);
             return back()->with('success', 'Material Data was saved  ');
         } elseif ($old_stok > $request->Quantity) {
             $Total = $old_stok - $request->Quantity;
@@ -411,7 +411,7 @@ class IncomeController extends Controller
 
             $income->save();
             $barang->update(['Quantity' =>$newqty]);
-            \auditmms(auth()->user()->name, 'Adjust Material  stock manually',$barang->Name_of_Material." | ".$income->Catalog_Number, 'List of Material', $income->no_batch, round($old_stok, 0), $request->Quantity);
+            \auditmms(auth()->user()->name, 'Adjust Material  stock manually',$income->Catalog_Number, 'List of Material', $income->no_batch, round($old_stok, 0), $request->Quantity);
             return back()->with('success', 'Material Data was saved');
         } else {
             return back()->with('info', 'No stock changes');

@@ -6,6 +6,7 @@ use App\Models\Usage;
 use App\Models\barang;
 use App\Models\Income;
 use App\Models\Opname;
+use App\Models\Audit;
 use App\Models\Materialcode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -37,7 +38,7 @@ class BarangController extends Controller
         $barangs = $barangsQuery->latest()->get();
 
         // Mengambil data audit seperti yang Anda lakukan sebelumnya
-        $audit = DB::table('audits')->latest()->where('sourcetable', 'List of Material')->get();
+        $audit = Audit::latest()->where('sourcetable', 'List of Material')->get();
 
         return view('ListOfMaterial.index', compact('barangs', 'audit'))
             ->with('i');
@@ -123,14 +124,13 @@ class BarangController extends Controller
         $usage = Usage::latest()->where('Catalog_Number', $barang->Catalog_Number)
             ->where('tipe_transaksi', 1)
             ->get();
-        $audit = DB::table('audits')
-            ->latest()
+        $audit = Audit::latest()
             ->where(function ($query) use ($barang) {
                 $query->where('sourcetable', 'List of Material')
                     ->orWhere('sourcetable', 'Incoming Material')
                     ->orWhere('sourcetable', 'Material Usage');
             })
-            ->where('recordid',$barang->Name_of_Material." | ".$barang->Catalog_Number)
+            ->where('recordid',$barang->Catalog_Number)
             ->get();
           
         $incomess = Income::latest()->where('Quantity', '0')
@@ -256,7 +256,7 @@ class BarangController extends Controller
         $barang = barang::find($id);
         $barang->update(['Status' => 1]);
 
-        \auditmms(auth()->user()->name, 'Activate Material',$barang->Name_of_Material."|".$barang->Catalog_Number, 'List of Material', 'Status', 'Inactive', 'Active');
+        \auditmms(auth()->user()->name, 'Activate Material',$barang->Catalog_Number, 'List of Material', 'Status', 'Inactive', 'Active');
         session()->flash('info', 'Stock Material has been Active.');
         return redirect()->route('Barang.index');
     }
@@ -265,7 +265,7 @@ class BarangController extends Controller
     {
         $barang = barang::find($id);
         $barang->update(['Status' => 0]);
-        \auditmms(auth()->user()->name, 'Deactivate Material',$barang->Name_of_Material."|".$barang->Catalog_Number, 'List of Material', 'Status', 'Active', 'Inactive');
+        \auditmms(auth()->user()->name, 'Deactivate Material',$barang->Catalog_Number, 'List of Material', 'Status', 'Active', 'Inactive');
         session()->flash('info', 'Stock Material has been Inactive.');
         return redirect()->route('Barang.index');
     }
