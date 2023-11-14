@@ -37,9 +37,9 @@ class UserController extends Controller
             case 5:
                 return 'Administrator';
             case 6:
-                return 'Calibration Staff';
+                return 'Validation Support';
             case 7:
-                return 'Calibration Manager';
+                return 'Validation Manager';
             default:
                 return 'Unknown';
         }
@@ -157,10 +157,10 @@ class UserController extends Controller
                 $user_type = 'Administrator';
                 break;
             case 6:
-                $user_type = 'Calibration Staff';
+                $user_type = 'Validation Support';
                 break;
             case 7:
-                $user_type = 'Calibration Manager';
+                $user_type = 'Validation Manager';
                 break;
             default:
                 $user_type = 'Unknown';
@@ -196,10 +196,10 @@ class UserController extends Controller
                 $user_type = 'Administrator';
                 break;
                 case 6:
-                    $user_type = 'Calibration Staff';
+                    $user_type = 'Validation Support';
                     break;
                 case 7:
-                    $user_type = 'Calibration Manager';
+                    $user_type = 'Validation Manager';
                     break;
             default:
 
@@ -235,10 +235,10 @@ class UserController extends Controller
                 $user_type = 'Administrator';
                 break;
                 case 6:
-                    $user_type = 'Calibration Staff';
+                    $user_type = 'Validation Support';
                     break;
                 case 7:
-                    $user_type = 'Calibration Manager';
+                    $user_type = 'Validation Manager';
                     break;
             default:
                 $user_type = 'Unknown';
@@ -272,10 +272,10 @@ class UserController extends Controller
                 $user_type = 'Administrator';
                 break;
                 case 6:
-                    $user_type = 'Calibration Staff';
+                    $user_type = 'Validation Support';
                     break;
                 case 7:
-                    $user_type = 'Calibration Manager';
+                    $user_type = 'Validation Manager';
                     break;
             default:
                 $user_type = 'Unknown';
@@ -308,17 +308,17 @@ class UserController extends Controller
                 $user_type = 'Administrator';
                 break;
                 case 6:
-                    $user_type = 'Calibration Staff';
+                    $user_type = 'Validation Support';
                     break;
                 case 7:
-                    $user_type = 'Calibration Manager';
+                    $user_type = 'Validation Manager';
                     break;
             default:
                 $user_type = 'Unknown';
         }
 
-        \auditmms(auth()->user()->name, 'Edit Level User', $user->email, 'Users', 'Level User', $user_type, 'Calibration  Staff');
-        return back()->with('success', 'Employees are promoted to Staff Calibration');
+        \auditmms(auth()->user()->name, 'Edit Level User', $user->email, 'Users', 'Level User', $user_type, 'Validation Support');
+        return back()->with('success', 'Employees are promoted to Validation Support');
     }
 
     public function updatekalibrasimanager(Request $request, $user)
@@ -344,17 +344,17 @@ class UserController extends Controller
                 $user_type = 'Administrator';
                 break;
                 case 6:
-                    $user_type = 'Calibration Staff';
+                    $user_type = 'Validation Support';
                     break;
                 case 7:
-                    $user_type = 'Calibration Manager';
+                    $user_type = 'Validation Manager';
                     break;
             default:
                 $user_type = 'Unknown';
         }
 
-        \auditmms(auth()->user()->name, 'Edit Level User', $user->email, 'Users', 'Level User', $user_type, 'Calibration Manager');
-        return back()->with('success', 'Employees are promoted to Manager Calibration');
+        \auditmms(auth()->user()->name, 'Edit Level User', $user->email, 'Users', 'Level User', $user_type, 'Validation Manager');
+        return back()->with('success', 'Employees are promoted to Validation Manager');
     }
 
 
