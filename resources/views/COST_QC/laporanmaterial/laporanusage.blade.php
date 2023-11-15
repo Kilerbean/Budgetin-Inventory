@@ -25,12 +25,14 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Type of Material</th>
-                            <th>Type of Budget</th>
                             <th>Catalog Number</th>
                             <th>Name of Material</th>
+                            <th>Type of Material</th>
+                            <th>Type of Budget</th>
                             <th>Quantity</th>
                             <th>Unit</th>
+                            <th>Usage</th>
+                            <th>Open By</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -39,12 +41,14 @@
                             <tr>
 
                                 <td>{{ ++$i }}</td>
-                                <td>{{ $usages->Type_of_Material }}</td>
-                                <td>{{ $usages->Barang->Type_of_Budget }}</td>
                                 <td>{{ $usages->Catalog_Number }}</td>
                                 <td>{{ $usages->Barang->Name_of_Material }}</td>
+                                <td>{{ $usages->Type_of_Material }}</td>
+                                <td>{{ $usages->Barang->Type_of_Budget }}</td>
                                 <td>{{ $usages->Quantity }}</td>
                                 <td>{{ $usages->Unit }}</td>
+                                <td>{{ $usages->usage }}</td>
+                                <td>{{ $usages->Open_By }}</td>
                                 <td>{{ $usages->Status == 1 ? 'Aktif' : 'InAktif' }}</td>
 
                             </tr>

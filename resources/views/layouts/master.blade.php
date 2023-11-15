@@ -8,7 +8,7 @@
     <meta name="author" content="farhan">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="icon" href="{{ asset('icon/logo.jpg') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('icon/logo_qlis.png') }}" type="image/x-icon">
     <title>@yield('title', 'Page Title')</title>
     @includeIf('layouts.partials.css')
     <style>

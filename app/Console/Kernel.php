@@ -12,7 +12,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('app:financial')->yearly();
+        $schedule->command('app:financial')->yearlyOn(1, 1, '00:00');
         $schedule->command('make:stockopname')->lastDayOfMonth('23:00');
         $schedule->command('app:remindernearcalib')->lastDayOfMonth('8:00');
         $schedule->command('clear:session')->everyTenMinutes();
