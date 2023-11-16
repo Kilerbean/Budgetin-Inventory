@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Usage;
 use App\Models\barang;
 use App\Models\Income;
 use App\Models\Opname;
-use App\Models\financial;
 
+use App\Models\financial;
 use App\Models\Materialcode;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -21,14 +22,14 @@ class QcDashboardController extends Controller
 
     public function dashboard(Request $request)
     {
-        
+
 
 
         $user = AuthUser::get();
         $incomes = Income::latest()->where('Status', '0')->whereNotNull('No_PO')->get();
         // $barang= barang::all();
 
-        $barangexpire = Income::latest()->where('Expire_Date', '<', now()->addDays(7))
+        $barangexpire = Income::latest()->where('Expire_Date', '<', now()->addDays(60))
             ->where('tipe_transaksi', '1')
             ->where('Quantity', '>', 0)
             ->where('Status', '1')
@@ -36,24 +37,28 @@ class QcDashboardController extends Controller
 
         // $baranglows = barang::latest()->whereColumn('Quantity', '<=', 'Safety_Stock')->get();
         $baranglows = DB::table('barangs')
-    ->select('Material_Code','Quantity','Safety_Stock','id','Type_of_Material','Type_of_Budget','Name_of_Material','Catalog_Number','packingsize','packingsize_unit','Unit','Maximum_Stock','Manufaktur','Harga','Status','Expire_Date','created_at','updated_at','category')
-    ->whereIn('id', function ($query) {
-        $query->select(DB::raw('MIN(id)'))
-            ->from('barangs')
-            ->groupBy('Material_Code')
-            ->where('Status', '1')
-            ->havingRaw('SUM(Quantity) <= AVG(Safety_Stock)');
-    })->get();
+            ->select('Material_Code', 'Quantity', 'Safety_Stock', 'id', 'Type_of_Material', 'Type_of_Budget', 'Name_of_Material', 'Catalog_Number', 'packingsize', 'packingsize_unit', 'Unit', 'Maximum_Stock', 'Manufaktur', 'Harga', 'Status', 'Expire_Date', 'created_at', 'updated_at', 'category')
+            ->whereIn('id', function ($query) {
+                $query->select(DB::raw('MIN(id)'))
+                    ->from('barangs')
+                    ->groupBy('Material_Code')
+                    ->where('Status', '1')
+                    ->havingRaw('SUM(Quantity) <= AVG(Safety_Stock)');
+            })->get();
 
-    $totalQuantity=Barang::getTotalQuantity();
+        $totalQuantity = Barang::getTotalQuantity();
+
+        $currentYear = Carbon::now()->format('y');
 
         $totalactual1 = DB::table('financials')
             ->where('Type_of_Budget', 'maintenance')
+            ->where('bulan_tahun', 'LIKE', "%-$currentYear")
             ->sum('actual');
 
 
         $totalbudget1 = DB::table('financials')
             ->where('Type_of_Budget', 'maintenance')
+            ->where('bulan_tahun', 'LIKE', "%-$currentYear")
             ->sum('budget');
 
 
@@ -65,11 +70,13 @@ class QcDashboardController extends Controller
 
         $totalactual2 = DB::table('financials')
             ->where('Type_of_Budget', 'Product Research and Development')
+            ->where('bulan_tahun', 'LIKE', "%-$currentYear")
             ->sum('actual');
 
 
         $totalbudget2 = DB::table('financials')
             ->where('Type_of_Budget', 'Product Research and Development')
+            ->where('bulan_tahun', 'LIKE', "%-$currentYear")
             ->sum('budget');
 
         if ($totalbudget2 < $totalactual2) {
@@ -80,11 +87,13 @@ class QcDashboardController extends Controller
 
         $totalactual3 = DB::table('financials')
             ->where('Type_of_Budget', 'Supporting Material')
+            ->where('bulan_tahun', 'LIKE', "%-$currentYear")
             ->sum('actual');
 
 
         $totalbudget3 = DB::table('financials')
             ->where('Type_of_Budget', 'Supporting Material')
+            ->where('bulan_tahun', 'LIKE', "%-$currentYear")
             ->sum('budget');
         if ($totalbudget3 < $totalactual3) {
             $colorClass3 = 'text-danger'; // warna merah
@@ -95,12 +104,14 @@ class QcDashboardController extends Controller
 
         $totalactual4 = DB::table('financials')
             ->where('Type_of_Budget', 'Manufacturing Supply')
+            ->where('bulan_tahun', 'LIKE', "%-$currentYear")
             ->sum('actual');
 
 
 
         $totalbudget4 = DB::table('financials')
             ->where('Type_of_Budget', 'Manufacturing Supply')
+            ->where('bulan_tahun', 'LIKE', "%-$currentYear")
             ->sum('budget');
 
         if ($totalbudget4 < $totalactual4) {
@@ -109,23 +120,23 @@ class QcDashboardController extends Controller
             $colorClass4 = 'text-success'; // warna hijau
         }
 
-    $start_date = $request->input('start_date', null);
-    $end_date = $request->input('end_date', null);
+        $start_date = $request->input('start_date', null);
+        $end_date = $request->input('end_date', null);
 
-    if ($request->has('start_date') && $request->has('end_date')) {
-        session(['start_date' => $request->start_date, 'end_date' => $request->end_date]);
-    }
+        if ($request->has('start_date') && $request->has('end_date')) {
+            session(['start_date' => $request->start_date, 'end_date' => $request->end_date]);
+        }
 
-    $start_date = session('start_date', null); // Mengambil dari session atau default null
-    $end_date = session('end_date', null);     // Mengambil dari session atau default null
+        $start_date = session('start_date', null); // Mengambil dari session atau default null
+        $end_date = session('end_date', null);     // Mengambil dari session atau default null
 
-    $opnameQuery = Opname::query();
+        $opnameQuery = Opname::query();
 
-    if ($start_date && $end_date) {
-        $opnameQuery->whereBetween('created_at', [$start_date, $end_date]);
-    }
+        if ($start_date && $end_date) {
+            $opnameQuery->whereBetween('created_at', [$start_date, $end_date]);
+        }
 
-    $opname = $opnameQuery->get();
+        $opname = $opnameQuery->get();
 
 
         return view('COST_QC.QC_Dashboard', compact(
@@ -153,7 +164,11 @@ class QcDashboardController extends Controller
 
     public function maintenance()
     {
-        $financial = financial::where('Type_of_Budget', 'maintenance')->get();
+        $currentYear = Carbon::now()->format('y');
+
+        $financial = financial::where('Type_of_Budget', 'maintenance')
+            ->where('bulan_tahun', 'LIKE', "%-$currentYear")
+            ->get();
         $audit = DB::table('audits')->latest()->where('sourcetable', 'financial')->get();
 
 
@@ -163,7 +178,10 @@ class QcDashboardController extends Controller
 
     public function PRaD()
     {
-        $financial = financial::where('Type_of_Budget', 'Product Research and Development')->get();
+        $currentYear = Carbon::now()->format('y');
+        $financial = financial::where('Type_of_Budget', 'Product Research and Development')
+            ->where('bulan_tahun', 'LIKE', "%-$currentYear")
+            ->get();
         $audit = DB::table('audits')->latest()->where('sourcetable', 'financial')->get();
 
         return view('COST_QC.financialdetail.PRaD', compact('financial', 'audit'));
@@ -171,7 +189,10 @@ class QcDashboardController extends Controller
 
     public function Supporting()
     {
-        $financial = financial::where('Type_of_Budget', 'Supporting Material')->get();
+        $currentYear = Carbon::now()->format('y');
+        $financial = financial::where('Type_of_Budget', 'Supporting Material')
+            ->where('bulan_tahun', 'LIKE', "%-$currentYear")
+            ->get();
         $audit = DB::table('audits')->latest()->where('sourcetable', 'financial')->get();
 
         return view('COST_QC.financialdetail.supporting_material', compact('financial', 'audit'));
@@ -180,7 +201,10 @@ class QcDashboardController extends Controller
 
     public function Manufacturing()
     {
-        $financial = financial::where('Type_of_Budget', 'Manufacturing Supply')->get();
+        $currentYear = Carbon::now()->format('y');
+        $financial = financial::where('Type_of_Budget', 'Manufacturing Supply')
+            ->where('bulan_tahun', 'LIKE', "%-$currentYear")
+            ->get();
         $audit = DB::table('audits')->latest()->where('sourcetable', 'financial')->get();
 
         return view('COST_QC.financialdetail.manufacturing_supply', compact('financial', 'audit'));
@@ -190,8 +214,8 @@ class QcDashboardController extends Controller
     public function tambah($baranglow)
     {
         $baranglows = barang::find($baranglow);
-        $barangcatalog=barang::where('Material_Code',$baranglows->Material_Code)->get();
-        return view('COST_QC.listmaterial.listmateriallow_tambah', compact('baranglows','barangcatalog'));
+        $barangcatalog = barang::where('Material_Code', $baranglows->Material_Code)->get();
+        return view('COST_QC.listmaterial.listmateriallow_tambah', compact('baranglows', 'barangcatalog'));
     }
 
 
@@ -224,7 +248,7 @@ class QcDashboardController extends Controller
         $income->Prices = $baranglows->Harga;
         $income->Total = $Total;
         $income->Propose = $request->Propose;
-        $income->PO_Date =now()->toDateString();
+        $income->PO_Date = now()->toDateString();
         $income->request_by = $request->request_by;
         $income->input_by = auth()->user()->name;
         $income->Expire_Date = $request->Expire_Date;
@@ -232,7 +256,7 @@ class QcDashboardController extends Controller
 
         $income->save();
 
-        \auditmms(auth()->user()->name, 'Create new request purchasing',$baranglows->Name_of_Material." | ".$request->Catalog_Number, 'Incoming Material', 'N/A', 0, $request->Quantity);
+        \auditmms(auth()->user()->name, 'Create new request purchasing', $baranglows->Name_of_Material . " | " . $request->Catalog_Number, 'Incoming Material', 'N/A', 0, $request->Quantity);
 
         return redirect()->route('income.index')
             ->with('success', 'Material Data created successfully.');
@@ -243,7 +267,7 @@ class QcDashboardController extends Controller
         $incomes = Income::latest()->where('Status', '1')->where('tipe_transaksi', '4')->get();
 
 
-   
+
         return view('COST_QC.laporanmaterial.laporanincome', compact('incomes',))
             ->with('i');
     }
