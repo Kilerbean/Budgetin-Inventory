@@ -32,15 +32,24 @@ class budget_sedeer extends Command
     public function handle()
     {
        
-        $currentYear = date('y');
+        $currentYear = date('Y');
         $months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
         $materials = ['Maintenance','Product Research and Development','Supporting Material','Manufacturing Supply'];
+    
+        foreach ($months as $month) {
+            $bulan_tahun = $month . '-' . substr($currentYear, -2); 
+           
 
-        foreach($months as $month){
-            $bulantahun= $month.'-'.$currentYear;
-            foreach($materials as $material){
-                $financial = Financial::UpdateorCreate(['bulan_tahun'=>$bulantahun,'Type_of_Budget'=>$material],
-                ['actual'=>null]);
+    
+            foreach ($materials as $material) {
+                $financial = Financial::firstOrNew(['bulan_tahun' => $bulan_tahun, 'Type_of_Budget' => $material]);
+                
+                // Check if the record already exists
+                if (!$financial->exists) {
+                    // If the record doesn't exist, set the default values
+                    $financial->actual = null;
+                    $financial->save();
+                }
             }
         }
     }

@@ -44,7 +44,6 @@
                 <h4 class="mb-2">List Of All Material </h4>
             </div>
             <div class="container">
-
                 <form method="GET" action="" class="row">
                     <div class="col-md-3">
                         <label for="Type_of_Material">Type of Material</label>
@@ -53,8 +52,8 @@
                             <option value="Column" {{ old('Type_of_Material') === 'Column' ? 'selected' : '' }}>Column
                             </option>
                             <option
-                                value="Sparepart Instrument"{{ old('Type_of_Material') === 'Spare Part Instrument' ? 'selected' : '' }}>
-                                Spare PartInstrument</option>
+                                value="Sparepart Instrument"{{ old('Type_of_Material') === 'Sparepart Instrument' ? 'selected' : '' }}>
+                                Sparepart Instrument</option>
                             <option
                                 value="Service Charge"{{ old('Type_of_Material') === 'Service Charge' ? 'selected' : '' }}>
                                 Service Charge</option>
@@ -92,6 +91,7 @@
                     </div>
                     <div class="col-md-1 pt-4">
                         <button type="submit" class="btn btn-success ">Filter</button>
+                    </div>
                 </form>
             </div>
 
@@ -105,6 +105,7 @@
                             <th style="background-color: lightgray;">No.</th>
                             <th style="background-color: lightgray;">Catalog Number</th>
                             <th style="background-color: lightgray;">Name of Material</th>
+                            <th style="background-color: lightgray;">CAS Number</th>
                             <th style="background-color: lightgray;">Material Code</th>
                             <th style="background-color: lightgray;">Quantity</th>
                             <th style="background-color: lightgray;">Quantity Unit</th>
@@ -138,6 +139,7 @@
                                 <td><span class="text-muted">{{ $no++ }}</span></td>
                                 <td>{{ $barang->Catalog_Number }}</td>
                                 <td>{{ $barang->Name_of_Material }}</td>
+                                <td>{{ $barang->CAS_Number }}</td>
                                 <td> {{ $barang->Material_Code }}</td>
                                 <td>{{ $barang->Quantity }}</td>
                                 <td>{{ $barang->Unit }}</td>

@@ -72,6 +72,7 @@ class BarangController extends Controller
             'Safety_Stock' => ['required'],
             'Harga' => ['required'],
             'Maximum_Stock' => ['required'],
+            'CAS_Number' => ['required'],
             // 'category'=>['required']
         ], ['packingsize_unit.required' => ['packing size unit field is required'],
             ]);
@@ -95,6 +96,7 @@ class BarangController extends Controller
         $barang->Unit = $request->Unit;
         $barang->Safety_Stock = $request->Safety_Stock;
         $barang->Harga = $request->Harga;
+        $barang->CAS_Number = $request->CAS_Number;
         $barang->Maximum_Stock = $request->Maximum_Stock;
         if ($request->Safety_Stock >1) {
             $barang->category='Fast Moving';
@@ -172,6 +174,7 @@ class BarangController extends Controller
             'Unit' => ['required'],
             'Safety_Stock' => ['required'],
             'Harga' => ['required'],
+            'CAS_Number' => ['required'],
             'Maximum_Stock' => ['required'],
             // 'category'=>['required']
         ], ['Packingsize Unit.required' => 'Packing size Unit field is required',
@@ -206,6 +209,7 @@ class BarangController extends Controller
         $barang->Quantity = $request->Quantity;
         $barang->Harga = $request->Harga;
         $barang->Unit = $request->Unit;
+        $barang->CAS_Number = $request->CAS_Number;
         $barang->Safety_Stock = $request->Safety_Stock;
         $barang->Maximum_Stock = $request->Maximum_Stock;
         if ($request->Safety_Stock >1) {

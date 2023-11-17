@@ -162,18 +162,32 @@ class QcDashboardController extends Controller
     }
 
 
-    public function maintenance()
+    public function maintenance(Request $request)
     {
-        $currentYear = Carbon::now()->format('y');
 
-        $financial = financial::where('Type_of_Budget', 'maintenance')
-            ->where('bulan_tahun', 'LIKE', "%-$currentYear")
-            ->get();
-        $audit = DB::table('audits')->latest()->where('sourcetable', 'financial')->get();
+        // Dapatkan dua digit terakhir dari tahun saat ini
+    $currentYear = Carbon::now()->format('y');
+
+    // Ambil nilai filter bulan_tahun dari request atau gunakan nilai default
+    $filterYear = $request->input('bulan_tahun') ?? $currentYear;
+
+    // Tentukan format bulan_tahun yang sesuai
+    $formattedFilterYear = "%-$filterYear";
+
+    // Query database dengan filter tahun
+    $financial = Financial::where('Type_of_Budget', 'maintenance')
+        ->where('bulan_tahun', 'LIKE', $formattedFilterYear)
+        ->get();
 
 
 
-        return view('COST_QC.financialdetail.maintenace', compact('financial', 'audit'));
+
+    // Query untuk data audit
+    $audit = DB::table('audits')->latest()->where('sourcetable', 'financial')->get();
+
+
+
+        return view('COST_QC.financialdetail.maintenace', compact('financial', 'audit','filterYear'));
     }
 
     public function PRaD()

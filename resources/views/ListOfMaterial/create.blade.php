@@ -20,15 +20,22 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label class="form-label">Name of Material</label>
-                        <input type="text" name="Name_of_Material"
-                            class="form-control @error('Name_of_Material')
-                  is-invalid
-                @enderror"
-                            name="example-text-input" placeholder="Input here" value="{{ old('Name_of_Material') }}">
+                        <input type="text" name="Name_of_Material" class="form-control @error('Name_of_Material')
+                        is-invalid @enderror"name="example-text-input" placeholder="Input here" value="{{ old('Name_of_Material') }}">
                         @error('Name_of_Material')
                             <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
                     </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">CAS Number</label>
+                        <input type="text" name="CAS_Number" class="form-control @error('CAS_Number')
+                        is-invalid @enderror"name="example-text-input" placeholder="Input here" value="{{ old('CAS_Number') }}">
+                        @error('CAS_Number')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                    </div>
+
 
                     <div class="col-md-6">
                         <label class="form-label">Material Code</label>
@@ -77,8 +84,8 @@
                             <option value="Column" {{ old('Type_of_Material') === 'Column' ? 'selected' : '' }}>Column
                             </option>
                             <option
-                                value="Sparepart Instrument"{{ old('Type_of_Material') === 'Spare Part Instrument' ? 'selected' : '' }}>
-                                Spare PartInstrument</option>
+                                value="Sparepart Instrument"{{ old('Type_of_Material') === 'Sparepart Instrument' ? 'selected' : '' }}>
+                                Sparepart Instrument</option>
                             <option
                                 value="Service Charge"{{ old('Type_of_Material') === 'Service Charge' ? 'selected' : '' }}>
                                 Service Charge</option>
@@ -231,7 +238,7 @@
                         @enderror
                     </div>
 
-                    
+
                     {{-- <div class=" col-md-6">
                         <div class="form-label">Movement Category</div>
                         <select class="form-select @error('category') is-invalid @enderror" name="category">
@@ -245,7 +252,7 @@
                     </div> --}}
 
 
-                     <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
+                    <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
                         <input type="submit" value="Save" class="btn btn-primary">
                     </div>
                 </div>

@@ -15,6 +15,25 @@
     <div class="mx-2 mt-2">
         <h4 class="mb-2">Financial - Maintenance</h4>
     </div>
+    <div class="container">
+        <form method="GET" action="" class="row">
+        <div class="col-md-3">
+            <label for="bulan_tahun">Year</label>
+            <select class="form-select" name="bulan_tahun">
+                <option value="">Select</option>
+                @for ($year = date('Y'); $year >= 2023; $year--)
+                    <option value="{{ substr($year, -2) }}" {{ $filterYear === substr($year, -2) ? 'selected' : '' }}>
+                        {{ $year }}
+                    </option>
+                @endfor
+            </select>
+        </div>
+        <div class="col-md-1 pt-4">
+            <button type="submit" class="btn btn-success">Filter</button>
+        </div>
+    </form>
+    </div>
+    <br>
 
     <div class="col-12">
         <div class="card">

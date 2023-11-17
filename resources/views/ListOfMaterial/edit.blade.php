@@ -66,7 +66,7 @@
                         </option>
                         <option value="Sparepart Instrument"
                             {{ old('Type_of_Material', $barang->Type_of_Material) === 'Sparepart Instrument' ? 'selected' : '' }}>
-                            Spare Part Instrument</option>
+                            Sparepart Instrument</option>
                         <option value="Service Charge"
                             {{ old('Type_of_Material', $barang->Type_of_Material) === 'Service Charge' ? 'selected' : '' }}>
                             Service Charge</option>
@@ -108,6 +108,14 @@
                     <input type="text" name="Name_of_Material" class="form-control"
                         value="{{ old('Name_of_Material', $barang->Name_of_Material) }}">
                 </div>
+
+                <div class="mb-3">
+                    <label class="form-label">CAS Number</label>
+                    <input type="text" name="CAS_Number" class="form-control"
+                        value="{{ old('CAS_Number', $barang->CAS_Number) }}">
+                </div>
+
+
 
                 <div class="mb-3">
                     <label for="Catalog_Number" class="form-label">Catalog Number</label>
