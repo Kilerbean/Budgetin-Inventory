@@ -8,7 +8,7 @@
     </div>
 
     <div class="container">
-        <form method="GET" action="" class="row">
+        <form method="GET" action="" class="row align-items-end">
             <div class="col-md-3">
                 <label for="">Start Date</label>
                 <input class="form-control" type="date" name="start_date" value="{{ old('start_date') }}">

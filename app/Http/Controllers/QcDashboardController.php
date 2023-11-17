@@ -166,62 +166,78 @@ class QcDashboardController extends Controller
     {
 
         // Dapatkan dua digit terakhir dari tahun saat ini
-    $currentYear = Carbon::now()->format('y');
+        $currentYear = Carbon::now()->format('y');
 
-    // Ambil nilai filter bulan_tahun dari request atau gunakan nilai default
-    $filterYear = $request->input('bulan_tahun') ?? $currentYear;
+      
+        $filterYear = $request->input('bulan_tahun') ?? $currentYear;
 
-    // Tentukan format bulan_tahun yang sesuai
-    $formattedFilterYear = "%-$filterYear";
+        $formattedFilterYear = "%-$filterYear";
 
-    // Query database dengan filter tahun
-    $financial = Financial::where('Type_of_Budget', 'maintenance')
-        ->where('bulan_tahun', 'LIKE', $formattedFilterYear)
-        ->get();
+        // Query database dengan filter tahun
+        $financial = Financial::where('Type_of_Budget', 'maintenance')
+            ->where('bulan_tahun', 'LIKE', $formattedFilterYear)
+            ->get();
 
+        // Query untuk data audit
+        $audit = DB::table('audits')->latest()->where('sourcetable', 'financial')->get();
 
-
-
-    // Query untuk data audit
-    $audit = DB::table('audits')->latest()->where('sourcetable', 'financial')->get();
-
-
-
-        return view('COST_QC.financialdetail.maintenace', compact('financial', 'audit','filterYear'));
+        return view('COST_QC.financialdetail.maintenace', compact('financial', 'audit', 'filterYear'));
     }
 
-    public function PRaD()
+
+
+    public function PRaD(Request $request)
     {
         $currentYear = Carbon::now()->format('y');
+
+        $filterYear = $request->input('bulan_tahun') ?? $currentYear;
+
+        $formattedFilterYear = "%-$filterYear";
+
         $financial = financial::where('Type_of_Budget', 'Product Research and Development')
-            ->where('bulan_tahun', 'LIKE', "%-$currentYear")
+            ->where('bulan_tahun', 'LIKE', $formattedFilterYear)
             ->get();
+
         $audit = DB::table('audits')->latest()->where('sourcetable', 'financial')->get();
 
-        return view('COST_QC.financialdetail.PRaD', compact('financial', 'audit'));
+        return view('COST_QC.financialdetail.PRaD', compact('financial', 'audit', 'filterYear'));
     }
 
-    public function Supporting()
+    public function Supporting(Request $request)
     {
         $currentYear = Carbon::now()->format('y');
+
+      
+        $filterYear = $request->input('bulan_tahun') ?? $currentYear;
+
+       
+        $formattedFilterYear = "%-$filterYear";
+
         $financial = financial::where('Type_of_Budget', 'Supporting Material')
-            ->where('bulan_tahun', 'LIKE', "%-$currentYear")
+            ->where('bulan_tahun', 'LIKE', $formattedFilterYear)
             ->get();
         $audit = DB::table('audits')->latest()->where('sourcetable', 'financial')->get();
 
-        return view('COST_QC.financialdetail.supporting_material', compact('financial', 'audit'));
+        return view('COST_QC.financialdetail.supporting_material', compact('financial', 'audit', 'filterYear'));
     }
 
 
-    public function Manufacturing()
+    public function Manufacturing(Request $request)
     {
         $currentYear = Carbon::now()->format('y');
+
+      
+        $filterYear = $request->input('bulan_tahun') ?? $currentYear;
+
+       
+        $formattedFilterYear = "%-$filterYear";
+
         $financial = financial::where('Type_of_Budget', 'Manufacturing Supply')
-            ->where('bulan_tahun', 'LIKE', "%-$currentYear")
+            ->where('bulan_tahun', 'LIKE', $formattedFilterYear)
             ->get();
         $audit = DB::table('audits')->latest()->where('sourcetable', 'financial')->get();
 
-        return view('COST_QC.financialdetail.manufacturing_supply', compact('financial', 'audit'));
+        return view('COST_QC.financialdetail.manufacturing_supply', compact('financial', 'audit', 'filterYear'));
     }
 
 

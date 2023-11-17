@@ -44,7 +44,7 @@
                 <h4 class="mb-2">List Of All Material </h4>
             </div>
             <div class="container">
-                <form method="GET" action="" class="row">
+                <form method="GET" action="" class="row align-items-end">
                     <div class="col-md-3">
                         <label for="Type_of_Material">Type of Material</label>
                         <select class="form-select" name="Type_of_Material">
