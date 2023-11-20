@@ -258,7 +258,7 @@ class QcDashboardController extends Controller
         $request->validate([
             'No_PR' => 'required',
             'Catalog_Number' => 'required',
-            'Quantity' => 'required',
+            'Quantity' => 'required|numeric|min:1',
             'Propose' => 'required',
             'request_by' => 'required',
 

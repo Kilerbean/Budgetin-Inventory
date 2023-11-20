@@ -58,7 +58,7 @@ class FinancialController extends Controller
         $old_stok=$old["old"]["budget"];
 
         $request->validate([
-            'budget' => 'required',
+            'budget' => 'required|numeric|min:0',
             'Keterangan' => 'required',
 
         ] ,

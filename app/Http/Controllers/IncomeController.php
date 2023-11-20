@@ -147,7 +147,7 @@ class IncomeController extends Controller
 
         $request->validate([
             'No_PO' => 'required',
-            'Quantity' => 'required',
+            'Quantity' => 'required|numeric|min:1',
             'no_batch' => 'required',
             'Expire_Date' => 'required',
         ]);
