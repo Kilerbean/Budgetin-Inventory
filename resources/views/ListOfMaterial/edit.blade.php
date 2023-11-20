@@ -58,7 +58,7 @@
                     </select>
                 </div>
 
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <div class="form-label">Type of Material</div>
                     <select class="form-select" name="Type_of_Material">
                         <option value="Column"
@@ -101,7 +101,27 @@
                             {{ old('Type_of_Material', $barang->Type_of_Material) === 'General Usage' ? 'selected' : '' }}>
                             General Usage</option>
                     </select>
+                </div> --}}
+
+
+                <div class="mb-3">
+                    <label class="form-label">Type of Material</label>
+                    <select class="form-select @error('Type_of_Material')is-invalid @enderror " name="Type_of_Material"
+                        id="Type_of_Material">
+                        @foreach ($tipematerial as $row)
+                            <option value="{{ $row->Type_of_Material }}"
+                                {{ old('Type_of_Material', $barang->Type_of_Material) == $row->Type_of_Material ? 'selected' : '' }}>
+                                {{ $row->Type_of_Material }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('Type_of_Material')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
                 </div>
+
+
+
 
                 <div class="mb-3">
                     <label class="form-label">Name of Material</label>

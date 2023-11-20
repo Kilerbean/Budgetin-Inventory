@@ -51,7 +51,8 @@ class BarangController extends Controller
     public function create()
     {
         $barang = barang::latest()->where('Status', '1')->get();
-        return view('ListOfMaterial.create', compact('barang'));
+        $tipematerial=Materialcode::get();
+        return view('ListOfMaterial.create', compact('barang','tipematerial'));
     }
 
     /**
@@ -151,10 +152,8 @@ class BarangController extends Controller
     public function edit($id)
     {
         $barang = barang::find($id);
-
-        return view('ListOfMaterial.edit', [
-            'barang' => $barang,
-        ]);
+        $tipematerial=Materialcode::get();
+        return view('ListOfMaterial.edit', compact('barang','tipematerial'));
     }
 
     /**

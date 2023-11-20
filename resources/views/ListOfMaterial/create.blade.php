@@ -77,7 +77,7 @@
 
                     </div>
 
-                    <div class="col-md-6">
+                    {{-- <div class="col-md-6">
                         <div class="form-label">Type of Material</div>
                         <select class="form-select @error('Type_of_Material') is-invalid @enderror" name="Type_of_Material">
                             <option value="">Select</option>
@@ -122,7 +122,26 @@
                         @error('Type_of_Material')
                             <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
-                    </div>
+                    </div> --}}
+
+                    <div class="col-md-6">
+                        <label class="form-label">Type of Materials</label>
+                         <select class="form-select @error('Type_of_Material')is-invalid @enderror " name="Type_of_Material" id="Type_of_Material">
+                             <option value="">Click to search</option>
+                             @foreach ($tipematerial as $row)
+                                 <option value="{{ $row->Type_of_Material }}"
+                                     @if (old('Type_of_Material') == $row->Type_of_Material) selected @endif>
+                                     {{ $row->Type_of_Material }}
+                                 </option>
+                             @endforeach
+                         </select>
+                         @error('Type_of_Material')
+                         <span class="invalid-feedback">{{ $message }}</span>
+                         @enderror
+                 </div>
+
+
+
 
                     <div class="col-md-6">
                         <label class="form-label">Packing Size</label>
