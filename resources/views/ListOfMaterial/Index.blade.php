@@ -105,7 +105,7 @@
                             <th style="background-color: lightgray;">No.</th>
                             <th style="background-color: lightgray;">Catalog Number</th>
                             <th style="background-color: lightgray;">Name of Material</th>
-                            <th style="background-color: lightgray;">CAS Number</th>
+                            <th style="background-color: lightgray;">CAS/ATCC Number</th>
                             <th style="background-color: lightgray;">Material Code</th>
                             <th style="background-color: lightgray;">Quantity</th>
                             <th style="background-color: lightgray;">Quantity Unit</th>

@@ -2,8 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Income;
 use App\Models\barang;
+use App\Models\Income;
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreUsageRequest extends FormRequest
@@ -23,13 +24,28 @@ class StoreUsageRequest extends FormRequest
      */
     public function rules(): array
     {
-        $income = Income::where('no_batch',$this ->no_batch)->first();
-        $barang = barang::where('Catalog_Number',$income ->Catalog_Number)->first();
+ 
         return [
-            'Quantity' => 'max:'.$barang->Quantity,
-            'Catalog_Number'=>'required',
-            'no_batch'=>'required',
-            'Open_By' => 'required',
+            'Catalog_Number' => ['required', Rule::exists('incomes', 'Catalog_Number')],
+
+            'Quantity' => ['required', 'numeric', 'min:1'],
+            'no_batch'=> ['required'],
+            'Open_By' =>  ['required'],
+            'usage' =>['required'],
+        ];
+    }
+    /**
+     * Custom validation messages.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'Catalog_Number.exists' => 'Catalog Number not found in database.',
+            'no_batch.required' => 'The Batch number field is required.',
+            'Open_By.required' => 'The Open By  field is required.',
+
         ];
     }
 }

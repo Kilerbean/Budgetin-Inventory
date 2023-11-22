@@ -60,18 +60,18 @@ class UsageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreUsageRequest $request)
     {
         
         //dd($barang->Quantity);
-        $request->validate([
-            'Catalog_Number'=>'required|exists:incomes,Catalog_Number',
-            'no_batch'=>'required',
-            'Quantity' => 'required|numeric|min:1',
-            'Open_By' => 'required',
-            'usage'=>'required'
+        // $request->validate([
+        //     'Catalog_Number'=>'required|exists:incomes,Catalog_Number',
+        //     'no_batch'=>'required',
+        //     'Quantity' => 'required|numeric|min:1',
+        //     'Open_By' => 'required',
+        //     'usage'=>'required'
             
-        ]);
+        // ]);
    
         $income = Income::where('no_batch',$request ->no_batch)
                         ->where('Catalog_Number',$request->Catalog_Number)
