@@ -47,14 +47,14 @@
                        
 
                             {{-- tombol Edit --}}
-                            <a class="btn btn-primary btn-sm"
+                            {{-- <a class="btn btn-primary btn-sm"
                                 href="{{ route('income.edit', $income->id) }}"{{ $income->Status ? 'hidden' : '' }}
-                                title="Edit Barang"> <i class="fa fa-pen"></i></a>
+                                title="Edit Barang"> <i class="fa fa-pen"></i></a> --}}
 
                                 @if (auth()->user()->leveluser > 4)
                                 <button type="submit" class="btn btn-danger btn-sm"
                                     onclick="return confirm('Are you sure want to delete this ?');"
-                                    title="Delete Barang"><i class="fa fa-trash"></i></button>
+                                    title="Delete Material"><i class="fa fa-trash"></i></button>
                                     @endif
                             </form>
                             @include('income.includelist.modalinputpo')

@@ -286,7 +286,7 @@ class QcDashboardController extends Controller
 
         $income->save();
 
-        \auditmms(auth()->user()->name, 'Create new request purchasing', $baranglows->Name_of_Material . " | " . $request->Catalog_Number, 'Incoming Material', 'N/A', 0, $request->Quantity);
+        \auditmms(auth()->user()->name, 'Create new request purchasing',$request->Catalog_Number,'Incoming Material', 'N/A', 0, $request->Quantity);
 
         return redirect()->route('income.index')
             ->with('success', 'Material Data created successfully.');

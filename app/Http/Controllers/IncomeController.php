@@ -171,15 +171,12 @@ class IncomeController extends Controller
             $income->Expire_Date = $request->Expire_Date;
             $income->save();
 
-            $income->no_batch = $request->no_batch;
-            $income->Expire_Date = $request->Expire_Date;
-            $income->save();
-    
-            $typebudget = $income->Barang->Type_of_Budget;
-            $bulantahun = date('M-y', strtotime($income->PO_Date));
-            $financial = financial::where('Type_of_Budget', $typebudget)->where('bulan_tahun', $bulantahun)->first();
-            $financial->actual = (!$financial->actual ? 0 : $financial->actual) + $Total;
-            $financial->save();
+
+            // $typebudget = $income->Barang->Type_of_Budget;
+            // $bulantahun = date('M-y', strtotime($income->PO_Date));
+            // $financial = financial::where('Type_of_Budget', $typebudget)->where('bulan_tahun', $bulantahun)->first();
+            // $financial->actual = (!$financial->actual ? 0 : $financial->actual) + $Total;
+            // $financial->save();
 
             $incomesh = Income::create([
                 'No_PR' => $income->No_PR,
@@ -238,11 +235,11 @@ class IncomeController extends Controller
         $income->Expire_Date = $request->Expire_Date;
         $income->save();
 
-        $typebudget = $income->Barang->Type_of_Budget;
-        $bulantahun = date('M-y', strtotime($income->PO_Date));
-        $financial = financial::where('Type_of_Budget', $typebudget)->where('bulan_tahun', $bulantahun)->first();
-        $financial->actual = (!$financial->actual ? 0 : $financial->actual) + $Total;
-        $financial->save();
+        // $typebudget = $income->Barang->Type_of_Budget;
+        // $bulantahun = date('M-y', strtotime($income->PO_Date));
+        // $financial = financial::where('Type_of_Budget', $typebudget)->where('bulan_tahun', $bulantahun)->first();
+        // $financial->actual = (!$financial->actual ? 0 : $financial->actual) + $Total;
+        // $financial->save();
         $incomesh = Income::create([
             'No_PR' => $income->No_PR,
             'Catalog_Number' => $barang->Catalog_Number,
@@ -285,8 +282,17 @@ class IncomeController extends Controller
         ]);
 
         $income = Income::find($income);
+        $barang = $income->Barang;
+        $Total = $income->Quantity * $barang->Harga;
         $income->update(['No_PO' => $request->No_PO]);
-        
+
+
+        $typebudget = $income->Barang->Type_of_Budget;
+        $bulantahun = date('M-y', strtotime($income->PO_Date));
+        $financial = financial::where('Type_of_Budget', $typebudget)->where('bulan_tahun', $bulantahun)->first();
+        $financial->actual = (!$financial->actual ? 0 : $financial->actual) + $Total;
+        $financial->save();
+
         return back()->with('success', 'Material Data updated successfully');
 
     }
@@ -314,11 +320,43 @@ class IncomeController extends Controller
     {
         $incomes = Income::find($incomes);
         $barang=$incomes->Barang;
-        $newqty=$barang->Quantity-$incomes->Quantity;
-        $barang->update(['Quantity' => $newqty]);
-        $incomes->delete();
-        \auditmms(auth()->user()->name, 'Administrator Delete material income',$barang->Catalog_Number, 'Incoming Material', $incomes->no_batch, $incomes->Quantity,0);
+        $noBatch = $incomes->no_batch ?? 'N/A';
+
+        if ($incomes->Status == 0) {
+            $incomes->delete();
+            \auditmms(auth()->user()->name, 'Administrator Delete material income',$barang->Catalog_Number, 'Incoming Material', $noBatch, $incomes->Quantity,0);
+            return back()->with('success', 'Data deleted successfully');
+        } 
+        elseif($incomes->Status == 1) {
+            $newqty=$barang->Quantity-$incomes->Quantity;
+            $barang->update(['Quantity' => $newqty]);
+            $incomes->delete();
+           
+            \auditmms(auth()->user()->name, 'Administrator Delete material income',$barang->Catalog_Number, 'Incoming Material', $noBatch, $incomes->Quantity,0);
         return back()->with('success', 'Data deleted successfully');
+
+        }
+
+    }
+
+    public function batalpo($incomes)
+    {
+        $incomes = Income::find($incomes);
+        $barang = $incomes->Barang;
+        $Total = $incomes->Quantity * $barang->Harga;
+
+        $noBatch = $incomes->no_batch ?? 'N/A';
+        $incomes->delete(); 
+
+        $typebudget = $incomes->Barang->Type_of_Budget;
+        $bulantahun = date('M-y', strtotime($incomes->PO_Date));
+        $financial = financial::where('Type_of_Budget', $typebudget)->where('bulan_tahun', $bulantahun)->first();
+        $financial->actual = (!$financial->actual ? 0 : $financial->actual) - $Total;
+        $financial->save();
+
+        \auditmms(auth()->user()->name, 'Administrator Cancel material income',$barang->Catalog_Number, 'Incoming Material', $noBatch, $incomes->Quantity,0);
+        return back()->with('success', 'Data Material Cancellation was successful');
+
     }
 
 
