@@ -1,8 +1,8 @@
 <head>
-    <title>Laporan PDF Tabel Incoming Material</title>
+    <title>Laporan PDF Tabel Material Usage</title>
   
   </head>
-    <h1>  Incoming Material Report</h1>
+    <h1>  Material Usage Report</h1>
     <p>Tanggal: {{ $data['tanggal'] }}</p>
      <p>Waktu: {{ $data['waktu'] }}</p>
 

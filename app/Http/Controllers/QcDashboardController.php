@@ -312,7 +312,7 @@ class QcDashboardController extends Controller
 
         $incomes = Income::where('Status', '1')->where('tipe_transaksi', '4')->get();
         $pdf = Pdf::loadView('COST_QC.laporanmaterial.laporanincomepdf', compact('incomes', 'data'));
-        return $pdf->stream('invoice.pdf');
+        return $pdf->download('IncomeReport.pdf');
     }
 
     public function laporanusage()
@@ -331,6 +331,6 @@ class QcDashboardController extends Controller
 
         $usage = Usage::where('Status', '1')->where('tipe_transaksi', '1')->get();
         $pdf = Pdf::loadView('COST_QC.laporanmaterial.laporanusagepdf', compact('usage', 'data'));
-        return $pdf->stream('invoice.pdf');
+        return $pdf->download('UsageReport.pdf');
     }
 }

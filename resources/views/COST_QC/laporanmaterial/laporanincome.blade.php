@@ -30,9 +30,9 @@
                             <th>Catalog Number</th>
                             <th>Name of Material</th>
                             <th>Quantity</th>
+                            <th>Unit</th>
                             <th>Price/unit</th>
                             <th>Total</th>
-                            <th>Unit</th>
                             <th>Propose</th>
                             <th>No PO</th>
                             <th>No Batch</th>
@@ -49,9 +49,9 @@
                                 <td>{{ $income->Catalog_Number }}</td>
                                 <td>{{ $income->Barang->Name_of_Material }}</td>
                                 <td>{{ $income->Quantity }}</td>
+                                <td>{{ $income->Unit }}</td>
                                 <td>{{ $income->Prices }}</td>
                                 <td>{{ $income->Total }}</td>
-                                <td>{{ $income->Unit }}</td>
                                 <td>{{ $income->Propose }}</td>
                                 <td>{{ $income->No_PO }}</td>
                                 <td>{{ $income->no_batch }}</td>
