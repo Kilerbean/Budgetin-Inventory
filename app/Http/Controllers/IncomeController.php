@@ -293,6 +293,9 @@ class IncomeController extends Controller
         $financial->actual = (!$financial->actual ? 0 : $financial->actual) + $Total;
         $financial->save();
 
+
+        \auditmms(auth()->user()->name, 'Input PO Number',$income->Catalog_Number, 'Incoming Material','N/A','0',$income->Quantity);
+
         return back()->with('success', 'Material Data updated successfully');
 
     }

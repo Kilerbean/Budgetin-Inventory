@@ -95,7 +95,7 @@ Route::put('/income/{income}/kosongkan',[IncomeController::class,'kosongkan'])->
 Route::get('/incomes/deadstock',[IncomeController::class,'deadstock'])->name('Income.deadstock')->middleware('user.level:2,3,4,5');
 Route::get('/income/{income}/quantity',[IncomeController::class,'quantity'])-> name('quantity')->middleware('user.level:2,3,4,5');
 Route::put('/income/{income}/editquantity',[IncomeController::class,'editquantity'])-> name('edit.quantity')->middleware('user.level:2,3,4,5');
-Route::put('/income/{income}/inputpo',[IncomeController::class,'inputpo'])->name('Income.inputpo')->middleware('user.level:2,3,4,5');
+Route::put('/incomes/{income}/inputpo',[IncomeController::class,'inputpo'])->name('Income.inputpo')->middleware('user.level:2,3,4,5');
 Route::delete('/incomes/{income}/cancel',[Incomecontroller::class,'batalpo'])-> name('income.cancel')->middleware('user.level:4,5');
 
 //Route Material Usage
