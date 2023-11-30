@@ -63,6 +63,8 @@
 
                       <option value="Quality Operation Director"{{ old('title', $user->title) == 'Quality Operation Director' ? 'selected' : '' }}>
                           Quality Operation Director</option>
+                          <option value="Developer"{{ old('title', $user->title) == 'Developer' ? 'selected' : '' }}>
+                            Developer</option>
                   </select>
               </div>
 
