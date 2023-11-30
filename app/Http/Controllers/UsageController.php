@@ -44,7 +44,8 @@ class UsageController extends Controller
             'Material QC Analyst',
             'Finished Goods QC Analyst',
             'Microbiology QC Analyst',
-            'Stability QC Analyst'
+            'Stability QC Analyst',
+            'QC Support'
         ]);
     })
     ->where('Status', 1)

@@ -172,6 +172,25 @@
         });
     </script>
 
+<script>
+    $(document).ready(function() {
+        $('#Open_By', ).select2({
+            theme: "bootstrap-5",
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' :
+                'style',
+            placeholder: $(this).data('placeholder'),
+            closeOnSelect: true,
+            tags: true,
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+        });
+        $(document).on("select2:open", () => {
+            document.querySelector(".select2-container--open .select2-search__field").focus()
+        });
+    });
+</script>
+
+
     <script type="text/javascript">
         $(function() {
             var table = $('#listlow,#lis,#listlowss').DataTable();
