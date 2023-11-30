@@ -42,6 +42,9 @@
                           none</option>
                       <option value="QC Support" {{ old('title', $user->title) == 'QC Support' ? 'selected' : '' }}>
                           QC Support</option>
+                          <option value="Quality Control Inspector" {{ old('title', $user->title) == 'Quality Control Inspector' ? 'selected' : '' }}>
+                            Quality Control Inspector</option>
+
                       <option value="Finished Goods QC Analyst"{{ old('title', $user->title) == 'Finished Goods QC Analyst' ? 'selected' : '' }}>
                           Finished Goods QC Analyst</option>
                       <option value="Material QC Analyst"{{ old('title', $user->title) == 'Material QC Analyst' ? 'selected' : '' }}>
@@ -56,15 +59,19 @@
                           QC Jr. Manager</option>
                       <option value="QC Manager" {{ old('title', $user->title) == 'QC Manager' ? 'selected' : '' }}>
                           QC Manager</option>
+
+
                           <option value="Validation Support" {{ old('title', $user->title) == 'Validation Support' ? 'selected' : '' }}>
                             Validation Support</option>
                             <option value="Validation Manager" {{ old('title', $user->title) == 'Validation Manager' ? 'selected' : '' }}>
                                 Validation Manager</option>
-
+                                <option value="Maintenance Planning & Calibration" {{ old('title', $user->title) == 'Maintenance Planning & Calibration' ? 'selected' : '' }}>
+                                    Maintenance Planning & Calibration</option>
                       <option value="Quality Operation Director"{{ old('title', $user->title) == 'Quality Operation Director' ? 'selected' : '' }}>
                           Quality Operation Director</option>
                           <option value="Developer"{{ old('title', $user->title) == 'Developer' ? 'selected' : '' }}>
                             Developer</option>
+
                   </select>
               </div>
 
