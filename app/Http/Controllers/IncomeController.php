@@ -459,4 +459,70 @@ class IncomeController extends Controller
         }
     }
 
+    public function createpengembalian()
+    {
+        $barang = barang::latest()->where('Status', '1')->get();
+        return view('income.includelist.pengembalian', compact('barang'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function storepengembalian(Request $request)
+    {
+
+        $request->validate(
+            [
+                'Catalog_Number' => 'required|exists:barangs,Catalog_Number',
+                'Propose' => 'required',
+                'request_by' => 'required',
+                'No_PO' => 'required',
+                'No_PR' => 'required',
+                'no_batch' => 'required',
+                'Expire_Date' => 'required',
+                'Quantity' => 'required|numeric|min:1',
+            ],
+
+        );
+
+        $barang = barang::where('Catalog_Number', $request->Catalog_Number)->first();
+        $Total = $request->Quantity * $barang->Harga;
+        $income = new Income();
+        $income->No_PR = $request->No_PR;
+        $income->Catalog_Number = $request->Catalog_Number;
+        $income->Type_of_Material = $barang->Type_of_Material;
+        $income->Name_of_Material = $barang->Name_of_Material;
+        $income->Quantity = $request->Quantity;
+        $income->Unit = $barang->Unit;
+        $income->packingsize = $barang->packingsize;
+        $income->packingsize_unit = $barang->packingsize_unit;
+        $income->Prices = $barang->Harga;
+        $income->Total = $Total;
+        $income->Propose = $request->Propose;
+        $income->PO_Date =now()->toDateString();
+        $income->request_by = $request->request_by;
+        $income->input_by = auth()->user()->name;
+        $income->Expire_Date = $request->Expire_Date;
+        $income->no_batch = $request->no_batch;
+        $income->No_PO= $request->No_PO;
+        $income->Status=1;
+        $income->save();
+
+
+        $Total = $request->Quantity * $barang->Harga;
+        $new_qty = $barang->Quantity + $request->Quantity;
+        $barang->update(['Quantity' => $new_qty]);
+      
+
+        \auditmms(auth()->user()->name, 'Added Material Returns',$barang->Catalog_Number, 'Incoming Material',$request->no_batch, 0, $request->Quantity);
+        return redirect()->route('income.index')
+            ->with('success', 'Material Data Request Created.');
+    }
+
+
+
+
+
+
+
 }

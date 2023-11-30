@@ -9,22 +9,17 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <a class="btn btn-info btn-sm" href="{{ route('income.index') }}"><i class="fa fa-clipboard-list"></i><i
-                    class="fa fa-turn-up"></i> List of Incoming Material</a>
-
-                    <a class="btn btn-secondary btn-sm" href="{{ route('pengembalian') }}">Return Material</a>
-            <a class="btn btn-primary btn-sm" href="{{ route('income.index') }}"> Back</a>
+        <a class="btn btn-primary btn-sm" href="{{ route('income.create') }}"> Back</a>
         </div>
     </div>
     <div class="mx-2 mt-2">
-        <h4 class="mb-2">Add New Purchasing Material </h4>
+        <h4 class="mb-2">Material Return</h4>
     </div>
 
     <div class="card" style="background-color: rgb(230, 225, 225);">
         <div class="card-body">
-            <form action="{{ route('income.store') }}" method="POST">
+            <form action="{{ route('pengebalian.store') }}" method="POST">
                 @csrf
-
                 <div class="row">
                     
                     <div class="mb-3">
@@ -45,23 +40,16 @@
                     </div>
 
 
-                    <div class="col-md-3">
-                        <div class="form-label">Propose</div>
-                        <select class="form-select" name="Propose">
-                            <option value="">Select</option>
-                            <option value="routine" {{ old('Propose') === 'routine' ? 'selected' : '' }}>routine</option>
-                            <option value="consumable part" {{ old('Propose') === 'consumable part' ? 'selected' : '' }}>
-                                consumable part</option>
-                            <option value="services" {{ old('Propose') === 'services' ? 'selected' : '' }}>services
-                            </option>
-                            <option value="calibration" {{ old('Propose') === 'calibration' ? 'selected' : '' }}>
-                                calibration</option>
-                            <option value="new" {{ old('Propose') === 'new' ? 'selected' : '' }}>new</option>
-                            <option value="external testing" {{ old('Propose') === 'external testing' ? 'selected' : '' }}>
-                                external testing</option>
-                            <option value="assets" {{ old('Propose') === 'assets' ? 'selected' : '' }}>assets</option>
-                        </select>
+                     <div class="col-md-3">
+                        <div class="form-group">
+                            <div class="form-label"><strong>Propose</strong></div>
+                            <input type="text" name="Propose" class="form-control" placeholder="Input name here"
+                                value="{{ old('Propose') }}">
+                        </div>
                     </div>
+
+
+
                     <div class="col-md-3">
                         <div class="form-group">
                             <div class="form-label"><strong>Request By</strong></div>
@@ -72,9 +60,24 @@
 
                     <div class="col-md-3">
                         <div class="form-group">
-                            <div class="form-label"><strong>No PR:</strong></div>                            
+                            <div class="form-label"><strong>No PR</strong></div>                            
                             <input type="text" name="No_PR" class="form-control" placeholder="Input No PR here"
                                 value="{{ old('No_PR') }}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <div class="form-label"><strong>No PO</strong></div>
+                            <input class="form-control" name="No_PO" placeholder="Input " value="{{ old('No_PO') }}">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <div class="form-label">  <strong>No batch</strong></div>
+                            <input class="form-control" type="text" name="no_batch" placeholder="Input no batch " value="{{ old('no_batch') }}">
                         </div>
                     </div>
 
@@ -83,6 +86,15 @@
                             <div class="form-label"><strong>Quantity</strong></div>  
                             <input class="form-control" type="number" name="Quantity" placeholder="Input quantity"
                                 value="{{ old('Quantity') }}">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <div class="form-label"><strong>Expire Date</strong></div>
+                            <input class="form-control" type="date" name="Expire_Date" placeholder="Input "
+                                value="{{ old('Expire_Date') }}">
                         </div>
                     </div>
 
@@ -100,12 +112,6 @@
         </div>
     </div>
 
-    <br>
-    <div
-        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-1 border-bottom border-danger">
-    </div>
-    <br>
-    @include('COST_QC.listmaterial.listmaterialbelumditerima')
 
 
 @stop

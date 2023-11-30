@@ -98,6 +98,10 @@ Route::put('/income/{income}/editquantity',[IncomeController::class,'editquantit
 Route::put('/incomes/{income}/inputpo',[IncomeController::class,'inputpo'])->name('Income.inputpo')->middleware('user.level:2,3,4,5');
 Route::delete('/incomes/{income}/cancel',[Incomecontroller::class,'batalpo'])-> name('income.cancel')->middleware('user.level:4,5');
 
+Route::get('/income/pengembalian',[IncomeController::class,'createpengembalian'])-> name('pengembalian')->middleware('user.level:2,3,4,5');
+Route::post('/income/pengembalian/store',[IncomeController::class,'storepengembalian'])-> name('pengebalian.store')->middleware('user.level:2,3,4,5');
+
+
 //Route Material Usage
 Route::resource('usage',UsageController::class)->middleware('auth')->middleware('user.level:2,3,4,5');
 Route::put('/usage/{usage}/updategunakan',[UsageController::class,'updategunakan'])->name('Usage.Digunakan')->middleware('user.level:2,3,4,5');
